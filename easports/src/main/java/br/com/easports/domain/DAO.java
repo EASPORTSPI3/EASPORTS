@@ -13,7 +13,7 @@ public class DAO {
 		final String caminho = System.getProperty("user.dir");
 	
 		try {
-			conn = DriverManager.getConnection("jdbc:sqlite:" + caminho + "/src/main/resources/br/com/easports/bd.db");
+			conn = DriverManager.getConnection("jdbc:sqlite:" + caminho + "/src/main/resources/br/com/easports/bd/easportsBd.db");
 			System.out.println("dentro");
 		} catch (final SQLException e) {
 			System.out.println("erro");
@@ -23,6 +23,10 @@ public class DAO {
 	}
 	
 	public static void incluir() {
+		
+		//alteracao  bill
+		
+		
 		
 		PreparedStatement stmt= null;
 		Connection conn = null;
