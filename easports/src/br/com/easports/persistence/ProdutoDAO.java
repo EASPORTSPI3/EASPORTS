@@ -1,6 +1,6 @@
 package br.com.easports.persistence;
 
-public class ProdutoDAO extends Conexao{
+public class ProdutoDAO extends DAO{
 	
 	
 

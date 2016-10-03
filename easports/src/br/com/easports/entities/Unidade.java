@@ -6,6 +6,11 @@ public class Unidade {
 	private String endereço;
 	private String telefone;
 	
+	
+	public Unidade() {
+		
+	}
+
 	public Unidade(String nome, String endereço, String telefone) {
 		
 		this.nome = nome;

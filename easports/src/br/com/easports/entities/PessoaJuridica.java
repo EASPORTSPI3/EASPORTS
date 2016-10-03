@@ -1,22 +1,30 @@
 package br.com.easports.entities;
 
-public class PessoaJuridica extends Pessoa{
-	
+public class PessoaJuridica extends Pessoa {
+
 	private String cnpj;
 	private String razaoSocial;
 	private Endereco endereco;
-	
-	public PessoaJuridica(){
-		
+
+	public PessoaJuridica() {
+
 	}
-	
-	public PessoaJuridica(String nome, String telefone, String cnpj, String razaoSocial, Endereco endereco){
-		
+
+	public PessoaJuridica(String nome, String telefone, String cnpj, String razaoSocial) {
+
+		super(nome, telefone);
+		this.cnpj = cnpj;
+		this.razaoSocial = razaoSocial;
+
+	}
+
+	public PessoaJuridica(String nome, String telefone, String cnpj, String razaoSocial, Endereco endereco) {
+
 		super(nome, telefone);
 		this.cnpj = cnpj;
 		this.razaoSocial = razaoSocial;
 		this.endereco = endereco;
-		
+
 	}
 
 	public String getCnpj() {
@@ -42,5 +50,5 @@ public class PessoaJuridica extends Pessoa{
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+
 }

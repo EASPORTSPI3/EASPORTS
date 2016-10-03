@@ -2,8 +2,10 @@ package br.com.easports.util;
 
 public enum Cargo {
 	
-	GERENTE_PRODUTO,
+	VENDEDOR,
+	FUNCIONARIO_TI,
 	DIRETOR,
-	FUNCIONARIO
+	GERENTE,
+	GERENTE_DE_PRODUTOS,
 
 }
