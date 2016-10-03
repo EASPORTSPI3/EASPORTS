@@ -9,12 +9,22 @@
 </head>
 
 <body>
+<header>EA SPORTS
+		<nav id="menu">
+			<ul>
+			<li id="home"><a a href="cadastroCliente.jsp">Cadastrar</a></li>
+			<li id="consultar"><a>Consultar</a></li>
+			<li id="relatorio"><a>Relatorio</a></li>	
+			</ul>		
+		</nav>	
+	</header>
 
 <h2>Cadastro de Clientes:</h2>
 
 <h3>Dados Pessoais:</h3>
 
 <hr><br/>
+
 
 	<form name="formulario" method="post" action="ControlePessoa?acao=cadastrarpf">
 	

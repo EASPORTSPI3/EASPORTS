@@ -9,7 +9,7 @@ import br.com.easports.util.ConverteData;
 
 public class ClientePFDAO extends DAO{
 	
-	public void insert(ClientePF cliente) throws Exception {
+	public void insert(ClientePF cliente, int idEndereco) throws Exception {
 
 		String query = "insert into Cliente_PF(nome, telefone, cpf, data_nascimento, id_endereco)VALUES(?,?,?,?,?)";
 
@@ -21,7 +21,7 @@ public class ClientePFDAO extends DAO{
 		stmt.setString(2, cliente.getTelefone());
 		stmt.setString(3, cliente.getCpf());
 		stmt.setString(4, ConverteData.dateToString(cliente.getDataNasc()));
-		stmt.setInt(5, cliente.getEndereco().getId_endereco());
+		stmt.setInt(5, idEndereco);
 
 		stmt.execute();
 

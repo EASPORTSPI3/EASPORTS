@@ -19,7 +19,7 @@ public class DAO {
 
 		if (con == null) {
 
-			con = DriverManager.getConnection(DATABASE + URL + DIRETORIO);
+			con = DriverManager.getConnection(DATABASE +"C:\\Users\\cquadros\\workspace\\EASPORTS\\easports\\WebContent\\WEB-INF\\lib\\easports.db");
 			
 		}
 	}

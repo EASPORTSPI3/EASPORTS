@@ -1,5 +1,7 @@
 package br.com.easports.persistence;
 
+import java.beans.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +10,15 @@ import br.com.easports.entities.Endereco;
 public class EnderecoDAO extends DAO {
 	
 
-	public void insert(Endereco endereco) throws Exception {
-
+	public int insert(Endereco endereco) throws Exception {
+		
+		int idEndereco=0;
 		String query = "insert into endereco(logradouro, numero, cep, bairro, cidade, "
 				+ "estado, pais)VALUES(?,?,?,?,?,?,?)";
 
 		abreConexao();
 
-		stmt = con.prepareStatement(query);
+		stmt = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
 
 		stmt.setString(1, endereco.getLogradouro());
 		stmt.setInt(2, endereco.getNumero());
@@ -26,11 +29,15 @@ public class EnderecoDAO extends DAO {
 		stmt.setString(7, endereco.getPais());
 
 		stmt.execute();
-
+		
+		rs = stmt.getGeneratedKeys();
+		while(rs.next()){
+			idEndereco = rs.getInt(1);
+		}
+		
 		stmt.close();
-
 		fechaConexao();
-
+		return idEndereco;
 	}
 
 	public void update(Endereco endereco) throws Exception {

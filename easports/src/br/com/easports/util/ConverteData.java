@@ -11,7 +11,7 @@ public class ConverteData {
  			return null;
          Date date = null;
          try {
-             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
              date = new Date( (formatter.parse(data)).getTime() );
          } catch (Exception e) {            
              System.out.println(e.getMessage());;
@@ -24,7 +24,7 @@ public class ConverteData {
  			return null;
          String dataString = null;
          try {
-        	 Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        	 Format formatter = new SimpleDateFormat("dd-MM-yyyy");
         	 dataString = formatter.format(data);
          } catch (Exception e) {            
              System.out.println(e.getMessage());;

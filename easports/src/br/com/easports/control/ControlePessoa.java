@@ -44,7 +44,7 @@ public class ControlePessoa extends HttpServlet {
         			
         			EnderecoDAO enderecoDao = new EnderecoDAO();
         			
-        			enderecoDao.insert(endereco);
+        			int idEndereço = enderecoDao.insert(endereco);
         			
         			ClientePF clientePf = new ClientePF();
         			
@@ -56,7 +56,7 @@ public class ControlePessoa extends HttpServlet {
         			
         			ClientePFDAO clientePfDao = new ClientePFDAO();
         			
-        			clientePfDao.insert(clientePf);
+        			clientePfDao.insert(clientePf, idEndereço);
     				
 				} 
     			catch (Exception e) {
