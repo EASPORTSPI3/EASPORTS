@@ -4,7 +4,7 @@ public class Endereco {
 	
 	private Integer id_endereco;
 	private String logradouro;
-	private Integer numero;
+	private int numero;
 	private String cep;
 	private String bairro;
 	private String cidade;
