@@ -9,6 +9,7 @@ import br.com.easports.util.ConverteData;
 
 public class ClientePFDAO extends DAO{
 	
+	
 	public void insert(ClientePF cliente, int idEndereco) throws Exception {
 
 		String query = "insert into Cliente_PF(nome, telefone, cpf, data_nascimento, id_endereco)VALUES(?,?,?,?,?)";

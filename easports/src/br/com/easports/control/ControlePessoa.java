@@ -44,7 +44,7 @@ public class ControlePessoa extends HttpServlet {
         			
         			EnderecoDAO enderecoDao = new EnderecoDAO();
         			
-        			int idEndereço = enderecoDao.insert(endereco);
+        			int idEndereço = enderecoDao.insertReturnID(endereco);
         			
         			ClientePF clientePf = new ClientePF();
         			

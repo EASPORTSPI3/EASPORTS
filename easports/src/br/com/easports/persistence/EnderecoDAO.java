@@ -1,6 +1,5 @@
 package br.com.easports.persistence;
 
-import java.beans.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +7,37 @@ import java.util.List;
 import br.com.easports.entities.Endereco;
 
 public class EnderecoDAO extends DAO {
-	
 
-	public int insert(Endereco endereco) throws Exception {
-		
-		int idEndereco=0;
+	
+	public void insert(Endereco endereco) throws Exception {
+
+		String query = "insert into endereco(logradouro, numero, cep, bairro, cidade, "
+				+ "estado, pais)VALUES(?,?,?,?,?,?,?)";
+
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setString(1, endereco.getLogradouro());
+		stmt.setInt(2, endereco.getNumero());
+		stmt.setString(3, endereco.getCep());
+		stmt.setString(4, endereco.getBairro());
+		stmt.setString(5, endereco.getCidade());
+		stmt.setString(6, endereco.getEstado());
+		stmt.setString(7, endereco.getPais());
+
+		stmt.execute();
+
+		stmt.close();
+
+		fechaConexao();
+
+	}
+
+	public int insertReturnID(Endereco endereco) throws Exception {
+
+		int idEndereco = 0;
+
 		String query = "insert into endereco(logradouro, numero, cep, bairro, cidade, "
 				+ "estado, pais)VALUES(?,?,?,?,?,?,?)";
 
@@ -29,15 +54,21 @@ public class EnderecoDAO extends DAO {
 		stmt.setString(7, endereco.getPais());
 
 		stmt.execute();
-		
+
 		rs = stmt.getGeneratedKeys();
-		while(rs.next()){
+
+		while (rs.next()) {
+
 			idEndereco = rs.getInt(1);
+
 		}
-		
+
 		stmt.close();
+
 		fechaConexao();
+
 		return idEndereco;
+
 	}
 
 	public void update(Endereco endereco) throws Exception {
@@ -88,7 +119,7 @@ public class EnderecoDAO extends DAO {
 		String query = "select from Endereco where id_endereco = ?";
 
 		abreConexao();
-		
+
 		stmt = con.prepareStatement(query);
 
 		stmt.setInt(1, id_endereco);
@@ -108,31 +139,31 @@ public class EnderecoDAO extends DAO {
 			endereco.setPais(rs.getString("pais"));
 
 		}
-		
+
 		stmt.close();
-		
+
 		fechaConexao();
 
 		return endereco;
 
 	}
 
-	public List<Endereco> listAll() throws Exception{
-		
+	public List<Endereco> listAll() throws Exception {
+
 		String query = "select * from endereco";
-		
+
 		abreConexao();
-		
+
 		stmt = con.prepareStatement(query);
-		
+
 		rs = stmt.executeQuery();
-		
+
 		List<Endereco> lista = new ArrayList<Endereco>();
-		
-		while(rs.next()){
-			
+
+		while (rs.next()) {
+
 			Endereco endereco = new Endereco();
-			
+
 			endereco.setLogradouro(rs.getString("logradouro"));
 			endereco.setNumero(rs.getInt("numero"));
 			endereco.setCep(rs.getString("cep"));
@@ -140,17 +171,17 @@ public class EnderecoDAO extends DAO {
 			endereco.setCidade(rs.getString("cidade"));
 			endereco.setEstado(rs.getString("estado"));
 			endereco.setPais(rs.getString("pais"));
-			
+
 			lista.add(endereco);
-			
+
 		}
-		
+
 		stmt.close();
-		
+
 		fechaConexao();
-		
+
 		return lista;
-		
+
 	}
-	
+
 }
