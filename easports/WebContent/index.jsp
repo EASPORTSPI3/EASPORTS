@@ -5,11 +5,12 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/menuRodape.css"/>
+<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css"/>
 <title>EA Sports</title>
 </head>
-
 <body>
-<header>EA SPORTS
+	<header>EA SPORTS
 		<nav id="menu">
 			<ul>
 			<li id="home"><a a href="cadastroCliente.jsp">Cadastrar</a></li>
@@ -18,77 +19,70 @@
 			</ul>		
 		</nav>	
 	</header>
+	<hgroup>
+		<h2>Cadastro de Clientes:</h2>
+	</hgroup>
 
-<h2>Cadastro de Clientes:</h2>
-
-<h3>Dados Pessoais:</h3>
-
-<hr><br/>
-
-
-	<form name="formulario" method="post" action="ControlePessoa?acao=cadastrarpf">
-	
-		<label>Nome:</label>
-		<input type="text" name="nome" />
-		
-		<br/><br/>
-		
-		<label>Telefone:</label>
-		<input type="text" name="telefone" />
-		
-		<br/><br/>
-		
-		<label>CPF:</label>
-		<input type="text" name="cpf" />
-		
-		<br/><br/>
-		
-		<label>Data Nasc:</label>
-		<input type="date" name="datanasc" />
-		
-		<br/><br/><hr><br/>
-		
-		<h3>Endereço:</h3>
-		<hr><br/>
-		 
-		<label>Logradouro:</label>
-		<input type="text" name="logradouro" />
-		
-		<br/><br/>
-		
-		<label>Número:</label>
-		<input type="text" name="numero" />
-		
-		<br/><br/>
-		
-		<label>CEP:</label>
-		<input type="text" name="cep" />
-		
-		<br/><br/>
-		
-		<label>Bairro:</label>
-		<input type="text" name="bairro" />
-		
-		<br/><br/>
-		
-		<label>Cidade:</label>
-		<input type="text" name="cidade" />
-		
-		<br/><br/>
-		
-		<label>Estado:</label>
-		<input type="text" name="estado" />
-		
-		<br/><br/>
-		
-		<label>País:</label>
-		<input type="text" name="pais" />
-		
-		<br/><br/>
-		
-		<input type="submit" value="Cadastrar" />
-		
-	</form>
+	<section>
+		<form name="formulario" method="post" action="ControlePessoa?acao=cadastrarpf">	
+			<fieldset id="fieldCli">
+				<legend>Dados pessoais</legend>
+				<p>
+					<label>Nome:</label>
+					<input type="text" name="nome" />
+				</p>
+				<p>
+					<label>Telefone:</label>
+					<input type="text" name="telefone" />
+				</p>
+				<p>
+					<label>CPF:</label>
+					<input type="text" name="cpf" />
+				</p>
+				<p>
+					<label>Data Nasc:</label>
+					<input type="date" name="datanasc" />
+				</p>
+			</fieldset>
+			<br>
+			<fieldset id="fieldEnd">
+			<legend>Endereço</legend>
+				<p>
+					<label>Logradouro:</label>
+					<input type="text" name="logradouro" />				
+				</p>
+				<p>
+					<label>Número:</label>
+					<input type="text" name="numero" />
+				</p>
+			
+				<p>
+					<label>CEP:</label>
+					<input type="text" name="cep" />
+				</p>
+				<p>
+					<label>Bairro:</label>
+					<input type="text" name="bairro" />
+				</p>
+				<p>
+					<label>Cidade:</label>
+					<input type="text" name="cidade" />				
+				</p>
+				<p>
+					<label>Estado:</label>
+					<input type="text" name="estado" />
+				</p>
+				<label>País:</label>
+				<input type="text" name="pais" />
+			</fieldset>
+			<input type="submit" value="Cadastrar" id="enviar"/>
+			<input type="reset" value="Limpar" id="limpar">
+		</form>		
+	</section>
+	<footer id="rodape">
+		<p>Copyright &copy; 2016 - by While(true)</p>
+		<p><a href="http://facebook.com.br" target="_blank">Facebook </a>| 
+		<a href="http://twiter.com.br" target="_blank">Twitter </a></p>
+	</footer>
 </body>
-
 </html>

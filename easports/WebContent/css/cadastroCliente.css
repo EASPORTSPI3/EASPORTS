@@ -1,0 +1,25 @@
+@CHARSET "ISO-8859-1";
+@charset "UTF-8";
+@import 'https://fonts.googleapis.com/css?family=Titillium+Web';
+@font-face{
+	font-family: sans-serif;
+}
+
+hgroup {
+	margin-top: 70px;
+}
+
+input#enviar {
+	width: 100px;	
+	height: 50px;
+	margin-top: 5px;
+}
+input#limpar {
+	width: 100px;	
+	height: 50px;
+	margin-top: 5px;
+}
+
+fieldset {
+	width: 30%;
+}
