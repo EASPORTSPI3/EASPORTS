@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/menuRodape.css"/>
-<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="stylesheet" type="text/css" href="css/menuRodape.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
 <title>EA Sports</title>
 </head>
 <body>
@@ -19,70 +18,17 @@
 			</ul>		
 		</nav>	
 	</header>
-	<hgroup>
-		<h2>Cadastro de Clientes:</h2>
-	</hgroup>
-
 	<section>
-		<form name="formulario" method="post" action="ControlePessoa?acao=cadastrarpf">	
-			<fieldset id="fieldCli">
-				<legend>Dados pessoais</legend>
-				<p>
-					<label>Nome:</label>
-					<input type="text" name="nome" />
-				</p>
-				<p>
-					<label>Telefone:</label>
-					<input type="text" name="telefone" />
-				</p>
-				<p>
-					<label>CPF:</label>
-					<input type="text" name="cpf" />
-				</p>
-				<p>
-					<label>Data Nasc:</label>
-					<input type="date" name="datanasc" />
-				</p>
-			</fieldset>
-			<br>
-			<fieldset id="fieldEnd">
-			<legend>Endereço</legend>
-				<p>
-					<label>Logradouro:</label>
-					<input type="text" name="logradouro" />				
-				</p>
-				<p>
-					<label>Número:</label>
-					<input type="text" name="numero" />
-				</p>
-			
-				<p>
-					<label>CEP:</label>
-					<input type="text" name="cep" />
-				</p>
-				<p>
-					<label>Bairro:</label>
-					<input type="text" name="bairro" />
-				</p>
-				<p>
-					<label>Cidade:</label>
-					<input type="text" name="cidade" />				
-				</p>
-				<p>
-					<label>Estado:</label>
-					<input type="text" name="estado" />
-				</p>
-				<label>País:</label>
-				<input type="text" name="pais" />
-			</fieldset>
-			<input type="submit" value="Cadastrar" id="enviar"/>
-			<input type="reset" value="Limpar" id="limpar">
-		</form>		
-	</section>
+		<div id="logo">
+			<img src="Logo_EA.gif"/>
+		</div>		
+	</section>	
 	<footer id="rodape">
-		<p>Copyright &copy; 2016 - by While(true)</p>
-		<p><a href="http://facebook.com.br" target="_blank">Facebook </a>| 
-		<a href="http://twiter.com.br" target="_blank">Twitter </a></p>
+		Copyright &copy; 2016 - by While(true)
+		<p>
+			<a href="http://facebook.com.br" target="_blank">Facebook </a>| <a
+				href="http://twiter.com.br" target="_blank">Twitter </a>
+		</p>
 	</footer>
 </body>
 </html>
