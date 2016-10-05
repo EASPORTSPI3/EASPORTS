@@ -70,8 +70,28 @@ footer p a{
 	color: white;
 }
 
+/*------------------------------------------Menu dropdown*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #373737;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    font-size: 10pt;
+    text-align: left;
 
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+	cursor: pointer;
+}
 
 
 

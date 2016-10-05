@@ -11,7 +11,14 @@
 <body>
 	<header>EA SPORTS <nav id="menu">
 	<ul>
-		<li id="home"><a a href="cadastroCliente.jsp">Cadastrar</a></li>
+		<li id="home" class="dropdown">Cadastrar</a>
+			<div class="dropdown-content">
+				<p><a href="cadastroCliente.jsp">Cliente</a></p>
+				<p><a href"#">Fornecedor</a></p>
+				<p><a href"#">Funcionário</a></p>
+			</div>
+		</li>		
+		
 		<li id="consultar"><a>Consultar</a></li>
 		<li id="relatorio"><a>Relatorio</a></li>
 	</ul>
@@ -19,11 +26,9 @@
 	<section>
 	<div id="botoes">
 		<ul>
-			<li id="cadastro"><a a href="cadastroCliente.jsp"> <img
-					src="img/btn_cadastrar.png" />
-			</a>
+			<li id="cadastro"><a a href="cadastroCliente.jsp"> 
+			<img src="img/btn_cadastrar.png" /></a>
 				<div id="divCad">Cadastro</div></li>
-
 			<li id="consultar"><a><img src="img/btn_consultar.png" /></a>
 			<div id="divCad">Consultar</div></li>
 			<li id="relatorio"><a><img src="img/btn_relatorio.png" /></a>
