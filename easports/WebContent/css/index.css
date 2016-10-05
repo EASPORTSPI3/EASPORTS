@@ -14,5 +14,30 @@ body{
 section div#logo {
 	heigth: 500px;
 	width: 497px;
-	margin: 70px auto;
+	margin: 20px auto;
+
+}
+
+div#botoes ul{
+	display: block;
+	margin: auto;
+	heigth: 50px;
+	width: 560px;
+	margin-top: 30px;
+}
+
+div#botoes li{
+	display: inline-block;
+}
+
+div#botoes ul li div{
+	text-align: center;
+}	
+
+div#botoes ul li:hover {
+	box-shadow: 1px 1px 4px black;
+	-webkit-filter: saturate(10); filter: saturate(10);
+	text-decoration: underline;
+	text-shadow: 1px 1px 1px black;
+	img: url("img/btn_cadastrar_efeito");
 }
