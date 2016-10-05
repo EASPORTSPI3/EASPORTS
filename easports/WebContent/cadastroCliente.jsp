@@ -24,7 +24,7 @@
 	</hgroup>
 
 		<div id="logo">
-			<img src="img/Logo_EA.gif"/>
+			<img src="img/EA_Sports2.png"/>
 		</div>
 	<section>
 		<form name="formulario" method="post"
