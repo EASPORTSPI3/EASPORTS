@@ -22,8 +22,6 @@ public class DAO {
 			
 			//COPIAR O ARQUIVO DO BANCO DE DADOS, LOCALIZADO NA PASTA RAIZ DO PROJETO, PARA A PASTA RAIZ DO ECLIPSE
 			
-			System.out.println(DATABASE + URL + BANCO);
-			
 			con = DriverManager.getConnection(DATABASE + URL + BANCO);
 
 			//con = DriverManager.getConnection(DATABASE +"C:\\Users\\cquadros\\workspace\\EASPORTS\\easports\\WebContent\\WEB-INF\\lib\\easports.db");

@@ -3,6 +3,8 @@ package br.com.easports.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.sqlite.date.DateFormatUtils;
+
 import br.com.easports.entities.ClientePF;
 import br.com.easports.entities.Endereco;
 import br.com.easports.util.ConverteData;
@@ -55,15 +57,15 @@ public class ClientePFDAO extends DAO{
 
 	}
 
-	public void delete(Integer id_endereco) throws Exception {
+	public void delete(Integer id_cliente) throws Exception {
 
-		String query = "delete from endereco where id_endereco = ?";
+		String query = "delete from cliente_pf where id_cliente = ?";
 
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
 
-		stmt.setInt(1, id_endereco);
+		stmt.setInt(1, id_cliente);
 
 		stmt.execute();
 
@@ -73,29 +75,27 @@ public class ClientePFDAO extends DAO{
 
 	}
 
-	public Endereco findById(Integer id_endereco) throws Exception {
+	public ClientePF findById(Integer id_cliente) throws Exception {
 
-		String query = "select from Endereco where id_endereco = ?";
+		String query = "select * from cliente_pf where id_cliente = ?";
 
 		abreConexao();
 		
 		stmt = con.prepareStatement(query);
 
-		stmt.setInt(1, id_endereco);
+		stmt.setInt(1, id_cliente);
 
 		rs = stmt.executeQuery();
 
-		Endereco endereco = null;
+		ClientePF cliente = new ClientePF();
 
 		while (rs.next()) {
 
-			endereco.setLogradouro(rs.getString("logradouro"));
-			endereco.setNumero(rs.getInt("numero"));
-			endereco.setCep(rs.getString("cep"));
-			endereco.setBairro(rs.getString("bairro"));
-			endereco.setCidade(rs.getString("cidade"));
-			endereco.setEstado(rs.getString("estado"));
-			endereco.setPais(rs.getString("pais"));
+			cliente.setNome(rs.getString("nome"));
+			cliente.setTelefone(rs.getString("telefone"));
+			cliente.setCpf(rs.getString("cpf"));
+			cliente.setDataNasc(rs.getDate("data_nascimento"));
+			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
 
 		}
 		
@@ -103,13 +103,45 @@ public class ClientePFDAO extends DAO{
 		
 		fechaConexao();
 
-		return endereco;
+		return cliente;
+
+	}
+	
+	public ClientePF findByCpf(String cpf) throws Exception {
+
+		String query = "select * from cliente_pf where cpf = " + cpf;
+
+		abreConexao();
+		
+		stmt = con.prepareStatement(query);
+
+		stmt.setString(1, cpf);
+
+		rs = stmt.executeQuery();
+
+		ClientePF cliente = new ClientePF();
+
+		while (rs.next()) {
+
+			cliente.setNome(rs.getString("nome"));
+			cliente.setTelefone(rs.getString("telefone"));
+			cliente.setCpf(rs.getString("cpf"));
+			cliente.setDataNasc(rs.getDate("data_nascimento"));
+			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
+
+		}
+		
+		stmt.close();
+		
+		fechaConexao();
+
+		return cliente;
 
 	}
 
-	public List<Endereco> listAll() throws Exception{
+	public List<ClientePF> listAll() throws Exception{
 		
-		String query = "select * from endereco";
+		String query = "select * from cliente_pf";
 		
 		abreConexao();
 		
@@ -117,21 +149,19 @@ public class ClientePFDAO extends DAO{
 		
 		rs = stmt.executeQuery();
 		
-		List<Endereco> lista = new ArrayList<Endereco>();
+		List<ClientePF> lista = new ArrayList<ClientePF>();
 		
 		while(rs.next()){
 			
-			Endereco endereco = new Endereco();
+			ClientePF cliente = new ClientePF();
 			
-			endereco.setLogradouro(rs.getString("logradouro"));
-			endereco.setNumero(rs.getInt("numero"));
-			endereco.setCep(rs.getString("cep"));
-			endereco.setBairro(rs.getString("bairro"));
-			endereco.setCidade(rs.getString("cidade"));
-			endereco.setEstado(rs.getString("estado"));
-			endereco.setPais(rs.getString("pais"));
+			cliente.setNome(rs.getString("nome"));
+			cliente.setTelefone(rs.getString("telefone"));
+			cliente.setCpf(rs.getString("cpf"));
+			cliente.setDataNasc(rs.getDate("data_nascimento"));
+			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
 			
-			lista.add(endereco);
+			lista.add(cliente);
 			
 		}
 		

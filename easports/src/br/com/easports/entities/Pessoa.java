@@ -1,19 +1,28 @@
 package br.com.easports.entities;
 
 public abstract class Pessoa {
-	
+
 	private String nome;
 	private String telefone;
-	
+	private Endereco endereco;
+
 	public Pessoa() {
-		
+
 	}
 
-	public Pessoa(String nome, String telefone){
-		
+	public Pessoa(String nome, String telefone) {
+
 		this.nome = nome;
 		this.telefone = telefone;
-		
+
+	}
+
+	public Pessoa(String nome, String telefone, Endereco endereco) {
+
+		this.nome = nome;
+		this.telefone = telefone;
+		this.endereco = endereco;
+
 	}
 
 	public String getNome() {
@@ -31,5 +40,13 @@ public abstract class Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 }

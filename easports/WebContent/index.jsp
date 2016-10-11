@@ -22,20 +22,29 @@
 		<li id="consultar"><a>Consultar</a></li>
 		<li id="relatorio"><a>Relatorio</a></li>
 	</ul>
-	</nav> </header>
+	</nav> 
+	</header>
 	<section>
 	<div id="botoes">
 		<ul>
 			<li id="cadastro"><a a href="cadastroCliente.jsp"> 
 			<img src="img/btn_cadastrar.png" /></a>
 				<div id="divCad">Cadastro</div></li>
-			<li id="consultar"><a><img src="img/btn_consultar.png" /></a>
+				
+			<li id="consultar"><a a href="consultaCliente.jsp">
+			<img src="img/btn_consultar.png" /></a>
 			<div id="divCad">Consultar</div></li>
-			<li id="relatorio"><a><img src="img/btn_relatorio.png" /></a>
+			
+			<li id="relatorio"><a>
+			<img src="img/btn_relatorio.png" /></a>
 			<div id="divCad">Relatórios</div></li>
-			<li id="vendas"><a><img src="img/btn_vendas.png" /></a>
+			
+			<li id="vendas"><a>
+			<img src="img/btn_vendas.png" /></a>
 			<div id="divCad">Vendas</div></li>
-			<li id="ajuda"><a><img src="img/btn_ajuda.png" /></a>
+			
+			<li id="ajuda"><a>
+			<img src="img/btn_ajuda.png" /></a>
 			<div id="divCad">Ajuda</div></li>
 		</ul>
 	</div>
