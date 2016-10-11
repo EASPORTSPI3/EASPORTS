@@ -9,16 +9,7 @@
 	<title>EA Sports</title>
 </head>
 <body>
-	<header>
-		EA SPORTS
-		<nav id="menu">
-			<ul>
-				<li id="home"><a a href="index.jsp">Home</a></li>
-				<li id="consultar"><a>Consultar</a></li>
-				<li id="relatorio"><a>Relatorio</a></li>
-			</ul>
-		</nav>
-	</header>
+	<jsp:include page="cabecalhoRodape.jsp"></jsp:include>
 	<hgroup>
 		<h2>Cadastro de Clientes:</h2>
 	</hgroup>
@@ -32,41 +23,41 @@
 			<fieldset id="fieldCli">
 				<legend>Dados pessoais</legend>
 				<p>
-					<label>Nome:</label> <input type="text" name="nome" />
+					<label>Nome:</label> <input type="text" name="nome" required="required"/>
 				</p>
 				<p>
-					<label>Telefone:</label> <input type="text" name="telefone" />
+					<label>Telefone:</label> <input type="text" name="telefone" required="required" />
 				</p>
 				<p>
-					<label>CPF:</label> <input type="text" name="cpf" />
+					<label>CPF:</label> <input type="text" name="cpf" required="required"/>
 				</p>
 				<p>
-					<label>Data Nasc:</label> <input type="date" name="datanasc" />
+					<label>Data Nasc:</label> <input type="date" name="datanasc" required="required"/>
 				</p>
 			</fieldset>
 			<br>
 			<fieldset id="fieldEnd">
 				<legend>Endereço</legend>
 				<p>
-					<label>Logradouro:</label> <input type="text" name="logradouro" />
+					<label>Logradouro:</label> <input type="text" name="logradouro" required="required" />
 				</p>
 				<p>
-					<label>Número:</label> <input type="text" name="numero" />
+					<label>Número:</label> <input type="text" name="numero" required="required"/>
 				</p>
 
 				<p>
-					<label>CEP:</label> <input type="text" name="cep" />
+					<label>CEP:</label> <input type="text" name="cep" required="required"/>
 				</p>
 				<p>
-					<label>Bairro:</label> <input type="text" name="bairro" />
+					<label>Bairro:</label> <input type="text" name="bairro" required="required"/>
 				</p>
 				<p>
-					<label>Cidade:</label> <input type="text" name="cidade" />
+					<label>Cidade:</label> <input type="text" name="cidade" required="required"/>
 				</p>
 				<p>
-					<label>Estado:</label> <input type="text" name="estado" />
+					<label>Estado:</label> <input type="text" name="estado" required="required"/>
 				</p>
-				<label>País:</label> <input type="text" name="pais" />
+				<label>País:</label> <input type="text" name="pais" required="required"/>
 			</fieldset>
 			<input type="submit" value="Cadastrar" id="enviar" class="botoes"/> <input
 				type="reset" value="Limpar" id="limpar" class="botoes">
@@ -76,15 +67,7 @@
 	
 		
 	<h4 style="color:red">${mensagem}</h4>
-	
-			
-	<footer id="rodape">
-		Copyright &copy; 2016 - by While(true)
-		<p>
-			<a href="http://facebook.com.br" target="_blank">Facebook </a>| <a
-				href="http://twiter.com.br" target="_blank">Twitter </a>
-		</p>
-	</footer>
+
 	
 </body>
 </html>

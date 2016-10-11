@@ -9,16 +9,7 @@
 	<title>EA Sports</title>
 </head>
 <body>
-	<header>
-		EA SPORTS
-		<nav id="menu">
-			<ul>
-				<li id="home"><a a href="index.jsp">Home</a></li>
-				<li id="consultar"><a a href="consultaCliente.jsp">Consultar</a></li>
-				<li id="relatorio"><a>Relatorio</a></li>
-			</ul>
-		</nav>
-	</header>
+	<jsp:include page="cabecalhoRodape.jsp"></jsp:include>
 	<hgroup>
 	
 	<form name="formulario" method="post"
@@ -26,7 +17,7 @@
 			
 		<h2>Consulta de Clientes:</h2>
 		
-		<label>CPF:</label> <input type="text" name="cpf" />
+		<label>CPF:</label> <input type="text" name="cpf" required="required"/>
 		
 		<input type="submit" value="Consultar" id="enviar" class="botoes"/>
 		
@@ -50,7 +41,7 @@
 					<label>CPF:</label>${cliente.cpf}
 				</p>
 				<p>
-					<label>Data Nasc:${cliente.data_nascimento}
+					<label>Data Nasc:${cliente.dataNasc}
 				</p>
 			</fieldset>
 			<br>
@@ -84,14 +75,6 @@
 		
 	<h4 style="color:red">${mensagem}</h4>
 	
-			
-	<footer id="rodape">
-		Copyright &copy; 2016 - by While(true)
-		<p>
-			<a href="http://facebook.com.br" target="_blank">Facebook </a>| <a
-				href="http://twiter.com.br" target="_blank">Twitter </a>
-		</p>
-	</footer>
 	
 </body>
 </html>

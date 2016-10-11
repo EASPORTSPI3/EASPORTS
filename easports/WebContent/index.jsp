@@ -9,21 +9,8 @@
 <title>EA Sports</title>
 </head>
 <body>
-	<header>EA SPORTS <nav id="menu">
-	<ul>
-		<li id="home" class="dropdown">Cadastrar</a>
-			<div class="dropdown-content">
-				<p><a href="cadastroCliente.jsp">Cliente</a></p>
-				<p><a href"#">Fornecedor</a></p>
-				<p><a href"#">Funcionário</a></p>
-			</div>
-		</li>		
-		
-		<li id="consultar"><a>Consultar</a></li>
-		<li id="relatorio"><a>Relatorio</a></li>
-	</ul>
-	</nav> 
-	</header>
+<jsp:include page="cabecalhoRodape.jsp"></jsp:include>
+	
 	<section>
 	<div id="botoes">
 		<ul>
@@ -55,11 +42,6 @@
 	</div>
 	</section>
 
-	<footer id="rodape"> Copyright &copy; 2016 - by While(true)
-	<p>
-		<a href="http://facebook.com.br" target="_blank">Facebook </a>| <a
-			href="http://twiter.com.br" target="_blank">Twitter </a>
-	</p>
-	</footer>
+	
 </body>
 </html>
