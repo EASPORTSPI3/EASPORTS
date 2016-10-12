@@ -2,7 +2,9 @@ package br.com.easports.util;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ConverteData {
 	
@@ -11,7 +13,7 @@ public class ConverteData {
  			return null;
          Date date = null;
          try {
-             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
              date = new Date( (formatter.parse(data)).getTime() );
          } catch (Exception e) {            
              System.out.println(e.getMessage());;

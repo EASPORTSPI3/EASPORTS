@@ -116,7 +116,7 @@ public class EnderecoDAO extends DAO {
 
 	public Endereco findById(Integer id_endereco) throws Exception {
 
-		String query = "select from Endereco where id_endereco = ?";
+		String query = "select * from Endereco where id_endereco = ?";
 
 		abreConexao();
 
@@ -126,7 +126,7 @@ public class EnderecoDAO extends DAO {
 
 		rs = stmt.executeQuery();
 
-		Endereco endereco = null;
+		Endereco endereco = new Endereco();
 
 		while (rs.next()) {
 

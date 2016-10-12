@@ -94,7 +94,7 @@ public class ClientePFDAO extends DAO{
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
-			cliente.setDataNasc(rs.getDate("data_nascimento"));
+			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
 			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
 
 		}
@@ -109,7 +109,7 @@ public class ClientePFDAO extends DAO{
 	
 	public ClientePF findByCpf(String cpf) throws Exception {
 
-		String query = "select * from cliente_pf where cpf = " + cpf;
+		String query = "select * from cliente_pf where cpf = ?";
 
 		abreConexao();
 		
@@ -120,13 +120,17 @@ public class ClientePFDAO extends DAO{
 		rs = stmt.executeQuery();
 
 		ClientePF cliente = new ClientePF();
+		
+		Endereco endereco = new Endereco();
+		
+		cliente.setEndereco(endereco);
 
 		while (rs.next()) {
 
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
-			cliente.setDataNasc(rs.getDate("data_nascimento"));
+			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
 			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
 
 		}
@@ -158,7 +162,7 @@ public class ClientePFDAO extends DAO{
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
-			cliente.setDataNasc(rs.getDate("data_nascimento"));
+			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
 			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
 			
 			lista.add(cliente);

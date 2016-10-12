@@ -9,6 +9,7 @@
 <title>EA Sports</title>
 </head>
 <body>
+
 <jsp:include page="cabecalhoRodape.jsp"></jsp:include>
 	
 	<section>

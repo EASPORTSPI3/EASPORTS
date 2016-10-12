@@ -10,28 +10,37 @@
 <header>EA SPORTS <nav id="menu">
 	<ul>
 		<li id="home"><a a href="index.jsp">Home</a></li>
+		
 		<li id="cadastro" class="dropdown">Cadastrar</a>
 			<div class="dropdown-content">
 				<p><a href="cadastroCliente.jsp">Cliente</a></p>
 				<p><a href="cadastroFornecedor.jsp">Fornecedor</a></p>
-				<p><a href"#">Funcionário</a></p>
-				<p><a href"#">Filial</a></p>
-				<p><a href"#">Produtos</a></p>
+				<p><a href="#">Funcionário</a></p>
+				<p><a href="#">Filial</a></p>
+				<p><a href="#">Produtos</a></p>
 			</div>
 		</li>		
 		
-		<li id="consultar"><a href="consultaCliente.jsp">Consultar</a></li>
+		<li id="cadastro" class="dropdown">Consultar</a>
+			<div class="dropdown-content">
+				<p><a href="consultaCliente.jsp">Cliente</a></p>
+				<p><a href="consultaFornecedor.jsp">Fornecedor</a></p>
+				<p><a href="#">Funcionário</a></p>
+				<p><a href="#">Filial</a></p>
+				<p><a href="#">Produtos</a></p>
+			</div>
+		</li>
 		<li id="relatorio"><a href="relatorios.jsp">Relatorio</a></li>
 	</ul>
 	</nav> 
 	</header>
 	
-	<footer id="rodape"> Copyright &copy; 2016 - by While(true)
+	<!--  <footer id="rodape"> Copyright &copy; 2016 - by While(true)
 	<p>
 		<a href="http://facebook.com.br" target="_blank">Facebook </a>| <a
 			href="http://twiter.com.br" target="_blank">Twitter </a>
 	</p>
-	</footer>
+	</footer>  -->
 	
 </body>
 </html>

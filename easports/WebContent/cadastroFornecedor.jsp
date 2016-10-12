@@ -18,15 +18,17 @@
 			<img src="img/EA_Sports2.png"/>
 		</div>
 	<section>
+	
 		<form name="formulario" method="post"
-			action="ControlePessoa?acao=cadastrarpf">
+			action="ControlePessoa?acao=cadastrarFornecedor">
 			<fieldset id="fieldCli">
+			
 				<legend>Dados do Fornecedor</legend>
 				<p>
-					<label>Razão social:</label> <input type="text" name="razaosocial" required="required"/>
+					<label>Nome:</label> <input type="text" name="nome" required="required"/>
 				</p>
 				<p>
-					<label>Nome fantasia:</label> <input type="text" name="nome" required="required"/>
+					<label>Razão Social:</label> <input type="text" name="razaoSocial" required="required"/>
 				</p>
 				<p>
 					<label>Telefone:</label> <input type="text" name="telefone" required="required" />
@@ -38,6 +40,7 @@
 			</fieldset>
 			<br>
 			<fieldset id="fieldEnd">
+			
 				<legend>Endereço</legend>
 				<p>
 					<label>Logradouro:</label> <input type="text" name="logradouro" required="required" />
@@ -60,6 +63,7 @@
 				</p>
 				<label>País:</label> <input type="text" name="pais" required="required"/>
 			</fieldset>
+			
 			<input type="submit" value="Cadastrar" id="enviar" class="botoes"/> <input
 				type="reset" value="Limpar" id="limpar" class="botoes">
 				
