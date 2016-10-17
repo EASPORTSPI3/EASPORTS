@@ -66,8 +66,8 @@ public class ControleProduto extends HttpServlet {
 
 					produto.setNome(request.getParameter("nome"));
 					produto.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
-					produto.setValorVenda(Double.parseDouble(request.getParameter("valorVenda")));
-					produto.setValorCusto(Double.parseDouble(request.getParameter("valorCusto")));
+					produto.setValorVenda(Double.parseDouble(request.getParameter("valorVenda").replaceAll(",", ".")));
+					produto.setValorCusto(Double.parseDouble(request.getParameter("valorCusto").replaceAll(",", ".")));
 					produto.setCodigo(request.getParameter("codigo"));
 
 					// Coletando cada parâmetro da página através do "name" do formulário, utilizando
