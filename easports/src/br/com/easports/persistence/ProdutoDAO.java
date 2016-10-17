@@ -166,13 +166,13 @@ public class ProdutoDAO extends DAO {
 
 	public List<Produto> findByName(String nome) throws Exception {
 
-		String query = "select * from produto where nome like ?";
+		String query = "select * from produto where nome like '%"+nome+"%'";
 
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
 
-		stmt.setString(1, "'%" + nome.toLowerCase() + "%'");
+		//stmt.setString(1, "'%" + nome.toLowerCase() + "%'");
 
 		rs = stmt.executeQuery();
 

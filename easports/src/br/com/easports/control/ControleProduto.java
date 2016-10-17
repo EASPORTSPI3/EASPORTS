@@ -88,8 +88,8 @@ public class ControleProduto extends HttpServlet {
 
 					//String pasta = getServletContext().getRealPath("/img/produtos");
 					
-					String pasta = System.getProperty("user.home") + "\\Desktop\\PI\\Backups\\Modificado\\EASPORTS\\EASPORTS\\easports\\WebContent\\img";
-					
+					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
+	
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 
 					InputStream input = imagem.getInputStream(); // lendo o arquivo
