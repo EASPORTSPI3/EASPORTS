@@ -164,6 +164,7 @@ public class EnderecoDAO extends DAO {
 
 			Endereco endereco = new Endereco();
 
+			endereco.setId_endereco(rs.getInt("id_endereco"));
 			endereco.setLogradouro(rs.getString("logradouro"));
 			endereco.setNumero(rs.getInt("numero"));
 			endereco.setCep(rs.getString("cep"));

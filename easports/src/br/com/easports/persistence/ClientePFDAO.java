@@ -127,6 +127,7 @@ public class ClientePFDAO extends DAO{
 
 		while (rs.next()) {
 
+			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
@@ -159,6 +160,7 @@ public class ClientePFDAO extends DAO{
 			
 			ClientePF cliente = new ClientePF();
 			
+			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));

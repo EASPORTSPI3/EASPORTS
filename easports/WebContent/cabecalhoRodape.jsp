@@ -17,7 +17,7 @@
 				<p><a href="cadastroFornecedor.jsp">Fornecedor</a></p>
 				<p><a href="#">Funcionário</a></p>
 				<p><a href="#">Filial</a></p>
-				<p><a href="#">Produtos</a></p>
+				<p><a href="cadastroProduto.jsp">Produtos</a></p>
 			</div>
 		</li>		
 		
@@ -27,7 +27,7 @@
 				<p><a href="consultaFornecedor.jsp">Fornecedor</a></p>
 				<p><a href="#">Funcionário</a></p>
 				<p><a href="#">Filial</a></p>
-				<p><a href="#">Produtos</a></p>
+				<p><a href="consultaProduto.jsp">Produto</a></p>
 			</div>
 		</li>
 		<li id="relatorio"><a href="relatorios.jsp">Relatorio</a></li>

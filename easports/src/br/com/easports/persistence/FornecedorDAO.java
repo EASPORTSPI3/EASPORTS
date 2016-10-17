@@ -3,16 +3,18 @@ package br.com.easports.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.easports.entities.Categoria;
 import br.com.easports.entities.ClientePF;
 import br.com.easports.entities.Endereco;
 import br.com.easports.entities.Fornecedor;
+import br.com.easports.entities.Produto;
 import br.com.easports.util.ConverteData;
 
 public class FornecedorDAO extends DAO{
 	
 	public void insert(Fornecedor fornecedor, int idEndereco) throws Exception {
 
-		String query = "insert into Fornecedor(nome, telefone, cnpj, razao_social, id_endereco)VALUES(?,?,?,?,?)";
+		String query = "insert into Fornecedor(nome, telefone, cnpj, razao_social, id_endereco)values(?,?,?,?,?)";
 
 		abreConexao();
 
@@ -93,6 +95,7 @@ public class FornecedorDAO extends DAO{
 
 		while (rs.next()) {
 
+			fornecedor.setIdFornecedor(rs.getInt("id_fornecedor"));
 			fornecedor.setNome(rs.getString("nome"));
 			fornecedor.setTelefone(rs.getString("telefone"));
 			fornecedor.setCnpj(rs.getString("cnpj"));
@@ -129,6 +132,7 @@ public class FornecedorDAO extends DAO{
 
 		while (rs.next()) {
 
+			fornecedor.setIdFornecedor(rs.getInt("id_fornecedor"));
 			fornecedor.setNome(rs.getString("nome"));
 			fornecedor.setTelefone(rs.getString("telefone"));
 			fornecedor.setCnpj(rs.getString("cnpj"));
@@ -139,6 +143,39 @@ public class FornecedorDAO extends DAO{
 		
 		stmt.close();
 		
+		fechaConexao();
+
+		return fornecedor;
+
+	}
+	
+	public Fornecedor findByName(String nome) throws Exception {
+
+		String query = "select * from fornecedor where nome like ?";
+
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setString(1, nome);
+
+		rs = stmt.executeQuery();
+
+		Fornecedor fornecedor = new Fornecedor();
+
+		while (rs.next()) {
+
+			fornecedor.setIdFornecedor(rs.getInt("id_fornecedor"));
+			fornecedor.setNome(rs.getString("nome"));
+			fornecedor.setTelefone(rs.getString("telefone"));
+			fornecedor.setCnpj(rs.getString("cnpj"));
+			fornecedor.setRazaoSocial(rs.getString("razao_social"));
+			fornecedor.getEndereco().setId_endereco(rs.getInt("id_endereco"));
+
+		}
+
+		stmt.close();
+
 		fechaConexao();
 
 		return fornecedor;
@@ -161,6 +198,11 @@ public class FornecedorDAO extends DAO{
 			
 			Fornecedor fornecedor = new Fornecedor();
 			
+			Endereco endereco = new Endereco();
+			
+			fornecedor.setEndereco(endereco);
+			
+			fornecedor.setIdFornecedor(rs.getInt("id_fornecedor"));
 			fornecedor.setNome(rs.getString("nome"));
 			fornecedor.setTelefone(rs.getString("telefone"));
 			fornecedor.setCnpj(rs.getString("cnpj"));

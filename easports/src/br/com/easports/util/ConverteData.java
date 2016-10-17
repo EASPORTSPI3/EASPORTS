@@ -2,9 +2,7 @@ package br.com.easports.util;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class ConverteData {
 	
