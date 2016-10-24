@@ -1,79 +1,139 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<!-- TagLibraries (JSTL) -->
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc" %>
+
 <html>
 <head>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
 	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
+	
+	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
+	
+	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+	
 	<title>EA Sports</title>
+	
 </head>
 <body>
-	<jsp:include page="cabecalhoRodape.jsp"></jsp:include>
+
+	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
+
+	<div id="logo" style="padding-top: 5%">
+		<img src="img/EA_Sports2.png"/>
+	</div>
+
 	<hgroup>
+		<h2 style="padding-left: 8%">Consulta de Clientes:</h2>
+	</hgroup>
 	
-	<form name="formulario" method="post"
-			action="ControlePessoa?acao=consultarpf">
+	<br/>
+	
+	<form name="formulario" method="post" style=" padding-left: 6%" 
+			 action="ControlePessoa?acao=consultarpf">
 			
-		<h2>Consulta de Clientes:</h2>
-		
+		<div class="col-md-3" style="width: 410">
+			
 		<label>CPF:</label> <input type="text" name="cpf" required="required"/>
 		
-		<input type="submit" value="Consultar" id="enviar" class="botoes"/>
+		<input type="submit" value="Pesquisar" id="enviar" class="botoes"/>
 		
-	</hgroup>
-
-		<div id="logo">
-			<img src="img/EA_Sports2.png"/>
+		<h4 style="color:red">${mensagem}</h4>
+			
 		</div>
-	</form>
-	<section>
-		<form>
-			<fieldset id="fieldCli">
-				<legend>Dados pessoais</legend>
-				<p>
-					<label>Nome:</label>${cliente.nome}
-				</p>
-				<p>
-					<label>Telefone:</label>${cliente.telefone}
-				</p>
-				<p>
-					<label>CPF:</label>${cliente.cpf}
-				</p>
-				<p>
-					<label>Data Nasc:${cliente.dataNasc}
-				</p>
-			</fieldset>
-			<br>
-			<fieldset id="fieldEnd">
-				<legend>Endereço</legend>
-				<p>
-					<label>Logradouro:</label>${cliente.endereco.logradouro}
-				</p>
-				<p>
-					<label>Número:</label>${cliente.endereco.numero}
-				</p>
-
-				<p>
-					<label>CEP:</label>${cliente.endereco.cep}
-				</p>
-				<p>
-					<label>Bairro:</label>${cliente.endereco.bairro}
-				</p>
-				<p>
-					<label>Cidade:</label>${cliente.endereco.cidade}
-				</p>
-				<p>
-					<label>Estado:</label>${cliente.endereco.estado}
-				</p>
-				<label>País:</label>${cliente.endereco.pais}
-			</fieldset>
+			
+	</form><br/><br/><br/>
+		
+	<form style="background-color: #7f7f7f; padding-left: 4%">
+		<div class="col-md-3" style="width: 410">
+			<div class="panel" style="background-color: #b4b4b4">
+				<div class="panel-heading">
+			
+					<fieldset id="fieldCli">
+			
+						<h4>Dados Gerais:</h4>
+						<hr style="width: 340px; margin-left: 4px">
+			
+						<label>Nome do Cliente:
+						</label>${cliente.nome}
+						<br/>
+						
+						<label>Telefone:
+						</label>${cliente.telefone}
+						<br/>
 				
-		</form>
-	</section>
+						<label>CPF:
+						</label>${cliente.cpf}
+						<br/>
+							
+						<label>Data Nasc.:
+						</label>${cliente.dataNasc}
+						<br/>
+					
+					</fieldset>
+			
+				</div>
+			</div>
+		</div>
+			
+		<div class="col-md-3" style="width: 410">
+			<div class="panel" style="background-color: #b4b4b4">
+				<div class="panel-heading">
+			
+					<fieldset id="fieldCli">
+			
+						<h4>Endereço:</h4>
+						<hr style="width: 340px; margin-left: 4px">
+			
+						<label>Logradouro:
+						</label>${cliente.endereco.logradouro}
+						<br/>
+						
+						<label>Número:
+						</label>${cliente.endereco.numero}
+						<br/>
+				
+						<label>CEP:
+						</label>${cliente.endereco.cep}
+						<br/>
+							
+						<label>Bairro:
+						</label>${cliente.endereco.bairro}
+						<br/>
+							
+						<label>Cidade:
+						</label>${cliente.endereco.cidade}
+						<br/>
+							
+						<label>Estado:
+						</label>${cliente.endereco.estado}
+						<br/>
+							
+						<label>País:
+						</label>${cliente.endereco.pais}
+						<br/>
+					
+					</fieldset>
+			
+				</div>
+			</div>
+				
+		</div>
+			
+	</form>			
 	
 		
-	<h4 style="color:red">${mensagem}</h4>
+<h4 style="color:red">${mensagem}</h4>
 	
 	
 </body>

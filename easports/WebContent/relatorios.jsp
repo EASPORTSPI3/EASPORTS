@@ -8,7 +8,7 @@
 <title>EA SPORTS</title>
 </head>
 <body>
-	<jsp:include page="cabecalhoRodape.jsp"></jsp:include>
+	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
 </body>
 </html>

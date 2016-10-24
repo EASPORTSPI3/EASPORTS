@@ -53,3 +53,10 @@
 
     </body>
     
+    <!--  <footer id="rodape"> Copyright &copy; 2016 - by While(true)
+	<p>
+		<a href="http://facebook.com.br" target="_blank">Facebook </a>| <a
+			href="http://twiter.com.br" target="_blank">Twitter </a>
+	</p>
+	</footer>  -->
+    
