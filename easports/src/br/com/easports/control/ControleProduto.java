@@ -20,12 +20,13 @@ import br.com.easports.entities.Produto;
 import br.com.easports.persistence.CategoriaDAO;
 import br.com.easports.persistence.FornecedorDAO;
 import br.com.easports.persistence.ProdutoDAO;
+import br.com.easports.util.FormataValor;
 
 // Servlet responsável por coletar as informações da página web e consultar no 
 // banco de dados, via request - response
 
 @WebServlet("/ControleProduto")
-@MultipartConfig() //habilitando o servlet a receber um upload
+@MultipartConfig() // habilitando o servlet a receber um upload
 public class ControleProduto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,13 +40,16 @@ public class ControleProduto extends HttpServlet {
 	protected void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Variável responsável por coletar a ação trazida pelo formulário e executar o
+		// Variável responsável por coletar a ação trazida pelo formulário e
+		// executar o
 		// método específico para seu tratamento
 
 		String acao = request.getParameter("acao");
 
-		// if/else responsável por comparar a ação trazida através do formulário com as 
-		// opções possíveis de serem executadas pela página. Ex: cadastrar produto, consultar
+		// if/else responsável por comparar a ação trazida através do formulário
+		// com as
+		// opções possíveis de serem executadas pela página. Ex: cadastrar
+		// produto, consultar
 		// estoque, consultar produtos etc...
 
 		if (acao != null) {
@@ -57,7 +61,8 @@ public class ControleProduto extends HttpServlet {
 
 				try {
 
-					// Instanciando um novo Estoque para receber os parâmetros passados pelo usuário
+					// Instanciando um novo Estoque para receber os parâmetros
+					// passados pelo usuário
 					// através da JSP
 
 					Produto produto = new Produto();
@@ -70,8 +75,10 @@ public class ControleProduto extends HttpServlet {
 					produto.setValorCusto(Double.parseDouble(request.getParameter("valorCusto").replaceAll(",", ".")));
 					produto.setCodigo(request.getParameter("codigo"));
 
-					// Coletando cada parâmetro da página através do "name" do formulário, utilizando
-					// o request.getParameter() e atribuindo à entidade Estoque através dos setters
+					// Coletando cada parâmetro da página através do "name" do
+					// formulário, utilizando
+					// o request.getParameter() e atribuindo à entidade Estoque
+					// através dos setters
 
 					// GUID - Global Unique Identifier (gera números randômicos)
 
@@ -86,13 +93,15 @@ public class ControleProduto extends HttpServlet {
 
 					// definir o local onde o arquivo será salvo
 
-					//String pasta = getServletContext().getRealPath("/img/produtos");
-					
+					// String pasta =
+					// getServletContext().getRealPath("/img/produtos");
+
 					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
-	
+
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 
-					InputStream input = imagem.getInputStream(); // lendo o arquivo
+					InputStream input = imagem.getInputStream(); // lendo o
+																	// arquivo
 
 					byte[] buffer = new byte[1024];
 
@@ -115,53 +124,147 @@ public class ControleProduto extends HttpServlet {
 					FornecedorDAO fornecedorDao = new FornecedorDAO();
 
 					fornecedor = fornecedorDao.findById(Integer.parseInt(request.getParameter("fornecedor")));
-					
+
 					produtoDao.insert(produto, fornecedor.getIdFornecedor(), categoria.getIdCategoria());
-					
+
 					request.setAttribute("mensagem", "Produto " + produto.getNome() + " cadastrado com sucesso.");
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("cadastroProduto.jsp").forward(request, response);
 
 				}
 
 			}
-			
-			else if(acao.equalsIgnoreCase("pesquisar")){
-				
+
+			else if (acao.equalsIgnoreCase("pesquisar")) {
+
 				try {
-					
+
 					String busca = request.getParameter("pesquisa");
-					
+
 					ProdutoDAO produtoDao = new ProdutoDAO();
-					
+
 					List<Produto> lista = produtoDao.findByName(busca);
-					
+
 					request.setAttribute("lista", lista);
-					
+
 				} catch (Exception e) {
-					
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
-					
+
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("resultadosProduto.jsp").forward(request, response);
 
 				}
-				
+
+			}
+
+			else if (acao.equalsIgnoreCase("detalhesProduto")) {
+
+				try {
+
+					Integer idProduto = Integer.parseInt(request.getParameter("id"));
+
+					ProdutoDAO produtoDao = new ProdutoDAO();
+
+					Produto produto = produtoDao.findById(idProduto);
+
+					FormataValor format = new FormataValor();
+					
+					request.setAttribute("produto", produto);
+
+
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
+
+					request.setAttribute("mensagem", "Erro: " + e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
+
+					request.getRequestDispatcher("detalhesProduto.jsp").forward(request, response);
+
+				}
+
+			}
+			
+			else if (acao.equalsIgnoreCase("adicionarProduto")) {
+
+				try {
+
+					Integer idProduto = Integer.parseInt(request.getParameter("id"));
+
+					ProdutoDAO produtoDao = new ProdutoDAO();
+
+					Produto produto = produtoDao.findById(idProduto);
+
+					FormataValor format = new FormataValor();
+					
+					request.setAttribute("produto", produto);
+
+
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
+
+					request.setAttribute("mensagem", "Erro: " + e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
+
+					request.getRequestDispatcher("realizarPedido.jsp").forward(request, response);
+
+				}
+
+			}
+
+			else if (acao.equalsIgnoreCase("realizarPedido")) {
+
+				try {
+					
+					System.out.println("entrou");
+
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
+
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
+
+					request.getRequestDispatcher("consultaProduto.jsp").forward(request, response);
+
+				}
+
 			}
 
 		}

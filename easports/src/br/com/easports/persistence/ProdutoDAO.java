@@ -6,6 +6,7 @@ import java.util.List;
 import br.com.easports.entities.Categoria;
 import br.com.easports.entities.Fornecedor;
 import br.com.easports.entities.Produto;
+import br.com.easports.util.FormataValor;
 
 public class ProdutoDAO extends DAO {
 
@@ -92,23 +93,25 @@ public class ProdutoDAO extends DAO {
 		rs = stmt.executeQuery();
 
 		Produto produto = new Produto();
-
-		Fornecedor fornecedor = new Fornecedor();
-
-		Categoria categoria = new Categoria();
-
-		produto.setFornecedor(fornecedor);
-		produto.setCategoria(categoria);
+		
+		CategoriaDAO categoriaDao = new CategoriaDAO();
+		
+		FornecedorDAO fornecedorDao = new FornecedorDAO();
+		
+		FormataValor format = new FormataValor();
 
 		while (rs.next()) {
 
+			produto.setIdProduto(rs.getInt("id_produto"));
 			produto.setNome(rs.getString("nome"));
 			produto.setImagem(rs.getString("imagem"));
 			produto.setCodigo(rs.getString("codigo"));
+			produto.setCategoria(categoriaDao.findById(rs.getInt("id_categoria")));
+			produto.setFornecedor(fornecedorDao.findById(rs.getInt("id_fornecedor")));
 			produto.setValorVenda(rs.getDouble("valor_venda"));
 			produto.setValorCusto(rs.getDouble("valor_custo"));
-			produto.getCategoria().setIdCategoria(rs.getInt("id_categoria"));
-			produto.getFornecedor().setIdFornecedor(rs.getInt("id_fornecedor"));
+			produto.setValorVendaFormatado(format.valorFormatado(rs.getDouble("valor_venda")));
+			produto.setValorCustoFormatado(format.valorFormatado(rs.getDouble("valor_custo")));
 			produto.setQuantidade(rs.getInt("quantidade"));
 
 		}
@@ -134,13 +137,11 @@ public class ProdutoDAO extends DAO {
 		rs = stmt.executeQuery();
 
 		Produto produto = new Produto();
-
-		Fornecedor fornecedor = new Fornecedor();
-
-		Categoria categoria = new Categoria();
-
-		produto.setFornecedor(fornecedor);
-		produto.setCategoria(categoria);
+		
+		CategoriaDAO categoriaDao = new CategoriaDAO();
+		FornecedorDAO fornecedorDao = new FornecedorDAO();
+		
+		FormataValor format = new FormataValor();
 
 		while (rs.next()) {
 
@@ -148,10 +149,12 @@ public class ProdutoDAO extends DAO {
 			produto.setNome(rs.getString("nome"));
 			produto.setImagem(rs.getString("imagem"));
 			produto.setCodigo(rs.getString("codigo"));
+			produto.setCategoria(categoriaDao.findById(rs.getInt("id_categoria")));
+			produto.setFornecedor(fornecedorDao.findById(rs.getInt("id_fornecedor")));
 			produto.setValorVenda(rs.getDouble("valor_venda"));
 			produto.setValorCusto(rs.getDouble("valor_custo"));
-			produto.getCategoria().setIdCategoria(rs.getInt("id_categoria"));
-			produto.getFornecedor().setIdFornecedor(rs.getInt("id_fornecedor"));
+			produto.setValorVendaFormatado(format.valorFormatado(rs.getDouble("valor_venda")));
+			produto.setValorCustoFormatado(format.valorFormatado(rs.getDouble("valor_custo")));
 			produto.setQuantidade(rs.getInt("quantidade"));
 
 		}
@@ -178,38 +181,29 @@ public class ProdutoDAO extends DAO {
 
 		List<Produto> lista = new ArrayList<Produto>();
 
-		System.out.println("criou a lista");
+		CategoriaDAO categoriaDao = new CategoriaDAO();
+		FornecedorDAO fornecedorDao = new FornecedorDAO();
+		
+		FormataValor format = new FormataValor();
 		
 		while (rs.next()) {
 
-			System.out.println("entrou no rs.next");
-			
 			Produto produto = new Produto();
-
-			Categoria categoria = new Categoria();
-			Fornecedor fornecedor = new Fornecedor();
-
-			CategoriaDAO categoriaDao = new CategoriaDAO();
-			FornecedorDAO fornecedorDao = new FornecedorDAO();
-
-			categoria = categoriaDao.findById(rs.getInt("id_categoria"));
-			fornecedor = fornecedorDao.findById(rs.getInt("id_fornecedor"));
-
-			produto.setCategoria(categoria);
-			produto.setFornecedor(fornecedor);
 
 			produto.setIdProduto(rs.getInt("id_produto"));
 			produto.setNome(rs.getString("nome"));
 			produto.setImagem(rs.getString("imagem"));
 			produto.setCodigo(rs.getString("codigo"));
+			produto.setCategoria(categoriaDao.findById(rs.getInt("id_categoria")));
+			produto.setFornecedor(fornecedorDao.findById(rs.getInt("id_fornecedor")));
 			produto.setValorVenda(rs.getDouble("valor_venda"));
 			produto.setValorCusto(rs.getDouble("valor_custo"));
+			produto.setValorVendaFormatado(format.valorFormatado(rs.getDouble("valor_venda")));
+			produto.setValorCustoFormatado(format.valorFormatado(rs.getDouble("valor_custo")));
 			produto.setQuantidade(rs.getInt("quantidade"));
 
 			lista.add(produto);
 			
-			System.out.println(produto.getNome());
-
 		}
 
 		stmt.close();
@@ -236,24 +230,21 @@ public class ProdutoDAO extends DAO {
 
 			Produto produto = new Produto();
 
-			Categoria categoria = new Categoria();
-			Fornecedor fornecedor = new Fornecedor();
-
 			CategoriaDAO categoriaDao = new CategoriaDAO();
 			FornecedorDAO fornecedorDao = new FornecedorDAO();
-
-			categoria = categoriaDao.findById(rs.getInt("id_categoria"));
-			fornecedor = fornecedorDao.findById(rs.getInt("id_fornecedor"));
-
-			produto.setCategoria(categoria);
-			produto.setFornecedor(fornecedor);
+			
+			FormataValor format = new FormataValor();
 
 			produto.setIdProduto(rs.getInt("id_produto"));
 			produto.setNome(rs.getString("nome"));
 			produto.setImagem(rs.getString("imagem"));
 			produto.setCodigo(rs.getString("codigo"));
+			produto.setCategoria(categoriaDao.findById(rs.getInt("id_categoria")));
+			produto.setFornecedor(fornecedorDao.findById(rs.getInt("id_fornecedor")));
 			produto.setValorVenda(rs.getDouble("valor_venda"));
 			produto.setValorCusto(rs.getDouble("valor_custo"));
+			produto.setValorVendaFormatado(format.valorFormatado(rs.getDouble("valor_venda")));
+			produto.setValorCustoFormatado(format.valorFormatado(rs.getDouble("valor_custo")));
 			produto.setQuantidade(rs.getInt("quantidade"));
 
 			lista.add(produto);

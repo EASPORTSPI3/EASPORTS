@@ -8,6 +8,8 @@ public class Produto {
 	private String imagem;
 	private Double valorVenda;
 	private Double valorCusto;
+	private String valorCustoFormatado;
+	private String valorVendaFormatado;
 	private Fornecedor fornecedor;
 	private Categoria categoria;
 	private Integer quantidade;
@@ -92,6 +94,22 @@ public class Produto {
 		this.valorCusto = valorCusto;
 	}
 	
+	public String getValorCustoFormatado() {
+		return valorCustoFormatado;
+	}
+
+	public void setValorCustoFormatado(String valorCustoFormatado) {
+		this.valorCustoFormatado = valorCustoFormatado;
+	}
+
+	public String getValorVendaFormatado() {
+		return valorVendaFormatado;
+	}
+
+	public void setValorVendaFormatado(String valorVendaFormatado) {
+		this.valorVendaFormatado = valorVendaFormatado;
+	}
+
 	public Integer getQuantidade() {
 		return quantidade;
 	}

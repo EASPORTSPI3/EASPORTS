@@ -64,8 +64,16 @@
 						<h4>Dados Gerais:</h4>
 						<hr style="width: 340px; margin-left: 4px">
 			
+						<label>ID do Fornecedor:
+						</label>${fornecedor.idFornecedor}
+						<br/>
+			
 						<label>Nome do Fornecedor:
 						</label>${fornecedor.nome}
+						<br/>
+						
+						<label>Razão Social:
+						</label>${fornecedor.razaoSocial}
 						<br/>
 						
 						<label>Telefone:
@@ -76,10 +84,6 @@
 						</label>${fornecedor.cnpj}
 						<br/>
 							
-						<label>Razão Social:
-						</label>${fornecedor.razaoSocial}
-						<br/>
-					
 					</fieldset>
 			
 				</div>

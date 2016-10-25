@@ -46,24 +46,29 @@
 				<div class="panel panel-success">
 					<div class="panel-heading">
 					<span class="glyphicon glyphicon-film" style="width: 16;font-size: 12;margin-left: -6;"></span>
-						Código: ${produto.codigo}
+						<b>Código: ${produto.codigo}</b>
 					</div>
 					<div class="panel-body text-center">
-						<img src="img/${produto.imagem}" width="130" height="120" />
+						<img src="img/${produto.imagem}" width="150" height="120" />
 						<hr/>
 						<strong>${produto.nome}</strong>
 						<hr>
 						
 						<strong>Categoria: </strong>${produto.categoria.nome}
 						<br/>
-						<strong>Preço: </strong>${produto.valorVenda}
+
+						<strong>Preço: </strong>${produto.valorVendaFormatado}
 						<br/>
 						
-						<input type="submit" class="btn btn-sm" value="Detalhes" style="background-color: #cacaff; 
-							   font-size: 14; font: bold; margin-top: 20px"/>
-							   
-						<input type="submit" class="btn btn-sm" value="Comprar" style="background-color: #ffb0b0; 
-							   font-size: 14; font: bold; margin-top: 20px; margin-left: -190px"/>
+						<a href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
+								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
+								color: black; margin-top: 20px">Adicionar
+						</a>
+						
+						<a href="/easports/ControleProduto?acao=detalhesProduto&id=${produto.idProduto}"
+								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
+								color: black; margin-top: 20px; margin-left: -190px">Visualizar
+						</a>
 						
 					</div> 	
 					

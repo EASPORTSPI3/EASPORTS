@@ -64,6 +64,10 @@
 						<h4>Dados Gerais:</h4>
 						<hr style="width: 340px; margin-left: 4px">
 			
+						<label>ID do Cliente:
+						</label>${cliente.idCliente}
+						<br/>
+			
 						<label>Nome do Cliente:
 						</label>${cliente.nome}
 						<br/>
