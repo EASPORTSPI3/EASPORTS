@@ -52,13 +52,20 @@
 						<img src="img/${produto.imagem}" width="130" height="120" />
 						<hr/>
 						<strong>${produto.nome}</strong>
-						<br/><hr>
+						<hr>
 						
 						<strong>Categoria: </strong>${produto.categoria.nome}
 						<br/>
 						<strong>Preço: </strong>${produto.valorVenda}
+						<br/>
 						
-					</div>
+						<input type="submit" class="btn btn-sm" value="Detalhes" style="background-color: #cacaff; 
+							   font-size: 14; font: bold; margin-top: 20px"/>
+							   
+						<input type="submit" class="btn btn-sm" value="Comprar" style="background-color: #ffb0b0; 
+							   font-size: 14; font: bold; margin-top: 20px; margin-left: -190px"/>
+						
+					</div> 	
 					
 				</div>
 			</div>

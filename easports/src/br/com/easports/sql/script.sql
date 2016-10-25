@@ -84,6 +84,14 @@ quantidade integer not null,
 foreign key(id_produto) references produto(id_produto),
 foreign key(nome_prod) references produto(nome));
 
+create table Pedido(
+id_pedido integer primary key autoincrement,
+id_cliente integer not null,
+id_produto integer not null,
+quantidade integer not null,
+foreign key(id_cliente) references cliente_pf(id_cliente),
+foreign key(id_produto) references produto(id_produto));
+
 create table Categoria(
 id_categoria integer primary key autoincrement,
 categoria varchar(20) not null);
@@ -189,5 +197,7 @@ INSERT INTO `Cliente_PF` (id_cliente_pf,nome,telefone,cpf,data_nascimento,id_end
  *  QUERIES ÚTEIS
  */
  
+ drop table estoque;
  
+ update cliente_pf set nome = "Diego Fernandes" where id_cliente = 1;
  
