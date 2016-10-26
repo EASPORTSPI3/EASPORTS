@@ -213,6 +213,34 @@ public class ProdutoDAO extends DAO {
 		return lista;
 
 	}
+	
+	public Integer retornaQuantidade(Integer idProduto) throws Exception{
+		
+		String query = "select quantidade from produto where id_produto = ?";
+		
+		abreConexao();
+		
+		stmt = con.prepareStatement(query);
+		
+		stmt.setInt(1, idProduto);
+		
+		rs = stmt.executeQuery();
+		
+		Integer quantidade = null;
+		
+		while(rs.next()){
+			
+			quantidade = rs.getInt("quantidade");
+			
+		}
+		
+		stmt.close();
+		
+		fechaConexao();
+		
+		return quantidade;
+		
+	}
 
 	public List<Produto> listAll() throws Exception {
 

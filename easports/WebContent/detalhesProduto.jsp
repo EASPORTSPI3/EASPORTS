@@ -27,8 +27,8 @@
 		<h3 class="text-center">
 		
 		<a href="/easports/consultaProduto.jsp" class="btn btn-sm" 
-		   style="background-color: #ffb0b0; font-size: 14; color: black; margin-left: -300px; 
-		   margin-right: 200px">Retornar
+		   style="background-color: #cacaff; font-size: 14; color: black; margin-left: -350px; 
+		   margin-right: 110px">Retornar para a página anterior
 		</a>
 		
 		<b>Detalhes do Produto</b>

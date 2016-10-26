@@ -29,8 +29,7 @@
 
 	<div style="padding-left: 8%" class="col-md-4" >
 		
-		<form style="background-color: #7f7f7f" name="formulario" method="post" 
-			  action="ControlePessoa?acao=realizarPedidoProduto&idProduto=${produto.idProduto}">
+		<form style="background-color: #7f7f7f" name="pedidoRealizado">
 			
 			<div class="col-md-3" style="width: 700; margin-left: 50%">
 				<div class="panel panel-success">
@@ -46,23 +45,10 @@
 						<div class="panel-body" style="margin-top: -10px">
 						
 							<h4><strong style="color: black; margin-left: 15px">Código: </strong>${produto.codigo}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Fornecedor: </strong>${produto.fornecedor.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Categoria: </strong>${produto.categoria.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Preço: </strong>${produto.valorVendaFormatado}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: </strong>${produto.quantidade}</h4>		
+							<h4><strong style="color: black; margin-left: 15px">Quantidade pedida: </strong>${pedido.quantidade}</h4>		
 							<br/><hr>
-							
-							<label>Quantidade:</label> <input type="text" name="quantidade" placeholder="Digite aqui"required="required"/>
-							<br/><br/>
-							
-							<label>ID Cliente:</label> <input type="text" name="idCliente" placeholder="Digite aqui"required="required" style="margin-left: 14px"/>
-							<hr>
-							
-							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
-								color: black; width: 100px"/> 
-							<input type="reset" value="Limpar" id="limpar" class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
-								color: black; margin-left: 20px; width: 100px">
-							<br/><br/>
 							
 							<label style="color:red">${mensagem}</label>
 							

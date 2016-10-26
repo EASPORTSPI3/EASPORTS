@@ -27,10 +27,31 @@
 <body>
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
+	<hgroup>
+		<h2 style="padding-left: 8%">Listagem de Pedidos:</h2>
+	</hgroup>
+	
+	<br/>
+	
+	<form name="formulario" method="post" style=" padding-left: 6%" 
+			 action="ControlePessoa?acao=pesquisarPedidos">
+			
+		<div class="col-md-3" style="width: 410">
+			
+		<label>CPF do Cliente:</label> <input type="text" name="cpf" required="required"/>
+		
+		<input type="submit" value="Pesquisar" id="enviar" class="botoes"/>
+		
+		<h4 style="color:red">${mensagem}</h4>
+			
+		</div>
+			
+	</form><br/><br/><br/>
+
 	<div style="padding-left: 8%" class="col-md-4" >
 		
 		<form style="background-color: #7f7f7f" name="formulario" method="post" 
-			  action="ControlePessoa?acao=realizarPedidoProduto&idProduto=${produto.idProduto}">
+			  action="/easports/ControleProduto?acao=">
 			
 			<div class="col-md-3" style="width: 700; margin-left: 50%">
 				<div class="panel panel-success">
@@ -46,10 +67,9 @@
 						<div class="panel-body" style="margin-top: -10px">
 						
 							<h4><strong style="color: black; margin-left: 15px">Código: </strong>${produto.codigo}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Fornecedor: </strong>${produto.fornecedor.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Categoria: </strong>${produto.categoria.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Preço: </strong>${produto.valorVendaFormatado}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: </strong>${produto.quantidade}</h4>		
+							<h4><strong style="color: black; margin-left: 15px">Quantidade: </strong>${produto.quantidade}</h4>		
 							<br/><hr>
 							
 							<label>Quantidade:</label> <input type="text" name="quantidade" placeholder="Digite aqui"required="required"/>

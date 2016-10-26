@@ -5,6 +5,7 @@ public class Pedido {
 	private Integer idCliente;
 	private Integer idProduto;
 	private Integer quantidade;
+	private boolean finalizado;
 	private Produto produto;
 	private ClientePF cliente;
 	
@@ -67,6 +68,14 @@ public class Pedido {
 
 	public void setCliente(ClientePF cliente) {
 		this.cliente = cliente;
+	}
+
+	public boolean isFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(boolean finalizado) {
+		this.finalizado = finalizado;
 	}
 	
 }

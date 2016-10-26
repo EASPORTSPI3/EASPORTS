@@ -89,6 +89,7 @@ id_pedido integer primary key autoincrement,
 id_cliente integer not null,
 id_produto integer not null,
 quantidade integer not null,
+finalizado boolean default false,
 foreign key(id_cliente) references cliente_pf(id_cliente),
 foreign key(id_produto) references produto(id_produto));
 
