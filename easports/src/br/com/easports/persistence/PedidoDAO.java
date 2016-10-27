@@ -83,12 +83,11 @@ public class PedidoDAO extends DAO{
 
 		Pedido pedido = new Pedido();
 		
-		ClientePFDAO clientePfDao = new ClientePFDAO();
-		
-		ProdutoDAO produtoDao = new ProdutoDAO();
-		
 		while (rs.next()) {
 
+			ClientePFDAO clientePfDao = new ClientePFDAO();
+			ProdutoDAO produtoDao = new ProdutoDAO();
+			
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.setQuantidade(rs.getInt("quantidade"));
@@ -118,13 +117,13 @@ public class PedidoDAO extends DAO{
 		
 		ArrayList<Pedido> lista = new ArrayList<Pedido>();
 		
-		ClientePFDAO clientePfDao = new ClientePFDAO();
-		ProdutoDAO produtoDao = new ProdutoDAO();
-		
 		FormataValor format = new FormataValor();
 		
 		while (rs.next()) {
 
+			ClientePFDAO clientePfDao = new ClientePFDAO();
+			ProdutoDAO produtoDao = new ProdutoDAO();
+			
 			Pedido pedido = new Pedido();
 			
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
@@ -146,7 +145,7 @@ public class PedidoDAO extends DAO{
 		
 	}
 	
-public ArrayList<Pedido> pedidosFinalizadosPorCliente(Integer id_cliente) throws Exception{
+	public ArrayList<Pedido> pedidosFinalizadosPorCliente(Integer id_cliente) throws Exception{
 		
 		String query = "select * from pedido where id_cliente = ? and finalizado = 'true'";
 		
@@ -160,13 +159,13 @@ public ArrayList<Pedido> pedidosFinalizadosPorCliente(Integer id_cliente) throws
 		
 		ArrayList<Pedido> lista = new ArrayList<Pedido>();
 		
-		ClientePFDAO clientePfDao = new ClientePFDAO();
-		ProdutoDAO produtoDao = new ProdutoDAO();
-		
 		FormataValor format = new FormataValor();
 		
 		while (rs.next()) {
 
+			ClientePFDAO clientePfDao = new ClientePFDAO();
+			ProdutoDAO produtoDao = new ProdutoDAO();
+			
 			Pedido pedido = new Pedido();
 			
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
@@ -200,13 +199,13 @@ public ArrayList<Pedido> pedidosFinalizadosPorCliente(Integer id_cliente) throws
 
 		List<Pedido> lista = new ArrayList<Pedido>();
 		
-		ClientePFDAO clientePfDao = new ClientePFDAO();
-		ProdutoDAO produtoDao = new ProdutoDAO();
-		
 		FormataValor format = new FormataValor();
 		
 		while (rs.next()) {
 
+			ClientePFDAO clientePfDao = new ClientePFDAO();
+			ProdutoDAO produtoDao = new ProdutoDAO();
+			
 			Pedido pedido = new Pedido();
 			
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));

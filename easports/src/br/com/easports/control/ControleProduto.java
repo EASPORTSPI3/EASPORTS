@@ -150,14 +150,6 @@ public class ControleProduto extends HttpServlet {
 					ProdutoDAO produtoDao = new ProdutoDAO();
 
 					List<Produto> lista = produtoDao.findByName(busca);
-
-					// TESTE PARA IMPRIMIR A LISTA
-					
-					for(Produto p : lista){
-						
-						System.out.println(p.getNome());
-						
-					}
 					
 					request.setAttribute("lista", lista);
 

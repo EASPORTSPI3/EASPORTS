@@ -87,10 +87,12 @@ public class ClientePFDAO extends DAO{
 
 		rs = stmt.executeQuery();
 
-		ClientePF cliente = new ClientePF();
+		ClientePF cliente = null;
 
 		while (rs.next()) {
 
+			cliente = new ClientePF();
+			
 			EnderecoDAO enderecoDAO = new EnderecoDAO();
 			
 			cliente.setIdCliente(rs.getInt("id_cliente_pf"));

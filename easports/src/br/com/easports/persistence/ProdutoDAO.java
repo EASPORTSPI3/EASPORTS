@@ -95,14 +95,13 @@ public class ProdutoDAO extends DAO {
 
 		Produto produto = new Produto();
 		
-		CategoriaDAO categoriaDao = new CategoriaDAO();
-		
-		FornecedorDAO fornecedorDao = new FornecedorDAO();
-		
 		FormataValor format = new FormataValor();
 
 		while (rs.next()) {
 
+			CategoriaDAO categoriaDao = new CategoriaDAO();
+			FornecedorDAO fornecedorDao = new FornecedorDAO();
+			
 			produto.setIdProduto(rs.getInt("id_produto"));
 			produto.setNome(rs.getString("nome"));
 			produto.setImagem(rs.getString("imagem"));
@@ -139,13 +138,13 @@ public class ProdutoDAO extends DAO {
 
 		Produto produto = new Produto();
 		
-		CategoriaDAO categoriaDao = new CategoriaDAO();
-		FornecedorDAO fornecedorDao = new FornecedorDAO();
-		
 		FormataValor format = new FormataValor();
 
 		while (rs.next()) {
 
+			CategoriaDAO categoriaDao = new CategoriaDAO();
+			FornecedorDAO fornecedorDao = new FornecedorDAO();
+			
 			produto.setIdProduto(rs.getInt("id_produto"));
 			produto.setNome(rs.getString("nome"));
 			produto.setImagem(rs.getString("imagem"));
@@ -182,13 +181,13 @@ public class ProdutoDAO extends DAO {
 
 		List<Produto> lista = new ArrayList<Produto>();
 
-		CategoriaDAO categoriaDao = new CategoriaDAO();
-		FornecedorDAO fornecedorDao = new FornecedorDAO();
-		
 		FormataValor format = new FormataValor();
 		
 		while (rs.next()) {
 
+			CategoriaDAO categoriaDao = new CategoriaDAO();
+			FornecedorDAO fornecedorDao = new FornecedorDAO();
+			
 			Produto produto = new Produto();
 
 			produto.setIdProduto(rs.getInt("id_produto"));
