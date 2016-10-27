@@ -25,12 +25,13 @@
 	<title>EA Sports</title>
 </head>
 <body>
+
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
 	<div style="padding-left: 8%" class="col-md-4" >
 		
 		<form style="background-color: #7f7f7f" name="formulario" method="post" 
-			  action="ControlePessoa?acao=realizarPedidoProduto&idProduto=${produto.idProduto}">
+			  action="/easports/ControleProduto?acao=realizarPedido&idProduto=${produto.idProduto}">
 			
 			<div class="col-md-3" style="width: 700; margin-left: 50%">
 				<div class="panel panel-success">
@@ -59,9 +60,9 @@
 							<hr>
 							
 							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
-								color: black; width: 100px"/> 
+								   color: black; width: 100px"/>
 							<input type="reset" value="Limpar" id="limpar" class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
-								color: black; margin-left: 20px; width: 100px">
+ 								   color: black; margin-left: 20px; width: 100px">
 							<br/><br/>
 							
 							<label style="color:red">${mensagem}</label>

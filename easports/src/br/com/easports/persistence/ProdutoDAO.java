@@ -51,8 +51,9 @@ public class ProdutoDAO extends DAO {
 		stmt.setDouble(4, produto.getValorVenda());
 		stmt.setDouble(5, produto.getValorCusto());
 		stmt.setInt(6, produto.getFornecedor().getIdFornecedor());
-		stmt.setString(7, produto.getCategoria().toString());
+		stmt.setInt(7, produto.getCategoria().getIdCategoria());
 		stmt.setInt(8, produto.getQuantidade());
+		stmt.setInt(9, produto.getIdProduto());
 
 		stmt.execute();
 
@@ -169,7 +170,7 @@ public class ProdutoDAO extends DAO {
 
 	public List<Produto> findByName(String nome) throws Exception {
 
-		String query = "select * from produto where nome like '%"+nome+"%'";
+		String query = "select * from produto where nome like '%" + nome + "%'";
 
 		abreConexao();
 
@@ -214,34 +215,6 @@ public class ProdutoDAO extends DAO {
 
 	}
 	
-	public Integer retornaQuantidade(Integer idProduto) throws Exception{
-		
-		String query = "select quantidade from produto where id_produto = ?";
-		
-		abreConexao();
-		
-		stmt = con.prepareStatement(query);
-		
-		stmt.setInt(1, idProduto);
-		
-		rs = stmt.executeQuery();
-		
-		Integer quantidade = null;
-		
-		while(rs.next()){
-			
-			quantidade = rs.getInt("quantidade");
-			
-		}
-		
-		stmt.close();
-		
-		fechaConexao();
-		
-		return quantidade;
-		
-	}
-
 	public List<Produto> listAll() throws Exception {
 
 		String query = "select * from produto";

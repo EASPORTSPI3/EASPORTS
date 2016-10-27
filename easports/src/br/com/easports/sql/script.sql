@@ -202,3 +202,7 @@ INSERT INTO `Cliente_PF` (id_cliente_pf,nome,telefone,cpf,data_nascimento,id_end
  
  update cliente_pf set nome = "Diego Fernandes" where id_cliente = 1;
  
+ update produto set nome = "Tênis Mizuno Wave Creation 17", imagem = "1cc6f2c5-fba2-4306-b734-d83579cef190.jpg", codigo = "TE003", valor_venda = 589.9, 
+					valor_custo = 460.0, id_fornecedor = 5, id_categoria = 4, quantidade = 3 where id_produto = 11
+ 
+ select * from produto where nome like '%nike%';

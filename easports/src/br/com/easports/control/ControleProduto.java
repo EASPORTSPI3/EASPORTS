@@ -45,29 +45,24 @@ public class ControleProduto extends HttpServlet {
 	protected void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Variável responsável por coletar a ação trazida pelo formulário e
-		// executar o
+		// Variável responsável por coletar a ação trazida pelo formulário e executar o
 		// método específico para seu tratamento
 
 		String acao = request.getParameter("acao");
 
-		// if/else responsável por comparar a ação trazida através do formulário
-		// com as
-		// opções possíveis de serem executadas pela página. Ex: cadastrar
-		// produto, consultar
+		// if/else responsável por comparar a ação trazida através do formulário com as
+		// opções possíveis de serem executadas pela página. Ex: cadastrar produto, consultar
 		// estoque, consultar produtos etc...
 
 		if (acao != null) {
 
-			// Se o valor da ação recebida pelo formulário for "cadastrar",
-			// execute o bloco abaixo:
+			// Se o valor da ação recebida pelo formulário for "cadastrar", execute o bloco abaixo:
 
 			if (acao.equalsIgnoreCase("cadastrar")) {
 
 				try {
 					
-					// Instanciando um novo Estoque para receber os parâmetros
-					// passados pelo usuário
+					// Instanciando um novo Estoque para receber os parâmetros passados pelo usuário
 					// através da JSP
 
 					Produto produto = new Produto();
@@ -80,10 +75,8 @@ public class ControleProduto extends HttpServlet {
 					produto.setValorCusto(Double.parseDouble(request.getParameter("valorCusto").replaceAll(",", ".")));
 					produto.setCodigo(request.getParameter("codigo"));
 
-					// Coletando cada parâmetro da página através do "name" do
-					// formulário, utilizando
-					// o request.getParameter() e atribuindo à entidade Estoque
-					// através dos setters
+					// Coletando cada parâmetro da página através do "name" do formulário, utilizando o 
+					// request.getParameter() e atribuindo à entidade Estoque através dos setters
 
 					// GUID - Global Unique Identifier (gera números randômicos)
 
@@ -98,15 +91,13 @@ public class ControleProduto extends HttpServlet {
 
 					// definir o local onde o arquivo será salvo
 
-					// String pasta =
-					// getServletContext().getRealPath("/img/produtos");
+					// String pasta = getServletContext().getRealPath("/img/produtos");
 
 					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
 
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 
-					InputStream input = imagem.getInputStream(); // lendo o
-																	// arquivo
+					InputStream input = imagem.getInputStream(); // lendo o arquivo
 
 					byte[] buffer = new byte[1024];
 
@@ -136,15 +127,13 @@ public class ControleProduto extends HttpServlet {
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("cadastroProduto.jsp").forward(request, response);
 
@@ -162,19 +151,25 @@ public class ControleProduto extends HttpServlet {
 
 					List<Produto> lista = produtoDao.findByName(busca);
 
+					// TESTE PARA IMPRIMIR A LISTA
+					
+					for(Produto p : lista){
+						
+						System.out.println(p.getNome());
+						
+					}
+					
 					request.setAttribute("lista", lista);
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("resultadosProduto.jsp").forward(request, response);
 
@@ -199,15 +194,13 @@ public class ControleProduto extends HttpServlet {
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", "Erro: " + e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("detalhesProduto.jsp").forward(request, response);
 
@@ -232,15 +225,13 @@ public class ControleProduto extends HttpServlet {
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", "Erro: " + e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("realizarPedido.jsp").forward(request, response);
 
@@ -248,7 +239,7 @@ public class ControleProduto extends HttpServlet {
 
 			}
 
-			else if (acao.equalsIgnoreCase("realizarPedidoProduto")) {
+			else if (acao.equalsIgnoreCase("realizarPedido")) {
 
 				try {
 					
@@ -258,29 +249,33 @@ public class ControleProduto extends HttpServlet {
 					
 					Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
 					
-					ProdutoDAO produtoDao = new ProdutoDAO();
-					
-					Integer quantidadeDisponivel = produtoDao.retornaQuantidade(idProduto);
-					
 					Produto produto = new Produto();
 					
+					ProdutoDAO produtoDao = new ProdutoDAO();
+					
+					produto = produtoDao.findById(idProduto);
+					
+					Integer quantidadeDisponivel = produto.getQuantidade();
+					
+					Pedido pedido = new Pedido();
+					
+					pedido.setIdCliente(idCliente);
+					pedido.setIdProduto(idProduto);
+					pedido.setQuantidade(quantidadePedida);
+					
 					if(quantidadeDisponivel >= quantidadePedida){
-						
-						Pedido pedido = new Pedido();
-						
-						pedido.setIdCliente(idCliente);
-						pedido.setIdProduto(idProduto);
-						pedido.setQuantidade(quantidadePedida);
 						
 						PedidoDAO pedidoDao = new PedidoDAO();
 						
 						pedidoDao.insert(pedido);
 						
-						produto = produtoDao.findById(idProduto);
-						
 						produto.setQuantidade(quantidadeDisponivel - quantidadePedida);
 						
-						produtoDao.update(produto);
+						ProdutoDAO produtoDao2 = new ProdutoDAO();
+						
+						produtoDao2.update(produto);
+						
+						System.out.println(produto.getQuantidade());
 						
 						request.setAttribute("mensagem", "Pedido realizado com sucesso.");
 						
@@ -295,21 +290,21 @@ public class ControleProduto extends HttpServlet {
 						
 						request.setAttribute("produto", produto);
 						
+						request.setAttribute("pedido", pedido);
+						
 					}
 					
 					
 					
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("pedidoRealizado.jsp").forward(request, response);
 
@@ -357,15 +352,13 @@ public class ControleProduto extends HttpServlet {
 					
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("finalizarPedido.jsp").forward(request, response);
 

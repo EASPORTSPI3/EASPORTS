@@ -50,7 +50,12 @@
 							<h4><strong style="color: black; margin-left: 15px">Quantidade pedida: </strong>${pedido.quantidade}</h4>		
 							<br/><hr>
 							
-							<label style="color:red">${mensagem}</label>
+							<label style="color:red; font-size: 16px">${mensagem}</label>
+							<br/><hr>
+							
+							<a href="/easports/consultaProduto.jsp" class="btn btn-sm" 
+		   					   style="background-color: #cacaff; font-size: 14; color: black">Retornar
+							</a>
 							
 						</div>
 						

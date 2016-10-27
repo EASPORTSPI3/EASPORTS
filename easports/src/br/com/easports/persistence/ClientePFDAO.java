@@ -59,7 +59,7 @@ public class ClientePFDAO extends DAO{
 
 	public void delete(Integer id_cliente) throws Exception {
 
-		String query = "delete from cliente_pf where id_cliente = ?";
+		String query = "delete from cliente_pf where id_cliente_pf = ?";
 
 		abreConexao();
 
@@ -77,7 +77,7 @@ public class ClientePFDAO extends DAO{
 
 	public ClientePF findById(Integer id_cliente) throws Exception {
 
-		String query = "select * from cliente_pf where id_cliente = ?";
+		String query = "select * from cliente_pf where id_cliente_pf = ?";
 
 		abreConexao();
 		
@@ -91,11 +91,14 @@ public class ClientePFDAO extends DAO{
 
 		while (rs.next()) {
 
+			EnderecoDAO enderecoDAO = new EnderecoDAO();
+			
+			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
 			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
-			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
+			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
 
 		}
 		
@@ -121,18 +124,16 @@ public class ClientePFDAO extends DAO{
 
 		ClientePF cliente = new ClientePF();
 		
-		Endereco endereco = new Endereco();
-		
-		cliente.setEndereco(endereco);
-
 		while (rs.next()) {
 
+			EnderecoDAO enderecoDAO = new EnderecoDAO();
+			
 			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
 			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
-			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
+			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
 
 		}
 		
@@ -160,12 +161,14 @@ public class ClientePFDAO extends DAO{
 			
 			ClientePF cliente = new ClientePF();
 			
+			EnderecoDAO enderecoDAO = new EnderecoDAO();
+			
 			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
 			cliente.setNome(rs.getString("nome"));
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
 			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
-			cliente.getEndereco().setId_endereco(rs.getInt("id_endereco"));
+			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
 			
 			lista.add(cliente);
 			
