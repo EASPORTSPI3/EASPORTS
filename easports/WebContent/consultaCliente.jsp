@@ -135,10 +135,6 @@
 		</div>
 			
 	</form>			
-	
 		
-<h4 style="color:red">${mensagem}</h4>
-		<jsp:include page="footer.jsp"></jsp:include>
-	
 </body>
 </html>
