@@ -49,5 +49,6 @@
 		<img src="img/Logo_EA.gif" width="350" style="padding-top: 2%"/>
 	</center>
 	
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>EA Sports</title>
-
+	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -76,8 +76,7 @@
 			</div>
 			
 		</c:forEach>
-
 	</div>
-
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
