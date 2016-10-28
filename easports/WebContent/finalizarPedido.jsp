@@ -36,23 +36,22 @@
 		
 		<form style="background-color: #7f7f7f" name="finalizar">
 			
-			<div class="col-md-3" style="width: 700; margin-left: 50%">
+			<div class="col-md-3" style="width: 300; margin-left: 10%">
 				<div class="panel panel-success">
 					<div class="panel-heading">
 					
-						<h3 class="text-center"><strong>${pedido.produto.nome}</strong></h3>
-						
+						<h3 class="text-center"><strong>${pedido.produto.nome}</strong></h3>						
 					</div>
 					
 					<div class="panel-body" style="background-color: #f0fff0">
-						<img src="img/${pedido.produto.imagem}" width="210" height="160" align="left"/>
+						<img src="img/${pedido.produto.imagem}" width="150" height="100" align="left"/>
 						
 						<div class="panel-body" style="margin-top: -10px">
 						
-							<h4><strong style="color: black; margin-left: 15px">Código: </strong>${pedido.produto.codigo}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Categoria: </strong>${pedido.produto.categoria.nome}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço: </strong>${pedido.produto.valorVendaFormatado}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Quantidade pedida: </strong>${pedido.quantidade}</h4>		
+							<h4><strong style="color: black; margin-left: 11px">Código: </strong>${pedido.produto.codigo}</h4>
+							<h4><strong style="color: black; margin-left: 11px">Categoria: </strong>${pedido.produto.categoria.nome}</h4>
+							<h4><strong style="color: black; margin-left: 11px">Preço: </strong>${pedido.produto.valorVendaFormatado}</h4>
+							<h4><strong style="color: black; margin-left: 11px">Quantidade pedida: </strong>${pedido.quantidade}</h4>		
 							<br/><hr>
 							
 							<label style="color:red; font-size: 16px">${mensagem}</label>
