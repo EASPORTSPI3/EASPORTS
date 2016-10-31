@@ -245,14 +245,16 @@ public class ControleProduto extends HttpServlet {
 					
 					ProdutoDAO produtoDao = new ProdutoDAO();
 					
+					ClientePFDAO clientePfDao = new ClientePFDAO();
+					
 					produto = produtoDao.findById(idProduto);
 					
 					Integer quantidadeDisponivel = produto.getQuantidade();
 					
 					Pedido pedido = new Pedido();
 					
-					pedido.setIdCliente(idCliente);
-					pedido.setIdProduto(idProduto);
+					pedido.setCliente(clientePfDao.findById(idCliente));
+					pedido.setProduto(produtoDao.findById(idProduto));
 					pedido.setQuantidade(quantidadePedida);
 					
 					if(quantidadeDisponivel >= quantidadePedida){
@@ -304,11 +306,11 @@ public class ControleProduto extends HttpServlet {
 
 			}
 			
-			else if (acao.equalsIgnoreCase("pesquisarPedidos")) {
+			else if (acao.equalsIgnoreCase("consultarPedidos")) {
 
 				try {
 					
-					String cpf = request.getParameter("cpf");
+					String cpf = request.getParameter("cpfCliente");
 					
 					ClientePF clientePf = new ClientePF();
 					
@@ -338,9 +340,18 @@ public class ControleProduto extends HttpServlet {
 					
 					String valorTotalFormatado = format.valorFormatado(valorTotal);
 					
-					request.setAttribute("lista", lista);
-					
-					request.setAttribute("valorTotal", valorTotalFormatado);
+					if(lista != null){
+						
+						request.setAttribute("lista", lista);
+						
+						request.setAttribute("valorTotal", valorTotalFormatado);
+						
+					}
+					else{
+						
+						request.setAttribute("mensagem", "Nenhum registro encontrado.");
+						
+					}
 					
 				} catch (Exception e) {
 
@@ -351,8 +362,8 @@ public class ControleProduto extends HttpServlet {
 				} finally {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
-
-					request.getRequestDispatcher("finalizarPedido.jsp").forward(request, response);
+					
+					request.getRequestDispatcher("/easports/listagemPedido.jsp").forward(request, response);
 
 				}
 

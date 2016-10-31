@@ -88,6 +88,7 @@ public class PedidoDAO extends DAO{
 			ClientePFDAO clientePfDao = new ClientePFDAO();
 			ProdutoDAO produtoDao = new ProdutoDAO();
 			
+			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.setQuantidade(rs.getInt("quantidade"));
@@ -126,6 +127,7 @@ public class PedidoDAO extends DAO{
 			
 			Pedido pedido = new Pedido();
 			
+			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
@@ -168,6 +170,7 @@ public class PedidoDAO extends DAO{
 			
 			Pedido pedido = new Pedido();
 			
+			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
@@ -208,6 +211,7 @@ public class PedidoDAO extends DAO{
 			
 			Pedido pedido = new Pedido();
 			
+			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));

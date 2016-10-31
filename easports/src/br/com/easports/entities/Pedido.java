@@ -2,6 +2,7 @@ package br.com.easports.entities;
 
 public class Pedido {
 	
+	private Integer idPedido;
 	private Integer idCliente;
 	private Integer idProduto;
 	private Integer quantidade;
@@ -76,6 +77,14 @@ public class Pedido {
 
 	public void setFinalizado(boolean finalizado) {
 		this.finalizado = finalizado;
+	}
+
+	public Integer getIdPedido() {
+		return idPedido;
+	}
+
+	public void setIdPedido(Integer idPedido) {
+		this.idPedido = idPedido;
 	}
 	
 }

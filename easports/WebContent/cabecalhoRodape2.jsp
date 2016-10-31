@@ -29,7 +29,7 @@
                             <li><a href="/easports/consultaFuncionario.jsp">Funcionário</a></li>
                             <li><a href="/easports/consultaFilial.jsp">Filial</a></li>
                             <li><a href="consultaProduto.jsp">Produto</a></li>
-                            <li><a href="finalizarPedido.jsp">Pedidos</a></li>
+                            <li><a href="pesquisaPedido.jsp">Pedidos</a></li>
                         </ul>
                     </li>
                     
