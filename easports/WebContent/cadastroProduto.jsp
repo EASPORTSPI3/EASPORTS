@@ -41,7 +41,7 @@
 	<div style="padding-left: 8%" class="col-md-4" >
 		
 		<form style="background-color: #7f7f7f" name="formulario" method="post" enctype="multipart/form-data" 
-			  action="ControleProduto?acao=cadastrar">
+			  action="ControleProdut?acao=cadastrar">
 			
 			<div class="col-md-3" style="width: 410; margin-left: -40px">
 				<div class="panel" style="background-color: #b4b4b4">

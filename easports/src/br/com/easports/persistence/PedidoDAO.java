@@ -129,6 +129,8 @@ public class PedidoDAO extends DAO{
 			
 			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
+
+//			pedido.setIdProduto(rs.getInt("id_produto"));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));

@@ -29,7 +29,8 @@
 
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
-	<form name="formulario" method="post" action="/easports/ControleProduto?acao=consultarPedidos">
+
+	<form name="formulario" method="post" action="ControleProduto?acao=consultarPedidos">
 			
 		<div class="col-md-3" style="width: 410">
 			

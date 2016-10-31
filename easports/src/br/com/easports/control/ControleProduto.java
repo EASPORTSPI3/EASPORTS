@@ -310,7 +310,7 @@ public class ControleProduto extends HttpServlet {
 
 				try {
 					
-					String cpf = request.getParameter("cpfCliente");
+					String cpf = request.getParameter("cpf");
 					
 					ClientePF clientePf = new ClientePF();
 					
@@ -329,8 +329,8 @@ public class ControleProduto extends HttpServlet {
 					for(Pedido pedido : lista){
 						
 						Produto produto = new Produto();
-						
-						produto = produtoDao.findById(pedido.getIdProduto());
+
+						produto = produtoDao.findById(pedido.getProduto().getIdProduto());
 						
 						valorTotal += pedido.getQuantidade() * produto.getValorVenda();
 						
@@ -356,14 +356,14 @@ public class ControleProduto extends HttpServlet {
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-
+					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 					
-					request.getRequestDispatcher("/easports/listagemPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("listagemPedido.jsp").forward(request, response);
 
 				}
 
