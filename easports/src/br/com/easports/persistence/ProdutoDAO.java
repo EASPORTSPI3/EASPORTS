@@ -117,7 +117,7 @@ public class ProdutoDAO extends DAO {
 		}
 
 		stmt.close();
-
+		rs.close();
 		fechaConexao();
 
 		return produto;

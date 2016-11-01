@@ -331,6 +331,7 @@ public class ControleProduto extends HttpServlet {
 						Produto produto = new Produto();
 
 						produto = produtoDao.findById(pedido.getProduto().getIdProduto());
+						produto = pedido.getProduto();
 						
 						valorTotal += pedido.getQuantidade() * produto.getValorVenda();
 						
@@ -356,7 +357,7 @@ public class ControleProduto extends HttpServlet {
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					System.out.println(e);
+					System.out.println(""+e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
