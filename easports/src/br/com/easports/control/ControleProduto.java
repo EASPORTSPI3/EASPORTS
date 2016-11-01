@@ -254,7 +254,7 @@ public class ControleProduto extends HttpServlet {
 					Pedido pedido = new Pedido();
 					
 					pedido.setCliente(clientePfDao.findById(idCliente));
-					pedido.setProduto(produtoDao.findById(idProduto));
+					pedido.setProduto(produto);
 					pedido.setQuantidade(quantidadePedida);
 					
 					if(quantidadeDisponivel >= quantidadePedida){
@@ -293,7 +293,7 @@ public class ControleProduto extends HttpServlet {
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-
+					System.out.println("erro "+e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {

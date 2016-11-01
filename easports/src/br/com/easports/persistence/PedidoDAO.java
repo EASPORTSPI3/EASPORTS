@@ -17,8 +17,8 @@ public class PedidoDAO extends DAO{
 
 		stmt = con.prepareStatement(query);
 
-		stmt.setInt(1, pedido.getIdCliente());
-		stmt.setInt(2, pedido.getIdProduto());
+		stmt.setInt(1, pedido.getCliente().getIdCliente());
+		stmt.setInt(2, pedido.getProduto().getIdProduto());
 		stmt.setInt(3, pedido.getQuantidade());
 
 		stmt.execute();
