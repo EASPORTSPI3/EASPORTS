@@ -56,7 +56,7 @@
 						
 						<strong>Categoria: </strong>${produto.categoria.nome}
 						<br/>
-						<strong>Preço: </strong>${produto.valorVenda}
+						<strong>Preço: </strong>${produto.valorVenda} <input type="submit" value="Limpar" id="X" class="btn btn-warning">	
 						
 					</div>
 					

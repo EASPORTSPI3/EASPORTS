@@ -330,7 +330,6 @@ public class ControleProduto extends HttpServlet {
 						
 						Produto produto = new Produto();
 
-						produto = produtoDao.findById(pedido.getProduto().getIdProduto());
 						produto = pedido.getProduto();
 						
 						valorTotal += pedido.getQuantidade() * produto.getValorVenda();
