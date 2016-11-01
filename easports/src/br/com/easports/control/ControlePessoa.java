@@ -108,7 +108,7 @@ public class ControlePessoa extends HttpServlet {
 					// retornando para a página, através do método request.setAttribute(), uma mensagem de 
 					// sucesso após o cadastro do cliente 
 					
-					request.setAttribute("mensagem", "Cliente " + clientePf.getNome() + " cadastrado com sucesso.");
+					request.setAttribute("mensagem", "Cliente " + clientePf.getNome() + " cadastrado com sucesso");
 
 				} catch (Exception e) {
 

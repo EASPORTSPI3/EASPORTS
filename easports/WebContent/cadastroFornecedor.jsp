@@ -27,19 +27,19 @@
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
 	<hgroup>
-		<h2 style="padding-left: 4%; margin-left: 35%;">Cadastro de Fornecedores:</h2>
+	<h1 style="padding-left: 0%; margin-left: 35%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de fonecedores:</h1>
 	</hgroup>
 	
 	
-	<div style="padding-left: 5%;  width: 100%; margin-top: 20px;" class="col-md-4" >	
-		
-		<form style="background-color: #7f7f7f" name="formulario" method="post" 
-			  action="ControlePessoa?acao=cadastrarFornecedor">
-			  
-			  <div class="col-md-3" style="width: 70%; float: right; margin-right: 30px;"  >
-				<div class="panel" style="background-color: #b4b4b4;">
-					<div class="panel-heading">			
-						<fieldset id="fieldCli" style="width: 100%; height: 300px;">			
+		<div style="width: 100%;" class="col-md-4">
+		<form  name="formulario" method="post"
+			action="ControlePessoa?acao=cadastrarpf">
+
+			<div class="col-md-3"style="width: 70%; float: right; margin-right: 5px; padding: 0px;">
+				<div class="panel" style="background-color: #b4b4b4; width: 100%;">
+					<div class="panel-heading">
+					
+						<fieldset id="fieldCli" style="width: 100%;">		
 							<h4>Endereço:</h4>
 							<hr>
 			
@@ -86,11 +86,10 @@
 			</div>	 
 		  
 			
-			<div class="col-md-3" style="width: 30%; margin-left: -50px;">
-				<div class="panel" style="background-color: #b4b4b4">
-					<div class="panel-heading">
-			
-						<fieldset id="fieldCli">
+			<div class="col-md-3" style="width: 29%; margin-left: 5px;padding: 0px;">
+				<div class="panel" style="background-color: #b4b4b4;width: 100%">
+					<div class="panel-heading">		
+						<fieldset id="fieldCli" style="width: 100%;">
 			
 							<h4>Dados Gerais:</h4>
 							<hr style="width: 80%; margin-left: 0px">	

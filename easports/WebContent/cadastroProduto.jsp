@@ -27,41 +27,35 @@
 	
 	<title>EA Sports</title>
 </head>
-<body>
+<body style="min-height: 80%">
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
 	<hgroup>
-		<h2 style="padding-left: 9%">Cadastro de Produtos:</h2>
+		<h1 style="padding-left: 0%; margin-left: 35%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de produtos:</h1>
+		
 	</hgroup>
-
-	<div id="logo">
-		<img src="img/EA_Sports2.png"/>
-	</div>
+			
+	<div style="width: 100%;" class="col-md-4" >
 		
-	<div style="padding-left: 8%" class="col-md-4" >
-		
-		<form style="background-color: #7f7f7f" name="formulario" method="post" enctype="multipart/form-data" 
-			  action="ControleProdut?acao=cadastrar">
+		<form name="formulario" method="post" enctype="multipart/form-data" 
+			  action="ControleProduto?acao=cadastrar" style="width: 60%; margin: auto">
 			
-			<div class="col-md-3" style="width: 410; margin-left: -40px">
-				<div class="panel" style="background-color: #b4b4b4">
-					<div class="panel-heading">
+			<div class="col-md-3" style="width: 100%; margin-left: 0px;">
+				<div class="panel" style="background-color: #b4b4b4; width: 100%;">
+					<div class="panel-heading" style="width: 100% 	;">			
+						<fieldset id="fieldCli" style="width: 100%;">
 			
-						<fieldset id="fieldCli">
-			
-							<h4>Dados Gerais:</h4>
+							<h4">Dados Gerais:</h4>
 							<hr>
 			
 							<label>Nome do Produto:
-								<input style="width: 350px" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
+								<input style="width: 100%" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
 							</label>
-							<br/>
 						
 							<label>Código:
-								<input style="width: 350px" type="text" name="codigo" class="form-control" placeholder="Digite aqui"/>
+								<input style="width: 100%" type="text" name="codigo" class="form-control" placeholder="Digite aqui"/>
 							</label>
-							<br/>
-				
+											
 							<label>Fornecedor:
 								<select name="fornecedor" class="form-control">
 									<option value="">- Selecione uma Opção -</option>
@@ -72,7 +66,7 @@
 					
 								</select>
 							</label>
-							<br/>
+							</br>
 							
 							<label>Categoria:
 								<select name="categoria" class="form-control">
@@ -84,33 +78,28 @@
 					
 								</select>
 							</label>
-							<br/>
-							
+
 							<label>Imagem do Produto:
 								<input type="file" name="imagem" class="form-control"/>
 							</label>
-							<br/>
+							</br>
 							
 							<label>Valor de Venda:
 								<input type="text" name="valorVenda" class="form-control"/>
 							</label>
-							<br/>
 							
 							<label>Valor de Custo:
 								<input type="text" name="valorCusto" class="form-control"/>
 							</label>
-							<br/>
+
 				
 							<label>Quantidade:
 								<input type="text" name="quantidade" class="form-control" placeholder="Digite aqui"/>
 							</label>
 							<br/><hr>
 		
-							<input type="submit" value="Cadastrar" id="enviar" class="botoes"/> 
-							<input type="reset" value="Limpar" id="limpar" class="botoes">
-					
-							<h4 style="color:red">${mensagem}</h4>
-					
+							<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success"/> 
+							<input type="reset" value="Limpar" id="limpar" class="btn btn-warning">	
 						</fieldset>
 			
 					</div>
@@ -118,7 +107,10 @@
 			</div>
 			
 		</form>			
-	</div>
-		
+	</div>	
+	<div><h4 style="color: green; text-align: center;">${mensagem}</h4>
+
+  </div>
+  </div>
 </body>
 </html>

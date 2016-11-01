@@ -123,7 +123,7 @@ public class ControleProduto extends HttpServlet {
 
 					produtoDao.insert(produto, fornecedor.getIdFornecedor(), categoria.getIdCategoria());
 
-					request.setAttribute("mensagem", "Produto " + produto.getNome() + " cadastrado com sucesso.");
+					request.setAttribute("mensagem", "Produto " + produto.getNome() + " cadastrado com sucesso");
 
 				} catch (Exception e) {
 

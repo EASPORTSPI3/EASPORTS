@@ -26,9 +26,6 @@
 
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
-	<a href="pesquisaPedido.jsp">Realizar nova pesquisa
-	</a>
-	
 	<c:forEach items="${lista}" var="pedido">
 	
 	<strong>Nome: </strong>${pedido.produto.nome}
@@ -36,7 +33,8 @@
 	<strong>Código: </strong>${pedido.produto.codigo}
 	
 	</c:forEach>
-	
+	<p><a href="pesquisaPedido.jsp">Realizar nova pesquisa
+	</a></p>
 	${mensagem}
 	
 </body>

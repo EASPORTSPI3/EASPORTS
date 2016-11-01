@@ -36,7 +36,7 @@
 			
 		<label>CPF:</label> <input type="text" name="cpf" required="required"/>
 		
-		<input type="submit" value="Pesquisar" id="enviar" class="botoes"/>
+		<input type="submit" value="Pesquisar" id="enviar" class="btn btn-success"/>
 		
 		<h4 style="color:red">${mensagem}</h4>
 			
