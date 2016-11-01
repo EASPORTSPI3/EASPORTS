@@ -25,17 +25,81 @@
 <body>
 
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
+	
+	
+	
+	
+	<div class="col-md-12">
+	
+		<h3 class="text-center"><b>Consulta de Pedidos</b></h3>
+		<hr/><br/>
+		
+		<div class="col-md-3" style="width: 1500">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+		
+		<table class="table table houver">
+			<thead>
+				<tr>
+					<th>ID Pedido:</th>
+					<th>Cliente:</th>
+					<th>Nome do produto:</th>
+					<th>Código:</th>
+					<th>Quantidade:</th>
+					<th>Valor Unitário:</th>
+					<th>Valor Total:</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${lista}" var="pedido">
+					<tr>
+						
+						<td>${pedido.idPedido}</td>
+						
+						<td>${pedido.cliente.nome}</td>
+						
+						<td>${pedido.produto.nome}</td>
+						
+						<td>${pedido.produto.codigo}</td>
+						
+						<td>${pedido.quantidade}</td>
+						
+						<td>${pedido.produto.valorVendaFormatado}</td>
+						
+						<td>${pedido.valorTotalFormatado}</td>
+						
+						<td>
+						
+						<a href="ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}" 
+								class="btn btn-sm" style="width: 80;font-size: 12;background-color: #b3b3ff">
+								<span class="glyphicon glyphicon-pencil" style="width: 16;font-size: 12;margin-left: -6;color: #FFFFFF"></span> Editar
+						</a>
+						
+						<a href="ControleProduto?acao=excluirPedido&idPedido=${pedido.idPedido}"
+								class="btn btn-sm" style="width: 80;font-size: 12;background-color: #ff9999"
+								onclick="return confirm('Deseja excluir este Pedido ?');">
+								<span class="glyphicon glyphicon-trash" style="width: 16;font-size: 12;margin-left: -6;color: #FFFFFF"></span> Excluir
+						</a>
 
-	<c:forEach items="${lista}" var="pedido">
+						</td>
+						
+					</tr>
+				</c:forEach>
+				
+			</tbody>
+
+		</table>
+		
+				<label style="margin-left: 900px; font-size: 16px; color: red"><b>Valor total da compra : ${valorTotal}</b></label>
+		
+				</div>
+			</div>
+		</div>
+		
+	</div>
 	
-	<strong>Nome: </strong>${pedido.produto.nome}
-	
-	<strong>Código: </strong>${pedido.produto.codigo}
-	
-	</c:forEach>
-	<p><a href="pesquisaPedido.jsp">Realizar nova pesquisa
-	</a></p>
-	${mensagem}
+	<h4 style="margin-left: 30px">Quantidade de Registros : ${fnc:length(lista)}</h4>
 	
 </body>
 </html>

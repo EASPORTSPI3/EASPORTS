@@ -9,6 +9,8 @@ public class Pedido {
 	private boolean finalizado;
 	private Produto produto;
 	private ClientePF cliente;
+	private Double valorTotal;
+	private String valorTotalFormatado;
 	
 	public Pedido() {
 		
@@ -85,6 +87,22 @@ public class Pedido {
 
 	public void setIdPedido(Integer idPedido) {
 		this.idPedido = idPedido;
+	}
+
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
+	public String getValorTotalFormatado() {
+		return valorTotalFormatado;
+	}
+
+	public void setValorTotalFormatado(String valorTotalFormatado) {
+		this.valorTotalFormatado = valorTotalFormatado;
 	}
 	
 }

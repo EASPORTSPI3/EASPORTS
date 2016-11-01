@@ -324,7 +324,9 @@ public class ControleProduto extends HttpServlet {
 					
 					ArrayList<Pedido> lista = pedidoDao.pedidosNaoFinalizadosPorCliente(clientePf.getIdCliente());
 					
-					Double valorTotal = 0.0;
+					FormataValor format = new FormataValor();
+					
+					Double valorTotalCompra = 0.0;
 					
 					for(Pedido pedido : lista){
 						
@@ -332,13 +334,13 @@ public class ControleProduto extends HttpServlet {
 
 						produto = pedido.getProduto();
 						
-						valorTotal += pedido.getQuantidade() * produto.getValorVenda();
+						pedido.setValorTotalFormatado(format.valorFormatado(pedido.getQuantidade() * produto.getValorVenda()));
+						
+						valorTotalCompra += pedido.getQuantidade() * produto.getValorVenda();
 						
 					}
 					
-					FormataValor format = new FormataValor();
-					
-					String valorTotalFormatado = format.valorFormatado(valorTotal);
+					String valorTotalFormatado = format.valorFormatado(valorTotalCompra);
 					
 					if(lista != null){
 						
@@ -368,7 +370,57 @@ public class ControleProduto extends HttpServlet {
 				}
 
 			}
+			
+			else if (acao.equalsIgnoreCase("editarPedido")) {
 
+				try {
+					
+					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
+					
+					
+					
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro de clientes
+					
+					request.getRequestDispatcher("listagemPedido.jsp").forward(request, response);
+
+				}
+			}
+			
+			else if (acao.equalsIgnoreCase("excluirPedido")) {
+
+				try {
+					
+					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
+					
+					PedidoDAO pedidoDao = new PedidoDAO();
+					
+					pedidoDao.delete(idPedido);
+					
+					request.setAttribute("mensagem", "Pedido ID: " + idPedido + ", excluído com sucesso.");
+					
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro de clientes
+
+					request.getRequestDispatcher("listagemPedido.jsp").forward(request, response);
+
+				}
+			}
+			
 		}
 
 	}
