@@ -49,16 +49,28 @@
 						Código: ${produto.codigo}
 					</div>
 					<div class="panel-body text-center">
-						<img src="img/${produto.imagem}" width="130" height="120" />
+						<img src="img/${produto.imagem}" width="150" height="120" />
 						<hr/>
 						<strong>${produto.nome}</strong>
-						<br/><br/>
+						<hr>
 						
 						<strong>Categoria: </strong>${produto.categoria.nome}
 						<br/>
-						<strong>Preço: </strong>${produto.valorVenda} <input type="submit" value="Limpar" id="X" class="btn btn-warning">	
+
+						<strong>Preço: </strong>${produto.valorVendaFormatado}
+						<br/>
 						
-					</div>
+						<a href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
+								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
+								color: black; margin-top: 20px">Adicionar
+						</a>
+						
+						<a href="/easports/ControleProduto?acao=detalhesProduto&id=${produto.idProduto}"
+								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
+								color: black; margin-top: 20px; margin-left: -190px">Visualizar
+						</a>
+						
+					</div> 	
 					
 				</div>
 			</div>

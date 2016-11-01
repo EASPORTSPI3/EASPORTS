@@ -406,8 +406,26 @@ public class ControleProduto extends HttpServlet {
 					pedidoDao = new PedidoDAO();
 
 					ArrayList<Pedido> listaPedidos = pedidoDao.pedidosNaoFinalizadosPorCliente(idCliente);
+					
+					FormataValor format = new FormataValor();
+					
+					Double valorTotal = 0.0;
+					
+					for(Pedido pedido : listaPedidos){
+						
+						valorTotal += pedido.getProduto().getValorVenda() * pedido.getQuantidade();
+						
+						pedido.setValorTotalFormatado(format.valorFormatado(pedido.getProduto().getValorVenda() * pedido.getQuantidade()));
+						
+					}
+					
+					String valorTotalFormatado = format.valorFormatado(valorTotal);
+					
 					request.setAttribute("mensagem", "Pedido ID: " + idPedido + ", excluído com sucesso.");
+					
 					request.setAttribute("lista", listaPedidos);
+					
+					request.setAttribute("valorTotal", valorTotalFormatado);
 					
 				} catch (Exception e) {
 
