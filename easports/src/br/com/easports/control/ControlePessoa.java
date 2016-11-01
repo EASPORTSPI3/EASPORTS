@@ -162,22 +162,25 @@ public class ControlePessoa extends HttpServlet {
 					// do mesmo gravados no banco. Para isso, utilizamos o getEndereco do cliente para encontrar 
 					// seu endereço e, por fim, o método getId do endereço, para encontrar seu id
 					
-					endereco = enderecoDao.findById(cliente.getEndereco().getId_endereco());
+					//endereco = enderecoDao.findById(cliente.getEndereco().getId_endereco());
 
 					// Atribuindo o endereço encontrado ao cliente
 					
-					cliente.setEndereco(endereco);
+					//cliente.setEndereco(endereco);
 					
 					// Retornando para a página JSP o objeto cliente e atribuindo a ele o nome "cliente"
 					
-					request.setAttribute("cliente", cliente);
-
+					if(cliente.getIdCliente() == null){
+						request.setAttribute("mensagem", "Cliente não encontrado.");
+					}else{
+						request.setAttribute("cliente", cliente);
+					}
 
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					
-					request.setAttribute("mensagem", "Cliente não encontrado.");
+
+					request.setAttribute("mensagem", e);
 
 				} finally {
 
