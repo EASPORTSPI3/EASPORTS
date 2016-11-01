@@ -348,8 +348,7 @@ public class ControleProduto extends HttpServlet {
 						
 						request.setAttribute("valorTotal", valorTotalFormatado);
 						
-					}
-					else{
+					}else{
 						
 						request.setAttribute("mensagem", "Nenhum registro encontrado.");
 						
@@ -376,7 +375,7 @@ public class ControleProduto extends HttpServlet {
 				try {
 					
 					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
-					
+
 					
 					
 				} catch (Exception e) {
@@ -399,17 +398,21 @@ public class ControleProduto extends HttpServlet {
 				try {
 					
 					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
+					Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
 					
 					PedidoDAO pedidoDao = new PedidoDAO();
-					
-					pedidoDao.delete(idPedido);
-					
+				
+					pedidoDao.delete(idPedido);	
+					pedidoDao = new PedidoDAO();
+
+					ArrayList<Pedido> listaPedidos = pedidoDao.pedidosNaoFinalizadosPorCliente(idCliente);
 					request.setAttribute("mensagem", "Pedido ID: " + idPedido + ", excluído com sucesso.");
+					request.setAttribute("lista", listaPedidos);
 					
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					
+					System.out.println(""+e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {

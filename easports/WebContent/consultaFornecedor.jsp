@@ -46,7 +46,7 @@
 			
 		<label>CNPJ:</label> <input type="text" name="cnpj" required="required"/>
 		
-		<input type="submit" value="Pesquisar" id="enviar" class="botoes"/>
+		<input type="submit" value="Pesquisar" id="enviar" class="btn btn-primary"/>
 		
 		<h4 style="color:red">${mensagem}</h4>
 			

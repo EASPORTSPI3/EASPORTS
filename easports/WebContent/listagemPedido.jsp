@@ -76,7 +76,7 @@
 								<span class="glyphicon glyphicon-pencil" style="width: 16;font-size: 12;margin-left: -6;color: #FFFFFF"></span> Editar
 						</a>
 						
-						<a href="ControleProduto?acao=excluirPedido&idPedido=${pedido.idPedido}"
+						<a href="ControleProduto?acao=excluirPedido&idPedido=${pedido.idPedido}&idCliente=${pedido.cliente.idCliente}"
 								class="btn btn-sm" style="width: 80;font-size: 12;background-color: #ff9999"
 								onclick="return confirm('Deseja excluir este Pedido ?');">
 								<span class="glyphicon glyphicon-trash" style="width: 16;font-size: 12;margin-left: -6;color: #FFFFFF"></span> Excluir
