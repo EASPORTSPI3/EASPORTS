@@ -149,25 +149,7 @@ public class ControlePessoa extends HttpServlet {
 					// do cliente a qual ele pertence
 					
 					cliente = clientePfDao.findByCpf(cpf);
-					
-					// Instanciando um novo Endereco
-					
-					Endereco endereco = new Endereco();
-					
-					// Instanciando a classe responsável por gravar, alterar e excluir Enderecos no banco
-					
-					EnderecoDAO enderecoDao = new EnderecoDAO();
-					
-					// Utilizando o método que recebe como parâmetro o id de um Endereco e retorna os dados 
-					// do mesmo gravados no banco. Para isso, utilizamos o getEndereco do cliente para encontrar 
-					// seu endereço e, por fim, o método getId do endereço, para encontrar seu id
-					
-					//endereco = enderecoDao.findById(cliente.getEndereco().getId_endereco());
-
-					// Atribuindo o endereço encontrado ao cliente
-					
-					//cliente.setEndereco(endereco);
-					
+										
 					// Retornando para a página JSP o objeto cliente e atribuindo a ele o nome "cliente"
 					
 					if(cliente.getIdCliente() == null){

@@ -64,23 +64,23 @@
 						<h4>Dados Gerais:</h4>
 						<hr style="width: 340px; margin-left: 4px">
 			
-						<label>ID do Cliente:
+						<label>ID do Cliente: &nbsp 
 						</label>${cliente.idCliente}
 						<br/>
 			
-						<label>Nome do Cliente:
+						<label>Nome do Cliente: &nbsp
 						</label>${cliente.nome}
 						<br/>
 						
-						<label>Telefone:
+						<label>Telefone: &nbsp
 						</label>${cliente.telefone}
 						<br/>
 				
-						<label>CPF:
+						<label>CPF: &nbsp
 						</label>${cliente.cpf}
 						<br/>
 							
-						<label>Data Nasc.:
+						<label>Data Nasc.: &nbsp
 						</label>${cliente.dataNasc}
 						<br/>
 					
@@ -99,31 +99,31 @@
 						<h4>Endereço:</h4>
 						<hr style="width: 340px; margin-left: 4px">
 			
-						<label>Logradouro:
+						<label>Logradouro: &nbsp
 						</label>${cliente.endereco.logradouro}
 						<br/>
 						
-						<label>Número:
+						<label>Número: &nbsp
 						</label>${cliente.endereco.numero}
 						<br/>
 				
-						<label>CEP:
+						<label>CEP: &nbsp
 						</label>${cliente.endereco.cep}
 						<br/>
 							
-						<label>Bairro:
+						<label>Bairro: &nbsp
 						</label>${cliente.endereco.bairro}
 						<br/>
 							
-						<label>Cidade:
+						<label>Cidade: &nbsp
 						</label>${cliente.endereco.cidade}
 						<br/>
 							
-						<label>Estado:
+						<label>Estado: &nbsp
 						</label>${cliente.endereco.estado}
 						<br/>
 							
-						<label>País:
+						<label>País:&nbsp 
 						</label>${cliente.endereco.pais}
 						<br/>
 					
