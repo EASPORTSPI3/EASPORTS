@@ -402,7 +402,25 @@ public class ControleProduto extends HttpServlet {
 					
 					PedidoDAO pedidoDao = new PedidoDAO();
 				
-					pedidoDao.delete(idPedido);	
+					Pedido pedidoRealizado = new Pedido();
+					
+					pedidoRealizado = pedidoDao.findById(idPedido);
+					
+					Integer quantidade = pedidoRealizado.getQuantidade();
+					System.out.println();
+					Produto produto = new Produto();
+					
+					ProdutoDAO produtoDao = new ProdutoDAO();
+					Integer idProduto = pedidoRealizado.getProduto().getIdProduto();
+					
+					produto = produtoDao.findById(idProduto);
+					
+					produto.setQuantidade(produto.getQuantidade() + quantidade);
+					produtoDao = new ProdutoDAO();
+					produtoDao.update(produto);
+					pedidoDao = new PedidoDAO();
+					pedidoDao.delete(idPedido);
+					
 					pedidoDao = new PedidoDAO();
 
 					ArrayList<Pedido> listaPedidos = pedidoDao.pedidosNaoFinalizadosPorCliente(idCliente);
