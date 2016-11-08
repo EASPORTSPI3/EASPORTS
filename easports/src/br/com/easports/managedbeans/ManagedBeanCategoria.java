@@ -1,7 +1,6 @@
 package br.com.easports.managedbeans;
 
 import java.util.List;
-
 import br.com.easports.entities.Categoria;
 import br.com.easports.persistence.CategoriaDAO;
 

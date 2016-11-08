@@ -78,7 +78,7 @@ public class CategoriaDAO extends DAO{
 
 		rs = stmt.executeQuery();
 
-		List<Categoria> lista = new ArrayList<Categoria>();
+			List<Categoria> lista = new ArrayList<Categoria>();
 
 		while (rs.next()) {
 

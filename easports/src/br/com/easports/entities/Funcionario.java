@@ -7,9 +7,9 @@ import br.com.easports.util.Departamento;
 
 public class Funcionario extends PessoaFisica{
 
-	private String ctps;
 	private Cargo cargo;
 	private Departamento departamento;
+	private String senha;
 	
 	public Funcionario() {
 		
@@ -21,12 +21,38 @@ public class Funcionario extends PessoaFisica{
 		
 	}
 
-	public Funcionario(String nome, String telefone, String cpf, Date dataNasc, Endereco endereco, String ctps,
+	public Funcionario(String nome, String telefone, String cpf, Date dataNasc, Endereco endereco, String senha,
 			Cargo cargo, Departamento departamento) {
 		super(nome, telefone, cpf, dataNasc, endereco);
-		this.ctps = ctps;
 		this.cargo = cargo;
 		this.departamento = departamento;
+
+		this.senha = senha;
 	}
+
+	public Cargo getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 	
 }
