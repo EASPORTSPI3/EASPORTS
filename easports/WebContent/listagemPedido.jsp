@@ -71,7 +71,7 @@
 						
 						<td>
 						
-						<a href="ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}" 
+						<a href="ControleProduto?acao=visualizarPedido&idPedido=${pedido.idPedido}" 
 								class="btn btn-sm" style="width: 80;font-size: 12;background-color: #b3b3ff">
 								<span class="glyphicon glyphicon-pencil" style="width: 16;font-size: 12;margin-left: -6;color: #FFFFFF"></span> Editar
 						</a>

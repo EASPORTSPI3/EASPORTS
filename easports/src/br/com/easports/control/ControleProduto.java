@@ -370,13 +370,19 @@ public class ControleProduto extends HttpServlet {
 
 			}
 			
-			else if (acao.equalsIgnoreCase("editarPedido")) {
+			else if (acao.equalsIgnoreCase("visualizarPedido")) {
 
 				try {
 					
 					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
 
+					PedidoDAO pedidoDao = new PedidoDAO();
 					
+					Pedido pedido = new Pedido();
+					
+					pedido = pedidoDao.findById(idPedido);
+					
+					request.setAttribute("pedido", pedido);
 					
 				} catch (Exception e) {
 
@@ -388,7 +394,48 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 					
-					request.getRequestDispatcher("listagemPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("edicaoPedido.jsp").forward(request, response);
+
+				}
+			}
+			
+			else if (acao.equalsIgnoreCase("editarPedido")) {
+
+				try {
+					
+					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
+
+					Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
+					
+					Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
+					
+					PedidoDAO pedidoDao = new PedidoDAO();
+					
+					Pedido pedido = new Pedido();
+					
+					pedido = pedidoDao.findById(idPedido);
+					
+					Produto produto = new Produto();
+					
+					ProdutoDAO produtoDao = new ProdutoDAO();
+					
+					produto = produtoDao.findById(idProduto);
+					
+					if(quantidade > pedido.getQuantidade())
+					
+					request.setAttribute("pedido", pedido);
+					
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro de clientes
+					
+					request.getRequestDispatcher("edicaoPedido.jsp").forward(request, response);
 
 				}
 			}
