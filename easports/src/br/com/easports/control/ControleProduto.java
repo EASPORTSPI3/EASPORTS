@@ -421,14 +421,19 @@ public class ControleProduto extends HttpServlet {
 					
 					produto = produtoDao.findById(idProduto);
 					
-					if(quantidade > pedido.getQuantidade())
 					
+					if(quantidade > pedido.getQuantidade()){
+						produto.setQuantidade(produto.getQuantidade()+quantidade);
+					}else{
+						produto.setQuantidade(produto.getQuantidade()-quantidade);
+					}
+					produtoDao.update(produto);
 					request.setAttribute("pedido", pedido);
 					
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					
+					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
