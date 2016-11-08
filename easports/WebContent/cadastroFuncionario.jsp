@@ -3,6 +3,7 @@
 	
 	
 <jsp:useBean class="br.com.easports.managedbeans.ManagedBeanCargo" id="mbCargo"></jsp:useBean>
+<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanDepartamento" id="mbDepartamento"></jsp:useBean>
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- TagLibraries (JSTL) -->
@@ -96,49 +97,49 @@
 							<hr>	
 			
 							<label>Nome do Funcionário:
-								<input required="required" style="width: 350px" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
+								<input required="required" style="width: 250px" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
 							</label>
-							<br/>
 						
 							<label>Telefone:
-								<input required="required" style="width: 200px" type="text" name="telefone" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 140px" type="text" name="telefone" class="form-control" placeholder="Digite aqui"/>
 							</label>
 							<br/>
 				
 							<label>CPF:
-								<input required="required" style="width: 250px" type="text" name="cpf" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 135px" type="text" name="cpf" class="form-control" placeholder="Digite aqui"/>
 							</label>
-							<br/>
+							<label for="pwd">Password:
+							  <input type="password" required="required" style="width: 100px" class="form-control" id="pwd" name="senha">
+							  </label>
 							
 							<label>Data Nasc.:
-								<input required="required" style="width: 200px" type="date" name="datanasc" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 160px" type="date" name="datanasc" class="form-control" placeholder="Digite aqui"/>
 							</label>
 							<br/>	
 							
-<%-- 							<label>Departamento:
+						
+							<label>Departamento:
 								<select name="departamento" class="form-control">
 									<option value="">- Selecione uma Opção -</option>
 					
-								<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
-									<option value="${f.idFornecedor}"> ${f.nome} </option>
+								<c:forEach items="${mbDepartamento.listagemDepartamentos}" var="d">
+									<option value="${d.idDepartamento}"> ${d.departamento} </option>
 								</c:forEach>					
 								</select>
 							</label>
-							</br> --%>
 							
 							<label>Cargo:
 								<select name="cargo" class="form-control">
 									<option value="">- Selecione uma Opção -</option>
 					
-								<c:forEach items="${mbCargo.listagemCargo}" var="c">
+								<c:forEach items="${mbCargo.listagemCargos}" var="c">
 									<option value="${c.idCargo}"> ${c.cargo} </option>
 								</c:forEach>					
 								</select>
 							</label>
-							<div class="form-group">
-							  <label for="pwd">Password:</label>
-							  <input type="password" required="required" style="width: 100px" class="form-control" id="pwd" name="senha">
-							</div>											
+							</br>												
+							
+										
 						</fieldset>		
 					</div>
 				</div>
@@ -146,7 +147,7 @@
 		</form>
 	</div>
 	
-	
+	<div><h4 style="color: green; text-align: center;">${mensagem}</h4>
 
 </body>
 </html>

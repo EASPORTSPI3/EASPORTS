@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.easports.entities.ClientePF;
 import br.com.easports.entities.Endereco;
 import br.com.easports.entities.Fornecedor;
+import br.com.easports.entities.Funcionario;
 import br.com.easports.entities.Pedido;
 import br.com.easports.entities.PessoaFisica;
 import br.com.easports.entities.Produto;
 import br.com.easports.persistence.ClientePFDAO;
 import br.com.easports.persistence.EnderecoDAO;
 import br.com.easports.persistence.FornecedorDAO;
+import br.com.easports.persistence.FuncionarioDAO;
 import br.com.easports.persistence.PedidoDAO;
 import br.com.easports.persistence.ProdutoDAO;
 import br.com.easports.util.ConverteData;
@@ -409,11 +411,30 @@ public class ControlePessoa extends HttpServlet {
 					String telefone = request.getParameter("telefone");
 					String cpf = request.getParameter("cpf");
 					String dataNasc = request.getParameter("datanasc");
-					String departamento = request.getParameter("departamento");
-					String cargo = request.getParameter("cargo");
+					Integer departamento = Integer.parseInt(request.getParameter("departamento"));
+					Integer cargo = Integer.parseInt(request.getParameter("cargo"));
+					String senha = request.getParameter("senha");
+					
+					
+					Funcionario funcionario = new Funcionario();
+					
+					funcionario.setNome(nome);
+					funcionario.setTelefone(telefone);
+					funcionario.setCpf(cpf);
+					funcionario.setDataNasc(ConverteData.stringToDate(dataNasc));
+					funcionario.setSenha(senha);
+					funcionario.setEndereco(endereco);
+					
+					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+					funcionarioDAO.insert(funcionario, idEndereço, departamento, cargo);
+					
+					request.setAttribute("mensagem", "Funcionário " + funcionario.getNome() + " cadastrado com sucesso");
+					
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					request.setAttribute("mensagem", e.getMessage());
 					e.printStackTrace();
+				} finally {
+					request.getRequestDispatcher("cadastroFuncionario.jsp").forward(request, response);
 				}
 			}
 

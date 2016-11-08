@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.easports.entities.Cargo;
+import br.com.easports.entities.Categoria;
 
 
 public class CargoDAO extends DAO{
@@ -25,5 +26,34 @@ public class CargoDAO extends DAO{
 			lista.add(cargo);
 		}
 		return lista;
-	}	
+	}
+	
+	public Cargo findById(Integer id_cargo) throws Exception {
+
+		String query = "select * from cargo where id_cargo = ?";
+
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setInt(1, id_cargo);
+
+		rs = stmt.executeQuery();
+
+		Cargo Cargo= new Cargo();
+
+		while (rs.next()) {
+
+			Cargo.setIdCargo(rs.getInt("id_cargo"));
+			Cargo.setCargo(rs.getString("cargo"));
+
+		}
+
+		stmt.close();
+
+		fechaConexao();
+
+		return Cargo;
+
+	}
 }

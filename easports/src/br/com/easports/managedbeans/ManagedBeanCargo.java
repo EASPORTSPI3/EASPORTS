@@ -4,23 +4,24 @@ import java.util.List;
 import br.com.easports.entities.Cargo;
 import br.com.easports.persistence.CargoDAO;
 
+
 public class ManagedBeanCargo {
 
-	private List<Cargo> listagemCargo;
+	private List<Cargo> listagemCargos;
 
 	public List<Cargo> getListagemCargos() {
-	
-		try {
+		
+		try{
 			
-			CargoDAO cargoDAO = new CargoDAO();
-
-			listagemCargo = cargoDAO.listAll();
+			CargoDAO c = new CargoDAO();
 			
-		} 
-		catch (Exception e)	{			
+			listagemCargos = c.listAll();
+			
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}
 		
-		return listagemCargo;
+		return listagemCargos;
 	}
 }

@@ -2,8 +2,8 @@ package br.com.easports.entities;
 
 import java.util.Date;
 
-import br.com.easports.util.Cargo;
-import br.com.easports.util.Departamento;
+
+
 
 public class Funcionario extends PessoaFisica{
 

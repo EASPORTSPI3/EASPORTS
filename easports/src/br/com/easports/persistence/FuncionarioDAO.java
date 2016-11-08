@@ -7,7 +7,7 @@ public class FuncionarioDAO extends DAO{
 	
 	public void insert(Funcionario funcionario, int idEndereco, int idDepartamento, int idCargo) throws Exception{
 		
-		String query = "insert into funcionario(nome, telefone, cpf, data_nasc, id_endereço, senha, id_cargo, id_departamento)values (?,?,?,?,?,?,?,?)";
+		String query = "insert into funcionario(nome, telefone, cpf, data_nasc, id_endereco, senha, id_cargo, id_departamento)values (?,?,?,?,?,?,?,?)";
 		abreConexao();
 		
 		stmt = con.prepareStatement(query);
