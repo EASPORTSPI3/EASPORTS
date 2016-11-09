@@ -414,6 +414,8 @@ public class ControleProduto extends HttpServlet {
 					Pedido pedido = new Pedido();
 					
 					pedido = pedidoDao.findById(idPedido);
+					pedidoDao = new PedidoDAO();
+					pedidoDao.update1(pedido);
 					
 					Produto produto = new Produto();
 					
@@ -421,12 +423,19 @@ public class ControleProduto extends HttpServlet {
 					
 					produto = produtoDao.findById(idProduto);
 					
-					
+					Integer qtdAtualizada =0;
 					if(quantidade > pedido.getQuantidade()){
-						produto.setQuantidade(produto.getQuantidade()+quantidade);
+						qtdAtualizada = quantidade - pedido.getQuantidade();
+						produto.setQuantidade(produto.getQuantidade()- qtdAtualizada);
+						pedido.setQuantidade(quantidade);
 					}else{
-						produto.setQuantidade(produto.getQuantidade()-quantidade);
+						qtdAtualizada = pedido.getQuantidade() - quantidade;
+						produto.setQuantidade(produto.getQuantidade() + quantidade);
+						pedido.setQuantidade(quantidade);
 					}
+					produtoDao = new ProdutoDAO();
+					pedidoDao = new PedidoDAO();
+					pedidoDao.update(pedido);
 					produtoDao.update(produto);
 					request.setAttribute("pedido", pedido);
 					

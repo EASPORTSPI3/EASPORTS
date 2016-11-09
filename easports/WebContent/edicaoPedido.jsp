@@ -27,10 +27,11 @@
 		<h3 class="text-center">
 			<b>Detalhes do Pedido</b>
 		</h3>
-		<hr/>
-		
+		<hr/>		
 		<br/>
 		
+		<form style="background-color: #7f7f7f" name="formulario" method="post" action="/easports/ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}&idProduto=${pedido.produto.idProduto}">
+	
 			<div class="col-md-3" style="width: 1000; margin-left: 85px">
 				<div class="panel panel-success">
 					<div class="panel-heading">
@@ -55,10 +56,13 @@
 							</label>
 							<hr>
 							
-							<a href="/easports/ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}&idProduto=${pedido.produto.idProduto}"
+<%-- 							<a href="/easports/ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}&idProduto=${pedido.produto.idProduto}"
 								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
 								color: black; margin-top: 20px; margin-left: 15%">Salvar
-							</a>
+							</a> --%>
+							
+							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
+								   color: black; width: 100px"/>
 						
 							<a href="/easports/ControleProduto?acao=consultarPedidos&cpf=${pedido.cliente.cpf}"
 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
@@ -71,7 +75,7 @@
 					
 				</div>
 			</div>
-			
+			</form>
 	</div>
 
 </body>

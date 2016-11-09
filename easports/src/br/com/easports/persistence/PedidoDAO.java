@@ -32,17 +32,17 @@ public class PedidoDAO extends DAO{
 	public void update(Pedido pedido) throws Exception {
 
 		String query = "update pedido set id_cliente = ?, id_produto = ?, "
-				+ "quantidade = ?, finalizado = ? where id_pedido = ?";
+				+ "quantidade = ? where id_pedido = ?";
 
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
 
-		stmt.setInt(1, pedido.getIdCliente());
-		stmt.setInt(2, pedido.getIdProduto());
+		stmt.setInt(1, pedido.getCliente().getIdCliente());
+		stmt.setInt(2, pedido.getProduto().getIdProduto());
 		stmt.setInt(3, pedido.getQuantidade());
-		stmt.setBoolean(4, pedido.isFinalizado());
-
+		stmt.setInt(4, pedido.getIdPedido());
+		
 		stmt.execute();
 
 		stmt.close();
