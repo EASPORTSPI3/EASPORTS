@@ -116,7 +116,7 @@
 			</div>
 		</form>
 	</div>
-	<div><h4 style="color: green; text-align: center;">${mensagem}</h4>
+	<h4 style="color: green; text-align: center;">${mensagem}</h4>
 </body>
 </html>
 

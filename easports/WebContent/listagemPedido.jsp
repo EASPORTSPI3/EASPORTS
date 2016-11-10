@@ -34,7 +34,7 @@
 		<h3 class="text-center"><b>Consulta de Pedidos</b></h3>
 		<hr/><br/>
 		
-		<div class="col-md-3" style="width: 1500">
+		<div class="col-md-3" style="width: 100%">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 		
@@ -72,12 +72,12 @@
 						<td>
 						
 						<a href="ControleProduto?acao=visualizarPedido&idPedido=${pedido.idPedido}" 
-								class="btn btn-sm" style="width: 80;font-size: 12;background-color: #b3b3ff">
+								class="btn btn-sm" style="width: 80; font-size: 12; background-color: #b3b3ff; margin-right: 5%">
 								<span class="glyphicon glyphicon-pencil" style="width: 16;font-size: 12;margin-left: -6;color: #FFFFFF"></span> Editar
 						</a>
 						
 						<a href="ControleProduto?acao=excluirPedido&idPedido=${pedido.idPedido}&idCliente=${pedido.cliente.idCliente}"
-								class="btn btn-sm" style="width: 80;font-size: 12;background-color: #ff9999"
+								class="btn btn-sm" style="width: 80; font-size: 12; background-color: #ff9999; margin-right: 5%"
 								onclick="return confirm('Deseja excluir este Pedido ?');">
 								<span class="glyphicon glyphicon-trash" style="width: 16;font-size: 12;margin-left: -6;color: #FFFFFF"></span> Excluir
 						</a>
@@ -91,7 +91,7 @@
 
 		</table>
 		
-				<label style="margin-left: 900px; font-size: 16px; color: red"><b>Valor total da compra : ${valorTotal}</b></label>
+				<label style="margin-left: 0%; font-size: 16px; color: red"><b>Valor total da compra : ${valorTotal}</b></label>
 		
 				</div>
 			</div>

@@ -93,8 +93,14 @@ public class ControleProduto extends HttpServlet {
 
 					// String pasta = getServletContext().getRealPath("/img/produtos");
 
-					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
+					//String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
 
+					//Notebook Diego
+					
+					String pasta = System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
+					
+					System.out.println(pasta);
+					
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 
 					InputStream input = imagem.getInputStream(); // lendo o arquivo
@@ -407,15 +413,15 @@ public class ControleProduto extends HttpServlet {
 
 					Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
 					
-					Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
+					Integer novaQuantidade = Integer.parseInt(request.getParameter("quantidade"));
 					
 					PedidoDAO pedidoDao = new PedidoDAO();
 					
 					Pedido pedido = new Pedido();
 					
 					pedido = pedidoDao.findById(idPedido);
+					
 					pedidoDao = new PedidoDAO();
-					pedidoDao.update1(pedido);
 					
 					Produto produto = new Produto();
 					
@@ -423,26 +429,69 @@ public class ControleProduto extends HttpServlet {
 					
 					produto = produtoDao.findById(idProduto);
 					
-					Integer qtdAtualizada =0;
-					if(quantidade > pedido.getQuantidade()){
-						qtdAtualizada = quantidade - pedido.getQuantidade();
-						produto.setQuantidade(produto.getQuantidade()- qtdAtualizada);
-						pedido.setQuantidade(quantidade);
+					Integer diferenca = 0;
+					
+					if(novaQuantidade >= pedido.getQuantidade()){
+						
+						diferenca = novaQuantidade - pedido.getQuantidade();
+						
+						if(produto.getQuantidade() >= diferenca){
+							
+							produto.setQuantidade(produto.getQuantidade() - diferenca);
+							
+							pedido.setQuantidade(novaQuantidade);
+							
+							produtoDao = new ProdutoDAO();
+							
+							pedidoDao = new PedidoDAO();
+							
+							pedidoDao.update(pedido);
+							
+							produtoDao.update(produto);
+							
+							System.out.println(produto.getQuantidade());
+							
+							request.setAttribute("pedido", pedido);
+							
+							request.setAttribute("mensagem", "Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
+							
+						}
+						else{
+							
+							request.setAttribute("pedido", pedido);
+							
+							request.setAttribute("mensagem", "Quantidade indisponível.");
+							
+						}
+						
 					}else{
-						qtdAtualizada = pedido.getQuantidade() - quantidade;
-						produto.setQuantidade(produto.getQuantidade() + quantidade);
-						pedido.setQuantidade(quantidade);
+						
+						diferenca = pedido.getQuantidade() - novaQuantidade;
+						
+						produto.setQuantidade(produto.getQuantidade() + diferenca);
+						
+						pedido.setQuantidade(novaQuantidade);
+						
+						produtoDao = new ProdutoDAO();
+						
+						pedidoDao = new PedidoDAO();
+						
+						pedidoDao.update(pedido);
+						
+						produtoDao.update(produto);
+						
+						System.out.println(produto.getQuantidade());
+						
+						request.setAttribute("pedido", pedido);
+						
+						request.setAttribute("mensagem", "Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
+						
 					}
-					produtoDao = new ProdutoDAO();
-					pedidoDao = new PedidoDAO();
-					pedidoDao.update(pedido);
-					produtoDao.update(produto);
-					request.setAttribute("pedido", pedido);
 					
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					System.out.println(e);
+					
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {

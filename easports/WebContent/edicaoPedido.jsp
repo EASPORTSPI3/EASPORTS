@@ -31,7 +31,6 @@
 		<br/>
 		
 		<form style="background-color: #7f7f7f" name="formulario" method="post" action="/easports/ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}&idProduto=${pedido.produto.idProduto}">
-	
 			<div class="col-md-3" style="width: 1000; margin-left: 85px">
 				<div class="panel panel-success">
 					<div class="panel-heading">
@@ -39,7 +38,6 @@
 						<h3 class="text-center"><strong>${pedido.produto.nome}</strong></h3>
 						
 					</div>
-					
 					<div class="panel-body" style="background-color: #f0fff0">
 						<img src="img/${pedido.produto.imagem}" width="510" height="450" align="left"/>
 						
@@ -49,10 +47,12 @@
 							<h4><strong style="color: black; margin-left: 15px">Produto: </strong>${pedido.produto.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Categoria: </strong>${pedido.produto.categoria.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Preço: </strong>${pedido.produto.valorCustoFormatado}</h4>					
-							
+							<h4><strong style="color: black; margin-left: 15px">Disponível: </strong>${pedido.produto.quantidade}</h4>	
+						
 						
 							<label><h4 style="margin-left: 15px"><strong>Quantidade:</strong></h4>
-								<input style="width: 100px; margin-left: 15px" type="text" name="quantidade" class="form-control" " />
+								<input style="width: 100px; margin-left: 15px" type="text" name="quantidade" class="form-control" 
+									   placeholder="${pedido.quantidade}" required="required" />
 							</label>
 							<hr>
 							
@@ -61,13 +61,16 @@
 								color: black; margin-top: 20px; margin-left: 15%">Salvar
 							</a> --%>
 							
-							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
-								   color: black; width: 100px"/>
+							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; 
+								   margin-left: 13%; font-size: 14; color: black; width: 100px"/>
 						
 							<a href="/easports/ControleProduto?acao=consultarPedidos&cpf=${pedido.cliente.cpf}"
 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
-								color: black; margin-top: 20px; margin-left: 1%">Cancelar
+								color: black; margin-left: 1%">Cancelar
 							</a>
+							<hr>
+						
+							<h4 style="color: green; text-align: center;">${mensagem}</h4>
 						
 						</div>
 						
