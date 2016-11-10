@@ -10,10 +10,6 @@ body{
 	color: rgba(0,0,0,1);
 } 
 
-hgroup {
-	margin-top: 70px;
-}
-
 input.botoes {
 	width: 100px;	
 	height: 35px;
@@ -24,7 +20,7 @@ fieldset {
 	width: 500px;
 	font-size: 11pt;
 }
-div#logo{
-	float: right;
-	margin-right: 20%;
+
+hgroup{
+	margin-top: 50px;
 }

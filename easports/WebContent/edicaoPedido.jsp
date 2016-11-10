@@ -52,7 +52,7 @@
 						
 							<label><h4 style="margin-left: 15px"><strong>Quantidade:</strong></h4>
 								<input style="width: 100px; margin-left: 15px" type="text" name="quantidade" class="form-control" 
-									   placeholder="${pedido.quantidade}" required="required" />
+									   value="${pedido.quantidade}" required="required" />
 							</label>
 							<hr>
 							
