@@ -15,7 +15,6 @@
                             <li><a href="/easports/cadastroCliente.jsp">Cliente</a></li>
                             <li><a href="/easports/cadastroFornecedor.jsp">Fornecedor</a></li>
                             <li><a href="/easports/cadastroFuncionario.jsp">Funcionário</a></li>
-                            <li><a href="/easports/cadastroFilial.jsp">Filial</a></li>
                             <li><a href="/easports/cadastroProduto.jsp">Produto</a></li>
                         </ul>
                     </li>
@@ -27,7 +26,6 @@
                             <li><a href="/easports/consultaCliente.jsp">Cliente</a></li>
                             <li><a href="/easports/consultaFornecedor.jsp">Fornecedor</a></li>
                             <li><a href="/easports/consultaFuncionario.jsp">Funcionário</a></li>
-                            <li><a href="/easports/consultaFilial.jsp">Filial</a></li>
                             <li><a href="consultaProduto.jsp">Produto</a></li>
                             <li><a href="pesquisaPedido.jsp">Pedidos</a></li>
                         </ul>
