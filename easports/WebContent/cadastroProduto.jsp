@@ -31,7 +31,7 @@
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
 	<hgroup>
-		<h1 style="padding-left: 0%; margin-left: 35%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de produtos:</h1>
+		<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de produtos:</h1>
 		
 	</hgroup>
 			
@@ -45,7 +45,7 @@
 					<div class="panel-heading" style="width: 100% 	;">			
 						<fieldset id="fieldCli" style="width: 100%;">
 			
-							<h4">Dados Gerais:</h4>
+							<h4>Dados Gerais:</h4>
 							<hr>
 			
 							<label>Nome do Produto:
@@ -66,7 +66,7 @@
 					
 								</select>
 							</label>
-							</br>
+
 							
 							<label>Categoria:
 								<select name="categoria" class="form-control">
@@ -82,19 +82,19 @@
 							<label>Imagem do Produto:
 								<input type="file" name="imagem" class="form-control"/>
 							</label>
-							</br>
+
 							
 							<label>Valor de Venda:
-								<input type="text" name="valorVenda" class="form-control"/>
+								<input type="text" name="valorVenda" class="form-control" style="width: 120px"/>
 							</label>
 							
 							<label>Valor de Custo:
-								<input type="text" name="valorCusto" class="form-control"/>
+								<input type="text" name="valorCusto" class="form-control" style="width: 120px"/>
 							</label>
 
 				
 							<label>Quantidade:
-								<input type="text" name="quantidade" class="form-control" placeholder="Digite aqui"/>
+								<input type="text" name="quantidade" class="form-control" placeholder="Digite aqui" style="width: 110px"/>
 							</label>
 							<br/><hr>
 		
