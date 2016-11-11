@@ -29,9 +29,9 @@
 	<hgroup>
 	<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Consulta de clientes:</h1>
 	</hgroup>	
-
+	<br/>
 	<div style="width: 50%; padding:0px;"class="col-md-4">
-	<form name="formulario" method="post" style="padding-left: 6%; margin-left: 50%" 
+	<form name="formulario" method="post" style="margin-left: 50%; width: 100%;" 
 			 action="ControlePessoa?acao=consultarpf">			
 			
 		<label>CPF:</label> <input type="text" name="cpf" required="required"/>		
@@ -49,7 +49,7 @@
 							<h4>Dados Gerais:</h4>
 							<hr>	
 							<label>ID do Cliente: &nbsp
-								<input required="required" style="width: 100px" type="text" disabled name="nome" class="form-control" value="${cliente.idCliente}"/> 
+								<input required="required" style="width: 100px" type="text" disabled name="idFornecedor" class="form-control" value="${cliente.idCliente}"/> 
 							</label>
 
 			

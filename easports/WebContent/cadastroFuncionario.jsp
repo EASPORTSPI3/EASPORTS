@@ -63,7 +63,7 @@
 							<label>Data Nasc.:
 								<input required="required" style="width: 160px" type="date" name="datanasc" class="form-control" placeholder="Digite aqui"/>
 							</label>
-							</br>
+
 							<label for="pwd">Password:
 							  <input type="password" required="required" style="width: 100px" class="form-control" id="pwd" name="senha">
 							</label>

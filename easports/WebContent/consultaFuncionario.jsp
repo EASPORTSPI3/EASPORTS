@@ -22,6 +22,93 @@
 <title>EA Sports</title>
 </head>
 <body>
-	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
+<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
+
+	<hgroup>
+	<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Consulta de Funcionários:</h1>
+	</hgroup>	
+	<br/>
+		<div style="width: 50%; padding:0px;"class="col-md-4">
+		<form name="formulario" method="post" style="margin-left: 50%; width: 100%;" 
+			 action="ControlePessoa?acao=consultarFuncionario">
+			
+		<label>CPF:</label> <input type="text" name="cnpj" required="required"/>
+		<input type="submit" value="Pesquisar" id="enviar" class="btn btn-primary"/>
+		<h4 style="color:red">${mensagem}</h4>			
+	</form>
+	
+	<form style="background-color: #7f7f7f; padding-left: 4%; ">
+			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
+				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
+					<div class="panel-heading" >
+					
+						<fieldset id="fieldCli" style="width: 100%;">				
+							<hr>							
+							<h4>Dados Gerais:</h4>
+							<hr>	
+							<label>ID do Funcionério: &nbsp
+								<input required="required" style="width: 100px" type="text" disabled name="idFornecedor" class="form-control" value="${funcionario.idCliente}"/> 
+							</label>
+
+			
+							<label>Nome do Cliente:
+								<input required="required" style="width: 250px" type="text" disabled name="nome" class="form-control" value="${funcionario.nome}" />
+							</label>
+						
+							<label>Telefone:
+								<input required="required" style="width: 200px" type="text" disabled name="telefone" class="form-control" value="${funcionario.telefone}"/>
+							</label>
+
+				
+							<label>CPF:
+								<input required="required" style="width: 250px" type="text" disabled name="cpf" class="form-control" value="${funcionario.cpf}"/>
+							</label>
+							
+							<label>Data Nasc.:
+								<input required="required" style="width: 200px" type="date" disabled name="datanasc" class="form-control" value="${funcionario.dataNasc}"/>
+							</label>
+							<br/>	
+							
+							<hr>									
+							<h4>Endereço:</h4>
+							<hr>
+			
+							<label>Logradouro:
+								<input required="required" style="width: 300px" type="text" disabled name="logradouro" class="form-control" value="${funcionario.endereco.logradouro}" />
+							</label>
+						
+							<label>Número:
+								<input required="required" style="width: 100px" type="text" disabled name="numero" class="form-control" value="${funcionario.endereco.numero}"/>
+							</label>
+				
+							<label>CEP:
+								<input required="required" style="width: 120px" type="text" disabled name="cep" class="form-control" value="${funcionario.endereco.cep}"/>
+							</label>
+							
+							
+							<label>Bairro:
+								<input required="required" style="width: 220px" type="text" disabled name="bairro" class="form-control" value="${funcionario.endereco.bairro}"/>
+							</label>
+
+							
+							<label>Cidade:
+								<input required="required" style="width: 250px" type="text" disabled name="cidade" class="form-control" value="${funcionario.endereco.cidade}"/>
+							</label>
+
+							
+							<label>Estado:
+								<input required="required" style="width: 80px" type="text" disabled name="estado" class="form-control" value="${funcionario.endereco.estado}"/>
+							</label>
+													
+							<label>País:
+								<input required="required" style="width: 250px" type="text" disabled name="pais" class="form-control" value="${funcionario.endereco.pais}"/>
+							</label>	
+					</fieldset>	
+				</div>
+			</div>
+		</div>			
+	</form>			
+	
+	</div>
 </body>
 </html>
