@@ -100,6 +100,7 @@
 		
 							<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success"/> 
 							<input type="reset" value="Limpar" id="limpar" class="btn btn-warning">	
+							<h4 style="color:green">${mensagem}</h4>
 						</fieldset>
 			
 					</div>
@@ -108,8 +109,6 @@
 			
 		</form>			
 	</div>	
-	<div><h4 style="color: green; text-align: center;">${mensagem}</h4>
-
   </div>
   </div>
 </body>

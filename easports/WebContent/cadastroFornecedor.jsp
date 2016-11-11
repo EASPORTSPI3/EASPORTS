@@ -13,10 +13,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-	
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
-	
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
@@ -33,7 +31,7 @@
 	
 		<div style="width: 50%; padding:0px;"class="col-md-4">
 		<form  name="formulario" method="post"
-			action="ControlePessoa?acao=cadastrarpf">
+			action="ControlePessoa?acao=cadastrarFornecedor">
 
 			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
 				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
@@ -104,7 +102,7 @@
 						<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success" style="width: 100px;"/> 
 						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">
 					
-						<h4 style="color:red">${mensagem}</h4>
+						<h4 style="color:green">${mensagem}</h4>
 					
 						</fieldset>			
 					</div>

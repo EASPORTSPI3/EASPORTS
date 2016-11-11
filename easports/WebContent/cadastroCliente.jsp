@@ -101,16 +101,17 @@
 								<input required="required" style="width: 250px" type="text" name="pais" class="form-control" placeholder="Digite aqui"/>
 							</label>
 							<hr>
-					
 						<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success" style="width: 100px;"/> 
-						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">				
-						</fieldset>	
+						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">	
+						<label style="color: green; text-align: right;">${mensagem}</label>	
+						</fieldset>													
 					</div>
 				</div>
 			</div>
 		</form>
+
 	</div>
-	<h4 style="color: green; text-align: center;">${mensagem}</h4>
+
 </body>
 </html>
 

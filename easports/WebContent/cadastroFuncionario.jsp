@@ -126,15 +126,13 @@
 							<hr>
 											
 						<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success" style="width: 100px;"/> 
-						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">				
+						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">	
+						<h4 style="color:green">${mensagem}</h4>			
 						</fieldset>	
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
-	
-	<div><h4 style="color: green; text-align: center;">${mensagem}</h4>
-
 </body>
 </html>
