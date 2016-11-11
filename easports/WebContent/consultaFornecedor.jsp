@@ -63,10 +63,8 @@
 						
 						<label>Telefone:
 						<input required="required" style="width: 200px" type="text" disabled name="telefone" class="form-control" value="${fornecedor.telefone}"/>
-						
 						</label>
-						<br/>
-				
+										
 						<label>CNPJ:
 						<input required="required" style="width: 250px" type="text" disabled name="cpf" class="form-control" value="${fornecedor.cnpj}"/>
 						</label>						

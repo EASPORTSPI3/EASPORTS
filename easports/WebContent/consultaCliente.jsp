@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <html>
 <head>
@@ -68,7 +69,8 @@
 
 							
 							<label>Data Nasc.:
-								<input required="required" style="width: 200px" type="date" disabled name="datanasc" class="form-control" value="19/07/1988"/>
+								<input required="required" style="width: 200px" type="text" disabled name="datanasc" class="form-control" value="<fmt:formatDate value="${cliente.dataNasc}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>"/>
+								
 							</label>
 							<br/>	
 							

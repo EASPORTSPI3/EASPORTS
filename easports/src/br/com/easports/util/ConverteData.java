@@ -12,10 +12,11 @@ public class ConverteData {
          Date date = null;
          try {
              SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-             date = new Date( (formatter.parse(data)).getTime() );
+             date = formatter.parse(data);
          } catch (Exception e) {            
              System.out.println(e.getMessage());;
          }
+         System.out.println(date);
          return date;
  	}
 	
