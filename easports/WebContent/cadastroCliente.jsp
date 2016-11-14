@@ -11,12 +11,12 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 <link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css" />
+
 <script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
@@ -27,7 +27,7 @@
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
 	<hgroup>
-	<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de clientes:</h1>
+	<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de Clientes:</h1>
 	</hgroup>
 
 
@@ -89,12 +89,12 @@
 
 							
 							<label>Cidade:
-								<input required="required" style="width: 250px" type="text" name="cidade" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 180px" type="text" name="cidade" class="form-control" placeholder="Digite aqui"/>
 							</label>
 
 							
 							<label>Estado:
-								<input required="required" style="width: 80px" type="text" name="estado" class="form-control" placeholder="EX: SP"/>
+								<input required="required" style="width: 180px" type="text" name="estado" class="form-control" placeholder="Digite aqui"/>
 							</label>
 													
 							<label>País:

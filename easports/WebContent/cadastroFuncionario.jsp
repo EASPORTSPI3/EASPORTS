@@ -1,38 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-	
-<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanCargo" id="mbCargo"></jsp:useBean>
-<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanDepartamento" id="mbDepartamento"></jsp:useBean>
-	
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+	<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanDepartamento" id="mbDepartamento"></jsp:useBean>
+	<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanCargo" id="mbCargo"></jsp:useBean>
+
 <!-- TagLibraries (JSTL) -->
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc" %>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
-<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap-theme.min.css" />
-<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
-<title>EA Sports</title>
-</head>
-<body style="max-height: 100%; max-width: 100%; ">
-	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
+	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
+	
+	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+	
+	<title>EA Sports</title>
+</head>
+<body>
+	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
+	
 	<hgroup>
-	<h1
-		style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro
-		de funcionários:</h1>
+	<h1 style="padding-left: 0%; margin-left: 35%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de Funcionário:</h1>
 	</hgroup>
 
 		<div style="width: 50%; padding:0px;"class="col-md-4">
@@ -49,7 +47,7 @@
 							<hr>	
 			
 							<label>Nome do Funcionário:
-								<input required="required" style="width: 250px" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
+								<input required="required" style="width: 285px" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
 							</label>
 						
 							<label>Telefone:
@@ -57,20 +55,20 @@
 							</label>
 				
 							<label>CPF:
-								<input required="required" style="width: 135px" type="text" name="cpf" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 200px" type="text" name="cpf" class="form-control" placeholder="Digite aqui"/>
 							</label>
 							
 							<label>Data Nasc.:
 								<input required="required" style="width: 160px" type="date" name="datanasc" class="form-control" placeholder="Digite aqui"/>
 							</label>
 
-							<label for="pwd">Password:
-							  <input type="password" required="required" style="width: 100px" class="form-control" id="pwd" name="senha">
+							<label for="pwd">Senha:
+							  <input type="password" required="required" style="width: 140px" class="form-control" id="pwd" name="senha" placeholder="Digite aqui">
 							</label>
 						
 							<label>Departamento:
-								<select name="departamento" class="form-control">
-									<option value="">- Selecione uma Opção -</option>
+								<select name="departamento" class="form-control" style="width: 135px">
+									<option value="">- Selecione -</option>
 					
 								<c:forEach items="${mbDepartamento.listagemDepartamentos}" var="d">
 									<option value="${d.idDepartamento}"> ${d.departamento} </option>
@@ -79,15 +77,14 @@
 							</label>
 							
 							<label>Cargo:
-								<select name="cargo" class="form-control">
-									<option value="">- Selecione uma Opção -</option>
+								<select name="cargo" class="form-control" style="width: 135px">
+									<option value="">- Selecione -</option>
 					
 								<c:forEach items="${mbCargo.listagemCargos}" var="c">
 									<option value="${c.idCargo}"> ${c.cargo} </option>
 								</c:forEach>					
 								</select>
 							</label>
-							</br>	
 							<hr>
 									
 							<h4>Endereço:</h4>
@@ -112,12 +109,12 @@
 
 							
 							<label>Cidade:
-								<input required="required" style="width: 250px" type="text" name="cidade" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 180px" type="text" name="cidade" class="form-control" placeholder="Digite aqui"/>
 							</label>
 
 							
 							<label>Estado:
-								<input required="required" style="width: 80px" type="text" name="estado" class="form-control" placeholder="EX: SP"/>
+								<input required="required" style="width: 180px" type="text" name="estado" class="form-control" placeholder="Digite aqui"/>
 							</label>
 													
 							<label>País:

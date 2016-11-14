@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
 	
-	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
 	
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
@@ -40,9 +40,9 @@
 					</div>
 					
 					<div class="panel-body" style="background-color: #f0fff0">
-						<img src="img/${produto.imagem}" width="210" height="160" align="left"/>
+						<img src="img/${produto.imagem}" width="210" height="200" align="left"/>
 						
-						<div class="panel-body" style="margin-top: -10px">
+						<div class="panel-body">
 						
 							<h4><strong style="color: black; margin-left: 15px">Código: </strong>${produto.codigo}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Categoria: </strong>${produto.categoria.nome}</h4>
@@ -53,9 +53,14 @@
 							<label style="color:red; font-size: 16px">${mensagem}</label>
 							<br/><hr>
 							
-							<a href="/easports/consultaProduto.jsp" class="btn btn-sm" 
-		   					   style="background-color: #cacaff; font-size: 14; color: black">Retornar
+							<a href="/easports/consultaProduto.jsp"
+								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
+								color: black; border-color: black; margin-left: 10px">
+								
+								<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Retornar
+								
 							</a>
+							
 							
 						</div>
 						

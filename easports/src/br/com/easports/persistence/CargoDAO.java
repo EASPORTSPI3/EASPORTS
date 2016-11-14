@@ -40,12 +40,12 @@ public class CargoDAO extends DAO{
 
 		rs = stmt.executeQuery();
 
-		Cargo Cargo= new Cargo();
+		Cargo cargo= new Cargo();
 
 		while (rs.next()) {
 
-			Cargo.setIdCargo(rs.getInt("id_cargo"));
-			Cargo.setCargo(rs.getString("cargo"));
+			cargo.setIdCargo(rs.getInt("id_cargo"));
+			cargo.setCargo(rs.getString("cargo"));
 
 		}
 
@@ -53,7 +53,7 @@ public class CargoDAO extends DAO{
 
 		fechaConexao();
 
-		return Cargo;
+		return cargo;
 
 	}
 }

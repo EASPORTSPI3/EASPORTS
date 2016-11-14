@@ -14,9 +14,8 @@ public class ConverteData {
              SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
              date = formatter.parse(data);
          } catch (Exception e) {            
-             System.out.println(e.getMessage());;
+             e.printStackTrace();
          }
-         System.out.println(date);
          return date;
  	}
 	
@@ -28,7 +27,7 @@ public class ConverteData {
         	 Format formatter = new SimpleDateFormat("dd-MM-yyyy");
         	 dataString = formatter.format(data);
          } catch (Exception e) {            
-             System.out.println(e.getMessage());;
+        	 e.printStackTrace();
          }
          return dataString;
  	}

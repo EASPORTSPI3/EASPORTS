@@ -10,7 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>EA Sports</title>
 
-	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/imageZoom.css" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
 
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
@@ -27,16 +29,18 @@
 		<h3 class="text-center">
 		
 		<a href="/easports/consultaProduto.jsp" class="btn btn-sm" 
-		   style="background-color: #cacaff; font-size: 14; color: black; margin-left: -350px; 
-		   margin-right: 110px">Retornar para a página anterior
+		   style="background-color: #fbfecf; font-size: 14; color: black; margin-left: -350px; 
+		   margin-right: 110px; border-color: black">
+								
+			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true" style="margin-right: 7px"></span> Retornar
+								
 		</a>
 		
-		<b>Detalhes do Produto</b>
+		
+		<b style="padding-left: 10%">Detalhes do Produto</b>
 		
 		</h3>
 		<hr/>
-		
-		<br/>
 		
 			<div class="col-md-3" style="width: 1000; margin-left: 85px">
 				<div class="panel panel-success">
@@ -47,10 +51,13 @@
 					</div>
 					
 					<div class="panel-body" style="background-color: #f0fff0">
-						<img src="img/${produto.imagem}" width="510" height="450" align="left"/>
+					
+						<ul class="list-inline gallery">  
+ 							<img class="img-rounded zoom" src="img/${produto.imagem}" width="300" height="250" align="left">
+						</ul>
 						
 						<div class="panel-body" style="margin-top: -10px">
-						
+							 
 							<h4><strong style="color: black; margin-left: 15px">Código: </strong>${produto.codigo}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Fornecedor: </strong>${produto.fornecedor.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Razão Social: </strong>${produto.fornecedor.razaoSocial}</h4>

@@ -1,29 +1,23 @@
 package br.com.easports.control;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.easports.entities.ClientePF;
 import br.com.easports.entities.Endereco;
 import br.com.easports.entities.Fornecedor;
 import br.com.easports.entities.Funcionario;
-import br.com.easports.entities.Pedido;
-import br.com.easports.entities.PessoaFisica;
-import br.com.easports.entities.Produto;
 import br.com.easports.persistence.ClientePFDAO;
 import br.com.easports.persistence.EnderecoDAO;
 import br.com.easports.persistence.FornecedorDAO;
 import br.com.easports.persistence.FuncionarioDAO;
-import br.com.easports.persistence.PedidoDAO;
-import br.com.easports.persistence.ProdutoDAO;
 import br.com.easports.util.ConverteData;
-import br.com.easports.util.FormataValor;
 
 // Servlet responsável por coletar as informações da página web e consultar no 
 // banco de dados, via request - response
@@ -198,6 +192,36 @@ public class ControlePessoa extends HttpServlet {
 					// de clientes
 
 					request.getRequestDispatcher("consultaCliente.jsp").forward(request, response);
+
+				}
+
+			}
+			
+			else if (acao.equalsIgnoreCase("consultarFuncionario")) {
+
+				try {
+
+					String cpf = request.getParameter("cpf");
+
+					Funcionario funcionario = null;
+
+					FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+
+					funcionario = funcionarioDao.findByCpf(cpf);
+
+					if (funcionario == null) {
+						request.setAttribute("mensagem", "Funcionário não encontrado.");
+					} else {
+						request.setAttribute("funcionario", funcionario);
+					}
+
+				} catch (Exception e) {
+
+					request.setAttribute("mensagem", e);
+
+				} finally {
+
+					request.getRequestDispatcher("consultaFuncionario.jsp").forward(request, response);
 
 				}
 
@@ -405,24 +429,18 @@ public class ControlePessoa extends HttpServlet {
 					// mesmo no banco e retorna seu id, criado automaticamente
 					// pelo próprio SQL
 
-					int idEndereço = enderecoDao.insertReturnID(endereco);
+					Integer idEndereço = enderecoDao.insertReturnID(endereco);
 
-					String nome = request.getParameter("nome");
-					String telefone = request.getParameter("telefone");
-					String cpf = request.getParameter("cpf");
-					String dataNasc = request.getParameter("datanasc");
 					Integer departamento = Integer.parseInt(request.getParameter("departamento"));
 					Integer cargo = Integer.parseInt(request.getParameter("cargo"));
-					String senha = request.getParameter("senha");
-					
 					
 					Funcionario funcionario = new Funcionario();
 					
-					funcionario.setNome(nome);
-					funcionario.setTelefone(telefone);
-					funcionario.setCpf(cpf);
-					funcionario.setDataNasc(ConverteData.stringToDate(dataNasc));
-					funcionario.setSenha(senha);
+					funcionario.setNome(request.getParameter("nome"));
+					funcionario.setTelefone(request.getParameter("telefone"));
+					funcionario.setCpf(request.getParameter("cpf"));
+					funcionario.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+					funcionario.setSenha(request.getParameter("senha"));
 					funcionario.setEndereco(endereco);
 					
 					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -438,6 +456,60 @@ public class ControlePessoa extends HttpServlet {
 				}
 			}
 
+			else if (acao.equalsIgnoreCase("autenticar")) {
+
+				String destino = "login.jsp";
+				
+				try {
+
+					String cpf = request.getParameter("cpf");
+					String senha = request.getParameter("senha");
+					
+					FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+
+					Funcionario funcionario = funcionarioDao.findByLoginSenha(cpf, senha);
+					
+					if(funcionario != null){
+						
+						HttpSession session = request.getSession();
+						
+						session.setAttribute("usuarioLogado", funcionario);
+						
+						request.setAttribute("usuarioLogado", funcionario);
+						
+						destino = "index.jsp";
+						
+					}
+					else{
+						
+						throw new Exception("Acesso negado, tente novamente.");
+						
+					}
+					
+				}
+				catch(Exception e){
+					
+					request.setAttribute("mensagem", e.getMessage());
+					
+				}
+				finally{
+					
+					request.getRequestDispatcher(destino).forward(request, response);
+					
+				}
+
+			}
+			
+			else if (acao.equalsIgnoreCase("logout")) {
+				
+				HttpSession session = request.getSession();
+				
+				session.invalidate();
+				
+				response.sendRedirect("/easports/login.jsp");
+				
+			}
+			
 		}
 
 	}

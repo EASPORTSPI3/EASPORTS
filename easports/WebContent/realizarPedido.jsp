@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
 	
-	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
 	
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
@@ -37,14 +37,24 @@
 				<div class="panel panel-success">
 					<div class="panel-heading">
 					
-						<h3 class="text-center"><strong>${produto.nome}</strong></h3>
+						
+					
+						<h3 class="text-center"><strong>${produto.nome}</strong>
+							
+							<a href="/easports/consultaProduto.jsp" class="btn btn-sm" style="background-color: #fbfecf; 
+							   font-size: 14; color: black; margin-left: -480px; margin-right: 290px; border-color: black">
+								
+							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true" style="margin-right: 7px"></span> Retornar
+								
+						</a>
+						</h3>
 						
 					</div>
 					
 					<div class="panel-body" style="background-color: #f0fff0">
-						<img src="img/${produto.imagem}" width="210" height="160" align="left"/>
+						<img src="img/${produto.imagem}" width="260" height="210" align="left"/>
 						
-						<div class="panel-body" style="margin-top: -10px">
+						<div class="panel-body">
 						
 							<h4><strong style="color: black; margin-left: 15px">Código: </strong>${produto.codigo}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Fornecedor: </strong>${produto.fornecedor.nome}</h4>
@@ -53,16 +63,26 @@
 							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: </strong>${produto.quantidade}</h4>		
 							<br/><hr>
 							
-							<label>Quantidade:</label> <input type="text" name="quantidade" placeholder="Digite aqui"required="required"/>
+							<label>ID Cliente:</label> <input type="text" name="idCliente" placeholder="Digite aqui"required="required" style="margin-left: 14px"/>
 							<br/><br/>
 							
-							<label>ID Cliente:</label> <input type="text" name="idCliente" placeholder="Digite aqui"required="required" style="margin-left: 14px"/>
+							<label>Quantidade:</label> <input type="text" name="quantidade" placeholder="Digite aqui"required="required"/>
 							<hr>
 							
-							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
-								   color: black; width: 100px"/>
-							<input type="reset" value="Limpar" id="limpar" class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
- 								   color: black; margin-left: 20px; width: 100px">
+							<button type="submit" class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
+								    color: black; border-color: black" aria-label="Left Align">
+										   
+  								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Confirmar
+  										
+							</button>
+							
+							<button type="reset" class="btn btn-sm" style="background-color: #cacaff; font-size: 14 ; 
+								    color: black; border-color: black; margin-left: 10px" aria-label="Left Align">
+										   
+  								<span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Limpar
+  										
+							</button>
+ 								   
 							<br/><br/>
 							
 							<label style="color:red">${mensagem}</label>

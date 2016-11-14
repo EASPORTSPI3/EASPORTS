@@ -6,18 +6,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <html>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 <link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap-theme.min.css" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css" />
+
 <script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
@@ -31,21 +31,30 @@
 
 	<hgroup>
 		<h1
-			style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Consulta
-			de clientes:</h1>
+			style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Consulta de Clientes:</h1>
 	</hgroup>
-	<br />
+	<br/>
+	
 	<div style="width: 50%; padding: 0px;" class="col-md-4">
-		<form name="formulario" method="post"
-			style="margin-left: 50%; width: 100%;"
-			action="ControlePessoa?acao=consultarpf">
-
-			<label>CPF:</label> <input type="text" name="cpf" required="required" />
-			<input type="submit" value="Pesquisar" id="enviar"
-				class="btn btn-primary" />
-			<h4 style="color: red">${mensagem}</h4>
+	
+		
+		<form id="pesquisa" name="pesquisa" method="post" style="margin-left: 50%" action="ControlePessoa?acao=consultarpf">
+				  
+			<input type="submit" class="btn btn-sm" value="Consultar" style="background-color: #cacaff; 
+				   width: 105; font-size: 14; font: bold;text-align: right;border-color: black"/>
+				<span class="glyphicon glyphicon-search" style="margin-left: -100"></span>
+					    
+				<div class="col-md-3" style="width: 250">
+					<input type="text" id="cpf" name="cpf" class="form-control" required="required" placeholder="Informe o CPF..."/>
+					
+					<h4 style="color: red">${mensagem}</h4>
+					
+				</div>
+				
+				<br/>
+	
 		</form>
-
+	
 		<form style="background-color: #7f7f7f; padding-left: 4%;">
 			<div class="col-md-3"
 				style="width: 100%; margin-left: 50%; padding: 0px;">

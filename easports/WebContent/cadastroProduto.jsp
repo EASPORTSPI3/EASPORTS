@@ -15,10 +15,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
 	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
 	
-	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
 	
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
@@ -31,7 +32,7 @@
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
 	<hgroup>
-		<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de produtos:</h1>
+		<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Cadastro de Produto:</h1>
 		
 	</hgroup>
 			
@@ -82,14 +83,14 @@
 							<label>Imagem do Produto:
 								<input type="file" name="imagem" class="form-control"/>
 							</label>
-
+							<br/>
 							
 							<label>Valor de Venda:
-								<input type="text" name="valorVenda" class="form-control" style="width: 120px"/>
+								<input type="text" name="valorVenda" class="form-control" placeholder="Digite aqui" style="width: 120px"/>
 							</label>
 							
 							<label>Valor de Custo:
-								<input type="text" name="valorCusto" class="form-control" style="width: 120px"/>
+								<input type="text" name="valorCusto" class="form-control" placeholder="Digite aqui" style="width: 120px"/>
 							</label>
 
 				

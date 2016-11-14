@@ -1,41 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <!-- TagLibraries (JSTL) -->
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc" %>
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
-<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/easports/css/bootstrap-theme.min.css" />
-<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
-<title>EA Sports</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
+	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
+	
+	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+	
+	<title>EA Sports</title>
+	
 </head>
 <body>
-<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
+
+	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
 	<hgroup>
 	<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Consulta de Funcionários:</h1>
 	</hgroup>	
+	
 	<br/>
+	
 		<div style="width: 50%; padding:0px;"class="col-md-4">
-		<form name="formulario" method="post" style="margin-left: 50%; width: 100%;" 
-			 action="ControlePessoa?acao=consultarFuncionario">
-			
-		<label>CPF:</label> <input type="text" name="cnpj" required="required"/>
-		<input type="submit" value="Pesquisar" id="enviar" class="btn btn-primary"/>
-		<h4 style="color:red">${mensagem}</h4>			
-	</form>
+		
+		
+		<form id="pesquisa" name="pesquisa" method="post" style="margin-left: 50%" action="ControlePessoa?acao=consultarFuncionario">
+				  
+			<input type="submit" class="btn btn-sm" value="Consultar" style="background-color: #cacaff; 
+				   width: 105; font-size: 14; font: bold;text-align: right;border-color: black"/>
+				<span class="glyphicon glyphicon-search" style="margin-left: -100"></span>
+					    
+				<div class="col-md-3" style="width: 260">
+					<input type="text" id="cnpj" name="cpf" class="form-control" required="required" placeholder="Informe o CPF..."/>
+					
+					<h4 style="color: red">${mensagem}</h4>
+					
+				</div>
+				
+				<br/>
+	
+		</form>
 	
 	<form style="background-color: #7f7f7f; padding-left: 4%; ">
 			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
@@ -46,28 +64,29 @@
 							<hr>							
 							<h4>Dados Gerais:</h4>
 							<hr>	
-							<label>ID do Funcionério: &nbsp
-								<input required="required" style="width: 100px" type="text" disabled name="idFornecedor" class="form-control" value="${funcionario.idCliente}"/> 
+							<label>ID:
+								<input required="required" style="width: 60px" type="text" disabled name="idFuncionario" class="form-control" value="${funcionario.idFuncionario}"/> 
 							</label>
 
 			
-							<label>Nome do Cliente:
+							<label>Nome do Funcionário:
 								<input required="required" style="width: 250px" type="text" disabled name="nome" class="form-control" value="${funcionario.nome}" />
 							</label>
 						
 							<label>Telefone:
-								<input required="required" style="width: 200px" type="text" disabled name="telefone" class="form-control" value="${funcionario.telefone}"/>
+								<input required="required" style="width: 170px" type="text" disabled name="telefone" class="form-control" value="${funcionario.telefone}"/>
 							</label>
 
 				
 							<label>CPF:
-								<input required="required" style="width: 250px" type="text" disabled name="cpf" class="form-control" value="${funcionario.cpf}"/>
+								<input required="required" style="width: 220px" type="text" disabled name="cpf" class="form-control" value="${funcionario.cpf}"/>
 							</label>
 							
-							<label>Data Nasc.:
-								<input required="required" style="width: 200px" type="date" disabled name="datanasc" class="form-control" value="${funcionario.dataNasc}"/>
-							</label>
-							<br/>	
+							<label>Data Nasc.: <input required="required"
+								style="width: 200px" type="text" disabled name="datanasc"
+								class="form-control"
+								value="<fmt:formatDate value="${funcionario.dataNasc}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>" />
+							</label> <br/>
 							
 							<hr>									
 							<h4>Endereço:</h4>
@@ -92,12 +111,12 @@
 
 							
 							<label>Cidade:
-								<input required="required" style="width: 250px" type="text" disabled name="cidade" class="form-control" value="${funcionario.endereco.cidade}"/>
+								<input required="required" style="width: 150px" type="text" disabled name="cidade" class="form-control" value="${funcionario.endereco.cidade}"/>
 							</label>
 
 							
 							<label>Estado:
-								<input required="required" style="width: 80px" type="text" disabled name="estado" class="form-control" value="${funcionario.endereco.estado}"/>
+								<input required="required" style="width: 150px" type="text" disabled name="estado" class="form-control" value="${funcionario.endereco.estado}"/>
 							</label>
 													
 							<label>País:

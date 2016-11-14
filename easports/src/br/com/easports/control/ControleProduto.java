@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.swing.plaf.synth.SynthSliderUI;
 
 import br.com.easports.entities.Categoria;
 import br.com.easports.entities.ClientePF;
@@ -91,15 +92,11 @@ public class ControleProduto extends HttpServlet {
 
 					// definir o local onde o arquivo será salvo
 
-					// String pasta = getServletContext().getRealPath("/img/produtos");
-
+					//Notebook Diego -> System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
+					
+					String pasta = System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
+					
 					//String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
-
-					//Notebook Diego
-					
-					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
-					
-					System.out.println(pasta);
 					
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 
@@ -275,8 +272,6 @@ public class ControleProduto extends HttpServlet {
 						
 						produtoDao2.update(produto);
 						
-						System.out.println(produto.getQuantidade());
-						
 						request.setAttribute("mensagem", "Pedido realizado com sucesso.");
 						
 						request.setAttribute("produto", produto);
@@ -299,7 +294,6 @@ public class ControleProduto extends HttpServlet {
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					System.out.println("erro "+e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
@@ -352,6 +346,8 @@ public class ControleProduto extends HttpServlet {
 						
 						request.setAttribute("lista", lista);
 						
+						request.setAttribute("cpf", cpf);
+						
 						request.setAttribute("valorTotal", valorTotalFormatado);
 						
 					}else{
@@ -363,14 +359,13 @@ public class ControleProduto extends HttpServlet {
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					System.out.println(""+e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 					
-					request.getRequestDispatcher("listagemPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("consultaPedido.jsp").forward(request, response);
 
 				}
 
@@ -449,8 +444,6 @@ public class ControleProduto extends HttpServlet {
 							
 							produtoDao.update(produto);
 							
-							System.out.println(produto.getQuantidade());
-							
 							request.setAttribute("pedido", pedido);
 							
 							request.setAttribute("mensagem", "Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
@@ -479,8 +472,6 @@ public class ControleProduto extends HttpServlet {
 						pedidoDao.update(pedido);
 						
 						produtoDao.update(produto);
-						
-						System.out.println(produto.getQuantidade());
 						
 						request.setAttribute("pedido", pedido);
 						
@@ -517,7 +508,6 @@ public class ControleProduto extends HttpServlet {
 					pedidoRealizado = pedidoDao.findById(idPedido);
 					
 					Integer quantidade = pedidoRealizado.getQuantidade();
-					System.out.println();
 					Produto produto = new Produto();
 					
 					ProdutoDAO produtoDao = new ProdutoDAO();
@@ -558,14 +548,44 @@ public class ControleProduto extends HttpServlet {
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					System.out.println(""+e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("listagemPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("consultaPedido.jsp").forward(request, response);
+
+				}
+			}
+			
+			else if (acao.equalsIgnoreCase("finalizarPedidos")) {
+
+				try {
+					
+					String cpf = request.getParameter("cpf");
+					
+					ClientePFDAO clientePfDao = new ClientePFDAO();
+					
+					ClientePF clientePf = new ClientePF();
+					
+					clientePf = clientePfDao.findByCpf(cpf);
+					
+					PedidoDAO pedidoDao = new PedidoDAO();
+					
+					pedidoDao.finalizaPedidos(clientePf.getIdCliente());
+					
+					request.setAttribute("mensagem", "Pedidos finalizados com sucesso.");
+					
+				} catch (Exception e) {
+
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro de clientes
+
+					request.getRequestDispatcher("consultaPedido.jsp").forward(request, response);
 
 				}
 			}

@@ -146,7 +146,7 @@ public class ClientePFDAO extends DAO{
 		return cliente;
 
 	}
-
+	
 	public List<ClientePF> listAll() throws Exception{
 		
 		String query = "select * from cliente_pf";

@@ -10,6 +10,7 @@ public class Funcionario extends PessoaFisica{
 	private Cargo cargo;
 	private Departamento departamento;
 	private String senha;
+	private Integer idFuncionario;
 	
 	public Funcionario() {
 		
@@ -53,6 +54,13 @@ public class Funcionario extends PessoaFisica{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
+	public Integer getIdFuncionario() {
+		return idFuncionario;
+	}
+
+	public void setIdFuncionario(Integer idFuncionario) {
+		this.idFuncionario = idFuncionario;
+	}
 	
 }

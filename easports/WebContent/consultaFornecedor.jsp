@@ -11,10 +11,13 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
 	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap.min.css"/>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
+	
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
@@ -27,18 +30,30 @@
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 
 	<hgroup>
-	<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Consulta de fornecedores:</h1>
+	<h1 style="padding-left: 0%; margin-left: 37%; color: gray; text-shadow: 2px 2px 5px #000000;">Consulta de Fornecedores:</h1>
 	</hgroup>	
+	
 	<br/>
+	
 		<div style="width: 50%; padding:0px;"class="col-md-4">
-		<form name="formulario" method="post" style="margin-left: 50%; width: 100%;" 
-			 action="ControlePessoa?acao=consultarFornecedor">
-			
-		<label>CNPJ:</label> <input type="text" name="cnpj" required="required"/>
-		<input type="submit" value="Pesquisar" id="enviar" class="btn btn-primary"/>
-		<h4 style="color:red">${mensagem}</h4>
-			
-	</form>
+		
+		
+		<form id="pesquisa" name="pesquisa" method="post" style="margin-left: 50%" action="ControlePessoa?acao=consultarFornecedor">
+				  
+			<input type="submit" class="btn btn-sm" value="Consultar" style="background-color: #cacaff; 
+				   width: 105; font-size: 14; font: bold;text-align: right;border-color: black"/>
+				<span class="glyphicon glyphicon-search" style="margin-left: -100"></span>
+					    
+				<div class="col-md-3" style="width: 270">
+					<input type="text" id="cnpj" name="cnpj" class="form-control" required="required" placeholder="Informe o CNPJ..."/>
+					
+					<h4 style="color: red">${mensagem}</h4>
+					
+				</div>
+				
+				<br/>
+	
+		</form>
 		
 		<form style="background-color: #7f7f7f; padding-left: 4%; ">
 			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
@@ -91,12 +106,12 @@
 
 							
 							<label>Cidade:
-								<input required="required" style="width: 250px" type="text" disabled name="cidade" class="form-control" value="${fornecedor.endereco.cidade}"/>
+								<input required="required" style="width: 180px" type="text" disabled name="cidade" class="form-control" value="${fornecedor.endereco.cidade}"/>
 							</label>
 
 							
 							<label>Estado:
-								<input required="required" style="width: 80px" type="text" disabled name="estado" class="form-control" value="${fornecedor.endereco.estado}"/>
+								<input required="required" style="width: 180px" type="text" disabled name="estado" class="form-control" value="${fornecedor.endereco.estado}"/>
 							</label>
 													
 							<label>País:
