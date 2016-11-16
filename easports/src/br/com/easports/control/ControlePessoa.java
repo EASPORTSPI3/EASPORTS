@@ -25,7 +25,8 @@ import br.com.easports.util.ConverteData;
 @WebServlet("/ControlePessoa")
 public class ControlePessoa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	public static HttpSession session;
+	
 	public ControlePessoa() {
 		super();
 	}
@@ -471,7 +472,7 @@ public class ControlePessoa extends HttpServlet {
 					
 					if(funcionario != null){
 						
-						HttpSession session = request.getSession();
+						session = request.getSession();
 						
 						session.setAttribute("usuarioLogado", funcionario);
 						

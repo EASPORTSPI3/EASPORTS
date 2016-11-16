@@ -1,6 +1,7 @@
 package br.com.easports.util;
 
 import java.text.Format;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,5 +32,13 @@ public class ConverteData {
          }
          return dataString;
  	}
+	
+	public static Date getDataAtual() throws ParseException {        
+	    SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
+	    Date dataAtual = new Date();
+	    String data = sd.format(dataAtual);
+	    Date dataDate = sd.parse(data);
+	    return dataDate;
+	}
 
 }

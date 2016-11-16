@@ -13,19 +13,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.swing.plaf.synth.SynthSliderUI;
 
 import br.com.easports.entities.Categoria;
 import br.com.easports.entities.ClientePF;
 import br.com.easports.entities.Fornecedor;
+import br.com.easports.entities.Funcionario;
 import br.com.easports.entities.Pedido;
 import br.com.easports.entities.Produto;
+import br.com.easports.entities.Venda;
 import br.com.easports.persistence.CategoriaDAO;
 import br.com.easports.persistence.ClientePFDAO;
 import br.com.easports.persistence.FornecedorDAO;
 import br.com.easports.persistence.PedidoDAO;
 import br.com.easports.persistence.ProdutoDAO;
+import br.com.easports.persistence.VendaDAO;
+import br.com.easports.util.ConverteData;
 import br.com.easports.util.FormataValor;
 
 // Servlet responsável por coletar as informações da página web e consultar no 
@@ -563,6 +568,19 @@ public class ControleProduto extends HttpServlet {
 
 				try {
 					
+					//estancioando uma nova venda
+					Venda venda = new Venda();	
+					//pegando o usuario logado na sessão
+					HttpSession session = request.getSession();
+					Funcionario funcionadoLogado =	(Funcionario) session.getAttribute("usuarioLogado");
+					Integer idFuncionario = funcionadoLogado.getIdFuncionario();
+					venda.setDataVenda(ConverteData.getDataAtual());
+					
+					
+					VendaDAO vendaDao = new VendaDAO();
+					
+					int idVenda = vendaDao.insertreturnID(venda,idFuncionario);
+					
 					String cpf = request.getParameter("cpf");
 					
 					ClientePFDAO clientePfDao = new ClientePFDAO();
@@ -573,12 +591,12 @@ public class ControleProduto extends HttpServlet {
 					
 					PedidoDAO pedidoDao = new PedidoDAO();
 					
-					pedidoDao.finalizaPedidos(clientePf.getIdCliente());
+					pedidoDao.finalizaPedidos(clientePf.getIdCliente(), idVenda);
 					
 					request.setAttribute("mensagem", "Pedidos finalizados com sucesso.");
 					
 				} catch (Exception e) {
-
+					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {

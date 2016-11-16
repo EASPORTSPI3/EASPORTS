@@ -105,7 +105,7 @@ public class PedidoDAO extends DAO {
 
 	public ArrayList<Pedido> pedidosNaoFinalizadosPorCliente(Integer id_cliente) throws Exception {
 
-		String query = "select * from pedido where id_cliente = ? and finalizado = 'false'";
+		String query = "select * from pedido where id_cliente = ?";
 
 		abreConexao();
 
@@ -134,7 +134,6 @@ public class PedidoDAO extends DAO {
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
-			pedido.setFinalizado(rs.getBoolean("finalizado"));
 
 			lista.add(pedido);
 
@@ -191,15 +190,16 @@ public class PedidoDAO extends DAO {
 
 	}
 
-	public void finalizaPedidos(Integer idCliente) throws Exception {
+	public void finalizaPedidos(Integer idCliente, Integer idVenda) throws Exception {
 
-		String query = "update pedido set finalizado = 'true' where id_cliente = ?";
+		String query = "update pedido set id_vendas = ? where id_cliente = ?";
 
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
-
-		stmt.setInt(1, idCliente);
+		
+		stmt.setInt(1, idVenda);
+		stmt.setInt(2, idCliente);
 
 		stmt.execute();
 

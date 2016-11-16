@@ -108,10 +108,9 @@
 				<label style="margin-left: 0%; font-size: 18px; color: red"><b>Valor total da compra : ${valorTotal}</b></label>
 				<br/><br/>
 		
-				<a href="/easports/ControleProduto?acao=finalizarPedidos&cpf=${cpf}"
+				<a href="/easports/ControleProduto?acao=finalizarPedidos&cpf=${cpf}&idFuncionario=${usuarioLogado.idFuncionario}"
 						class="btn btn-sm" style="background-color: #fbfecf; font-size: 14 ; 
-						color: black; border-color: black" aria-label="Left Align">
-								
+						color: black; border-color: black" aria-label="Left Align">								
 						<span class="glyphicon glyphicon-ok" style="margin-right: 5px" aria-hidden="true"></span> Finalizar Pedidos
 								
 				</a>
