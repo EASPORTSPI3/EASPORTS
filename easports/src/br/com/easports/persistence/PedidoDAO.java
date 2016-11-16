@@ -105,7 +105,7 @@ public class PedidoDAO extends DAO {
 
 	public ArrayList<Pedido> pedidosNaoFinalizadosPorCliente(Integer id_cliente) throws Exception {
 
-		String query = "select * from pedido where id_cliente = ?";
+		String query = "select * from pedido where id_cliente = ? and id_vendas IS NULL";
 
 		abreConexao();
 
