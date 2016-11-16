@@ -94,9 +94,9 @@ public class ControleProduto extends HttpServlet {
 
 					//Notebook Diego -> System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
 					
-					String pasta = System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
+					//String pasta = System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
 					
-					//String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
+					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
 					
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 

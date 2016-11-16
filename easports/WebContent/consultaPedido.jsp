@@ -12,13 +12,10 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	
 	<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 	<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-		
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css" />
-	
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
@@ -93,23 +90,17 @@
 								
 								<span class="glyphicon glyphicon-pencil" aria-hidden="true" style="margin-right: 5px"></span> Editar
 								
-						</a>
-						
+						</a>						
 						<a href="ControleProduto?acao=excluirPedido&idPedido=${pedido.idPedido}&idCliente=${pedido.cliente.idCliente}"
 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
 								color: black; border-color: black; margin-left: 10px">
 								
 								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px"></span> Excluir
-								
 						</a>
-						
-						</td>
-						
+						</td>	
 					</tr>
-				</c:forEach>
-				
+				</c:forEach>				
 			</tbody>
-
 		</table>
 				<hr style="border-width: 3px">
 				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(lista)}</b></label>
@@ -124,16 +115,9 @@
 						<span class="glyphicon glyphicon-ok" style="margin-right: 5px" aria-hidden="true"></span> Finalizar Pedidos
 								
 				</a>
-		
-				</div>
-				
-			</div>
-			
-		</div>
-		
+				</div>				
+			</div>			
+		</div>		
 	</div>
-	
-	
-	
 </body>
 </html>
