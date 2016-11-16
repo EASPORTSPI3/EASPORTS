@@ -593,7 +593,7 @@ public class ControleProduto extends HttpServlet {
 					
 					pedidoDao.finalizaPedidos(clientePf.getIdCliente(), idVenda);
 					
-					request.setAttribute("mensagem", "Pedidos finalizados com sucesso.");
+					request.setAttribute("mensagem", "Pedidos finalizados com sucesso");
 					
 				} catch (Exception e) {
 					System.out.println(e);
