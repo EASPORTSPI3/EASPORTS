@@ -41,7 +41,9 @@
 				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
 					<div class="panel-heading" >
 					
-						<fieldset id="fieldCli" style="width: 100%;">						
+						<fieldset id="fieldCli" style="width: 100%;">	
+							<h4 style="color:green">${mensagem}</h4>
+							<h4 style="color:red">${mensagem2}</h4>							
 							<hr>							
 							<h4>Dados Gerais:</h4>
 							<hr>	
@@ -123,8 +125,7 @@
 							<hr>
 											
 						<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success" style="width: 100px;"/> 
-						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">	
-						<h4 style="color:green">${mensagem}</h4>			
+						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">		
 						</fieldset>	
 					</div>
 				</div>

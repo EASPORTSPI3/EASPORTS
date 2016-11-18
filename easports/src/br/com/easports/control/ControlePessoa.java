@@ -59,10 +59,15 @@ public class ControlePessoa extends HttpServlet {
 
 				try {
 
+					ClientePFDAO clientePfDao = new ClientePFDAO();
+					
+					ClientePF clientePF = clientePfDao.findByCpf(request.getParameter("cpf"));
+					
+					if(clientePF.getNome()==null||clientePF.getNome()==""){
+						
 					// Instanciando um novo Endereço para receber os parâmetros
 					// passados pelo usuário
 					// através da JSP
-
 					Endereco endereco = new Endereco();
 
 					// Coletando cada parâmetro da página através do "name" do
@@ -110,7 +115,7 @@ public class ControlePessoa extends HttpServlet {
 					// Instanciando a classe responsável por gravar, alterar e
 					// excluir Clientes no banco
 
-					ClientePFDAO clientePfDao = new ClientePFDAO();
+					clientePfDao = new ClientePFDAO();
 
 					// Utilizando o método responsável por receber como
 					// parâmetro um ClientePF e um id de
@@ -125,7 +130,10 @@ public class ControlePessoa extends HttpServlet {
 					// sucesso após o cadastro do cliente
 
 					request.setAttribute("mensagem", "Cliente " + clientePf.getNome() + " cadastrado com sucesso");
-
+					
+					} else {
+						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* já cadastrado em nosso sistema");
+					}
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a
@@ -235,6 +243,11 @@ public class ControlePessoa extends HttpServlet {
 			else if (acao.equalsIgnoreCase("cadastrarFornecedor")) {
 
 				try {
+					
+					FornecedorDAO fornecedorDAO = new FornecedorDAO();
+					Fornecedor fornecedor = fornecedorDAO.findByCnpj(request.getParameter("cnpj"));
+					
+					if(fornecedor.getNome()==null || fornecedor.getNome()==""){
 
 					// Coletando cada parâmetro da página através do "name" do
 					// formulário, utilizando
@@ -281,7 +294,7 @@ public class ControlePessoa extends HttpServlet {
 
 					// Instanciando um novo Fornecedor
 
-					Fornecedor fornecedor = new Fornecedor();
+					fornecedor = new Fornecedor();
 
 					// Utilizando os Setters da classe Fornecedor para passar
 					// valores aos seus atributos
@@ -309,7 +322,9 @@ public class ControlePessoa extends HttpServlet {
 					// sucesso após o cadastro do fornecedor
 
 					request.setAttribute("mensagem", "Fornecedor " + fornecedor.getNome() + " cadastrado com sucesso.");
-
+					} else {
+						request.setAttribute("mensagem2", "CNPJ *" + request.getParameter("cnpj") + "* já cadastrado em nosso sistema");
+					}
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a
@@ -402,6 +417,11 @@ public class ControlePessoa extends HttpServlet {
 			} else if (acao.equalsIgnoreCase("cadastrarfuncionario")) {
 
 				try {
+					
+					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+					Funcionario funcionario = funcionarioDAO.findByCpf(request.getParameter("cpf"));
+					
+					if(funcionario.getNome()==null || funcionario.getNome()==""){
 					// Instanciando um novo Endereço para receber os parâmetros
 					// passados pelo usuário
 					// através da JSP
@@ -436,7 +456,7 @@ public class ControlePessoa extends HttpServlet {
 					Integer departamento = Integer.parseInt(request.getParameter("departamento"));
 					Integer cargo = Integer.parseInt(request.getParameter("cargo"));
 					
-					Funcionario funcionario = new Funcionario();
+					funcionario = new Funcionario();
 					
 					funcionario.setNome(request.getParameter("nome"));
 					funcionario.setTelefone(request.getParameter("telefone"));
@@ -445,11 +465,13 @@ public class ControlePessoa extends HttpServlet {
 					funcionario.setSenha(request.getParameter("senha"));
 					funcionario.setEndereco(endereco);
 					
-					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-					funcionarioDAO.insert(funcionario, idEndereço, departamento, cargo);
+					FuncionarioDAO funcionarioDAO2 = new FuncionarioDAO();
+					funcionarioDAO2.insert(funcionario, idEndereço, departamento, cargo);
 					
 					request.setAttribute("mensagem", "Funcionário " + funcionario.getNome() + " cadastrado com sucesso");
-					
+					} else {
+						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* já cadastrado em nosso sistema");
+					}
 				} catch (Exception e) {
 					request.setAttribute("mensagem", e.getMessage());
 					e.printStackTrace();

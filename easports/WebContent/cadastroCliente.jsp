@@ -40,7 +40,8 @@
 					<div class="panel-heading" >
 					
 						<fieldset id="fieldCli" style="width: 100%;">			
-							
+							<label style="color: green; text-align: center;">${mensagem}</label>	
+							<label style="color: red; text-align: center;">${mensagem2}</label>	
 							<hr>							
 							<h4>Dados Gerais:</h4>
 							<hr>	
@@ -52,12 +53,10 @@
 							<label>Telefone:
 								<input required="required" style="width: 200px" type="text" name="telefone" class="form-control" placeholder="Digite aqui"/>
 							</label>
-
-				
+											
 							<label>CPF:
 								<input required="required" style="width: 250px" type="text" name="cpf" class="form-control" placeholder="Digite aqui"/>
 							</label>
-
 							
 							<label>Data Nasc.:
 								<input required="required" style="width: 200px" type="date" name="datanasc" class="form-control" placeholder="Digite aqui"/>
@@ -104,21 +103,22 @@
 							<hr>
 						<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success" style="width: 100px;"/> 
 						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">
+						
+					<!-- 	pesquisa do cep -->
 						<a href="#" onclick="this.href='ControlePessoa?acao=consultaCep&cep='+document.getElementById('cep').value"
 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
 								color: black; border-color: black; margin-left: 10px">
 								
 								<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Consulta CEP
-						</a>							
-						<label style="color: green; text-align: right;">${mensagem}</label>	
+						</a>	
+												
+
 						</fieldset>													
 					</div>
 				</div>
 			</div>
 		</form>
-
 	</div>
-
 </body>
 </html>
 

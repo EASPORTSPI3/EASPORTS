@@ -40,7 +40,7 @@ public class FuncionarioDAO extends DAO{
 
 		rs = stmt.executeQuery();
 
-		Funcionario funcionario = null;
+		Funcionario funcionario = new Funcionario();
 		
 		while (rs.next()) {
 
