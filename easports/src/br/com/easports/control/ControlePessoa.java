@@ -18,6 +18,7 @@ import br.com.easports.persistence.EnderecoDAO;
 import br.com.easports.persistence.FornecedorDAO;
 import br.com.easports.persistence.FuncionarioDAO;
 import br.com.easports.util.ConverteData;
+import br.com.easports.util.WebServiceCep;
 
 // Servlet responsável por coletar as informações da página web e consultar no 
 // banco de dados, via request - response
@@ -510,7 +511,14 @@ public class ControlePessoa extends HttpServlet {
 				response.sendRedirect("/easports/login.jsp");
 				
 			}
-			
+			else if (acao.equalsIgnoreCase("consultaCep")) {
+				String cep = request.getParameter("cep");
+				Endereco endereco = new Endereco();
+				endereco = WebServiceCep.buscaCep(cep);
+				
+				request.setAttribute("endereco", endereco);
+				request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
+			}
 		}
 
 	}

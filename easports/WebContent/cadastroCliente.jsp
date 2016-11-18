@@ -71,7 +71,7 @@
 							<hr>
 			
 							<label>Logradouro:
-								<input required="required" style="width: 300px" type="text" name="logradouro" class="form-control" placeholder="Digite aqui" />
+								<input required="required" style="width: 300px" type="text" name="logradouro" class="form-control" placeholder="Digite aqui" value="${endereco.logradouro}"/>
 							</label>
 						
 							<label>Número:
@@ -79,22 +79,23 @@
 							</label>
 				
 							<label>CEP:
-								<input required="required" style="width: 120px" type="text" name="cep" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 120px" type="text" name="cep" id="cep" class="form-control" placeholder="Digite aqui" value="${endereco.cep}"/>
+								</a>
 							</label>
 							
 							
 							<label>Bairro:
-								<input required="required" style="width: 220px" type="text" name="bairro" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 220px" type="text" name="bairro" class="form-control" placeholder="Digite aqui" value="${endereco.bairro}"/>
 							</label>
 
 							
 							<label>Cidade:
-								<input required="required" style="width: 180px" type="text" name="cidade" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 180px" type="text" name="cidade" class="form-control" placeholder="Digite aqui" value="${endereco.cidade}"/>
 							</label>
 
 							
 							<label>Estado:
-								<input required="required" style="width: 180px" type="text" name="estado" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 180px" type="text" name="estado" class="form-control" placeholder="Digite aqui" value="${endereco.estado}"/>
 							</label>
 													
 							<label>País:
@@ -102,7 +103,13 @@
 							</label>
 							<hr>
 						<input type="submit" value="Cadastrar" id="enviar" class="btn btn-success" style="width: 100px;"/> 
-						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">	
+						<input type="reset" value="Limpar" id="limpar" class="btn btn-warning" style="width: 100px;">
+						<a href="#" onclick="this.href='ControlePessoa?acao=consultaCep&cep='+document.getElementById('cep').value"
+								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
+								color: black; border-color: black; margin-left: 10px">
+								
+								<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Consulta CEP
+						</a>							
 						<label style="color: green; text-align: right;">${mensagem}</label>	
 						</fieldset>													
 					</div>

@@ -14,10 +14,8 @@
 
 <link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
 <link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css" />
-
 <script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
@@ -89,7 +87,7 @@
 							<hr>
 
 							<label>Logradouro: <input required="required"
-								style="width: 300px" type="text" disabled name="logradouro"
+								style="width: 300px" type="text" disabled  name="logradouro" 
 								class="form-control" value="${cliente.endereco.logradouro}" />
 							</label> <label>Número: <input required="required"
 								style="width: 100px" type="text" disabled name="numero"
