@@ -28,6 +28,48 @@ public class FuncionarioDAO extends DAO{
 		fechaConexao();
 	}
 	
+	public Funcionario findById(Integer idFuncionario) throws Exception {
+
+		String query = "select * from funcionario where id_funcionario = ?";
+		
+		abreConexao();
+		
+		stmt = con.prepareStatement(query);
+
+		stmt.setInt(1, idFuncionario);
+
+		rs = stmt.executeQuery();
+
+		Funcionario funcionario = new Funcionario();
+		
+		while (rs.next()) {
+
+			funcionario = new Funcionario();
+			
+			EnderecoDAO enderecoDAO = new EnderecoDAO();
+			CargoDAO cargoDao = new CargoDAO();
+			DepartamentoDAO departamentoDao = new DepartamentoDAO();
+			
+			funcionario.setIdFuncionario(rs.getInt("id_funcionario"));
+			funcionario.setNome(rs.getString("nome"));
+			funcionario.setTelefone(rs.getString("telefone"));
+			funcionario.setCpf(rs.getString("cpf"));
+			funcionario.setDataNasc(ConverteData.stringToDate(rs.getString("data_nasc")));
+			funcionario.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
+			funcionario.setSenha(rs.getString("senha"));
+			funcionario.setCargo(cargoDao.findById(rs.getInt("id_cargo")));
+			funcionario.setDepartamento(departamentoDao.findById(rs.getInt("id_departamento")));
+
+		}
+		
+		stmt.close();
+		
+		fechaConexao();
+
+		return funcionario;
+
+	}
+	
 	public Funcionario findByCpf(String cpf) throws Exception {
 
 		String query = "select * from funcionario where cpf = ?";

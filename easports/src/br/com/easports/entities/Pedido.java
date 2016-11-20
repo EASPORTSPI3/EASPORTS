@@ -5,8 +5,8 @@ public class Pedido {
 	private Integer idPedido;
 	private Integer idCliente;
 	private Integer idProduto;
+	private Integer idVenda;
 	private Integer quantidade;
-	private boolean finalizado;
 	private Produto produto;
 	private ClientePF cliente;
 	private Double valorTotal;
@@ -73,20 +73,20 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public boolean isFinalizado() {
-		return finalizado;
-	}
-
-	public void setFinalizado(boolean finalizado) {
-		this.finalizado = finalizado;
-	}
-
 	public Integer getIdPedido() {
 		return idPedido;
 	}
 
 	public void setIdPedido(Integer idPedido) {
 		this.idPedido = idPedido;
+	}
+	
+	public Integer getIdVenda() {
+		return idVenda;
+	}
+
+	public void setIdVenda(Integer idVenda) {
+		this.idVenda = idVenda;
 	}
 
 	public Double getValorTotal() {

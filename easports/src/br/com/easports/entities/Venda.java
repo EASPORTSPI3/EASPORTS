@@ -6,17 +6,14 @@ public class Venda {
 	private Integer idVenda;
 	private Date dataVenda;
 	private Funcionario funcionario;
-	private boolean finalizado = true;
-	
 	
 	public Venda() {
 
 	}
-	public Venda(Integer idVenda, Date dataVenda, Funcionario funcionario, boolean finalizado) {
+	public Venda(Integer idVenda, Date dataVenda, Funcionario funcionario) {
 		this.idVenda = idVenda;
 		this.dataVenda = dataVenda;
 		this.funcionario = funcionario;
-		this.finalizado = finalizado;
 	}
 	
 	public Integer getIdVenda() {
@@ -37,12 +34,5 @@ public class Venda {
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
-	public boolean isFinalizado() {
-		return finalizado;
-	}
-	public void setFinalizado(boolean finalizado) {
-		this.finalizado = finalizado;
-	}
-	
 	
 }

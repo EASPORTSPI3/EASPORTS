@@ -451,6 +451,8 @@ public class ControleProduto extends HttpServlet {
 							
 							request.setAttribute("pedido", pedido);
 							
+							request.setAttribute("produto", produto);
+							
 							request.setAttribute("mensagem", "Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
 							
 						}
@@ -479,6 +481,8 @@ public class ControleProduto extends HttpServlet {
 						produtoDao.update(produto);
 						
 						request.setAttribute("pedido", pedido);
+						
+						request.setAttribute("produto", produto);
 						
 						request.setAttribute("mensagem", "Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
 						
@@ -569,13 +573,17 @@ public class ControleProduto extends HttpServlet {
 				try {
 					
 					//estancioando uma nova venda
-					Venda venda = new Venda();	
-					//pegando o usuario logado na sessão
-					HttpSession session = request.getSession();
-					Funcionario funcionadoLogado =	(Funcionario) session.getAttribute("usuarioLogado");
-					Integer idFuncionario = funcionadoLogado.getIdFuncionario();
-					venda.setDataVenda(ConverteData.getDataAtual());
+					Venda venda = new Venda();
 					
+					//pegando o usuario logado na sessão
+					
+					HttpSession session = request.getSession();
+					
+					Funcionario funcionadoLogado = (Funcionario) session.getAttribute("usuarioLogado");
+					
+					Integer idFuncionario = funcionadoLogado.getIdFuncionario();
+					
+					venda.setDataVenda(ConverteData.getDataAtual());
 					
 					VendaDAO vendaDao = new VendaDAO();
 					
@@ -596,7 +604,6 @@ public class ControleProduto extends HttpServlet {
 					request.setAttribute("mensagem", "Pedidos finalizados com sucesso");
 					
 				} catch (Exception e) {
-					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {

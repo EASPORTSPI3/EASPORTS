@@ -1,22 +1,22 @@
 package br.com.easports.persistence;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 
+import br.com.easports.entities.Funcionario;
 import br.com.easports.entities.Venda;
 import br.com.easports.util.ConverteData;
 
 public class VendaDAO extends DAO {
 
 	public void insert(Venda venda) throws Exception {
-		String query = "insert into Pedido(data_venda, id_funcionario, finalizado)VALUES(?,?,?)";
+		String query = "insert into Pedido(data_venda, id_funcionario)VALUES(?,?)";
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
 
 		stmt.setString(1, ConverteData.dateToString(venda.getDataVenda()));
 		stmt.setInt(2, venda.getFuncionario().getIdFuncionario());
-		stmt.setBoolean(3, venda.isFinalizado());
+		
 		stmt.execute();
 
 		stmt.close();
@@ -38,6 +38,7 @@ public class VendaDAO extends DAO {
 		stmt.execute();
 
 		rs = stmt.getGeneratedKeys();
+		
 		while (rs.next()) {
 
 			idVenda = rs.getInt(1);
@@ -48,10 +49,10 @@ public class VendaDAO extends DAO {
 		return idVenda;
 	}
 	
-	public void finalizaPedidos(Integer idVenda) throws Exception {
-
-		String query = "update venda set finalizado = 'true' where id_cliente = ?";
-
+	public Venda findById(Integer idVenda) throws Exception {
+		
+		String query = "select * from vendas where id_venda = ?";
+		
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
@@ -59,11 +60,28 @@ public class VendaDAO extends DAO {
 		stmt.setInt(1, idVenda);
 
 		stmt.execute();
+		
+		Venda venda = null;
+		
+		while(rs.next()){
+			
+			FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+			
+			venda = new Venda();
+			
+			Funcionario funcionario = new Funcionario();
+			
+			venda.setIdVenda(rs.getInt("id_venda"));
+			venda.setFuncionario(funcionarioDao.findById(rs.getInt("id_funcionario")));
+			venda.setDataVenda(ConverteData.stringToDate(rs.getString("data_venda")));
+			
+		}
 
 		stmt.close();
-
+		
 		fechaConexao();
-
+		
+		return venda;
 	}
 
 }

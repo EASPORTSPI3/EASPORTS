@@ -93,6 +93,12 @@ finalizado boolean default false,
 foreign key(id_cliente) references cliente_pf(id_cliente),
 foreign key(id_produto) references produto(id_produto));
 
+create table Vendas(
+id_vendas integer not null primary key autoincrement,
+data_venda Date not null,
+id_funcionario integer not null,
+foreign key(id_funcionario) references funcionario(id_funcionario));
+
 create table Categoria(
 id_categoria integer primary key autoincrement,
 categoria varchar(20) not null);

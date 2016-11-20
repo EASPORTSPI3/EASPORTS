@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.easports.entities.Pedido;
 import br.com.easports.entities.Produto;
+import br.com.easports.entities.Venda;
 import br.com.easports.util.FormataValor;
 
 public class PedidoDAO extends DAO {
@@ -91,7 +92,6 @@ public class PedidoDAO extends DAO {
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.setQuantidade(rs.getInt("quantidade"));
-			pedido.setFinalizado(rs.getBoolean("finalizado"));
 
 		}
 
@@ -105,7 +105,7 @@ public class PedidoDAO extends DAO {
 
 	public ArrayList<Pedido> pedidosNaoFinalizadosPorCliente(Integer id_cliente) throws Exception {
 
-		String query = "select * from pedido where id_cliente = ? and id_vendas IS NULL";
+		String query = "select * from pedido where id_cliente = ? and id_vendas is null";
 
 		abreConexao();
 
@@ -149,7 +149,7 @@ public class PedidoDAO extends DAO {
 
 	public ArrayList<Pedido> pedidosFinalizadosPorCliente(Integer id_cliente) throws Exception {
 
-		String query = "select * from pedido where id_cliente = ? and finalizado = 'true'";
+		String query = "select * from pedido where id_cliente = ? and id_vendas is not null";
 
 		abreConexao();
 
@@ -167,8 +167,11 @@ public class PedidoDAO extends DAO {
 
 			ClientePFDAO clientePfDao = new ClientePFDAO();
 			ProdutoDAO produtoDao = new ProdutoDAO();
+			VendaDAO vendaDao = new VendaDAO();
 
 			Pedido pedido = new Pedido();
+			Venda venda = new Venda();
+			venda = vendaDao.findById(rs.getInt("id_venda"));
 
 			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
@@ -176,7 +179,7 @@ public class PedidoDAO extends DAO {
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
-			pedido.setFinalizado(rs.getBoolean("finalizado"));
+			pedido.setIdVenda(rs.getInt("id_venda"));
 
 			lista.add(pedido);
 
@@ -192,7 +195,7 @@ public class PedidoDAO extends DAO {
 
 	public void finalizaPedidos(Integer idCliente, Integer idVenda) throws Exception {
 
-		String query = "update pedido set id_vendas = ? where id_cliente = ?";
+		String query = "update pedido set id_vendas = ?, finalizado = 'true' where id_cliente = ? and finalizado = 'false'";
 
 		abreConexao();
 
@@ -236,7 +239,7 @@ public class PedidoDAO extends DAO {
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
-			pedido.setFinalizado(rs.getBoolean("finalizado"));
+			pedido.setIdVenda(rs.getInt("id_venda"));
 
 			lista.add(pedido);
 

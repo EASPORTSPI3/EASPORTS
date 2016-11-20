@@ -58,11 +58,6 @@
 							</label>
 							<hr>
 							
-<%-- 							<a href="/easports/ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}&idProduto=${pedido.produto.idProduto}"
-								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
-								color: black; margin-top: 20px; margin-left: 15%">Salvar
-							</a> --%>
-							
 							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; 
 								   margin-left: 13%; font-size: 14; color: black; width: 100px"/>
 						
