@@ -540,6 +540,8 @@ public class ControlePessoa extends HttpServlet {
 				
 				request.setAttribute("endereco", endereco);
 				request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
+			}else if (acao.equalsIgnoreCase("editarPessoa")) {
+				
 			}
 		}
 

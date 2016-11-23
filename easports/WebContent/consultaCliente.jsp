@@ -19,6 +19,8 @@
 <script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/easports/js/js.js"></script>
+
 
 <title>EA Sports</title>
 
@@ -53,7 +55,7 @@
 	
 		</form>
 	
-		<form style="background-color: #7f7f7f; padding-left: 4%;">
+		<form style="background-color: #7f7f7f; padding-left: 4%;" action="ControlePessoa?acao=editarPessoa">
 			<div class="col-md-3"
 				style="width: 100%; margin-left: 50%; padding: 0px;">
 				<div class="panel"
@@ -69,7 +71,7 @@
 								class="form-control" value="${cliente.idCliente}" />
 							</label> <label>Nome do Cliente: <input required="required"
 								style="width: 250px" type="text" disabled name="nome"
-								class="form-control" value="${cliente.nome}" />
+								class="form-control" id="name" value="${cliente.nome}" />
 							</label> <label>Telefone: <input required="required"
 								style="width: 200px" type="text" disabled name="telefone"
 								class="form-control" value="${cliente.telefone}" />
@@ -109,6 +111,9 @@
 								class="form-control" value="${cliente.endereco.pais}" />
 							</label>
 						</fieldset>
+						<br/>
+						<input type="button" value="Editar" id="editar" class="btn btn-success"/> 
+						<input type="button" value="Salvar" id="enviar" class="btn btn-success"/> 
 					</div>
 				</div>
 			</div>
