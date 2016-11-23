@@ -3,18 +3,104 @@ package br.com.easports.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.sqlite.date.DateFormatUtils;
-
 import br.com.easports.entities.ClientePF;
-import br.com.easports.entities.Endereco;
 import br.com.easports.util.ConverteData;
 
-public class ClientePFDAO extends DAO{
-	
-	
-	public void insert(ClientePF cliente, int idEndereco) throws Exception {
+public class ClientePFDAO extends DAO {
 
-		String query = "insert into Cliente_PF(nome, telefone, cpf, data_nascimento, id_endereco)VALUES(?,?,?,?,?)";
+	public void delete(final Integer id_cliente) throws Exception {
+
+		final String query = "delete from cliente_pf where id_cliente_pf = ?";
+
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setInt(1, id_cliente);
+
+		stmt.execute();
+
+		stmt.close();
+
+		fechaConexao();
+
+	}
+
+	public ClientePF findByCpf(final String cpf) throws Exception {
+
+		final String query = "select * from cliente_pf where cpf = ?";
+
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setString(1, cpf);
+
+		rs = stmt.executeQuery();
+
+		final ClientePF cliente = new ClientePF();
+
+		while (rs.next()) {
+
+			final EnderecoDAO enderecoDAO = new EnderecoDAO();
+
+			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
+			cliente.setNome(rs.getString("nome"));
+			cliente.setTelefone(rs.getString("telefone"));
+			cliente.setCpf(rs.getString("cpf"));
+			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
+			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
+
+		}
+
+		stmt.close();
+
+		fechaConexao();
+
+		return cliente;
+
+	}
+
+	public ClientePF findById(final Integer id_cliente) throws Exception {
+
+		final String query = "select * from cliente_pf where id_cliente_pf = ?";
+
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setInt(1, id_cliente);
+
+		rs = stmt.executeQuery();
+
+		ClientePF cliente = null;
+
+		while (rs.next()) {
+
+			cliente = new ClientePF();
+
+			final EnderecoDAO enderecoDAO = new EnderecoDAO();
+
+			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
+			cliente.setNome(rs.getString("nome"));
+			cliente.setTelefone(rs.getString("telefone"));
+			cliente.setCpf(rs.getString("cpf"));
+			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
+			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
+
+		}
+
+		stmt.close();
+
+		fechaConexao();
+
+		return cliente;
+
+	}
+
+	public void insert(final ClientePF cliente, final int idEndereco) throws Exception {
+
+		final String query = "insert into Cliente_PF(nome, telefone, cpf, data_nascimento, id_endereco)VALUES(?,?,?,?,?)";
 
 		abreConexao();
 
@@ -34,10 +120,48 @@ public class ClientePFDAO extends DAO{
 
 	}
 
-	public void update(ClientePF cliente) throws Exception {
+	public List<ClientePF> listAll() throws Exception {
 
-		String query = "update cliente set nome = ?, telefone = ?, cpf = ?, data_nascimento = ?, id_endereco = ? where id_cliente_pf = ?";
+		final String query = "select * from cliente_pf";
 
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		rs = stmt.executeQuery();
+
+		final List<ClientePF> lista = new ArrayList<ClientePF>();
+
+		while (rs.next()) {
+
+			final ClientePF cliente = new ClientePF();
+
+			final EnderecoDAO enderecoDAO = new EnderecoDAO();
+
+			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
+			cliente.setNome(rs.getString("nome"));
+			cliente.setTelefone(rs.getString("telefone"));
+			cliente.setCpf(rs.getString("cpf"));
+			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
+			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
+
+			lista.add(cliente);
+
+		}
+
+		stmt.close();
+
+		fechaConexao();
+
+		return lista;
+
+	}
+
+	public void update(final ClientePF cliente) throws Exception {
+
+		final String query = "update Cliente_PF set nome = ?, telefone = ?, cpf = ?, data_nascimento = ? where id_cliente_pf = ?";
+
+		con = null;
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
@@ -45,9 +169,7 @@ public class ClientePFDAO extends DAO{
 		stmt.setString(1, cliente.getNome());
 		stmt.setString(2, cliente.getTelefone());
 		stmt.setString(3, cliente.getCpf());
-		stmt.setString(4, ConverteData.dateToString(cliente.getDataNasc()));
-		stmt.setInt(5, cliente.getEndereco().getId_endereco());
-		stmt.setInt(6, cliente.getIdCliente());
+		stmt.setObject(4, cliente.getIdCliente());
 
 		stmt.execute();
 
@@ -55,133 +177,6 @@ public class ClientePFDAO extends DAO{
 
 		fechaConexao();
 
-	}
-
-	public void delete(Integer id_cliente) throws Exception {
-
-		String query = "delete from cliente_pf where id_cliente_pf = ?";
-
-		abreConexao();
-
-		stmt = con.prepareStatement(query);
-
-		stmt.setInt(1, id_cliente);
-
-		stmt.execute();
-
-		stmt.close();
-
-		fechaConexao();
-
-	}
-
-	public ClientePF findById(Integer id_cliente) throws Exception {
-
-		String query = "select * from cliente_pf where id_cliente_pf = ?";
-
-		abreConexao();
-		
-		stmt = con.prepareStatement(query);
-
-		stmt.setInt(1, id_cliente);
-
-		rs = stmt.executeQuery();
-
-		ClientePF cliente = null;
-
-		while (rs.next()) {
-
-			cliente = new ClientePF();
-			
-			EnderecoDAO enderecoDAO = new EnderecoDAO();
-			
-			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
-			cliente.setNome(rs.getString("nome"));
-			cliente.setTelefone(rs.getString("telefone"));
-			cliente.setCpf(rs.getString("cpf"));
-			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
-			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
-
-		}
-		
-		stmt.close();
-		
-		fechaConexao();
-
-		return cliente;
-
-	}
-	
-	public ClientePF findByCpf(String cpf) throws Exception {
-
-		String query = "select * from cliente_pf where cpf = ?";
-
-		abreConexao();
-		
-		stmt = con.prepareStatement(query);
-
-		stmt.setString(1, cpf);
-
-		rs = stmt.executeQuery();
-
-		ClientePF cliente = new ClientePF();
-		
-		while (rs.next()) {
-
-			EnderecoDAO enderecoDAO = new EnderecoDAO();
-			
-			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
-			cliente.setNome(rs.getString("nome"));
-			cliente.setTelefone(rs.getString("telefone"));
-			cliente.setCpf(rs.getString("cpf"));
-			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
-			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
-
-		}
-		
-		stmt.close();
-		
-		fechaConexao();
-
-		return cliente;
-
-	}
-	
-	public List<ClientePF> listAll() throws Exception{
-		
-		String query = "select * from cliente_pf";
-		
-		abreConexao();
-		
-		stmt = con.prepareStatement(query);
-		
-		rs = stmt.executeQuery();
-		
-		List<ClientePF> lista = new ArrayList<ClientePF>();
-		
-		while(rs.next()){
-			
-			ClientePF cliente = new ClientePF();
-			
-			EnderecoDAO enderecoDAO = new EnderecoDAO();
-			
-			cliente.setIdCliente(rs.getInt("id_cliente_pf"));
-			cliente.setNome(rs.getString("nome"));
-			cliente.setTelefone(rs.getString("telefone"));
-			cliente.setCpf(rs.getString("cpf"));
-			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
-			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
-			
-			lista.add(cliente);
-			
-		}
-		
-		stmt.close();
-		
-		fechaConexao();
-		
-		return lista;
-		
 	}
 
 }

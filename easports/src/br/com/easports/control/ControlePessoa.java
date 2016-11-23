@@ -551,9 +551,6 @@ public class ControlePessoa extends HttpServlet {
 
 			} else if (acao.equalsIgnoreCase("editarPessoa")) {
 
-				final String cpf = request.getParameter("cpf");
-				System.out.println(cpf);
-
 				try {
 
 					// Instanciando a classe respons�vel por gravar, alterar e
@@ -581,9 +578,8 @@ public class ControlePessoa extends HttpServlet {
 					enderecoDao.update(endereco);
 
 					// altera os dados do cliente
-					clientePF.setNome(request.getParameter("nome"));
 					clientePF.setTelefone(request.getParameter("telefone"));
-					clientePF.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+					clientePF.setNome(request.getParameter("nome"));
 					clientePF.setEndereco(endereco);
 
 					// atualiza o cliente
@@ -603,7 +599,7 @@ public class ControlePessoa extends HttpServlet {
 					// Redirecionando novamente para a mesma p�gina de cadastro
 					// de clientes
 
-					request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
+					request.getRequestDispatcher("consultaCliente.jsp").forward(request, response);
 
 				}
 

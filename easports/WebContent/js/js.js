@@ -10,7 +10,7 @@ function editar(){
 	
 	for(var i = 0; i < all.length; i++){
 		
-		if(all[i].name  == "idFornecedor" || all[i].name == "cpf"){
+		if(all[i].name  == "idCliente"){
 			all[i].disabled = true;
 		}else{
 			all[i].disabled = false;

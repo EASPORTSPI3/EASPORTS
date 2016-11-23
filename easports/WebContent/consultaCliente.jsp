@@ -67,7 +67,7 @@
 							<h4>Dados Gerais:</h4>
 							<hr>
 							<label>ID do Cliente: &nbsp <input required="required"
-								style="width: 100px" type="text" disabled name="idFornecedor"
+								style="width: 100px" type="text" disabled name="idCliente"
 								class="form-control" value="${cliente.idCliente}" />
 							</label> <label>Nome do Cliente: <input required="required"
 								style="width: 250px" type="text" disabled name="nome"
