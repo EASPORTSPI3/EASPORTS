@@ -20,39 +20,48 @@ import br.com.easports.persistence.FuncionarioDAO;
 import br.com.easports.util.ConverteData;
 import br.com.easports.util.WebServiceCep;
 
-// Servlet responsável por coletar as informações da página web e consultar no 
+// Servlet responsï¿½vel por coletar as informaï¿½ï¿½es da pï¿½gina web e consultar no
 // banco de dados, via request - response
 
 @WebServlet("/ControlePessoa")
 public class ControlePessoa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static HttpSession session;
-	
+
 	public ControlePessoa() {
 		super();
 	}
 
-	// método responsável por coletar as informações dos botões submit, nas
-	// páginas JSP (Java Server Pages)
+	// mï¿½todo responsï¿½vel por coletar as informaï¿½ï¿½es dos botï¿½es submit, nas
+	// pï¿½ginas JSP (Java Server Pages)
 
-	protected void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	@Override
+	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+		execute(request, response);
+	}
 
-		// Variável responsável por coletar a ação trazida pelo formulário e
+	@Override
+	protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+		execute(request, response);
+	}
+
+	protected void execute(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+
+		// Variï¿½vel responsï¿½vel por coletar a aï¿½ï¿½o trazida pelo formulï¿½rio e
 		// executar o
-		// método específico para seu tratamento
+		// mï¿½todo especï¿½fico para seu tratamento
 
-		String acao = request.getParameter("acao");
+		final String acao = request.getParameter("acao");
 
-		// if/else responsável por comparar a ação trazida através do formulário
-		// com as opções possíveis
-		// de serem executadas pela página. Ex: cadastrar pessoa física,
+		// if/else responsï¿½vel por comparar a aï¿½ï¿½o trazida atravï¿½s do formulï¿½rio
+		// com as opï¿½ï¿½es possï¿½veis
+		// de serem executadas pela pï¿½gina. Ex: cadastrar pessoa fï¿½sica,
 		// consultar fornecedores,
 		// cadastrar produtos etc...
 
 		if (acao != null) {
 
-			// Se o valor da ação recebida pelo formulário for "cadastrarpf",
+			// Se o valor da aï¿½ï¿½o recebida pelo formulï¿½rio for "cadastrarpf",
 			// execute o bloco abaixo:
 
 			if (acao.equalsIgnoreCase("cadastrarpf")) {
@@ -60,90 +69,90 @@ public class ControlePessoa extends HttpServlet {
 				try {
 
 					ClientePFDAO clientePfDao = new ClientePFDAO();
-					
-					ClientePF clientePF = clientePfDao.findByCpf(request.getParameter("cpf"));
-					
-					if(clientePF.getNome()==null||clientePF.getNome()==""){
-						
-					// Instanciando um novo Endereço para receber os parâmetros
-					// passados pelo usuário
-					// através da JSP
-					Endereco endereco = new Endereco();
 
-					// Coletando cada parâmetro da página através do "name" do
-					// formulário, utilizando
-					// o request.getParameter() e atribuindo à entidade Endereco
-					// através dos setters
+					final ClientePF clientePF = clientePfDao.findByCpf(request.getParameter("cpf"));
 
-					endereco.setLogradouro(request.getParameter("logradouro"));
-					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
-					endereco.setCep(request.getParameter("cep"));
-					endereco.setBairro(request.getParameter("bairro"));
-					endereco.setCidade(request.getParameter("cidade"));
-					endereco.setEstado(request.getParameter("estado"));
-					endereco.setPais(request.getParameter("pais"));
+					if (clientePF.getNome() == null || clientePF.getNome() == "") {
 
-					// Instanciando a classe responsável por gravar, alterar e
-					// excluir Endereços no banco
+						// Instanciando um novo Endereï¿½o para receber os parï¿½metros
+						// passados pelo usuï¿½rio
+						// atravï¿½s da JSP
+						final Endereco endereco = new Endereco();
 
-					EnderecoDAO enderecoDao = new EnderecoDAO();
+						// Coletando cada parï¿½metro da pï¿½gina atravï¿½s do "name" do
+						// formulï¿½rio, utilizando
+						// o request.getParameter() e atribuindo ï¿½ entidade Endereco
+						// atravï¿½s dos setters
 
-					// Utilizando o método que recebe como parâmetro um objeto
-					// endereço, grava o
-					// mesmo no banco e retorna seu id, criado automaticamente
-					// pelo próprio SQL
+						endereco.setLogradouro(request.getParameter("logradouro"));
+						endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
+						endereco.setCep(request.getParameter("cep"));
+						endereco.setBairro(request.getParameter("bairro"));
+						endereco.setCidade(request.getParameter("cidade"));
+						endereco.setEstado(request.getParameter("estado"));
+						endereco.setPais(request.getParameter("pais"));
 
-					int idEndereço = enderecoDao.insertReturnID(endereco);
+						// Instanciando a classe responsï¿½vel por gravar, alterar e
+						// excluir Endereï¿½os no banco
 
-					// Instanciando um novo ClientePF para receber os parâmetros
-					// passados pelo usuário
-					// através da JSP
+						final EnderecoDAO enderecoDao = new EnderecoDAO();
 
-					ClientePF clientePf = new ClientePF();
+						// Utilizando o mï¿½todo que recebe como parï¿½metro um objeto
+						// endereï¿½o, grava o
+						// mesmo no banco e retorna seu id, criado automaticamente
+						// pelo prï¿½prio SQL
 
-					// Coletando cada parâmetro da página através do "name" do
-					// formulário, utilizando
-					// o request.getParameter() e atribuindo à entidade
-					// ClientePF através dos setters
+						final int idEndereco = enderecoDao.insertReturnID(endereco);
 
-					clientePf.setNome(request.getParameter("nome"));
-					clientePf.setTelefone(request.getParameter("telefone"));
-					clientePf.setCpf(request.getParameter("cpf"));
-					clientePf.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
-					clientePf.setEndereco(endereco);
+						// Instanciando um novo ClientePF para receber os parï¿½metros
+						// passados pelo usuï¿½rio
+						// atravï¿½s da JSP
 
-					// Instanciando a classe responsável por gravar, alterar e
-					// excluir Clientes no banco
+						final ClientePF clientePf = new ClientePF();
 
-					clientePfDao = new ClientePFDAO();
+						// Coletando cada parï¿½metro da pï¿½gina atravï¿½s do "name" do
+						// formulï¿½rio, utilizando
+						// o request.getParameter() e atribuindo ï¿½ entidade
+						// ClientePF atravï¿½s dos setters
 
-					// Utilizando o método responsável por receber como
-					// parâmetro um ClientePF e um id de
-					// Endereço, gravar o Cliente no banco e atribuir a ele este
-					// Endereço, através da coluna
-					// id_endereco, localizada na tabela cliente_pf
+						clientePf.setNome(request.getParameter("nome"));
+						clientePf.setTelefone(request.getParameter("telefone"));
+						clientePf.setCpf(request.getParameter("cpf"));
+						clientePf.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+						clientePf.setEndereco(endereco);
 
-					clientePfDao.insert(clientePf, idEndereço);
+						// Instanciando a classe responsï¿½vel por gravar, alterar e
+						// excluir Clientes no banco
 
-					// retornando para a página, através do método
-					// request.setAttribute(), uma mensagem de
-					// sucesso após o cadastro do cliente
+						clientePfDao = new ClientePFDAO();
 
-					request.setAttribute("mensagem", "Cliente " + clientePf.getNome() + " cadastrado com sucesso");
-					
+						// Utilizando o mï¿½todo responsï¿½vel por receber como
+						// parï¿½metro um ClientePF e um id de
+						// Endereï¿½o, gravar o Cliente no banco e atribuir a ele este
+						// Endereï¿½o, atravï¿½s da coluna
+						// id_endereco, localizada na tabela cliente_pf
+
+						clientePfDao.insert(clientePf, idEndereco);
+
+						// retornando para a pï¿½gina, atravï¿½s do mï¿½todo
+						// request.setAttribute(), uma mensagem de
+						// sucesso apï¿½s o cadastro do cliente
+
+						request.setAttribute("mensagem", "Cliente " + clientePf.getNome() + " cadastrado com sucesso");
+
 					} else {
-						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* já cadastrado em nosso sistema");
+						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* jï¿½ cadastrado em nosso sistema");
 					}
-				} catch (Exception e) {
+				} catch (final Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
+					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
 					// mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
+					// Redirecionando novamente para a mesma pï¿½gina de cadastro
 					// de clientes
 
 					request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
@@ -152,53 +161,53 @@ public class ControlePessoa extends HttpServlet {
 
 			}
 
-			// Se o valor da ação recebida pelo formulário for "consultarpf",
+			// Se o valor da aï¿½ï¿½o recebida pelo formulï¿½rio for "consultarpf",
 			// execute o bloco abaixo:
 
 			else if (acao.equalsIgnoreCase("consultarpf")) {
 
 				try {
 
-					// Coletando da página o parâmetro "cpf", através do "name"
-					// do formulário, utilizando
-					// o método request.getParameter()
+					// Coletando da pï¿½gina o parï¿½metro "cpf", atravï¿½s do "name"
+					// do formulï¿½rio, utilizando
+					// o mï¿½todo request.getParameter()
 
-					String cpf = request.getParameter("cpf");
+					final String cpf = request.getParameter("cpf");
 
 					// Instanciando um novo ClientePF
 
 					ClientePF cliente = new ClientePF();
 
-					// Instanciando a classe responsável por gravar, alterar e
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
 					// excluir Clientes no banco
 
-					ClientePFDAO clientePfDao = new ClientePFDAO();
+					final ClientePFDAO clientePfDao = new ClientePFDAO();
 
-					// Utilizando o método que recebe como parâmetro um número
+					// Utilizando o mï¿½todo que recebe como parï¿½metro um nï¿½mero
 					// de cpf e retorna os dados
 					// do cliente a qual ele pertence
 
 					cliente = clientePfDao.findByCpf(cpf);
 
-					// Retornando para a página JSP o objeto cliente e
+					// Retornando para a pï¿½gina JSP o objeto cliente e
 					// atribuindo a ele o nome "cliente"
 
 					if (cliente.getIdCliente() == null) {
-						request.setAttribute("mensagem", "Cliente não encontrado.");
+						request.setAttribute("mensagem", "Cliente nï¿½o encontrado.");
 					} else {
 						request.setAttribute("cliente", cliente);
 					}
 
-				} catch (Exception e) {
+				} catch (final Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
+					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
 					// mensagem de erro
 
 					request.setAttribute("mensagem", e);
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de consulta
+					// Redirecionando novamente para a mesma pï¿½gina de consulta
 					// de clientes
 
 					request.getRequestDispatcher("consultaCliente.jsp").forward(request, response);
@@ -206,26 +215,26 @@ public class ControlePessoa extends HttpServlet {
 				}
 
 			}
-			
+
 			else if (acao.equalsIgnoreCase("consultarFuncionario")) {
 
 				try {
 
-					String cpf = request.getParameter("cpf");
+					final String cpf = request.getParameter("cpf");
 
 					Funcionario funcionario = null;
 
-					FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+					final FuncionarioDAO funcionarioDao = new FuncionarioDAO();
 
 					funcionario = funcionarioDao.findByCpf(cpf);
 
 					if (funcionario == null) {
-						request.setAttribute("mensagem", "Funcionário não encontrado.");
+						request.setAttribute("mensagem", "Funcionï¿½rio nï¿½o encontrado.");
 					} else {
 						request.setAttribute("funcionario", funcionario);
 					}
 
-				} catch (Exception e) {
+				} catch (final Exception e) {
 
 					request.setAttribute("mensagem", e);
 
@@ -237,104 +246,104 @@ public class ControlePessoa extends HttpServlet {
 
 			}
 
-			// Se o valor da ação recebida pelo formulário for
+			// Se o valor da aï¿½ï¿½o recebida pelo formulï¿½rio for
 			// "cadastrarFornecedor", execute o bloco abaixo:
 
 			else if (acao.equalsIgnoreCase("cadastrarFornecedor")) {
 
 				try {
-					
-					FornecedorDAO fornecedorDAO = new FornecedorDAO();
+
+					final FornecedorDAO fornecedorDAO = new FornecedorDAO();
 					Fornecedor fornecedor = fornecedorDAO.findByCnpj(request.getParameter("cnpj"));
-					
-					if(fornecedor.getNome()==null || fornecedor.getNome()==""){
 
-					// Coletando cada parâmetro da página através do "name" do
-					// formulário, utilizando
-					// o request.getParameter() e atribuindo às variáveis
+					if (fornecedor.getNome() == null || fornecedor.getNome() == "") {
 
-					String nome = request.getParameter("nome");
-					String razaoSocial = request.getParameter("razaoSocial");
-					String telefone = request.getParameter("telefone");
-					String cnpj = request.getParameter("cnpj");
-					String logradouro = request.getParameter("logradouro");
-					Integer numero = Integer.parseInt(request.getParameter("numero"));
-					String cep = request.getParameter("cep");
-					String bairro = request.getParameter("bairro");
-					String cidade = request.getParameter("cidade");
-					String estado = request.getParameter("estado");
-					String pais = request.getParameter("pais");
+						// Coletando cada parï¿½metro da pï¿½gina atravï¿½s do "name" do
+						// formulï¿½rio, utilizando
+						// o request.getParameter() e atribuindo ï¿½s variï¿½veis
 
-					// Instanciando um novo Endereco
+						final String nome = request.getParameter("nome");
+						final String razaoSocial = request.getParameter("razaoSocial");
+						final String telefone = request.getParameter("telefone");
+						final String cnpj = request.getParameter("cnpj");
+						final String logradouro = request.getParameter("logradouro");
+						final Integer numero = Integer.parseInt(request.getParameter("numero"));
+						final String cep = request.getParameter("cep");
+						final String bairro = request.getParameter("bairro");
+						final String cidade = request.getParameter("cidade");
+						final String estado = request.getParameter("estado");
+						final String pais = request.getParameter("pais");
 
-					Endereco endereco = new Endereco();
+						// Instanciando um novo Endereco
 
-					// Instanciando a classe responsável por gravar, alterar e
-					// excluir Enderecos no banco
+						final Endereco endereco = new Endereco();
 
-					EnderecoDAO enderecoDao = new EnderecoDAO();
+						// Instanciando a classe responsï¿½vel por gravar, alterar e
+						// excluir Enderecos no banco
 
-					// Utilizando os Setters da classe Endereco para passar
-					// valores aos seus atributos
+						final EnderecoDAO enderecoDao = new EnderecoDAO();
 
-					endereco.setLogradouro(logradouro);
-					endereco.setNumero(numero);
-					endereco.setCep(cep);
-					endereco.setBairro(bairro);
-					endereco.setCidade(cidade);
-					endereco.setEstado(estado);
-					endereco.setPais(pais);
+						// Utilizando os Setters da classe Endereco para passar
+						// valores aos seus atributos
 
-					// Utilizando o método que recebe como parâmetro um objeto
-					// endereço, grava o
-					// mesmo no banco e retorna seu id, criado automaticamente
-					// pelo próprio SQL
+						endereco.setLogradouro(logradouro);
+						endereco.setNumero(numero);
+						endereco.setCep(cep);
+						endereco.setBairro(bairro);
+						endereco.setCidade(cidade);
+						endereco.setEstado(estado);
+						endereco.setPais(pais);
 
-					int idEndereco = enderecoDao.insertReturnID(endereco);
+						// Utilizando o mï¿½todo que recebe como parï¿½metro um objeto
+						// endereï¿½o, grava o
+						// mesmo no banco e retorna seu id, criado automaticamente
+						// pelo prï¿½prio SQL
 
-					// Instanciando um novo Fornecedor
+						final int idEndereco = enderecoDao.insertReturnID(endereco);
 
-					fornecedor = new Fornecedor();
+						// Instanciando um novo Fornecedor
 
-					// Utilizando os Setters da classe Fornecedor para passar
-					// valores aos seus atributos
+						fornecedor = new Fornecedor();
 
-					fornecedor.setNome(nome);
-					fornecedor.setTelefone(telefone);
-					fornecedor.setCnpj(cnpj);
-					fornecedor.setRazaoSocial(razaoSocial);
+						// Utilizando os Setters da classe Fornecedor para passar
+						// valores aos seus atributos
 
-					// Instanciando a classe responsável por gravar, alterar e
-					// excluir Fornecedores no banco
+						fornecedor.setNome(nome);
+						fornecedor.setTelefone(telefone);
+						fornecedor.setCnpj(cnpj);
+						fornecedor.setRazaoSocial(razaoSocial);
 
-					FornecedorDAO fornecedorDao = new FornecedorDAO();
+						// Instanciando a classe responsï¿½vel por gravar, alterar e
+						// excluir Fornecedores no banco
 
-					// Utilizando o método responsável por receber como
-					// parâmetro um Fornecedor e um id de
-					// Endereço, gravar o Fornecedor no banco e atribuir a ele
-					// este Endereço, através da coluna
-					// id_endereco, localizada na tabela fornecedor
+						final FornecedorDAO fornecedorDao = new FornecedorDAO();
 
-					fornecedorDao.insert(fornecedor, idEndereco);
+						// Utilizando o mï¿½todo responsï¿½vel por receber como
+						// parï¿½metro um Fornecedor e um id de
+						// Endereï¿½o, gravar o Fornecedor no banco e atribuir a ele
+						// este Endereï¿½o, atravï¿½s da coluna
+						// id_endereco, localizada na tabela fornecedor
 
-					// retornando para a página, através do método
-					// request.setAttribute(), uma mensagem de
-					// sucesso após o cadastro do fornecedor
+						fornecedorDao.insert(fornecedor, idEndereco);
 
-					request.setAttribute("mensagem", "Fornecedor " + fornecedor.getNome() + " cadastrado com sucesso.");
+						// retornando para a pï¿½gina, atravï¿½s do mï¿½todo
+						// request.setAttribute(), uma mensagem de
+						// sucesso apï¿½s o cadastro do fornecedor
+
+						request.setAttribute("mensagem", "Fornecedor " + fornecedor.getNome() + " cadastrado com sucesso.");
 					} else {
-						request.setAttribute("mensagem2", "CNPJ *" + request.getParameter("cnpj") + "* já cadastrado em nosso sistema");
+						request.setAttribute("mensagem2", "CNPJ *" + request.getParameter("cnpj") + "* jï¿½ cadastrado em nosso sistema");
 					}
-				} catch (Exception e) {
+				} catch (final Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
+					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
 					// mensagem de erro
 
 					request.setAttribute("mensagem", "Erro: " + e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro
+					// Redirecionando novamente para a mesma pï¿½gina de cadastro
 					// de fornecedores
 
 					request.getRequestDispatcher("cadastroFornecedor.jsp").forward(request, response);
@@ -343,29 +352,29 @@ public class ControlePessoa extends HttpServlet {
 
 			}
 
-			// Se o valor da ação recebida pelo formulário for
+			// Se o valor da aï¿½ï¿½o recebida pelo formulï¿½rio for
 			// "consultarFornecedor", execute o bloco abaixo:
 
 			else if (acao.equalsIgnoreCase("consultarFornecedor")) {
 
 				try {
 
-					// Coletando da página o parâmetro "cnpj", através do "name"
-					// do formulário, utilizando
-					// o método request.getParameter()
+					// Coletando da pï¿½gina o parï¿½metro "cnpj", atravï¿½s do "name"
+					// do formulï¿½rio, utilizando
+					// o mï¿½todo request.getParameter()
 
-					String cnpj = request.getParameter("cnpj");
+					final String cnpj = request.getParameter("cnpj");
 
 					// Instanciando um novo Fornecedor
 
 					Fornecedor fornecedor = new Fornecedor();
 
-					// Instanciando a classe responsável por gravar, alterar e
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
 					// excluir Fornecedores no banco
 
-					FornecedorDAO fornecedorDao = new FornecedorDAO();
+					final FornecedorDAO fornecedorDao = new FornecedorDAO();
 
-					// Utilizando o método que recebe como parâmetro um número
+					// Utilizando o mï¿½todo que recebe como parï¿½metro um nï¿½mero
 					// de cnpj e retorna os dados
 					// do fornecedor a qual ele pertence
 
@@ -375,39 +384,39 @@ public class ControlePessoa extends HttpServlet {
 
 					Endereco endereco = new Endereco();
 
-					// Instanciando a classe responsável por gravar, alterar e
-					// excluir Endereços no banco
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// excluir Endereï¿½os no banco
 
-					EnderecoDAO enderecoDao = new EnderecoDAO();
+					final EnderecoDAO enderecoDao = new EnderecoDAO();
 
-					// Utilizando o método que recebe como parâmetro o id de um
+					// Utilizando o mï¿½todo que recebe como parï¿½metro o id de um
 					// Endereco e retorna os dados
 					// do mesmo gravados no banco. Para isso, utilizamos o
 					// getEndereco do fornecedor para encontrar
-					// seu endereço e, por fim, o método getId do endereço, para
+					// seu endereï¿½o e, por fim, o mï¿½todo getId do endereï¿½o, para
 					// encontrar seu id
 
 					endereco = enderecoDao.findById(fornecedor.getEndereco().getId_endereco());
 
-					// Atribuindo o endereço encontrado ao fornecedor
+					// Atribuindo o endereï¿½o encontrado ao fornecedor
 
 					fornecedor.setEndereco(endereco);
 
-					// Retornando para a página JSP o objeto fornecedor e
+					// Retornando para a pï¿½gina JSP o objeto fornecedor e
 					// atribuindo a ele o nome "fornecedor"
 
 					request.setAttribute("fornecedor", fornecedor);
 
-				} catch (Exception e) {
+				} catch (final Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a
+					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
 					// mensagem de erro
 
-					request.setAttribute("mensagem", "Fornecedor não encontrado.");
+					request.setAttribute("mensagem", "Fornecedor nï¿½o encontrado.");
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de consulta
+					// Redirecionando novamente para a mesma pï¿½gina de consulta
 					// de fornecedores
 
 					request.getRequestDispatcher("consultaFornecedor.jsp").forward(request, response);
@@ -417,62 +426,62 @@ public class ControlePessoa extends HttpServlet {
 			} else if (acao.equalsIgnoreCase("cadastrarfuncionario")) {
 
 				try {
-					
-					FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+					final FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 					Funcionario funcionario = funcionarioDAO.findByCpf(request.getParameter("cpf"));
-					
-					if(funcionario.getNome()==null || funcionario.getNome()==""){
-					// Instanciando um novo Endereço para receber os parâmetros
-					// passados pelo usuário
-					// através da JSP
 
-					Endereco endereco = new Endereco(); 
+					if (funcionario.getNome() == null || funcionario.getNome() == "") {
+						// Instanciando um novo Endereï¿½o para receber os parï¿½metros
+						// passados pelo usuï¿½rio
+						// atravï¿½s da JSP
 
-					// Coletando cada parâmetro da página através do "name" do
-					// formulário, utilizando
-					// o request.getParameter() e atribuindo à entidade Endereco
-					// através dos setters
+						final Endereco endereco = new Endereco();
 
-					endereco.setLogradouro(request.getParameter("logradouro"));
-					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
-					endereco.setCep(request.getParameter("cep"));
-					endereco.setBairro(request.getParameter("bairro"));
-					endereco.setCidade(request.getParameter("cidade"));
-					endereco.setEstado(request.getParameter("estado"));
-					endereco.setPais(request.getParameter("pais"));
+						// Coletando cada parï¿½metro da pï¿½gina atravï¿½s do "name" do
+						// formulï¿½rio, utilizando
+						// o request.getParameter() e atribuindo ï¿½ entidade Endereco
+						// atravï¿½s dos setters
 
-					// Instanciando a classe responsável por gravar, alterar e
-					// excluir Endereços no banco
+						endereco.setLogradouro(request.getParameter("logradouro"));
+						endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
+						endereco.setCep(request.getParameter("cep"));
+						endereco.setBairro(request.getParameter("bairro"));
+						endereco.setCidade(request.getParameter("cidade"));
+						endereco.setEstado(request.getParameter("estado"));
+						endereco.setPais(request.getParameter("pais"));
 
-					EnderecoDAO enderecoDao = new EnderecoDAO();
+						// Instanciando a classe responsï¿½vel por gravar, alterar e
+						// excluir Endereï¿½os no banco
 
-					// Utilizando o método que recebe como parâmetro um objeto
-					// endereço, grava o
-					// mesmo no banco e retorna seu id, criado automaticamente
-					// pelo próprio SQL
+						final EnderecoDAO enderecoDao = new EnderecoDAO();
 
-					Integer idEndereço = enderecoDao.insertReturnID(endereco);
+						// Utilizando o mï¿½todo que recebe como parï¿½metro um objeto
+						// endereï¿½o, grava o
+						// mesmo no banco e retorna seu id, criado automaticamente
+						// pelo prï¿½prio SQL
 
-					Integer departamento = Integer.parseInt(request.getParameter("departamento"));
-					Integer cargo = Integer.parseInt(request.getParameter("cargo"));
-					
-					funcionario = new Funcionario();
-					
-					funcionario.setNome(request.getParameter("nome"));
-					funcionario.setTelefone(request.getParameter("telefone"));
-					funcionario.setCpf(request.getParameter("cpf"));
-					funcionario.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
-					funcionario.setSenha(request.getParameter("senha"));
-					funcionario.setEndereco(endereco);
-					
-					FuncionarioDAO funcionarioDAO2 = new FuncionarioDAO();
-					funcionarioDAO2.insert(funcionario, idEndereço, departamento, cargo);
-					
-					request.setAttribute("mensagem", "Funcionário " + funcionario.getNome() + " cadastrado com sucesso");
+						final Integer idEndereco = enderecoDao.insertReturnID(endereco);
+
+						final Integer departamento = Integer.parseInt(request.getParameter("departamento"));
+						final Integer cargo = Integer.parseInt(request.getParameter("cargo"));
+
+						funcionario = new Funcionario();
+
+						funcionario.setNome(request.getParameter("nome"));
+						funcionario.setTelefone(request.getParameter("telefone"));
+						funcionario.setCpf(request.getParameter("cpf"));
+						funcionario.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+						funcionario.setSenha(request.getParameter("senha"));
+						funcionario.setEndereco(endereco);
+
+						final FuncionarioDAO funcionarioDAO2 = new FuncionarioDAO();
+						funcionarioDAO2.insert(funcionario, idEndereco, departamento, cargo);
+
+						request.setAttribute("mensagem", "Funcionï¿½rio " + funcionario.getNome() + " cadastrado com sucesso");
 					} else {
-						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* já cadastrado em nosso sistema");
+						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* jï¿½ cadastrado em nosso sistema");
 					}
-				} catch (Exception e) {
+				} catch (final Exception e) {
 					request.setAttribute("mensagem", e.getMessage());
 					e.printStackTrace();
 				} finally {
@@ -483,78 +492,124 @@ public class ControlePessoa extends HttpServlet {
 			else if (acao.equalsIgnoreCase("autenticar")) {
 
 				String destino = "login.jsp";
-				
+
 				try {
 
-					String cpf = request.getParameter("cpf");
-					String senha = request.getParameter("senha");
-					
-					FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+					final String cpf = request.getParameter("cpf");
+					final String senha = request.getParameter("senha");
 
-					Funcionario funcionario = funcionarioDao.findByLoginSenha(cpf, senha);
-					
-					if(funcionario != null){
-						
+					final FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+
+					final Funcionario funcionario = funcionarioDao.findByLoginSenha(cpf, senha);
+
+					if (funcionario != null) {
+
 						session = request.getSession();
-						
+
 						session.setAttribute("usuarioLogado", funcionario);
-						
+
 						request.setAttribute("usuarioLogado", funcionario);
-						
+
 						destino = "index.jsp";
-						
-					}
-					else{
-						
+
+					} else {
+
 						throw new Exception("Acesso negado, tente novamente.");
-						
+
 					}
-					
-				}
-				catch(Exception e){
-					
+
+				} catch (final Exception e) {
+
 					request.setAttribute("mensagem", e.getMessage());
-					
-				}
-				finally{
-					
+
+				} finally {
+
 					request.getRequestDispatcher(destino).forward(request, response);
-					
+
 				}
 
 			}
-			
+
 			else if (acao.equalsIgnoreCase("logout")) {
-				
-				HttpSession session = request.getSession();
-				
+
+				final HttpSession session = request.getSession();
+
 				session.invalidate();
-				
+
 				response.sendRedirect("/easports/login.jsp");
-				
-			}
-			else if (acao.equalsIgnoreCase("consultaCep")) {
-				String cep = request.getParameter("cep");
+
+			} else if (acao.equalsIgnoreCase("consultaCep")) {
+				final String cep = request.getParameter("cep");
 				Endereco endereco = new Endereco();
 				endereco = WebServiceCep.buscaCep(cep);
-				
+
 				request.setAttribute("endereco", endereco);
 				request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
-			}else if (acao.equalsIgnoreCase("editarPessoa")) {
-				
+
+				// Se o valor da aÃ§ao recebida pelo formulario for "editarPessoa",
+				// execute o bloco abaixo:
+
+			} else if (acao.equalsIgnoreCase("editarPessoa")) {
+
+				final String cpf = request.getParameter("cpf");
+				System.out.println(cpf);
+
+				try {
+
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// excluir Clientes no banco
+					final ClientePFDAO clientePfDao = new ClientePFDAO();
+
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// excluir endereÃ§os no banco
+					final EnderecoDAO enderecoDao = new EnderecoDAO();
+
+					// Recebe o cliente ao ser alterado pelo cpf
+					final ClientePF clientePF = clientePfDao.findByCpf(request.getParameter("cpf"));
+					final Endereco endereco = clientePF.getEndereco();
+
+					// altera o endereÃ§o do cliente
+					endereco.setLogradouro(request.getParameter("logradouro"));
+					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
+					endereco.setCep(request.getParameter("cep"));
+					endereco.setBairro(request.getParameter("bairro"));
+					endereco.setCidade(request.getParameter("cidade"));
+					endereco.setEstado(request.getParameter("estado"));
+					endereco.setPais(request.getParameter("pais"));
+
+					// altualiza o endereÃ§o
+					enderecoDao.update(endereco);
+
+					// altera os dados do cliente
+					clientePF.setNome(request.getParameter("nome"));
+					clientePF.setTelefone(request.getParameter("telefone"));
+					clientePF.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+					clientePF.setEndereco(endereco);
+
+					// atualiza o cliente
+					clientePfDao.update(clientePF);
+
+					request.setAttribute("mensagem", "Cliente " + clientePF.getNome() + " Alterado com sucesso");
+
+				} catch (final Exception e) {
+
+					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
+					// mensagem de erro
+
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma pï¿½gina de cadastro
+					// de clientes
+
+					request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
+
+				}
+
 			}
 		}
 
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		execute(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		execute(request, response);
 	}
 
 }

@@ -45,7 +45,7 @@
 				<span class="glyphicon glyphicon-search" style="margin-left: -100"></span>
 					    
 				<div class="col-md-3" style="width: 250">
-					<input type="text" id="cpf" name="cpf" class="form-control" required="required" placeholder="Informe o CPF..."/>
+					<input type="text" id="cpf" name="cpf" class="form-control-disabled" required="required" placeholder="Informe o CPF..."/>
 					
 					<h4 style="color: red">${mensagem}</h4>
 					
@@ -55,7 +55,7 @@
 	
 		</form>
 	
-		<form style="background-color: #7f7f7f; padding-left: 4%;" action="ControlePessoa?acao=editarPessoa">
+		<form style="background-color: #7f7f7f; padding-left: 4%;" action="ControlePessoa?acao=editarPessoa" method="post">
 			<div class="col-md-3"
 				style="width: 100%; margin-left: 50%; padding: 0px;">
 				<div class="panel"
@@ -113,7 +113,7 @@
 						</fieldset>
 						<br/>
 						<input type="button" value="Editar" id="editar" class="btn btn-success"/> 
-						<input type="button" value="Salvar" id="enviar" class="btn btn-success"/> 
+						<input type="submit" value="Salvar" methid="enviar" class="btn btn-success"/> 
 					</div>
 				</div>
 			</div>
