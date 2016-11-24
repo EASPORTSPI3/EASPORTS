@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/easports/js/js.js"></script>
 	
 	<title>EA Sports</title>
 	
@@ -123,6 +124,9 @@
 								<input required="required" style="width: 250px" type="text" disabled name="pais" class="form-control" value="${funcionario.endereco.pais}"/>
 							</label>	
 					</fieldset>	
+					<br/>
+						<input type="button" value="Editar" id="editar" class="btn btn-warning"/> 
+						<input type="submit" value="Salvar" disabled id="enviar" class="btn btn-success"/> 
 				</div>
 			</div>
 		</div>			

@@ -12,9 +12,10 @@ function editar(){
 	if(btnEditar.value == "Editar"){
 		btnEditar.value = "Cancelar";
 		btnEnviar.disabled = false;
+		
 		for(var i = 0; i < all.length; i++){
 			
-			if(all[i].name  == "idCliente"){
+			if(all[i].name  == "idCliente" || all[i].name  == "idFornecedor" || all[i].name  == "idFuncionario"){
 				all[i].disabled = true;
 
 			}else{
@@ -31,6 +32,8 @@ function editar(){
 				btnEnviar.disabled = true;
 			}
 		}
+	var id = document.querySelector(".form-control");
+	id.disabled = true;
 	}
 
 
