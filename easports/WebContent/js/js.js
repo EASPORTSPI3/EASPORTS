@@ -6,16 +6,32 @@ function iniciar(){
 
 function editar(){
 	var all = document.querySelectorAll(".form-control");
-	
-	
-	for(var i = 0; i < all.length; i++){
-		
-		if(all[i].name  == "idCliente"){
-			all[i].disabled = true;
-		}else{
-			all[i].disabled = false;
+	var btnEnviar =  document.querySelector("#enviar");
+	var btnEditar =  document.querySelector("#editar");	
+
+	if(btnEditar.value == "Editar"){
+		btnEditar.value = "Cancelar";
+		btnEnviar.disabled = false;
+		for(var i = 0; i < all.length; i++){
+			
+			if(all[i].name  == "idCliente"){
+				all[i].disabled = true;
+
+			}else{
+				all[i].disabled = false;
+				btnEnviar.disabled = false;
+			}
+		}
+	}else{
+		btnEnviar.disabled = true;
+		btnEditar.value = "Editar";
+		for(var i = 0; i < all.length; i++){
+				all[i].disabled = true;
+				all[i].disabled = true;
+				btnEnviar.disabled = true;
+			}
 		}
 	}
-}
+
 
 window.addEventListener("load",iniciar);

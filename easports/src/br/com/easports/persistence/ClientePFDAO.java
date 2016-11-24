@@ -169,7 +169,8 @@ public class ClientePFDAO extends DAO {
 		stmt.setString(1, cliente.getNome());
 		stmt.setString(2, cliente.getTelefone());
 		stmt.setString(3, cliente.getCpf());
-		stmt.setObject(4, cliente.getIdCliente());
+		stmt.setString(4, ConverteData.dateToString(cliente.getDataNasc()));
+		stmt.setObject(5, cliente.getIdCliente());
 
 		stmt.execute();
 

@@ -14,7 +14,14 @@ public class ConverteData {
          try {
              SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
              date = formatter.parse(data);
-         } catch (Exception e) {            
+         } catch (Exception e) {  
+        	 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+             try {
+				date = formatter.parse(data);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
              e.printStackTrace();
          }
          return date;

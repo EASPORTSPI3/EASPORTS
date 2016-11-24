@@ -112,8 +112,8 @@
 							</label>
 						</fieldset>
 						<br/>
-						<input type="button" value="Editar" id="editar" class="btn btn-success"/> 
-						<input type="submit" value="Salvar" methid="enviar" class="btn btn-success"/> 
+						<input type="button" value="Editar" id="editar" class="btn btn-warning"/> 
+						<input type="submit" value="Salvar" disabled id="enviar" class="btn btn-success"/> 
 					</div>
 				</div>
 			</div>

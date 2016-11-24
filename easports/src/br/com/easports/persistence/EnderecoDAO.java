@@ -41,7 +41,7 @@ public class EnderecoDAO extends DAO {
 		final Endereco endereco = new Endereco();
 
 		while (rs.next()) {
-
+			endereco.setId_endereco(id_endereco);
 			endereco.setLogradouro(rs.getString("logradouro"));
 			endereco.setNumero(rs.getInt("numero"));
 			endereco.setCep(rs.getString("cep"));
@@ -172,7 +172,7 @@ public class EnderecoDAO extends DAO {
 		stmt.setString(5, endereco.getCidade());
 		stmt.setString(6, endereco.getEstado());
 		stmt.setString(7, endereco.getPais());
-
+		stmt.setInt(8, endereco.getId_endereco());
 		stmt.execute();
 
 		stmt.close();

@@ -566,6 +566,7 @@ public class ControlePessoa extends HttpServlet {
 					final Endereco endereco = clientePF.getEndereco();
 
 					// altera o endereço do cliente
+					endereco.setId_endereco(clientePF.getEndereco().getId_endereco());
 					endereco.setLogradouro(request.getParameter("logradouro"));
 					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 					endereco.setCep(request.getParameter("cep"));
@@ -578,10 +579,11 @@ public class ControlePessoa extends HttpServlet {
 					enderecoDao.update(endereco);
 
 					// altera os dados do cliente
+
 					clientePF.setTelefone(request.getParameter("telefone"));
 					clientePF.setNome(request.getParameter("nome"));
 					clientePF.setEndereco(endereco);
-
+					clientePF.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
 					// atualiza o cliente
 					clientePfDao.update(clientePF);
 
