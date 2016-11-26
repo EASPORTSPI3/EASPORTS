@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 //quando acessar qualquer coisa dentro do arearestrita, ele começa a olhar
 
-@WebFilter("/arearestrita/*")
+@WebFilter("/areaRestrita/*")
 public class FilterUsuario implements Filter {
 
 

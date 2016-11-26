@@ -39,7 +39,7 @@
 		<div style="width: 50%; padding:0px;"class="col-md-4">
 		
 		
-		<form id="pesquisa" name="pesquisa" method="post" style="margin-left: 50%" action="ControlePessoa?acao=consultarFuncionario">
+		<form id="pesquisa" name="pesquisa" method="post" style="margin-left: 50%" action="/easports/ControlePessoa?acao=consultarFuncionario">
 				  
 			<input type="submit" class="btn btn-sm" value="Consultar" style="background-color: #cacaff; 
 				   width: 105; font-size: 14; font: bold;text-align: right;border-color: black"/>
@@ -48,18 +48,20 @@
 				<div class="col-md-3" style="width: 260">
 					<input type="text" id="cnpj" name="cpf" class="form-control" required="required" placeholder="Informe o CPF..."/>
 					
-					<h4 style="color: red">${mensagem}</h4>
-					
 				</div>
 				
 				<br/>
 	
 		</form>
 	
-	<form style="background-color: #7f7f7f; padding-left: 4%; ">
+	<form style="background-color: #7f7f7f; padding-left: 4%;" 
+		  action="/easports/ControlePessoa?acao=editarFuncionario" method="post">
+		  
 			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
 				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
 					<div class="panel-heading" >
+					
+					<label style="color: green; text-align: center; font-size: 16px">${mensagem}</label>
 					
 						<fieldset id="fieldCli" style="width: 100%;">				
 							<hr>							
@@ -125,8 +127,15 @@
 							</label>	
 					</fieldset>	
 					<br/>
-						<input type="button" value="Editar" id="editar" class="btn btn-warning"/> 
-						<input type="submit" value="Salvar" disabled id="enviar" class="btn btn-success"/> 
+						
+					<input type="button" class="btn btn-sm" value="Editar" id="editar" style="background-color: #beeab5; 
+						   width: 95; font-size: 14; font: bold; text-align: right; border-color: black" />
+						<span class="glyphicon glyphicon-check" style="margin-left: -90"></span>
+								
+					<input type="submit" class="btn btn-sm" value="Salvar" disabled id="enviar" style="background-color: #cacaff;
+						   margin-left:13%; width: 85; font-size: 14; font: bold; text-align: right; border-color: black" />
+						<span class="glyphicon glyphicon-erase" style="margin-left: -80"></span>
+
 				</div>
 			</div>
 		</div>			

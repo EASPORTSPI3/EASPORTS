@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanPedido" id="mb"></jsp:useBean>
+
 <!-- TagLibraries (JSTL) -->
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -28,71 +30,63 @@
 	
 	<hgroup>
 		<h1 style="padding-left: 0%; margin-left: 37%; color: gray; 
-			text-shadow: 2px 2px 5px #000000;">Consulta de Pedidos:</h1>
+			text-shadow: 2px 2px 5px #000000;">Relatório de Pedidos:</h1>
 	</hgroup>
 	<br/>
 	
 	<div class="col-md-12">
 		
-		<form id="pesquisa" name="pesquisa" method="post" 
-			  action="ControleProduto?acao=consultarPedidos" style="margin-left: 20px">
-				  
-			<input type="submit" class="btn btn-sm" value="Consultar" style="background-color: #cacaff; 
-				   width: 105; font-size: 14; font: bold;text-align: right;border-color: black"/>
-				<span class="glyphicon glyphicon-search" style="margin-left: -100"></span>
-					    
-				<div class="col-md-3" style="width: 250; margin-left: -15px ">
-					<input type="text" id="cpf" name="cpf" class="form-control" placeholder="Informe o CPF..."/>
-				</div>
-	
-		</form>
-		
 		<div class="col-md-3" style="width: 100%">
 			<div class="panel panel-success">
 				<div class="panel-heading">
+		
+		<label style="color: red; text-align: right;font-size: 16px">${mensagem}</label>
 		
 		<table class="table table houver">
 			<thead>
 				<tr>
 					<th>ID Pedido:</th>
-					<th>Cliente:</th>
-					<th>Nome do produto:</th>
-					<th>Código:</th>
+					<th>ID Cliente:</th>
+					<th>CPF:</th>
+					<th>Produto:</th>
 					<th>Quantidade:</th>
 					<th>Valor Unitário:</th>
 					<th>Valor Total:</th>
+					<th>Status:</th>
 					
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${lista}" var="pedido">
+				<c:forEach items="${mb.listagemPedidos}" var="pedido">
 					<tr>
 						
 						<td>${pedido.idPedido}</td>
 						
-						<td>${pedido.cliente.nome}</td>
+						<td>${pedido.cliente.idCliente}</td>
+						
+						<td>${pedido.cliente.cpf}</td>
 						
 						<td>${pedido.produto.nome}</td>
 						
-						<td>${pedido.produto.codigo}</td>
-						
 						<td>${pedido.quantidade}</td>
 						
-						<td>${pedido.produto.valorVendaFormatado}</td>
+						<td>${pedido.produto.valorCustoFormatado}</td>
 						
 						<td>${pedido.valorTotalFormatado}</td>
 						
+						<td>${pedido.status}</td>
+						
 						<td>
 						
-						<a href="ControleProduto?acao=visualizarPedido&idPedido=${pedido.idPedido}"
-								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
+						<a href="ControlePessoa?acao=consultarpf&cpf=${pedido.cliente.cpf}"
+								class="btn btn-sm" style="background-color: #cacaff; font-size: 14 ; 
 								color: black; border-color: black">
 								
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true" style="margin-right: 5px"></span> Editar
+								<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Visualizar
 								
 						</a>						
-						<a href="ControleProduto?acao=excluirPedido&idPedido=${pedido.idPedido}&idCliente=${pedido.cliente.idCliente}"
-								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
+						<a href="ControlePessoa?acao=excluirpf&idCliente=${pedido.cliente.idCliente}"
+								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14; 
 								color: black; border-color: black; margin-left: 10px">
 								
 								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px"></span> Excluir
@@ -103,22 +97,11 @@
 			</tbody>
 		</table>
 				<hr style="border-width: 3px">
-				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(lista)}</b></label>
+				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(mb.listagemPedidos)}</b></label>
 				<br/>
-				<label style="margin-left: 0%; font-size: 18px; color: red"><b>Valor total da compra : ${valorTotal}</b></label>
-				<br/><br/>
 
-				<a href="ControleProduto?acao=finalizarPedidos&cpf=${cpf}"
-						class="btn btn-sm" style="background-color: #fbfecf; font-size: 14 ; 
-						color: black; border-color: black" aria-label="Left Align">								
-						<span class="glyphicon glyphicon-ok" style="margin-right: 5px" aria-hidden="true"></span> Finalizar Pedidos
-								
-				</a>
-							
 				</div>	
 				
-				<label style="color: green; text-align: right;">${mensagem}</label>
-							
 			</div>			
 		</div>		
 	</div>

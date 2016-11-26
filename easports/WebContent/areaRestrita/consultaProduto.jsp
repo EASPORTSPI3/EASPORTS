@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanProduto"
-	id="mb"></jsp:useBean>
+<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanProduto" id="mb"></jsp:useBean>
 
 <!-- TagLibraries (JSTL) -->
 
@@ -59,7 +58,7 @@
 						<b>Código: ${produto.codigo}</b>
 					</div>
 					<div class="panel-body text-center">
-						<img src="img/${produto.imagem}" width="160" height="135" />
+						<img src="../img/${produto.imagem}" width="160" height="135" />
 						<hr />
 						<strong>${produto.nome}</strong>
 						<hr>

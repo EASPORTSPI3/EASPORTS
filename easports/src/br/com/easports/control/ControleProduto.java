@@ -171,7 +171,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("resultadosProduto.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/resultadosProduto.jsp").forward(request, response);
 
 				}
 
@@ -202,7 +202,38 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("detalhesProduto.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/detalhesProduto.jsp").forward(request, response);
+
+				}
+
+			}
+			
+			else if (acao.equalsIgnoreCase("detalhesProdutoEstoque")) {
+
+				try {
+					
+					Integer idProduto = Integer.parseInt(request.getParameter("id"));
+
+					ProdutoDAO produtoDao = new ProdutoDAO();
+
+					Produto produto = produtoDao.findById(idProduto);
+
+					FormataValor format = new FormataValor();
+					
+					request.setAttribute("produto", produto);
+
+
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
+
+					request.setAttribute("mensagem", "Erro: " + e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro de clientes
+
+					request.getRequestDispatcher("/areaRestrita/detalhesProdutoEstoque.jsp").forward(request, response);
 
 				}
 
@@ -233,7 +264,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("realizarPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/realizarPedido.jsp").forward(request, response);
 
 				}
 
@@ -305,7 +336,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("pedidoRealizado.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/pedidoRealizado.jsp").forward(request, response);
 
 				}
 
@@ -370,7 +401,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 					
-					request.getRequestDispatcher("consultaPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
 
 				}
 
@@ -400,7 +431,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 					
-					request.getRequestDispatcher("edicaoPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/edicaoPedido.jsp").forward(request, response);
 
 				}
 			}
@@ -498,7 +529,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 					
-					request.getRequestDispatcher("edicaoPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/edicaoPedido.jsp").forward(request, response);
 
 				}
 			}
@@ -563,7 +594,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("consultaPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
 
 				}
 			}
@@ -610,7 +641,7 @@ public class ControleProduto extends HttpServlet {
 
 					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("consultaPedido.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
 
 				}
 			}

@@ -41,7 +41,7 @@
 					
 						<h3 class="text-center"><strong>${produto.nome}</strong>
 							
-							<a href="/easports/consultaProduto.jsp" class="btn btn-sm" style="background-color: #fbfecf; 
+							<a href="/easports/areaRestrita/consultaProduto.jsp" class="btn btn-sm" style="background-color: #fbfecf; 
 							   font-size: 14; color: black; margin-left: -480px; margin-right: 290px; border-color: black">
 								
 							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true" style="margin-right: 7px"></span> Retornar
@@ -52,7 +52,7 @@
 					</div>
 					
 					<div class="panel-body" style="background-color: #f0fff0">
-						<img src="img/${produto.imagem}" width="260" height="210" align="left"/>
+						<img src="/easports/img/${produto.imagem}" width="260" height="210" align="left"/>
 						
 						<div class="panel-body">
 						

@@ -5,6 +5,7 @@ import java.util.Date;
 public class ClientePF extends PessoaFisica {
 
 	private Integer idCliente;
+	private String dataNascFormatada;
 
 	public ClientePF() {
 
@@ -28,6 +29,14 @@ public class ClientePF extends PessoaFisica {
 
 	public void setIdCliente(Integer idCliente) {
 		this.idCliente = idCliente;
+	}
+
+	public String getDataNascFormatada() {
+		return dataNascFormatada;
+	}
+
+	public void setDataNascFormatada(String dataNascFormatada) {
+		this.dataNascFormatada = dataNascFormatada;
 	}
 	
 }

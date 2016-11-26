@@ -49,6 +49,7 @@ public class ClientePFDAO extends DAO {
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
 			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
+			cliente.setDataNascFormatada(rs.getString("data_nascimento"));
 			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
 
 		}
@@ -86,6 +87,7 @@ public class ClientePFDAO extends DAO {
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
 			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
+			cliente.setDataNascFormatada(rs.getString("data_nascimento"));
 			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
 
 		}
@@ -143,6 +145,7 @@ public class ClientePFDAO extends DAO {
 			cliente.setTelefone(rs.getString("telefone"));
 			cliente.setCpf(rs.getString("cpf"));
 			cliente.setDataNasc(ConverteData.stringToDate(rs.getString("data_nascimento")));
+			cliente.setDataNascFormatada(rs.getString("data_nascimento"));
 			cliente.setEndereco(enderecoDAO.findById(rs.getInt("id_endereco")));
 
 			lista.add(cliente);

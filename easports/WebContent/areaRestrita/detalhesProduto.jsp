@@ -28,7 +28,7 @@
 	
 		<h3 class="text-center">
 		
-		<a href="/easports/consultaProduto.jsp" class="btn btn-sm" 
+		<a href="/easports/areaRestrita/consultaProduto.jsp" class="btn btn-sm" 
 		   style="background-color: #fbfecf; font-size: 14; color: black; margin-left: -350px; 
 		   margin-right: 110px; border-color: black">
 								
@@ -53,7 +53,7 @@
 					<div class="panel-body" style="background-color: #f0fff0">
 					
 						<ul class="list-inline gallery">  
- 							<img class="img-rounded zoom" src="img/${produto.imagem}" width="300" height="250" align="left">
+ 							<img class="img-rounded zoom" src="/easports/img/${produto.imagem}" width="300" height="250" align="left">
 						</ul>
 						
 						<div class="panel-body" style="margin-top: -10px">

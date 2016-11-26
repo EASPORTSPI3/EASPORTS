@@ -11,6 +11,7 @@ public class Pedido {
 	private ClientePF cliente;
 	private Double valorTotal;
 	private String valorTotalFormatado;
+	private String status;
 	
 	public Pedido() {
 		
@@ -103,6 +104,14 @@ public class Pedido {
 
 	public void setValorTotalFormatado(String valorTotalFormatado) {
 		this.valorTotalFormatado = valorTotalFormatado;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

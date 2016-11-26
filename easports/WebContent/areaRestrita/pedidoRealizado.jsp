@@ -38,7 +38,7 @@
 					</div>
 					
 					<div class="panel-body" style="background-color: #f0fff0">
-						<img src="img/${produto.imagem}" width="210" height="200" align="left"/>
+						<img src="/easports/img/${produto.imagem}" width="260" height="210" align="left"/>
 						
 						<div class="panel-body">
 						
@@ -51,7 +51,7 @@
 							<label style="color:red; font-size: 16px">${mensagem}</label>
 							<br/><hr>
 							
-							<a href="/easports/consultaProduto.jsp"
+							<a href="/easports/areaRestrita/consultaProduto.jsp"
 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
 								color: black; border-color: black; margin-left: 10px">
 								

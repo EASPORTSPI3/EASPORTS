@@ -7,7 +7,7 @@
             
                 <ul class="nav navbar-nav">
                 
-                    <li><a href="/easports/index.jsp" style="background-color: #7f7f7f; 
+                    <li><a href="/easports/areaRestrita/index.jsp" style="background-color: #7f7f7f; 
                     	   color: #ffffff;"><b>Página inicial</b></a></li>
                     
                     <li class="dropdown">
@@ -16,10 +16,10 @@
                            aria-haspopup="true" aria-expanded="false" style="background-color: #7f7f7f; 
                            color: #ffffff"><b>Cadastrar</b> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/easports/cadastroCliente.jsp">Cliente</a></li>
-                            <li><a href="/easports/cadastroFornecedor.jsp">Fornecedor</a></li>
-                            <li><a href="/easports/cadastroFuncionario.jsp">Funcionário</a></li>
-                            <li><a href="/easports/cadastroProduto.jsp">Produto</a></li>
+                            <li><a href="/easports/areaRestrita/cadastroCliente.jsp">Cliente</a></li>
+                            <li><a href="/easports/areaRestrita/cadastroFornecedor.jsp">Fornecedor</a></li>
+                            <li><a href="/easports/areaRestrita/cadastroFuncionario.jsp">Funcionário</a></li>
+                            <li><a href="/easports/areaRestrita/cadastroProduto.jsp">Produto</a></li>
                         </ul>
                     </li>
                     
@@ -29,11 +29,11 @@
                            aria-haspopup="true" aria-expanded="false" style="background-color: #7f7f7f; 
                            color: #ffffff"><b>Consultar</b> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/easports/consultaCliente.jsp">Cliente</a></li>
-                            <li><a href="/easports/consultaFornecedor.jsp">Fornecedor</a></li>
-                            <li><a href="/easports/consultaFuncionario.jsp">Funcionário</a></li>
-                            <li><a href="consultaProduto.jsp">Produto</a></li>
-                            <li><a href="/easports/consultaPedido.jsp">Pedidos</a></li>
+                            <li><a href="/easports/areaRestrita/consultaCliente.jsp">Cliente</a></li>
+                            <li><a href="/easports/areaRestrita/consultaFornecedor.jsp">Fornecedor</a></li>
+                            <li><a href="/easports/areaRestrita/consultaFuncionario.jsp">Funcionário</a></li>
+                            <li><a href="/easports/areaRestrita/consultaProduto.jsp">Produto</a></li>
+                            <li><a href="/easports/areaRestrita/consultaPedido.jsp">Pedidos</a></li>
                         </ul>
                     </li>
                     
@@ -43,6 +43,9 @@
                            aria-haspopup="true" aria-expanded="false" style="background-color: #7f7f7f; 
                            color: #ffffff"><b>Relatórios</b> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a href="/easports/areaRestrita/relatorioClientes.jsp">Clientes Cadastrados</a></li>
+                            <li><a href="/easports/areaRestrita/relatorioPedidos.jsp">Pedidos Realizados</a></li>
+                        	<li><a href="/easports/areaRestrita/relatorioEstoque.jsp">Estoque da Loja</a></li>
                             
                         </ul>
                     </li>

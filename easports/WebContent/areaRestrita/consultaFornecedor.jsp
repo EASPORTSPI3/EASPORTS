@@ -39,7 +39,8 @@
 		<div style="width: 50%; padding:0px;"class="col-md-4">
 		
 		
-		<form id="pesquisa" name="pesquisa" method="post" style="margin-left: 50%" action="ControlePessoa?acao=consultarFornecedor">
+		<form id="pesquisa" name="pesquisa" method="post" style="margin-left: 50%" 
+			  action="/easports/ControlePessoa?acao=consultarFornecedor">
 				  
 			<input type="submit" class="btn btn-sm" value="Consultar" style="background-color: #cacaff; 
 				   width: 105; font-size: 14; font: bold;text-align: right;border-color: black"/>
@@ -56,7 +57,9 @@
 	
 		</form>
 		
-		<form style="background-color: #7f7f7f; padding-left: 4%; ">
+		<form style="background-color: #7f7f7f; padding-left: 4%;" 
+			  action="/easports/ControlePessoa?acao=editarFornecedor" method="post">
+			  
 			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
 				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
 					<div class="panel-heading" >
@@ -82,7 +85,7 @@
 						</label>
 										
 						<label>CNPJ:
-						<input required="required" style="width: 250px" type="text" disabled name="cpf" class="form-control" value="${fornecedor.cnpj}"/>
+						<input required="required" style="width: 250px" type="text" disabled name="cnpj" class="form-control" value="${fornecedor.cnpj}"/>
 						</label>						
 						<hr>									
 							<h4>Endereço:</h4>
@@ -120,8 +123,15 @@
 							</label>	
 					</fieldset>
 						<br/>
-						<input type="button" value="Editar" id="editar" class="btn btn-warning"/> 
-						<input type="submit" value="Salvar" disabled id="enviar" class="btn btn-success"/> 
+						
+						<input type="button" class="btn btn-sm" value="Editar" id="editar" style="background-color: #beeab5; 
+							   width: 95; font-size: 14; font: bold; text-align: right; border-color: black" />
+							<span class="glyphicon glyphicon-check" style="margin-left: -90"></span>
+								
+						<input type="submit" class="btn btn-sm" value="Salvar" disabled id="enviar" style="background-color: #cacaff;
+							   margin-left:13%; width: 85; font-size: 14; font: bold; text-align: right; border-color: black" />
+							<span class="glyphicon glyphicon-erase" style="margin-left: -80"></span>
+
 				</div>
 			</div>
 		</div>			

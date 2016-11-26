@@ -18,6 +18,7 @@ import br.com.easports.persistence.EnderecoDAO;
 import br.com.easports.persistence.FornecedorDAO;
 import br.com.easports.persistence.FuncionarioDAO;
 import br.com.easports.util.ConverteData;
+import br.com.easports.util.FormataValor;
 import br.com.easports.util.WebServiceCep;
 
 // Servlet responsï¿½vel por coletar as informaï¿½ï¿½es da pï¿½gina web e consultar no
@@ -61,7 +62,7 @@ public class ControlePessoa extends HttpServlet {
 
 		if (acao != null) {
 
-			// Se o valor da aï¿½ï¿½o recebida pelo formulï¿½rio for "cadastrarpf",
+			// Se o valor da ação recebida pelo formulário for "cadastrarpf",
 			// execute o bloco abaixo:
 
 			if (acao.equalsIgnoreCase("cadastrarpf")) {
@@ -141,7 +142,7 @@ public class ControlePessoa extends HttpServlet {
 						request.setAttribute("mensagem", "Cliente " + clientePf.getNome() + " cadastrado com sucesso");
 
 					} else {
-						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* jï¿½ cadastrado em nosso sistema");
+						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* já cadastrado no sistema");
 					}
 				} catch (final Exception e) {
 
@@ -155,7 +156,7 @@ public class ControlePessoa extends HttpServlet {
 					// Redirecionando novamente para a mesma pï¿½gina de cadastro
 					// de clientes
 
-					request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/cadastroCliente.jsp").forward(request, response);
 
 				}
 
@@ -193,7 +194,7 @@ public class ControlePessoa extends HttpServlet {
 					// atribuindo a ele o nome "cliente"
 
 					if (cliente.getIdCliente() == null) {
-						request.setAttribute("mensagem", "Cliente nï¿½o encontrado.");
+						request.setAttribute("mensagem", "Cliente não encontrado.");
 					} else {
 						request.setAttribute("cliente", cliente);
 					}
@@ -210,7 +211,31 @@ public class ControlePessoa extends HttpServlet {
 					// Redirecionando novamente para a mesma pï¿½gina de consulta
 					// de clientes
 
-					request.getRequestDispatcher("consultaCliente.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaCliente.jsp").forward(request, response);
+
+				}
+
+			}
+			
+			if (acao.equalsIgnoreCase("excluirpf")) {
+
+				try {
+
+					Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
+					
+					ClientePFDAO clientePfDao = new ClientePFDAO();
+
+					clientePfDao.delete(idCliente);
+					
+					request.setAttribute("mensagem", "Cliente excluído com sucesso.");
+					
+				} catch (final Exception e) {
+
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					request.getRequestDispatcher("/areaRestrita/relatorioClientes.jsp").forward(request, response);
 
 				}
 
@@ -229,7 +254,7 @@ public class ControlePessoa extends HttpServlet {
 					funcionario = funcionarioDao.findByCpf(cpf);
 
 					if (funcionario == null) {
-						request.setAttribute("mensagem", "Funcionï¿½rio nï¿½o encontrado.");
+						request.setAttribute("mensagem", "Funcionário não encontrado.");
 					} else {
 						request.setAttribute("funcionario", funcionario);
 					}
@@ -240,7 +265,7 @@ public class ControlePessoa extends HttpServlet {
 
 				} finally {
 
-					request.getRequestDispatcher("consultaFuncionario.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaFuncionario.jsp").forward(request, response);
 
 				}
 
@@ -332,7 +357,7 @@ public class ControlePessoa extends HttpServlet {
 
 						request.setAttribute("mensagem", "Fornecedor " + fornecedor.getNome() + " cadastrado com sucesso.");
 					} else {
-						request.setAttribute("mensagem2", "CNPJ *" + request.getParameter("cnpj") + "* jï¿½ cadastrado em nosso sistema");
+						request.setAttribute("mensagem2", "CNPJ *" + request.getParameter("cnpj") + "* já cadastrado no sistema");
 					}
 				} catch (final Exception e) {
 
@@ -346,7 +371,7 @@ public class ControlePessoa extends HttpServlet {
 					// Redirecionando novamente para a mesma pï¿½gina de cadastro
 					// de fornecedores
 
-					request.getRequestDispatcher("cadastroFornecedor.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/cadastroFornecedor.jsp").forward(request, response);
 
 				}
 
@@ -412,14 +437,14 @@ public class ControlePessoa extends HttpServlet {
 					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
 					// mensagem de erro
 
-					request.setAttribute("mensagem", "Fornecedor nï¿½o encontrado.");
+					request.setAttribute("mensagem", "Fornecedor não encontrado.");
 
 				} finally {
 
 					// Redirecionando novamente para a mesma pï¿½gina de consulta
 					// de fornecedores
 
-					request.getRequestDispatcher("consultaFornecedor.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaFornecedor.jsp").forward(request, response);
 
 				}
 
@@ -477,21 +502,21 @@ public class ControlePessoa extends HttpServlet {
 						final FuncionarioDAO funcionarioDAO2 = new FuncionarioDAO();
 						funcionarioDAO2.insert(funcionario, idEndereco, departamento, cargo);
 
-						request.setAttribute("mensagem", "Funcionï¿½rio " + funcionario.getNome() + " cadastrado com sucesso");
+						request.setAttribute("mensagem", "Funcionário " + funcionario.getNome() + " cadastrado com sucesso");
 					} else {
-						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* jï¿½ cadastrado em nosso sistema");
+						request.setAttribute("mensagem2", "CPF *" + request.getParameter("cpf") + "* já cadastrado no sistema");
 					}
 				} catch (final Exception e) {
 					request.setAttribute("mensagem", e.getMessage());
 					e.printStackTrace();
 				} finally {
-					request.getRequestDispatcher("cadastroFuncionario.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/cadastroFuncionario.jsp").forward(request, response);
 				}
 			}
 
 			else if (acao.equalsIgnoreCase("autenticar")) {
 
-				String destino = "login.jsp";
+				String destino = "/easports/login.jsp";
 
 				try {
 
@@ -510,7 +535,7 @@ public class ControlePessoa extends HttpServlet {
 
 						request.setAttribute("usuarioLogado", funcionario);
 
-						destino = "index.jsp";
+						destino = "/areaRestrita/index.jsp";
 
 					} else {
 
@@ -539,12 +564,30 @@ public class ControlePessoa extends HttpServlet {
 				response.sendRedirect("/easports/login.jsp");
 
 			} else if (acao.equalsIgnoreCase("consultaCep")) {
+				
 				final String cep = request.getParameter("cep");
+				final String nome = request.getParameter("nome");
+				final String telefone = request.getParameter("telefone");
+				final String cpf = request.getParameter("cpf");
+				final String dataNasc = request.getParameter("dataNasc");
+				
+				ClientePF clientePf = new ClientePF();
+				
+				ConverteData convert = new ConverteData();
+				
+				clientePf.setNome(nome);
+				clientePf.setTelefone(telefone);
+				clientePf.setCpf(cpf);
+				clientePf.setDataNascFormatada(dataNasc);
+				
 				Endereco endereco = new Endereco();
+				
 				endereco = WebServiceCep.buscaCep(cep);
 
 				request.setAttribute("endereco", endereco);
-				request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
+				request.setAttribute("cliente", clientePf);
+				
+				request.getRequestDispatcher("/areaRestrita/cadastroCliente.jsp").forward(request, response);
 
 				// Se o valor da aÃ§ao recebida pelo formulario for "editarPessoa",
 				// execute o bloco abaixo:
@@ -601,11 +644,132 @@ public class ControlePessoa extends HttpServlet {
 					// Redirecionando novamente para a mesma pï¿½gina de cadastro
 					// de clientes
 
-					request.getRequestDispatcher("consultaCliente.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaCliente.jsp").forward(request, response);
 
 				}
 
 			}
+			
+			else if (acao.equalsIgnoreCase("editarFornecedor")) {
+
+				try {
+
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// excluir endereÃ§os no banco
+					EnderecoDAO enderecoDao = new EnderecoDAO();
+
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// excluir Clientes no banco
+					FornecedorDAO fornecedorDao = new FornecedorDAO();
+
+					// Recebe o cliente ao ser alterado pelo cpf
+					Fornecedor fornecedor = fornecedorDao.findByCnpj(request.getParameter("cnpj"));
+
+					Endereco endereco = fornecedor.getEndereco();
+
+					// altera o endereÃ§o do cliente
+					endereco.setId_endereco(fornecedor.getEndereco().getId_endereco());
+					endereco.setLogradouro(request.getParameter("logradouro"));
+					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
+					endereco.setCep(request.getParameter("cep"));
+					endereco.setBairro(request.getParameter("bairro"));
+					endereco.setCidade(request.getParameter("cidade"));
+					endereco.setEstado(request.getParameter("estado"));
+					endereco.setPais(request.getParameter("pais"));
+
+					// altualiza o endereÃ§o
+					enderecoDao.update(endereco);
+
+					// altera os dados do fornecedor
+
+					fornecedor.setNome(request.getParameter("nome"));
+					fornecedor.setRazaoSocial(request.getParameter("razaoSocial"));
+					fornecedor.setTelefone(request.getParameter("telefone"));
+					fornecedor.setCnpj(request.getParameter("cnpj"));
+					fornecedor.setEndereco(endereco);
+
+					// atualiza o fornecedor
+					
+					fornecedorDao.update(fornecedor);
+
+					request.setAttribute("mensagem", "Fornecedor " + fornecedor.getNome() + " Alterado com sucesso");
+
+				} catch (final Exception e) {
+
+					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
+					// mensagem de erro
+
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma pï¿½gina de cadastro
+					// de clientes
+
+					request.getRequestDispatcher("/areaRestrita/consultaFornecedor.jsp").forward(request, response);
+
+				}
+
+			}
+			
+			else if (acao.equalsIgnoreCase("editarFuncionario")) {
+
+				try {
+
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// excluir Clientes no banco
+					final ClientePFDAO clientePfDao = new ClientePFDAO();
+
+					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// excluir endereÃ§os no banco
+					final EnderecoDAO enderecoDao = new EnderecoDAO();
+
+					// Recebe o cliente ao ser alterado pelo cpf
+					final ClientePF clientePF = clientePfDao.findByCpf(request.getParameter("cpf"));
+					final Endereco endereco = clientePF.getEndereco();
+
+					// altera o endereÃ§o do cliente
+					endereco.setId_endereco(clientePF.getEndereco().getId_endereco());
+					endereco.setLogradouro(request.getParameter("logradouro"));
+					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
+					endereco.setCep(request.getParameter("cep"));
+					endereco.setBairro(request.getParameter("bairro"));
+					endereco.setCidade(request.getParameter("cidade"));
+					endereco.setEstado(request.getParameter("estado"));
+					endereco.setPais(request.getParameter("pais"));
+
+					// altualiza o endereÃ§o
+					enderecoDao.update(endereco);
+
+					// altera os dados do cliente
+
+					clientePF.setTelefone(request.getParameter("telefone"));
+					clientePF.setNome(request.getParameter("nome"));
+					clientePF.setEndereco(endereco);
+					clientePF.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+					// atualiza o cliente
+					clientePfDao.update(clientePF);
+
+					request.setAttribute("mensagem", "Cliente " + clientePF.getNome() + " Alterado com sucesso");
+
+				} catch (final Exception e) {
+
+					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
+					// mensagem de erro
+
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma pï¿½gina de cadastro
+					// de clientes
+
+					request.getRequestDispatcher("/areaRestrita/consultaCliente.jsp").forward(request, response);
+
+				}
+
+			}
+			
 		}
 
 	}

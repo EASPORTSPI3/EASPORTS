@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class FilterCache
  */
-@WebFilter("/arearestrita/*")
+@WebFilter("/areaRestrita/*")
 public class FilterCache implements Filter {
 
 

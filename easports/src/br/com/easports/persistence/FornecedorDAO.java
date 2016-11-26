@@ -3,12 +3,8 @@ package br.com.easports.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.easports.entities.Categoria;
-import br.com.easports.entities.ClientePF;
 import br.com.easports.entities.Endereco;
 import br.com.easports.entities.Fornecedor;
-import br.com.easports.entities.Produto;
-import br.com.easports.util.ConverteData;
 
 public class FornecedorDAO extends DAO{
 	
@@ -124,12 +120,14 @@ public class FornecedorDAO extends DAO{
 
 		rs = stmt.executeQuery();
 
-		Fornecedor fornecedor = new Fornecedor();
+		Fornecedor fornecedor = null;
+		
+		fornecedor = new Fornecedor();
 		
 		Endereco endereco = new Endereco();
 		
 		fornecedor.setEndereco(endereco);
-
+		
 		while (rs.next()) {
 
 			fornecedor.setIdFornecedor(rs.getInt("id_fornecedor"));
@@ -144,7 +142,7 @@ public class FornecedorDAO extends DAO{
 		stmt.close();
 		
 		fechaConexao();
-
+		
 		return fornecedor;
 
 	}

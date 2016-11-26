@@ -87,11 +87,28 @@ public class PedidoDAO extends DAO {
 
 			ClientePFDAO clientePfDao = new ClientePFDAO();
 			ProdutoDAO produtoDao = new ProdutoDAO();
+			FormataValor format = new FormataValor();
 
 			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
+			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
+			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
+			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
+			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
+			
+			if(rs.getBoolean("finalizado")){
+			
+				pedido.setIdVenda(rs.getInt("id_vendas"));
+				System.out.println("if");
+				pedido.setStatus("Finalizado");
+				
+			}else{
+				System.out.println("else");
+				pedido.setStatus("Pendente");
+				
+			}
 
 		}
 
@@ -134,6 +151,9 @@ public class PedidoDAO extends DAO {
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
+			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
+			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
+			pedido.setStatus("Pendente");
 
 			lista.add(pedido);
 
@@ -180,6 +200,9 @@ public class PedidoDAO extends DAO {
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setIdVenda(rs.getInt("id_venda"));
+			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
+			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
+			pedido.setStatus("Finalizado");
 
 			lista.add(pedido);
 
@@ -195,7 +218,7 @@ public class PedidoDAO extends DAO {
 
 	public void finalizaPedidos(Integer idCliente, Integer idVenda) throws Exception {
 
-		String query = "update pedido set id_vendas = ?, finalizado = 'true' where id_cliente = ? and finalizado = 'false'";
+		String query = "update pedido set id_vendas = ?, finalizado = true where id_cliente = ? and finalizado = false";
 
 		abreConexao();
 
@@ -239,7 +262,20 @@ public class PedidoDAO extends DAO {
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
-			pedido.setIdVenda(rs.getInt("id_venda"));
+			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
+			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
+			
+			if(rs.getBoolean("finalizado")){
+			
+				pedido.setIdVenda(rs.getInt("id_vendas"));
+				System.out.println("if");
+				pedido.setStatus("Finalizado");
+				
+			}else{
+				System.out.println("else");
+				pedido.setStatus("Pendente");
+				
+			}
 
 			lista.add(pedido);
 
