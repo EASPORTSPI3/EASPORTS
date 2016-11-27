@@ -258,5 +258,53 @@ public class ProdutoDAO extends DAO {
 		return lista;
 
 	}
+	
+	public List<Produto> findByCategoriaFornecedor(Integer idCategoria, Integer idFornecedor) throws Exception {
+
+		String query = "select * from produto where id_categoria = ? and id_fornecedor = ?";
+
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setInt(1, idCategoria);
+		stmt.setInt(2, idFornecedor);
+		
+		rs = stmt.executeQuery();
+
+		List<Produto> lista = new ArrayList<Produto>();
+
+		while (rs.next()) {
+
+			Produto produto = new Produto();
+
+			CategoriaDAO categoriaDao = new CategoriaDAO();
+			FornecedorDAO fornecedorDao = new FornecedorDAO();
+			
+			FormataValor format = new FormataValor();
+
+			produto.setIdProduto(rs.getInt("id_produto"));
+			produto.setNome(rs.getString("nome"));
+			produto.setImagem(rs.getString("imagem"));
+			produto.setCodigo(rs.getString("codigo"));
+			produto.setCategoria(categoriaDao.findById(rs.getInt("id_categoria")));
+			produto.setFornecedor(fornecedorDao.findById(rs.getInt("id_fornecedor")));
+			produto.setValorVenda(rs.getDouble("valor_venda"));
+			produto.setValorCusto(rs.getDouble("valor_custo"));
+			produto.setValorVendaFormatado(format.valorFormatado(rs.getDouble("valor_venda")));
+			produto.setValorCustoFormatado(format.valorFormatado(rs.getDouble("valor_custo")));
+			produto.setQuantidade(rs.getInt("quantidade"));
+
+			lista.add(produto);
+
+		}
+		
+		stmt.close();
+
+		fechaConexao();
+
+		return lista;
+
+	}
 
 }

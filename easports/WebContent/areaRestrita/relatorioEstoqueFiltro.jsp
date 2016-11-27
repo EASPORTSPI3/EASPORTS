@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanProduto" id="mb"></jsp:useBean>
 <jsp:useBean class="br.com.easports.managedbeans.ManagedBeanCategoria" id="mbCategoria"></jsp:useBean>
 <jsp:useBean class="br.com.easports.managedbeans.ManagedBeanFornecedor" id="mbFornecedor"></jsp:useBean>
 
@@ -42,35 +41,35 @@
 			<div class="panel panel-success">
 				<div class="panel-heading">
 		
-		<label style="color: black">Categoria:
-			<select name="categoria" class="form-control">
-				<option value="">- Selecione -</option>
-						
-				<c:forEach items="${mbCategoria.listagemCategorias}" var="c">
-					<option value="${c.idCategoria}"> ${c.nome} </option>
-				</c:forEach>
-						
-			</select>
-		</label>
+		<form name="formulario" method="post" action="/easports/ControleProduto?acao=filtrarEstoque">
 		
-		<label style="color: black">Fornecedor:
-			<select name="fornecedor" class="form-control">
-				<option value="">- Selecione -</option>
-						
-				<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
-					<option value="${f.idFornecedor}"> ${f.nome} </option>
-				</c:forEach>
-						
-			</select>
-		</label>
+			<label style="color: black">Categoria:
+				<select name="categoria" class="form-control">
+					<option value="">- Selecione -</option>
+							
+					<c:forEach items="${mbCategoria.listagemCategorias}" var="c">
+						<option value="${c.idCategoria}"> ${c.nome} </option>
+					</c:forEach>
+							
+				</select>
+			</label>
+			
+			<label style="color: black">Fornecedor:
+				<select name="fornecedor" class="form-control">
+					<option value="">- Selecione -</option>
+							
+					<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
+						<option value="${f.idFornecedor}"> ${f.nome} </option>
+					</c:forEach>
+							
+				</select>
+			</label>
+			
+			<input type="submit" class="btn btn-sm" value="Filtrar resultados" style="background-color: #ffc8a4; 
+				   width: 150; font-size: 14; font: bold;text-align: right;border-color: black;color: black;margin-left: 10px"/>
+				<span class="glyphicon glyphicon-search" style="margin-left: -145;color: black"></span>
 		
-		<a href="/easports/ControleProduto?acao=detalhesProdutoEstoque&id=${produto.idProduto}"
-				class="btn btn-sm" style="background-color: #ffc8a4; font-size: 14; 
-				color: black; border-color: black;margin-left: 5px">
-								
-				<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Filtrar resultados
-								
-		</a>
+		</form>
 		
 		<label style="color: red; text-align: right;font-size: 16px">${mensagem}</label>
 		
@@ -91,7 +90,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${mb.listagemProdutos}" var="produto">
+				<c:forEach items="${lista}" var="produto">
 					<tr>
 						
 						<td>${produto.idProduto}</td>
@@ -131,7 +130,7 @@
 			</tbody>
 		</table>
 				<hr style="border-width: 3px">
-				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(mb.listagemProdutos)}</b></label>
+				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(lista)}</b></label>
 				<br/>
 
 				</div>	

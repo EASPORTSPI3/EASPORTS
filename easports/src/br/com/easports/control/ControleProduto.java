@@ -650,7 +650,23 @@ public class ControleProduto extends HttpServlet {
 
 				try {
 					
+					Integer idCategoria = (Integer.parseInt(request.getParameter("categoria")));
 					
+					Integer idFornecedor = (Integer.parseInt(request.getParameter("fornecedor")));
+					
+					ProdutoDAO produtoDao = new ProdutoDAO();
+					
+					List<Produto> lista = produtoDao.findByCategoriaFornecedor(idCategoria, idFornecedor);
+					
+					if(lista.size() > 0){
+						
+						request.setAttribute("lista", lista);
+						
+					}else{
+						
+						request.setAttribute("mensagem", "Nenhum produto encontrado.");
+						
+					}
 					
 				} catch (Exception e) {
 					
