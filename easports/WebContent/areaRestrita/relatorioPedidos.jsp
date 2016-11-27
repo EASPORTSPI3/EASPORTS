@@ -35,10 +35,36 @@
 	<br/>
 	
 	<div class="col-md-12">
+	
+	
 		
 		<div class="col-md-3" style="width: 100%">
 			<div class="panel panel-success">
 				<div class="panel-heading">
+		
+		<label>Categoria:
+			<select name="categoria" class="form-control">
+				<option value="">- Selecione -</option>
+						
+				<c:forEach items="${mbCategoria.listagemCategorias}" var="c">
+					<option value="${c.idCategoria}"> ${c.nome} </option>
+				</c:forEach>
+						
+			</select>
+		</label>
+		
+		<label>Fornecedor:
+			<select name="fornecedor" class="form-control">
+				<option value="">- Selecione -</option>
+						
+				<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
+					<option value="${f.idFornecedor}"> ${f.nome} </option>
+				</c:forEach>
+						
+			</select>
+		</label>
+		
+		<hr style="border-width: 3px">
 		
 		<label style="color: red; text-align: right;font-size: 16px">${mensagem}</label>
 		

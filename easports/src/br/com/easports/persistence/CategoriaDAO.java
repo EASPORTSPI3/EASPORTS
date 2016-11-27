@@ -70,7 +70,7 @@ public class CategoriaDAO extends DAO{
 	
 	public List<Categoria> listAll() throws Exception {
 
-		String query = "select * from categoria";
+		String query = "select * from categoria order by categoria";
 
 		abreConexao();
 

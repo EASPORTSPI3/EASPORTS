@@ -10,7 +10,7 @@ public class DepartamentoDAO extends DAO{
 	
 	public List<Departamento> listAll() throws Exception{
 		
-		String query = "select * from departamento";
+		String query = "select * from departamento order by departamento";
 		abreConexao();
 
 		stmt = con.prepareStatement(query);

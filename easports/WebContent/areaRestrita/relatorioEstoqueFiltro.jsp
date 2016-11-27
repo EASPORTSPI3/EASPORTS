@@ -42,35 +42,35 @@
 			<div class="panel panel-success">
 				<div class="panel-heading">
 		
-		<form name="formulario" method="post" action="/easports/ControleProduto?acao=filtrarEstoque">
+		<label style="color: black">Categoria:
+			<select name="categoria" class="form-control">
+				<option value="">- Selecione -</option>
+						
+				<c:forEach items="${mbCategoria.listagemCategorias}" var="c">
+					<option value="${c.idCategoria}"> ${c.nome} </option>
+				</c:forEach>
+						
+			</select>
+		</label>
 		
-			<label style="color: black">Categoria:
-				<select name="categoria" class="form-control">
-					<option value="">- Selecione -</option>
-							
-					<c:forEach items="${mbCategoria.listagemCategorias}" var="c">
-						<option value="${c.idCategoria}"> ${c.nome} </option>
-					</c:forEach>
-							
-				</select>
-			</label>
-			
-			<label style="color: black">Fornecedor:
-				<select name="fornecedor" class="form-control">
-					<option value="">- Selecione -</option>
-							
-					<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
-						<option value="${f.idFornecedor}"> ${f.nome} </option>
-					</c:forEach>
-							
-				</select>
-			</label>
-			
-			<input type="submit" class="btn btn-sm" value="Filtrar resultados" style="background-color: #ffc8a4; 
-				   width: 150; font-size: 14; font: bold;text-align: right;border-color: black;color: black;margin-left: 10px"/>
-				<span class="glyphicon glyphicon-search" style="margin-left: -145;color: black"></span>
+		<label style="color: black">Fornecedor:
+			<select name="fornecedor" class="form-control">
+				<option value="">- Selecione -</option>
+						
+				<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
+					<option value="${f.idFornecedor}"> ${f.nome} </option>
+				</c:forEach>
+						
+			</select>
+		</label>
 		
-		</form>
+		<a href="/easports/ControleProduto?acao=detalhesProdutoEstoque&id=${produto.idProduto}"
+				class="btn btn-sm" style="background-color: #ffc8a4; font-size: 14; 
+				color: black; border-color: black;margin-left: 5px">
+								
+				<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Filtrar resultados
+								
+		</a>
 		
 		<label style="color: red; text-align: right;font-size: 16px">${mensagem}</label>
 		

@@ -124,7 +124,7 @@ public class ClientePFDAO extends DAO {
 
 	public List<ClientePF> listAll() throws Exception {
 
-		final String query = "select * from cliente_pf";
+		final String query = "select * from cliente_pf order by nome";
 
 		abreConexao();
 

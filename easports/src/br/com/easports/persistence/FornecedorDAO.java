@@ -182,7 +182,7 @@ public class FornecedorDAO extends DAO{
 
 	public List<Fornecedor> listAll() throws Exception{
 		
-		String query = "select * from fornecedor";
+		String query = "select * from fornecedor order by nome";
 		
 		abreConexao();
 		

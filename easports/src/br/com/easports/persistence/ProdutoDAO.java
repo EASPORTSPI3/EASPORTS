@@ -216,7 +216,7 @@ public class ProdutoDAO extends DAO {
 	
 	public List<Produto> listAll() throws Exception {
 
-		String query = "select * from produto";
+		String query = "select * from produto order by nome";
 
 		abreConexao();
 

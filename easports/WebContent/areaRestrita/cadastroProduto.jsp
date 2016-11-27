@@ -39,7 +39,7 @@
 	<div style="width: 100%;" class="col-md-4" >
 		
 		<form name="formulario" method="post" enctype="multipart/form-data" 
-			  action="ControleProduto?acao=cadastrar" style="width: 60%; margin: auto">
+			  action="/easports/ControleProduto?acao=cadastrar" style="width: 60%; margin: auto">
 			
 			<div class="col-md-3" style="width: 100%; margin-left: 0px;">
 				<div class="panel" style="background-color: #b4b4b4; width: 100%;">

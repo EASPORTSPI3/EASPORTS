@@ -646,6 +646,23 @@ public class ControleProduto extends HttpServlet {
 				}
 			}
 			
+			else if (acao.equalsIgnoreCase("filtrarEstoque")) {
+
+				try {
+					
+					
+					
+				} catch (Exception e) {
+					
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					request.getRequestDispatcher("/areaRestrita/relatorioEstoqueFiltro.jsp").forward(request, response);
+
+				}
+			}
+			
 		}
 
 	}
