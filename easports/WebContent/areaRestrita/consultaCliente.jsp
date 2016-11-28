@@ -81,7 +81,8 @@
 								value="<fmt:formatDate value="${cliente.dataNasc}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>" />
 							</label> <br />
 
-							<hr>
+							<hr style="border-width: 3px; border-color: gray;">							
+
 							<h4>Endereço:</h4>
 							<hr>
 

@@ -64,14 +64,13 @@
 					<label style="color: green; text-align: center; font-size: 16px">${mensagem}</label>
 					
 						<fieldset id="fieldCli" style="width: 100%;">				
-							<hr>							
+														
 							<h4>Dados Gerais:</h4>
 							<hr>	
 							<label>ID:
 								<input required="required" style="width: 60px" type="text" disabled name="idFuncionario" class="form-control" value="${funcionario.idFuncionario}"/> 
 							</label>
 
-			
 							<label>Nome do Funcionário:
 								<input required="required" style="width: 250px" type="text" disabled name="nome" class="form-control" value="${funcionario.nome}" />
 							</label>
@@ -91,7 +90,8 @@
 								value="<fmt:formatDate value="${funcionario.dataNasc}" type="both" pattern="dd/MM/yyyy" dateStyle="full"/>" />
 							</label> <br/>
 							
-							<hr>									
+							<hr style="border-width: 3px; border-color: gray;">							
+								
 							<h4>Endereço:</h4>
 							<hr>
 			

@@ -33,7 +33,7 @@
 	
 		<div style="width: 50%; padding:0px;"class="col-md-4">
 		<form  name="formulario" method="post"
-			action="ControlePessoa?acao=cadastrarFornecedor">
+			action="/easports/ControlePessoa?acao=cadastrarFornecedor">
 
 			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
 				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
@@ -63,7 +63,7 @@
 							
 							<!-- 	pesquisa do cep -->
 						
-							<a href="#" onclick="this.href='/easports/ControlePessoa?acao=consultaCep&cep='+document.getElementById('cep').value"
+							<a href="#" onclick="this.href='/easports/ControlePessoa?acao=consultaCepCadForn&cep='+document.getElementById('cep').value"
 									class="btn btn-sm" style="background-color: #ffc8a4; font-size: 14;
 	 								color: black; border-color: black; margin-left: 10px">
 									

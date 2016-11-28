@@ -51,24 +51,29 @@ public class ControleProduto extends HttpServlet {
 	protected void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Variável responsável por coletar a ação trazida pelo formulário e executar o
+		// Variável responsável por coletar a ação trazida pelo formulário e
+		// executar o
 		// método específico para seu tratamento
 
 		String acao = request.getParameter("acao");
 
-		// if/else responsável por comparar a ação trazida através do formulário com as
-		// opções possíveis de serem executadas pela página. Ex: cadastrar produto, consultar
+		// if/else responsável por comparar a ação trazida através do formulário
+		// com as
+		// opções possíveis de serem executadas pela página. Ex: cadastrar
+		// produto, consultar
 		// estoque, consultar produtos etc...
 
 		if (acao != null) {
 
-			// Se o valor da ação recebida pelo formulário for "cadastrar", execute o bloco abaixo:
+			// Se o valor da ação recebida pelo formulário for "cadastrar",
+			// execute o bloco abaixo:
 
 			if (acao.equalsIgnoreCase("cadastrar")) {
 
 				try {
-					
-					// Instanciando um novo Estoque para receber os parâmetros passados pelo usuário
+
+					// Instanciando um novo Estoque para receber os parâmetros
+					// passados pelo usuário
 					// através da JSP
 
 					Produto produto = new Produto();
@@ -81,8 +86,10 @@ public class ControleProduto extends HttpServlet {
 					produto.setValorCusto(Double.parseDouble(request.getParameter("valorCusto").replaceAll(",", ".")));
 					produto.setCodigo(request.getParameter("codigo"));
 
-					// Coletando cada parâmetro da página através do "name" do formulário, utilizando o 
-					// request.getParameter() e atribuindo à entidade Estoque através dos setters
+					// Coletando cada parâmetro da página através do "name" do
+					// formulário, utilizando o
+					// request.getParameter() e atribuindo à entidade Estoque
+					// através dos setters
 
 					// GUID - Global Unique Identifier (gera números randômicos)
 
@@ -97,15 +104,18 @@ public class ControleProduto extends HttpServlet {
 
 					// definir o local onde o arquivo será salvo
 
-					//Notebook Diego -> System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
-					
-					//String pasta = System.getProperty("user.home") + "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
-					
+					// Notebook Diego -> System.getProperty("user.home") +
+					// "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
+
+					// String pasta = System.getProperty("user.home") +
+					// "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
+
 					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
-					
+
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 
-					InputStream input = imagem.getInputStream(); // lendo o arquivo
+					InputStream input = imagem.getInputStream(); // lendo o
+																	// arquivo
 
 					byte[] buffer = new byte[1024];
 
@@ -135,13 +145,15 @@ public class ControleProduto extends HttpServlet {
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("cadastroProduto.jsp").forward(request, response);
 
@@ -152,24 +164,26 @@ public class ControleProduto extends HttpServlet {
 			else if (acao.equalsIgnoreCase("pesquisar")) {
 
 				try {
-					
+
 					String busca = request.getParameter("pesquisa");
 
 					ProdutoDAO produtoDao = new ProdutoDAO();
 
 					List<Produto> lista = produtoDao.findByName(busca);
-					
+
 					request.setAttribute("lista", lista);
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/resultadosProduto.jsp").forward(request, response);
 
@@ -180,7 +194,7 @@ public class ControleProduto extends HttpServlet {
 			else if (acao.equalsIgnoreCase("detalhesProduto")) {
 
 				try {
-					
+
 					Integer idProduto = Integer.parseInt(request.getParameter("id"));
 
 					ProdutoDAO produtoDao = new ProdutoDAO();
@@ -188,30 +202,31 @@ public class ControleProduto extends HttpServlet {
 					Produto produto = produtoDao.findById(idProduto);
 
 					FormataValor format = new FormataValor();
-					
-					request.setAttribute("produto", produto);
 
+					request.setAttribute("produto", produto);
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 
 					request.setAttribute("mensagem", "Erro: " + e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/detalhesProduto.jsp").forward(request, response);
 
 				}
 
 			}
-			
+
 			else if (acao.equalsIgnoreCase("detalhesProdutoEstoque")) {
 
 				try {
-					
+
 					Integer idProduto = Integer.parseInt(request.getParameter("id"));
 
 					ProdutoDAO produtoDao = new ProdutoDAO();
@@ -219,30 +234,31 @@ public class ControleProduto extends HttpServlet {
 					Produto produto = produtoDao.findById(idProduto);
 
 					FormataValor format = new FormataValor();
-					
-					request.setAttribute("produto", produto);
 
+					request.setAttribute("produto", produto);
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 
 					request.setAttribute("mensagem", "Erro: " + e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/detalhesProdutoEstoque.jsp").forward(request, response);
 
 				}
 
 			}
-			
+
 			else if (acao.equalsIgnoreCase("adicionarProduto")) {
 
 				try {
-					
+
 					Integer idProduto = Integer.parseInt(request.getParameter("id"));
 
 					ProdutoDAO produtoDao = new ProdutoDAO();
@@ -250,19 +266,20 @@ public class ControleProduto extends HttpServlet {
 					Produto produto = produtoDao.findById(idProduto);
 
 					FormataValor format = new FormataValor();
-					
-					request.setAttribute("produto", produto);
 
+					request.setAttribute("produto", produto);
 
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 
 					request.setAttribute("mensagem", "Erro: " + e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/realizarPedido.jsp").forward(request, response);
 
@@ -273,403 +290,414 @@ public class ControleProduto extends HttpServlet {
 			else if (acao.equalsIgnoreCase("realizarPedido")) {
 
 				try {
-					
+
 					Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
-					
+
 					Integer quantidadePedida = Integer.parseInt(request.getParameter("quantidade"));
-					
+
 					Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
-					
+
 					Produto produto = new Produto();
-					
+
 					ProdutoDAO produtoDao = new ProdutoDAO();
-					
+
 					ClientePFDAO clientePfDao = new ClientePFDAO();
-					
+
 					produto = produtoDao.findById(idProduto);
-					
+
 					Integer quantidadeDisponivel = produto.getQuantidade();
-					
+
 					Pedido pedido = new Pedido();
-					
+
 					pedido.setCliente(clientePfDao.findById(idCliente));
 					pedido.setProduto(produto);
 					pedido.setQuantidade(quantidadePedida);
-					
-					if(quantidadeDisponivel >= quantidadePedida){
-						
+
+					if (quantidadeDisponivel >= quantidadePedida) {
+
 						PedidoDAO pedidoDao = new PedidoDAO();
-						
+
 						pedidoDao.insert(pedido);
-						
+
 						produto.setQuantidade(quantidadeDisponivel - quantidadePedida);
-						
+
 						ProdutoDAO produtoDao2 = new ProdutoDAO();
-						
+
 						produtoDao2.update(produto);
-						
+
 						request.setAttribute("mensagem", "Pedido realizado com sucesso.");
-						
+
 						request.setAttribute("produto", produto);
-						
+
 						request.setAttribute("pedido", pedido);
-						
-					}
-					else{
-						
+
+					} else {
+
 						request.setAttribute("mensagem", "Quantidade indisponível em estoque.");
-						
+
 						request.setAttribute("produto", produto);
-						
+
 						request.setAttribute("pedido", pedido);
-						
+
 					}
-					
-					
-					
+
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/pedidoRealizado.jsp").forward(request, response);
 
 				}
 
 			}
-			
+
 			else if (acao.equalsIgnoreCase("consultarPedidos")) {
 
 				try {
-					
+
 					String cpf = request.getParameter("cpf");
-					
+
 					ClientePF clientePf = new ClientePF();
-					
+
 					ClientePFDAO clientePfDao = new ClientePFDAO();
-					
+
 					PedidoDAO pedidoDao = new PedidoDAO();
-					
+
 					ProdutoDAO produtoDao = new ProdutoDAO();
-					
+
 					clientePf = clientePfDao.findByCpf(cpf);
-					
+
 					ArrayList<Pedido> lista = pedidoDao.pedidosNaoFinalizadosPorCliente(clientePf.getIdCliente());
-					
+
 					FormataValor format = new FormataValor();
-					
+
 					Double valorTotalCompra = 0.0;
-					
-					for(Pedido pedido : lista){
-						
+
+					for (Pedido pedido : lista) {
+
 						Produto produto = new Produto();
 
 						produto = pedido.getProduto();
-						
-						pedido.setValorTotalFormatado(format.valorFormatado(pedido.getQuantidade() * produto.getValorVenda()));
-						
+
+						pedido.setValorTotalFormatado(
+								format.valorFormatado(pedido.getQuantidade() * produto.getValorVenda()));
+
 						valorTotalCompra += pedido.getQuantidade() * produto.getValorVenda();
-						
+
 					}
-					
+
 					String valorTotalFormatado = format.valorFormatado(valorTotalCompra);
-					
-					if(lista != null){
-						
+
+					if (lista != null) {
+
 						request.setAttribute("lista", lista);
-						
+
 						request.setAttribute("cpf", cpf);
-						
+
 						request.setAttribute("valorTotal", valorTotalFormatado);
-						
-					}else{
-						
+
+					} else {
+
 						request.setAttribute("mensagem", "Nenhum registro encontrado.");
-						
+
 					}
-					
+
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
-					
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
+
 					request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
 
 				}
 
 			}
-			
+
 			else if (acao.equalsIgnoreCase("visualizarPedido")) {
 
 				try {
-					
+
 					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
 
 					PedidoDAO pedidoDao = new PedidoDAO();
-					
+
 					Pedido pedido = new Pedido();
-					
+
 					pedido = pedidoDao.findById(idPedido);
-					
+
 					request.setAttribute("pedido", pedido);
-					
+
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
+
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
-					
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
+
 					request.getRequestDispatcher("/areaRestrita/edicaoPedido.jsp").forward(request, response);
 
 				}
 			}
-			
+
 			else if (acao.equalsIgnoreCase("editarPedido")) {
 
 				try {
-					
+
 					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
 
 					Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
-					
+
 					Integer novaQuantidade = Integer.parseInt(request.getParameter("quantidade"));
-					
+
 					PedidoDAO pedidoDao = new PedidoDAO();
-					
+
 					Pedido pedido = new Pedido();
-					
+
 					pedido = pedidoDao.findById(idPedido);
-					
+
 					pedidoDao = new PedidoDAO();
-					
+
 					Produto produto = new Produto();
-					
+
 					ProdutoDAO produtoDao = new ProdutoDAO();
-					
+
 					produto = produtoDao.findById(idProduto);
-					
+
 					Integer diferenca = 0;
-					
-					if(novaQuantidade >= pedido.getQuantidade()){
-						
+
+					if (novaQuantidade >= pedido.getQuantidade()) {
+
 						diferenca = novaQuantidade - pedido.getQuantidade();
-						
-						if(produto.getQuantidade() >= diferenca){
-							
+
+						if (produto.getQuantidade() >= diferenca) {
+
 							produto.setQuantidade(produto.getQuantidade() - diferenca);
-							
+
 							pedido.setQuantidade(novaQuantidade);
-							
+
 							produtoDao = new ProdutoDAO();
-							
+
 							pedidoDao = new PedidoDAO();
-							
+
 							pedidoDao.update(pedido);
-							
+
 							produtoDao.update(produto);
-							
+
 							request.setAttribute("pedido", pedido);
-							
+
 							request.setAttribute("produto", produto);
-							
-							request.setAttribute("mensagem", "Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
-							
-						}
-						else{
-							
+
+							request.setAttribute("mensagem",
+									"Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
+
+						} else {
+
 							request.setAttribute("pedido", pedido);
-							
+
 							request.setAttribute("mensagem", "Quantidade indisponível.");
-							
+
 						}
-						
-					}else{
-						
+
+					} else {
+
 						diferenca = pedido.getQuantidade() - novaQuantidade;
-						
+
 						produto.setQuantidade(produto.getQuantidade() + diferenca);
-						
+
 						pedido.setQuantidade(novaQuantidade);
-						
+
 						produtoDao = new ProdutoDAO();
-						
+
 						pedidoDao = new PedidoDAO();
-						
+
 						pedidoDao.update(pedido);
-						
+
 						produtoDao.update(produto);
-						
+
 						request.setAttribute("pedido", pedido);
-						
+
 						request.setAttribute("produto", produto);
-						
-						request.setAttribute("mensagem", "Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
-						
+
+						request.setAttribute("mensagem",
+								"Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
+
 					}
-					
+
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
-					
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
+
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
-					
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
+
 					request.getRequestDispatcher("/areaRestrita/edicaoPedido.jsp").forward(request, response);
 
 				}
 			}
-			
+
 			else if (acao.equalsIgnoreCase("excluirPedido")) {
 
 				try {
-					
+
 					Integer idPedido = Integer.parseInt(request.getParameter("idPedido"));
 					Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
-					
+
 					PedidoDAO pedidoDao = new PedidoDAO();
-				
+
 					Pedido pedidoRealizado = new Pedido();
-					
+
 					pedidoRealizado = pedidoDao.findById(idPedido);
-					
+
 					Integer quantidade = pedidoRealizado.getQuantidade();
 					Produto produto = new Produto();
-					
+
 					ProdutoDAO produtoDao = new ProdutoDAO();
 					Integer idProduto = pedidoRealizado.getProduto().getIdProduto();
-					
+
 					produto = produtoDao.findById(idProduto);
-					
+
 					produto.setQuantidade(produto.getQuantidade() + quantidade);
 					produtoDao = new ProdutoDAO();
 					produtoDao.update(produto);
 					pedidoDao = new PedidoDAO();
 					pedidoDao.delete(idPedido);
-					
+
 					pedidoDao = new PedidoDAO();
 
 					ArrayList<Pedido> listaPedidos = pedidoDao.pedidosNaoFinalizadosPorCliente(idCliente);
-					
+
 					FormataValor format = new FormataValor();
-					
+
 					Double valorTotal = 0.0;
-					
-					for(Pedido pedido : listaPedidos){
-						
+
+					for (Pedido pedido : listaPedidos) {
+
 						valorTotal += pedido.getProduto().getValorVenda() * pedido.getQuantidade();
-						
-						pedido.setValorTotalFormatado(format.valorFormatado(pedido.getProduto().getValorVenda() * pedido.getQuantidade()));
-						
+
+						pedido.setValorTotalFormatado(
+								format.valorFormatado(pedido.getProduto().getValorVenda() * pedido.getQuantidade()));
+
 					}
-					
+
 					String valorTotalFormatado = format.valorFormatado(valorTotal);
-					
+
 					request.setAttribute("mensagem", "Pedido ID: " + idPedido + ", excluído com sucesso.");
-					
+
 					request.setAttribute("lista", listaPedidos);
-					
+
 					request.setAttribute("valorTotal", valorTotalFormatado);
-					
+
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
 
 				}
 			}
-			
+
 			else if (acao.equalsIgnoreCase("finalizarPedidos")) {
 
 				try {
-					
-					//estancioando uma nova venda
+
+					// estancioando uma nova venda
 					Venda venda = new Venda();
-					
-					//pegando o usuario logado na sessão
-					
+
+					// pegando o usuario logado na sessão
+
 					HttpSession session = request.getSession();
-					
+
 					Funcionario funcionadoLogado = (Funcionario) session.getAttribute("usuarioLogado");
-					
+
 					Integer idFuncionario = funcionadoLogado.getIdFuncionario();
-					
+
 					venda.setDataVenda(ConverteData.getDataAtual());
-					
+
 					VendaDAO vendaDao = new VendaDAO();
-					
-					int idVenda = vendaDao.insertreturnID(venda,idFuncionario);
-					
+
+					int idVenda = vendaDao.insertreturnID(venda, idFuncionario);
+
 					String cpf = request.getParameter("cpf");
-					
+
 					ClientePFDAO clientePfDao = new ClientePFDAO();
-					
+
 					ClientePF clientePf = new ClientePF();
-					
+
 					clientePf = clientePfDao.findByCpf(cpf);
-					
+
 					PedidoDAO pedidoDao = new PedidoDAO();
-					
+
 					pedidoDao.finalizaPedidos(clientePf.getIdCliente(), idVenda);
-					
+
 					request.setAttribute("mensagem", "Pedidos finalizados com sucesso");
-					
+
 				} catch (Exception e) {
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
 
 				}
 			}
-			
+
 			else if (acao.equalsIgnoreCase("filtrarEstoque")) {
 
 				try {
-					
+
 					Integer idCategoria = (Integer.parseInt(request.getParameter("categoria")));
-					
+
 					Integer idFornecedor = (Integer.parseInt(request.getParameter("fornecedor")));
-					
+
 					ProdutoDAO produtoDao = new ProdutoDAO();
-					
+
 					List<Produto> lista = produtoDao.findByCategoriaFornecedor(idCategoria, idFornecedor);
-					
-					if(lista.size() > 0){
-						
+
+					if (lista.size() > 0) {
+
 						request.setAttribute("lista", lista);
-						
-					}else{
-						
+
+					} else {
+
 						request.setAttribute("mensagem", "Nenhum produto encontrado.");
-						
+
 					}
-					
+
 				} catch (Exception e) {
-					
+
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
@@ -678,7 +706,147 @@ public class ControleProduto extends HttpServlet {
 
 				}
 			}
-			
+
+			else if (acao.equalsIgnoreCase("filtrarPedidos")) {
+
+				try {
+
+					Integer status = Integer.parseInt(request.getParameter("status"));
+					String idClienteString = request.getParameter("idCliente");
+
+					Boolean isFinalizado;
+
+					if (!idClienteString.equals("") && status != 0) {
+						
+						Integer idCliente = Integer.parseInt(idClienteString);
+
+						if (status == 1) {
+
+							isFinalizado = true;
+
+							PedidoDAO pedidoDao = new PedidoDAO();
+
+							List<Pedido> lista = pedidoDao.pedidosFiltro(idCliente, isFinalizado);
+
+							if (lista.size() > 0) {
+
+								request.setAttribute("lista", lista);
+
+							} else {
+
+								request.setAttribute("mensagem", "Nenhum pedido encontrado.");
+
+							}
+
+						} else {
+
+							isFinalizado = false;
+
+							PedidoDAO pedidoDao = new PedidoDAO();
+
+							List<Pedido> lista = pedidoDao.pedidosFiltro(idCliente, isFinalizado);
+
+							if (lista.size() > 0) {
+
+								request.setAttribute("lista", lista);
+
+							} else {
+
+								request.setAttribute("mensagem", "Nenhum pedido encontrado.");
+
+							}
+
+						}
+
+					} 
+					else if (idClienteString.equals("") && status != 0) {
+						
+						if (status == 1) {
+							
+							isFinalizado = true;
+							
+							PedidoDAO pedidoDao = new PedidoDAO();
+							
+							List<Pedido> lista = pedidoDao.pedidosFinalizados();
+							
+							if (lista.size() > 0) {
+
+								request.setAttribute("lista", lista);
+
+							} else {
+
+								request.setAttribute("mensagem", "Nenhum pedido encontrado.");
+
+							}
+
+						} else {
+							
+							isFinalizado = false;
+
+							PedidoDAO pedidoDao = new PedidoDAO();
+
+							List<Pedido> lista = pedidoDao.pedidosNaoFinalizados();
+							
+							if (lista.size() > 0) {
+
+								request.setAttribute("lista", lista);
+
+							} else {
+
+								request.setAttribute("mensagem", "Nenhum pedido encontrado.");
+
+							}
+
+						}
+
+					}
+					else if(!idClienteString.equals("") && status == 0){
+						
+						Integer idCliente = Integer.parseInt(idClienteString);
+						
+						PedidoDAO pedidoDao = new PedidoDAO();
+
+						List<Pedido> lista = pedidoDao.pedidosPorCliente(idCliente);
+						
+						if (lista.size() > 0) {
+
+							request.setAttribute("lista", lista);
+
+						} else {
+
+							request.setAttribute("mensagem", "Nenhum pedido encontrado.");
+
+						}
+						
+					}else{
+						
+						PedidoDAO pedidoDao = new PedidoDAO();
+
+						List<Pedido> lista = pedidoDao.listAll();
+						
+						if (lista.size() > 0) {
+
+							request.setAttribute("lista", lista);
+
+						} else {
+
+							request.setAttribute("mensagem", "Nenhum pedido encontrado.");
+
+						}
+						
+					}
+
+				} catch (Exception e) {
+
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					request.getRequestDispatcher("/areaRestrita/relatorioPedidosFiltro.jsp").forward(request, response);
+
+				}
+			}
+
 		}
 
 	}

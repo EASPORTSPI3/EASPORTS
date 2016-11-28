@@ -44,7 +44,58 @@
 						<fieldset id="fieldCli" style="width: 100%;">	
 							<h4 style="color:green">${mensagem}</h4>
 							<h4 style="color:red">${mensagem2}</h4>							
-							<hr>							
+										
+							<h4>Endereço:</h4>
+							<hr>
+			
+							<label>Logradouro:
+								<input required="required" style="width: 260px" type="text" name="logradouro" 
+									   class="form-control" placeholder="Digite aqui" value="${endereco.logradouro}"/>
+							</label>
+						
+							<label>Número:
+								<input style="width: 100px" type="text" name="numero" 
+									   class="form-control" placeholder="Digite aqui"/>
+							</label>
+				
+							<label>CEP:
+								<input required="required" style="width: 110px" type="text" name="cep" id="cep" 
+									   class="form-control" placeholder="Digite aqui" value="${endereco.cep}"/>
+							</label>
+							
+							<!-- 	pesquisa do cep -->
+						
+							<a href="#" onclick="this.href='/easports/ControlePessoa?acao=consultaCepCadFunc&cep='+document.getElementById('cep').value"
+									class="btn btn-sm" style="background-color: #ffc8a4; font-size: 14;
+	 								color: black; border-color: black; margin-left: 10px">
+									
+									<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Consulta CEP
+							</a>
+							
+							<label>Bairro:
+								<input required="required" style="width: 260px" type="text" name="bairro" 
+									   class="form-control" placeholder="Digite aqui" value="${endereco.bairro}"/>
+							</label>
+
+							
+							<label>Cidade:
+								<input required="required" style="width: 180px" type="text" name="cidade" 
+									   class="form-control" placeholder="Digite aqui" value="${endereco.cidade}"/>
+							</label>
+
+							
+							<label>Estado:
+								<input required="required" style="width: 180px" type="text" name="estado" 
+									   class="form-control" placeholder="Digite aqui" value="${endereco.estado}"/>
+							</label>
+													
+							<label>País:
+								<input required="required" style="width: 250px" type="text" name="pais" 
+									   class="form-control" placeholder="Digite aqui"/>
+							</label>
+											
+							<hr style="border-width: 3px; border-color: gray;">
+												
 							<h4>Dados Gerais:</h4>
 							<hr>	
 			
@@ -87,41 +138,7 @@
 								</c:forEach>					
 								</select>
 							</label>
-							<hr>
-									
-							<h4>Endereço:</h4>
-							<hr>
-			
-							<label>Logradouro:
-								<input required="required" style="width: 300px" type="text" name="logradouro" class="form-control" placeholder="Digite aqui" />
-							</label>
-						
-							<label>Número:
-								<input required="required" style="width: 100px" type="text" name="numero" class="form-control" placeholder="Digite aqui"/>
-							</label>
-				
-							<label>CEP:
-								<input required="required" style="width: 120px" type="text" name="cep" class="form-control" placeholder="Digite aqui"/>
-							</label>
 							
-							
-							<label>Bairro:
-								<input required="required" style="width: 220px" type="text" name="bairro" class="form-control" placeholder="Digite aqui"/>
-							</label>
-
-							
-							<label>Cidade:
-								<input required="required" style="width: 180px" type="text" name="cidade" class="form-control" placeholder="Digite aqui"/>
-							</label>
-
-							
-							<label>Estado:
-								<input required="required" style="width: 180px" type="text" name="estado" class="form-control" placeholder="Digite aqui"/>
-							</label>
-													
-							<label>País:
-								<input required="required" style="width: 250px" type="text" name="pais" class="form-control" placeholder="Digite aqui"/>
-							</label>
 							<hr>
 											
 							<input type="submit" class="btn btn-sm" value="Cadastrar" style="background-color: #beeab5; 

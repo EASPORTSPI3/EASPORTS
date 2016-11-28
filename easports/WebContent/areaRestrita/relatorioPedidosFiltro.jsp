@@ -2,8 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanPedido" id="mb"></jsp:useBean>
-
 <!-- TagLibraries (JSTL) -->
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -81,7 +79,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${mb.listagemPedidos}" var="pedido">
+				<c:forEach items="${lista}" var="pedido">
 					<tr>
 						
 						<td>${pedido.idPedido}</td>
@@ -121,7 +119,7 @@
 			</tbody>
 		</table>
 				<hr style="border-width: 3px">
-				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(mb.listagemPedidos)}</b></label>
+				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(lista)}</b></label>
 				<br/>
 
 				</div>	

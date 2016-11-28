@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -23,23 +22,23 @@
 	
 	<div id="botoes" style="padding-top: 20px">
 
-			<label id="cadastro" style="padding-left: 25%"><a a href="cadastroCliente.jsp"> 
+			<label id="cadastro" style="padding-left: 25%"><a href="/easports/areaRestrita/cadastroCliente.jsp" title="Cadastro de Clientes"> 
 				<img src="/easports/img/btn_cadastrar.png" /></a>
 			</label>
 				
-			<label id="consulta" style="padding-left: 3%"><a a href="consultaCliente.jsp"> 
+			<label id="consulta" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaCliente.jsp" title="Consultar Clientes"> 
 				<img src="/easports/img/btn_consultar.png" /></a>
 			</label>
 			
-			<label id="relatorio" style="padding-left: 3%"><a> 
+			<label id="relatorio" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioClientes.jsp" title="Relatório de Clientes"> 
 				<img src="/easports/img/btn_relatorio.png" /></a>
 			</label>
 			
-			<label id="vendas" style="padding-left: 3%"><a> 
+			<label id="vendas" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioPedidos.jsp" title="Relatório de Clientes">  
 				<img src="/easports/img/btn_vendas.png" /></a>
 			</label>
 			
-			<label id="ajuda" style="padding-left: 3%"><a> 
+			<label id="sobre" style="padding-left: 3%"><a href="/easports/areaRestrita/sobre.jsp" title="Sobre"> 
 				<img src="/easports/img/btn_ajuda.png" /></a>
 			</label>
 			

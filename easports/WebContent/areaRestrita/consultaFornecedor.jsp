@@ -64,9 +64,9 @@
 				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
 					<div class="panel-heading" >
 			
-					<fieldset id="fieldCli" style="width: 100%;">	
-						<hr>							
-							<h4>Dados Gerais:</h4>
+					<fieldset id="fieldCli" style="width: 100%;">
+					
+						<h4>Dados Gerais:</h4>
 						<hr>							
 						<label>ID do Fonecedor: &nbsp
 							<input required="required" style="width: 100px" type="text" disabled name="idFornecedor" class="form-control" value="${fornecedor.idFornecedor}"/> 
@@ -87,40 +87,39 @@
 						<label>CNPJ:
 						<input required="required" style="width: 250px" type="text" disabled name="cnpj" class="form-control" value="${fornecedor.cnpj}"/>
 						</label>						
-						<hr>									
-							<h4>Endereço:</h4>
-							<hr>
-			
-							<label>Logradouro:
-								<input required="required" style="width: 300px" type="text" disabled name="logradouro" class="form-control" value="${fornecedor.endereco.logradouro}" />
-							</label>
 						
-							<label>Número:
-								<input required="required" style="width: 100px" type="text" disabled name="numero" class="form-control" value="${fornecedor.endereco.numero}"/>
-							</label>
+						<hr style="border-width: 3px; border-color: gray;">
+					
+						<h4>Endereço:</h4>
+						<hr>
+			
+						<label>Logradouro:
+							<input required="required" style="width: 300px" type="text" disabled name="logradouro" class="form-control" value="${fornecedor.endereco.logradouro}" />
+						</label>
+						
+						<label>Número:
+							<input required="required" style="width: 100px" type="text" disabled name="numero" class="form-control" value="${fornecedor.endereco.numero}"/>
+						</label>
 				
-							<label>CEP:
-								<input required="required" style="width: 120px" type="text" disabled name="cep" class="form-control" value="${fornecedor.endereco.cep}"/>
-							</label>
+						<label>CEP:
+							<input required="required" style="width: 120px" type="text" disabled name="cep" class="form-control" value="${fornecedor.endereco.cep}"/>
+						</label>
 							
-							
-							<label>Bairro:
-								<input required="required" style="width: 220px" type="text" disabled name="bairro" class="form-control" value="${fornecedor.endereco.bairro}"/>
-							</label>
+						<label>Bairro:
+							<input required="required" style="width: 220px" type="text" disabled name="bairro" class="form-control" value="${fornecedor.endereco.bairro}"/>
+						</label>
 
-							
-							<label>Cidade:
-								<input required="required" style="width: 180px" type="text" disabled name="cidade" class="form-control" value="${fornecedor.endereco.cidade}"/>
-							</label>
+						<label>Cidade:
+							<input required="required" style="width: 180px" type="text" disabled name="cidade" class="form-control" value="${fornecedor.endereco.cidade}"/>
+						</label>
 
-							
-							<label>Estado:
-								<input required="required" style="width: 180px" type="text" disabled name="estado" class="form-control" value="${fornecedor.endereco.estado}"/>
-							</label>
+						<label>Estado:
+							<input required="required" style="width: 180px" type="text" disabled name="estado" class="form-control" value="${fornecedor.endereco.estado}"/>
+						</label>
 													
-							<label>País:
-								<input required="required" style="width: 250px" type="text" disabled name="pais" class="form-control" value="${fornecedor.endereco.pais}"/>
-							</label>	
+						<label>País:
+							<input required="required" style="width: 250px" type="text" disabled name="pais" class="form-control" value="${fornecedor.endereco.pais}"/>
+						</label>	
 					</fieldset>
 						<br/>
 						

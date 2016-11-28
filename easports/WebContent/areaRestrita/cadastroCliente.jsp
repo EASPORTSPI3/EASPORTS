@@ -63,7 +63,7 @@
 							
 							<!-- 	pesquisa do cep -->
 						
-							<a href="#" onclick="this.href='/easports/ControlePessoa?acao=consultaCep&cep='+document.getElementById('cep').value"
+							<a href="#" onclick="this.href='/easports/ControlePessoa?acao=consultaCepCadCli&cep='+document.getElementById('cep').value"
 									class="btn btn-sm" style="background-color: #ffc8a4; font-size: 14;
 	 								color: black; border-color: black; margin-left: 10px">
 									

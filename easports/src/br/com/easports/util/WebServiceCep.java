@@ -506,18 +506,24 @@ public final class WebServiceCep {
 	}
 
 	public static Endereco buscaCep(String cep) {
+		
 		// Faz a busca para o cep 58043-280
+		
 		WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
-		// A ferramenta de busca ignora qualquer caracter que n?o seja n?mero.
-
+		
+		// A ferramenta de busca ignora qualquer caracter que nao seja numero.
 		// caso a busca ocorra bem, imprime os resultados.
+		
 		if (webServiceCep.wasSuccessful()) {
+			
 			Endereco endereco = new Endereco();
+			
 			endereco.setLogradouro(webServiceCep.getLogradouroFull());
 			endereco.setBairro(webServiceCep.getBairro());
 			endereco.setCidade(webServiceCep.getCidade());
 			endereco.setEstado(webServiceCep.getUf());
 			endereco.setCep(cep);
+			
 			return endereco;
 		}
 		return null;
