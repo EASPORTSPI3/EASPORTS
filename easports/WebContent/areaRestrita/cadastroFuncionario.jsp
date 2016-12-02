@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-	<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanDepartamento" id="mbDepartamento"></jsp:useBean>
 	<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanCargo" id="mbCargo"></jsp:useBean>
 
 <!-- TagLibraries (JSTL) -->
@@ -117,16 +116,6 @@
 
 							<label for="pwd">Senha:
 							  <input type="password" required="required" style="width: 140px" class="form-control" id="pwd" name="senha" placeholder="Digite aqui">
-							</label>
-						
-							<label>Departamento:
-								<select name="departamento" class="form-control" style="width: 135px">
-									<option value="">- Selecione -</option>
-					
-								<c:forEach items="${mbDepartamento.listagemDepartamentos}" var="d">
-									<option value="${d.idDepartamento}"> ${d.departamento} </option>
-								</c:forEach>					
-								</select>
 							</label>
 							
 							<label>Cargo:

@@ -32,7 +32,7 @@
 		<hr/>		
 		<br/>
 		
-		<form style="background-color: #7f7f7f" name="formulario" method="post" action="/easports/ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}&idProduto=${pedido.produto.idProduto}">
+		<form style="background-color: #7f7f7f" name="formulario" method="post" action="/easports/ControleProduto?acao=editarPedido&idPedido=${pedido.idPedido}&idProduto=${pedido.produto.idProduto}&cpf=${pedido.cliente.cpf}">
 			<div class="col-md-3" style="width: 1000; margin-left: 85px">
 				<div class="panel panel-success">
 					<div class="panel-heading">
@@ -68,6 +68,7 @@
 							<hr>
 						
 							<h4 style="color: green; text-align: center;">${mensagem}</h4>
+							<h4 style="color: red; text-align: center;">${mensagem2}</h4>
 						
 						</div>
 						

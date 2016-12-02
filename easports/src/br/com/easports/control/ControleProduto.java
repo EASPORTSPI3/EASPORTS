@@ -295,51 +295,66 @@ public class ControleProduto extends HttpServlet {
 
 					Integer quantidadePedida = Integer.parseInt(request.getParameter("quantidade"));
 
-					Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
-
-					Produto produto = new Produto();
-
-					ProdutoDAO produtoDao = new ProdutoDAO();
-
-					ClientePFDAO clientePfDao = new ClientePFDAO();
-
-					produto = produtoDao.findById(idProduto);
-
-					Integer quantidadeDisponivel = produto.getQuantidade();
-
-					Pedido pedido = new Pedido();
-
-					pedido.setCliente(clientePfDao.findById(idCliente));
-					pedido.setProduto(produto);
-					pedido.setQuantidade(quantidadePedida);
-
-					if (quantidadeDisponivel >= quantidadePedida) {
-
-						PedidoDAO pedidoDao = new PedidoDAO();
-
-						pedidoDao.insert(pedido);
-
-						produto.setQuantidade(quantidadeDisponivel - quantidadePedida);
-
-						ProdutoDAO produtoDao2 = new ProdutoDAO();
-
-						produtoDao2.update(produto);
-
-						request.setAttribute("mensagem", "Pedido realizado com sucesso.");
-
-						request.setAttribute("produto", produto);
-
-						request.setAttribute("pedido", pedido);
-
-					} else {
-
-						request.setAttribute("mensagem", "Quantidade indisponível em estoque.");
-
-						request.setAttribute("produto", produto);
-
-						request.setAttribute("pedido", pedido);
-
+					if(quantidadePedida <= 0){
+						
+						request.setAttribute("mensagem2", "Valor inválido.");
+						
+						request.
+						
+						throw new Exception();
+						
 					}
+					else{
+						
+						Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
+
+						Produto produto = new Produto();
+
+						ProdutoDAO produtoDao = new ProdutoDAO();
+
+						ClientePFDAO clientePfDao = new ClientePFDAO();
+
+						produto = produtoDao.findById(idProduto);
+
+						Integer quantidadeDisponivel = produto.getQuantidade();
+
+						Pedido pedido = new Pedido();
+
+						pedido.setCliente(clientePfDao.findById(idCliente));
+						pedido.setProduto(produto);
+						pedido.setQuantidade(quantidadePedida);
+
+						if (quantidadeDisponivel >= quantidadePedida) {
+
+							PedidoDAO pedidoDao = new PedidoDAO();
+
+							pedidoDao.insert(pedido);
+
+							produto.setQuantidade(quantidadeDisponivel - quantidadePedida);
+
+							ProdutoDAO produtoDao2 = new ProdutoDAO();
+
+							produtoDao2.update(produto);
+
+							request.setAttribute("mensagem", "Pedido realizado com sucesso.");
+
+							request.setAttribute("produto", produto);
+
+							request.setAttribute("pedido", pedido);
+
+						} else {
+
+							request.setAttribute("mensagem", "Quantidade indisponível em estoque.");
+
+							request.setAttribute("produto", produto);
+
+							request.setAttribute("pedido", pedido);
+
+						}
+						
+					}
+					
+					
 
 				} catch (Exception e) {
 
@@ -500,19 +515,47 @@ public class ControleProduto extends HttpServlet {
 							pedidoDao.update(pedido);
 
 							produtoDao.update(produto);
+							
+							
+							Integer idCliente = pedido.getCliente().getIdCliente();
+							
+							pedidoDao = new PedidoDAO();
+							
+							ArrayList<Pedido> lista = new ArrayList<Pedido>();
+							
+							lista = pedidoDao.pedidosNaoFinalizadosPorCliente(idCliente);
+							
+							Double valorTotalCompra = 0.0;
+							
+							FormataValor format = new FormataValor();
+							
+							for (Pedido pedido2 : lista) {
 
-							request.setAttribute("pedido", pedido);
+								produto = new Produto();
 
-							request.setAttribute("produto", produto);
+								produto = pedido.getProduto();
 
-							request.setAttribute("mensagem",
-									"Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
+								pedido.setValorTotalFormatado(
+										format.valorFormatado(pedido2.getQuantidade() * produto.getValorVenda()));
+
+								valorTotalCompra += pedido2.getQuantidade() * produto.getValorVenda();
+
+							}
+
+							String valorTotalFormatado = format.valorFormatado(valorTotalCompra);
+							
+							request.setAttribute("lista", lista);
+							request.setAttribute("valorTotal", valorTotalFormatado);
+							
+							request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
+							
+							throw new Exception();
 
 						} else {
 
 							request.setAttribute("pedido", pedido);
 
-							request.setAttribute("mensagem", "Quantidade indisponível.");
+							request.setAttribute("mensagem2", "Quantidade indisponível.");
 
 						}
 
@@ -538,6 +581,8 @@ public class ControleProduto extends HttpServlet {
 
 						request.setAttribute("mensagem",
 								"Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
+						
+						request.getRequestDispatcher("/areaRestrita/edicaoPedido.jsp").forward(request, response);
 
 					}
 

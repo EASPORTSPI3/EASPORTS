@@ -517,7 +517,6 @@ public class ControlePessoa extends HttpServlet {
 
 						final Integer idEndereco = enderecoDao.insertReturnID(endereco);
 
-						final Integer departamento = Integer.parseInt(request.getParameter("departamento"));
 						final Integer cargo = Integer.parseInt(request.getParameter("cargo"));
 
 						funcionario = new Funcionario();
@@ -530,7 +529,7 @@ public class ControlePessoa extends HttpServlet {
 						funcionario.setEndereco(endereco);
 
 						final FuncionarioDAO funcionarioDAO2 = new FuncionarioDAO();
-						funcionarioDAO2.insert(funcionario, idEndereco, departamento, cargo);
+						funcionarioDAO2.insert(funcionario, idEndereco, cargo);
 
 						request.setAttribute("mensagem",
 								"Funcionário " + funcionario.getNome() + " cadastrado com sucesso");
