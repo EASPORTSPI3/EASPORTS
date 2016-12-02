@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css"/>
 	
+	<script type="text/javascript" src="/easports/js/filtro.js"></script>
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
@@ -30,7 +31,7 @@
 				<img src="/easports/img/btn_consultar.png" /></a>
 			</label>
 			
-			<label id="relatorio" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioClientes.jsp" title="Relatório de Clientes"> 
+			<label id="relatorio2" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioClientes.jsp" title="Relatório de Clientes"> 
 				<img src="/easports/img/btn_relatorio.png" /></a>
 			</label>
 			

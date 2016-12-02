@@ -16,10 +16,10 @@
                            aria-haspopup="true" aria-expanded="false" style="background-color: #7f7f7f; 
                            color: #ffffff"><b>Cadastrar</b> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/easports/areaRestrita/cadastroCliente.jsp">Cliente</a></li>
-                            <li><a href="/easports/areaRestrita/cadastroFornecedor.jsp">Fornecedor</a></li>
-                            <li><a href="/easports/areaRestrita/cadastroFuncionario.jsp">Funcionário</a></li>
-                            <li><a href="/easports/areaRestrita/cadastroProduto.jsp">Produto</a></li>
+                            <li id="cliente"> <a href="/easports/areaRestrita/cadastroCliente.jsp">Cliente</a></li>
+                            <li id="fornecedor"><a href="/easports/areaRestrita/cadastroFornecedor.jsp">Fornecedor</a></li>
+                            <li id="funcionario"><a href="/easports/areaRestrita/cadastroFuncionario.jsp">Funcionário</a></li>
+                            <li id="produto"><a href="/easports/areaRestrita/cadastroProduto.jsp">Produto</a></li>
                         </ul>
                     </li>
                     
@@ -37,7 +37,7 @@
                         </ul>
                     </li>
                     
-		    		<li class="dropdown">
+		    		<li class="dropdown" id="relatorio">
 		    
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
                            aria-haspopup="true" aria-expanded="false" style="background-color: #7f7f7f; 
@@ -65,15 +65,18 @@
 		
 			<strong>Bem-vindo: </strong>
 			
-			<label style="color: green; font-size: 18px; padding-right: 100px">${usuarioLogado.nome}
+			<label style="color: green; font-size: 18px; padding-right: 100px">${usuarioLogado.nome} : 
+					<label style="color: green; font-size: 18px; padding-right: 100px" id="perfil";>vendedor</label>
 			
 				<a href="/easports/ControlePessoa?acao=logout" class="btn btn-sm" 
 				   style="background-color: #fbfecf; font-size: 14; color: black;border-color: black">									
 				   <span class="glyphicon glyphicon-off" aria-hidden="true" style="padding-right: 5%"></span> Logout
 									
-				</a>				
+				</a>		
+						
 			</label>	    
 		</div>
     </div>
-    </body>
+    <script type="text/javascript" src="/easports/js/filtro.js"></script>
+  </body>
     

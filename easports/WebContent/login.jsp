@@ -23,6 +23,7 @@
 <script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/easports/js/filtro.js"></script>
 
 <title>EA Sports</title>
 
