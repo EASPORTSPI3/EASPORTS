@@ -62,6 +62,7 @@
 					<div class="panel-heading" >
 					
 					<label style="color: green; text-align: center; font-size: 16px">${mensagem}</label>
+					<label style="color: green; text-align: center; font-size: 16px">${mensagem2}</label>
 					
 						<fieldset id="fieldCli" style="width: 100%;">				
 														

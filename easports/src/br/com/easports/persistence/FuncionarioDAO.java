@@ -3,15 +3,15 @@ package br.com.easports.persistence;
 import br.com.easports.entities.Funcionario;
 import br.com.easports.util.ConverteData;
 
-public class FuncionarioDAO extends DAO{
-	
-	public void insert(Funcionario funcionario, int idEndereco, int idDepartamento, int idCargo) throws Exception{
-		
+public class FuncionarioDAO extends DAO {
+
+	public void insert(Funcionario funcionario, int idEndereco, int idDepartamento, int idCargo) throws Exception {
+
 		String query = "insert into funcionario(nome, telefone, cpf, data_nasc, id_endereco, senha, id_cargo, id_departamento)values (?,?,?,?,?,?,?,?)";
 		abreConexao();
-		
+
 		stmt = con.prepareStatement(query);
-		
+
 		stmt.setString(1, funcionario.getNome());
 		stmt.setString(2, funcionario.getTelefone());
 		stmt.setString(3, funcionario.getCpf());
@@ -20,20 +20,40 @@ public class FuncionarioDAO extends DAO{
 		stmt.setString(6, funcionario.getSenha());
 		stmt.setInt(7, idCargo);
 		stmt.setInt(8, idDepartamento);
-		
+
 		stmt.execute();
 
 		stmt.close();
 
 		fechaConexao();
 	}
-	
+
+	public void update(Funcionario funcionario) throws Exception {
+
+		String query = "update funcionario set nome = ?, telefone = ?, cpf = ?, data_nasc = ? where id_funcionario = ?";
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setString(1, funcionario.getNome());
+		stmt.setString(2, funcionario.getTelefone());
+		stmt.setString(3, funcionario.getCpf());
+		stmt.setString(4, ConverteData.dateToString(funcionario.getDataNasc()));
+		stmt.setInt(5, funcionario.getIdFuncionario());
+
+		stmt.execute();
+
+		stmt.close();
+
+		fechaConexao();
+	}
+
 	public Funcionario findById(Integer idFuncionario) throws Exception {
 
 		String query = "select * from funcionario where id_funcionario = ?";
-		
+
 		abreConexao();
-		
+
 		stmt = con.prepareStatement(query);
 
 		stmt.setInt(1, idFuncionario);
@@ -41,15 +61,15 @@ public class FuncionarioDAO extends DAO{
 		rs = stmt.executeQuery();
 
 		Funcionario funcionario = new Funcionario();
-		
+
 		while (rs.next()) {
 
 			funcionario = new Funcionario();
-			
+
 			EnderecoDAO enderecoDAO = new EnderecoDAO();
 			CargoDAO cargoDao = new CargoDAO();
 			DepartamentoDAO departamentoDao = new DepartamentoDAO();
-			
+
 			funcionario.setIdFuncionario(rs.getInt("id_funcionario"));
 			funcionario.setNome(rs.getString("nome"));
 			funcionario.setTelefone(rs.getString("telefone"));
@@ -61,21 +81,21 @@ public class FuncionarioDAO extends DAO{
 			funcionario.setDepartamento(departamentoDao.findById(rs.getInt("id_departamento")));
 
 		}
-		
+
 		stmt.close();
-		
+
 		fechaConexao();
 
 		return funcionario;
 
 	}
-	
+
 	public Funcionario findByCpf(String cpf) throws Exception {
 
 		String query = "select * from funcionario where cpf = ?";
-		
+
 		abreConexao();
-		
+
 		stmt = con.prepareStatement(query);
 
 		stmt.setString(1, cpf);
@@ -83,15 +103,15 @@ public class FuncionarioDAO extends DAO{
 		rs = stmt.executeQuery();
 
 		Funcionario funcionario = new Funcionario();
-		
+
 		while (rs.next()) {
 
 			funcionario = new Funcionario();
-			
+
 			EnderecoDAO enderecoDAO = new EnderecoDAO();
 			CargoDAO cargoDao = new CargoDAO();
 			DepartamentoDAO departamentoDao = new DepartamentoDAO();
-			
+
 			funcionario.setIdFuncionario(rs.getInt("id_funcionario"));
 			funcionario.setNome(rs.getString("nome"));
 			funcionario.setTelefone(rs.getString("telefone"));
@@ -103,21 +123,21 @@ public class FuncionarioDAO extends DAO{
 			funcionario.setDepartamento(departamentoDao.findById(rs.getInt("id_departamento")));
 
 		}
-		
+
 		stmt.close();
-		
+
 		fechaConexao();
 
 		return funcionario;
 
 	}
-	
+
 	public Funcionario findByLoginSenha(String cpf, String senha) throws Exception {
 
 		String query = "select * from funcionario where cpf = ? and senha = ?";
-		
+
 		abreConexao();
-		
+
 		stmt = con.prepareStatement(query);
 
 		stmt.setString(1, cpf);
@@ -126,15 +146,15 @@ public class FuncionarioDAO extends DAO{
 		rs = stmt.executeQuery();
 
 		Funcionario funcionario = null;
-		
+
 		while (rs.next()) {
 
 			funcionario = new Funcionario();
-			
+
 			EnderecoDAO enderecoDAO = new EnderecoDAO();
 			CargoDAO cargoDao = new CargoDAO();
 			DepartamentoDAO departamentoDao = new DepartamentoDAO();
-			
+
 			funcionario.setIdFuncionario(rs.getInt("id_funcionario"));
 			funcionario.setNome(rs.getString("nome"));
 			funcionario.setTelefone(rs.getString("telefone"));
@@ -146,9 +166,9 @@ public class FuncionarioDAO extends DAO{
 			funcionario.setDepartamento(departamentoDao.findById(rs.getInt("id_departamento")));
 
 		}
-		
+
 		stmt.close();
-		
+
 		fechaConexao();
 
 		return funcionario;

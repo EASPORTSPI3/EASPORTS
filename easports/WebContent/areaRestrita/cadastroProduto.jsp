@@ -108,6 +108,8 @@
 								<span class="glyphicon glyphicon-erase" style="margin-left: -86"></span>
 									
 							<h4 style="color:green">${mensagem}</h4>
+							<h4 style="color:red">${mensagem2}</h4>	
+							
 						</fieldset>
 			
 					</div>

@@ -52,19 +52,14 @@ public class ControlePessoa extends HttpServlet {
 	protected void execute(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Variï¿½vel responsï¿½vel por coletar a aï¿½ï¿½o trazida pelo
-		// formulï¿½rio e
-		// executar o
-		// mï¿½todo especï¿½fico para seu tratamento
+		// Variável responsável por coletar a ação trazida pelo formulário e executar o
+		// método específico para seu tratamento
 
 		final String acao = request.getParameter("acao");
 
-		// if/else responsï¿½vel por comparar a aï¿½ï¿½o trazida atravï¿½s do
-		// formulï¿½rio
-		// com as opï¿½ï¿½es possï¿½veis
-		// de serem executadas pela pï¿½gina. Ex: cadastrar pessoa fï¿½sica,
-		// consultar fornecedores,
-		// cadastrar produtos etc...
+		// if/else responsável por comparar a ação trazida através do formulário
+		// com as opções possáveis de serem executadas pela página. Ex: cadastrar 
+		// pessoa física, consultar fornecedores, cadastrar produtos etc...
 
 		if (acao != null) {
 
@@ -81,18 +76,13 @@ public class ControlePessoa extends HttpServlet {
 
 					if (clientePF.getNome() == null || clientePF.getNome() == "") {
 
-						// Instanciando um novo Endereï¿½o para receber os
-						// parï¿½metros
-						// passados pelo usuï¿½rio
-						// atravï¿½s da JSP
+						// Instanciando um novo Endereço para receber os parâetros passados pelo usuário
+						// através da JSP
 						final Endereco endereco = new Endereco();
 
-						// Coletando cada parï¿½metro da pï¿½gina atravï¿½s do
-						// "name" do
-						// formulï¿½rio, utilizando
-						// o request.getParameter() e atribuindo ï¿½ entidade
-						// Endereco
-						// atravï¿½s dos setters
+						// Coletando cada parâmetro da página através do "name" do formulário, 
+						// utilizando o request.getParameter() e atribuindo à entidade Endereco
+						// através dos setters
 
 						endereco.setLogradouro(request.getParameter("logradouro"));
 						endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
@@ -102,18 +92,14 @@ public class ControlePessoa extends HttpServlet {
 						endereco.setEstado(request.getParameter("estado"));
 						endereco.setPais(request.getParameter("pais"));
 
-						// Instanciando a classe responsï¿½vel por gravar,
-						// alterar e
-						// excluir Endereï¿½os no banco
+						// Instanciando a classe responsáel por gravar, alterar e
+						// excluir Endereços no banco
 
 						final EnderecoDAO enderecoDao = new EnderecoDAO();
 
-						// Utilizando o mï¿½todo que recebe como parï¿½metro um
-						// objeto
-						// endereï¿½o, grava o
-						// mesmo no banco e retorna seu id, criado
-						// automaticamente
-						// pelo prï¿½prio SQL
+						// Utilizando o método que recebe como parâmetro um objeto 
+						// endereço, grava o mesmo no banco e retorna seu id, criado
+						// automaticamente pelo próprio SQL
 
 						final int idEndereco = enderecoDao.insertReturnID(endereco);
 
@@ -522,12 +508,12 @@ public class ControlePessoa extends HttpServlet {
 
 						final EnderecoDAO enderecoDao = new EnderecoDAO();
 
-						// Utilizando o mï¿½todo que recebe como parï¿½metro um
+						// Utilizando o método que recebe como parâmetro um
 						// objeto
-						// endereï¿½o, grava o
+						// endereço, grava o
 						// mesmo no banco e retorna seu id, criado
 						// automaticamente
-						// pelo prï¿½prio SQL
+						// pelo próprio SQL
 
 						final Integer idEndereco = enderecoDao.insertReturnID(endereco);
 
@@ -657,19 +643,19 @@ public class ControlePessoa extends HttpServlet {
 
 				try {
 
-					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// Instanciando a classe responsável por gravar, alterar e
 					// excluir Clientes no banco
 					final ClientePFDAO clientePfDao = new ClientePFDAO();
 
-					// Instanciando a classe responsï¿½vel por gravar, alterar e
-					// excluir endereÃ§os no banco
+					// Instanciando a classe responsável por gravar, alterar e
+					// excluir endereços no banco
 					final EnderecoDAO enderecoDao = new EnderecoDAO();
 
 					// Recebe o cliente ao ser alterado pelo cpf
 					final ClientePF clientePF = clientePfDao.findByCpf(request.getParameter("cpf"));
 					final Endereco endereco = clientePF.getEndereco();
 
-					// altera o endereÃ§o do cliente
+					// altera o endereço do cliente
 					endereco.setId_endereco(clientePF.getEndereco().getId_endereco());
 					endereco.setLogradouro(request.getParameter("logradouro"));
 					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
@@ -679,7 +665,7 @@ public class ControlePessoa extends HttpServlet {
 					endereco.setEstado(request.getParameter("estado"));
 					endereco.setPais(request.getParameter("pais"));
 
-					// altualiza o endereÃ§o
+					// altualiza o endereço
 					enderecoDao.update(endereco);
 
 					// altera os dados do cliente
@@ -688,6 +674,7 @@ public class ControlePessoa extends HttpServlet {
 					clientePF.setNome(request.getParameter("nome"));
 					clientePF.setEndereco(endereco);
 					clientePF.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+					
 					// atualiza o cliente
 					clientePfDao.update(clientePF);
 
@@ -695,16 +682,13 @@ public class ControlePessoa extends HttpServlet {
 
 				} catch (final Exception e) {
 
-					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma pï¿½gina de
-					// cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("/areaRestrita/consultaCliente.jsp").forward(request, response);
 
@@ -716,11 +700,11 @@ public class ControlePessoa extends HttpServlet {
 
 				try {
 
-					// Instanciando a classe responsï¿½vel por gravar, alterar e
-					// excluir endereÃ§os no banco
+					// Instanciando a classe responsável por gravar, alterar e
+					// excluir endereços no banco
 					EnderecoDAO enderecoDao = new EnderecoDAO();
 
-					// Instanciando a classe responsï¿½vel por gravar, alterar e
+					// Instanciando a classe responsável por gravar, alterar e
 					// excluir Clientes no banco
 					FornecedorDAO fornecedorDao = new FornecedorDAO();
 
@@ -729,7 +713,7 @@ public class ControlePessoa extends HttpServlet {
 
 					Endereco endereco = fornecedor.getEndereco();
 
-					// altera o endereÃ§o do cliente
+					// altera o endereço do cliente
 					endereco.setId_endereco(fornecedor.getEndereco().getId_endereco());
 					endereco.setLogradouro(request.getParameter("logradouro"));
 					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
@@ -739,7 +723,7 @@ public class ControlePessoa extends HttpServlet {
 					endereco.setEstado(request.getParameter("estado"));
 					endereco.setPais(request.getParameter("pais"));
 
-					// altualiza o endereÃ§o
+					// atualiza o endereço
 					enderecoDao.update(endereco);
 
 					// altera os dados do fornecedor
@@ -751,23 +735,21 @@ public class ControlePessoa extends HttpServlet {
 					fornecedor.setEndereco(endereco);
 
 					// atualiza o fornecedor
-
+					fornecedorDao = new FornecedorDAO();
+					
 					fornecedorDao.update(fornecedor);
 
 					request.setAttribute("mensagem", "Fornecedor " + fornecedor.getNome() + " Alterado com sucesso");
 
 				} catch (final Exception e) {
 
-					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
-					request.setAttribute("mensagem", e.getMessage());
+					request.setAttribute("mensagem2", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma pï¿½gina de
-					// cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
 					request.getRequestDispatcher("/areaRestrita/consultaFornecedor.jsp").forward(request, response);
 
@@ -779,20 +761,18 @@ public class ControlePessoa extends HttpServlet {
 
 				try {
 
-					// Instanciando a classe responsï¿½vel por gravar, alterar e
-					// excluir Clientes no banco
-					final ClientePFDAO clientePfDao = new ClientePFDAO();
+					// Instanciando a classe responsável por gravar, alterar e excluir Funcionários no banco
+					FuncionarioDAO funcionarioDao = new FuncionarioDAO();
 
-					// Instanciando a classe responsï¿½vel por gravar, alterar e
-					// excluir endereÃ§os no banco
-					final EnderecoDAO enderecoDao = new EnderecoDAO();
+					// Instanciando a classe responsável por gravar, alterar e excluir endereços no banco
+					EnderecoDAO enderecoDao = new EnderecoDAO();
 
-					// Recebe o cliente ao ser alterado pelo cpf
-					final ClientePF clientePF = clientePfDao.findByCpf(request.getParameter("cpf"));
-					final Endereco endereco = clientePF.getEndereco();
+					// Recebe o Funcionário ao ser alterado pelo cpf
+					Funcionario funcionario = funcionarioDao.findByCpf(request.getParameter("cpf"));
+					Endereco endereco = funcionario.getEndereco();
 
-					// altera o endereÃ§o do cliente
-					endereco.setId_endereco(clientePF.getEndereco().getId_endereco());
+					// altera o endereço do Funcionário
+					endereco.setId_endereco(funcionario.getEndereco().getId_endereco());
 					endereco.setLogradouro(request.getParameter("logradouro"));
 					endereco.setNumero(Integer.parseInt(request.getParameter("numero")));
 					endereco.setCep(request.getParameter("cep"));
@@ -801,34 +781,36 @@ public class ControlePessoa extends HttpServlet {
 					endereco.setEstado(request.getParameter("estado"));
 					endereco.setPais(request.getParameter("pais"));
 
-					// altualiza o endereÃ§o
+					// altualiza o endereço
 					enderecoDao.update(endereco);
 
-					// altera os dados do cliente
+					// altera os dados do Funcionários
 
-					clientePF.setTelefone(request.getParameter("telefone"));
-					clientePF.setNome(request.getParameter("nome"));
-					clientePF.setEndereco(endereco);
-					clientePF.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
-					// atualiza o cliente
-					clientePfDao.update(clientePF);
+					funcionario.setNome(request.getParameter("nome"));
+					funcionario.setTelefone(request.getParameter("telefone"));
+					funcionario.setCpf(request.getParameter("cpf"));
+					funcionario.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
+					funcionario.setEndereco(endereco);
+					
+					// atualiza o Funcionários
+					
+					funcionarioDao = new FuncionarioDAO();
+					
+					funcionarioDao.update(funcionario);
 
-					request.setAttribute("mensagem", "Cliente " + clientePF.getNome() + " Alterado com sucesso");
+					request.setAttribute("mensagem", "Funcionário " + funcionario.getNome() + " Alterado com sucesso");
 
 				} catch (final Exception e) {
 
-					// Caso o mï¿½todo caia no catch, retorne para a pï¿½gina a
-					// mensagem de erro
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
 
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma pï¿½gina de
-					// cadastro
-					// de clientes
+					// Redirecionando novamente para a mesma página de cadastro de clientes
 
-					request.getRequestDispatcher("/areaRestrita/consultaCliente.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/consultaFuncionario.jsp").forward(request, response);
 
 				}
 

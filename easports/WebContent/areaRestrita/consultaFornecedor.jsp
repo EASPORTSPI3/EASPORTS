@@ -49,8 +49,6 @@
 				<div class="col-md-3" style="width: 270">
 					<input type="text" id="cnpj" name="cnpj" class="form-control" required="required" placeholder="Informe o CNPJ..."/>
 					
-					<h4 style="color: red">${mensagem}</h4>
-					
 				</div>
 				
 				<br/>
@@ -63,6 +61,9 @@
 			<div class="col-md-3"style="width: 100%; margin-left: 50%; padding: 0px;">
 				<div class="panel" style="background-color: #b4b4b4; width: 100%; margin: 0px;">
 					<div class="panel-heading" >
+			
+					<label style="color: green; text-align: center; font-size: 16px">${mensagem}</label>
+					<label style="color: green; text-align: center; font-size: 16px">${mensagem2}</label>
 			
 					<fieldset id="fieldCli" style="width: 100%;">
 					

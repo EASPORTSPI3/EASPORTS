@@ -41,7 +41,7 @@ public class FornecedorDAO extends DAO{
 		stmt.setString(1, fornecedor.getNome());
 		stmt.setString(2, fornecedor.getTelefone());
 		stmt.setString(3, fornecedor.getCnpj());
-		stmt.setString(3, fornecedor.getRazaoSocial());
+		stmt.setString(4, fornecedor.getRazaoSocial());
 		stmt.setInt(5, fornecedor.getEndereco().getId_endereco());
 		stmt.setInt(6, fornecedor.getIdFornecedor());
 
