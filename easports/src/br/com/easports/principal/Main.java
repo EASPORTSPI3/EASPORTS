@@ -10,7 +10,7 @@ public class Main {
 //		
 //		System.out.println(pasta);
 		
-		 String senha = "123456";
+		 String senha = "1907";
 	     System.out.println(Criptografia.criptografar(senha));
 	     
 	}

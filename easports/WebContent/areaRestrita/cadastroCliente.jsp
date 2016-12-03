@@ -52,7 +52,7 @@
 							</label>
 						
 							<label>Número:
-								<input style="width: 100px" type="text" name="numero" 
+								<input required="required" style="width: 100px" type="text" name="numero" 
 									   class="form-control" placeholder="Digite aqui"/>
 							</label>
 				
