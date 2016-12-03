@@ -65,7 +65,7 @@
 
 						<strong>Categoria: </strong>${produto.categoria.nome} <br /> <strong>Preço:
 						</strong>${produto.valorVendaFormatado} <br /> 
-				<c:if test="${usuarioLogado.cargo.cargo=='Gerente' || usuarioLogado.cargo.cargo=='Vendedor' }">	
+						<c:if test="${usuarioLogado.cargo.cargo=='Gerente' || usuarioLogado.cargo.cargo=='Vendedor' }">	
 						<a
 							href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
 							class="btn btn-sm"

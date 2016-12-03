@@ -42,6 +42,7 @@
 		</h3>
 		<hr/>
 		
+		<form name="alteraProduto" method="post" action="/easports/ControleProduto?acao=alteraProduto">
 			<div class="col-md-3" style="width: 1000; margin-left: 85px">
 				<div class="panel panel-success">
 					<div class="panel-heading">
@@ -58,41 +59,41 @@
 						
 						<div class="panel-body" style="margin-top: -10px">
 							 
-							<h4 style="color: black; margin-left: 15px;">Código: </h4><input required="required"
-								style="width: 100px" type="text" disabled name="idCliente"
-								class="form-control" value="${produto.codigo}" /></input>
-							<h4><strong style="color: black; margin-left: 15px">Fornecedor: </strong>${produto.fornecedor.nome}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Razão Social: </strong>${produto.fornecedor.razaoSocial}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Categoria: </strong>${produto.categoria.nome}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: </strong>${produto.valorCustoFormatado}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: </strong>${produto.valorVendaFormatado}</h4>
-							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: </strong>${produto.quantidade}</h4>							
+							<h4><strong style="color: black; margin-left: 15px">Código: <input type="text" name="codigo" style="color: gray" value="${produto.codigo}"></input></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Fornecedor: <input type="text" name="fornecedor" style="color: gray" value="${produto.fornecedor.nome}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Razão Social: <input type="text" name="razaoSocial" style="color: gray" value="${produto.fornecedor.razaoSocial}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Categoria: <input type="text" name="categoria" style="color: gray" value="${produto.categoria.nome}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: <input type="text" name="precoCusto" style="color: gray" value="${produto.valorCustoFormatado}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: <input type="text" name="precoVenda" style="color: gray" value="${produto.valorVendaFormatado}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: <input type="text" name="quantidadeEstoque" style="color: gray" value="${produto.quantidade}"></strong></h4>							
+						
+							<div style="padding-left: 50%; padding-top: 3%">
+							
+								<a
+									href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
+									class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14; color: black; border-color: black">
+		
+									<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+									Editar
+		
+								</a> <a
+									href="/easports/ControleProduto?acao=detalhesProduto&id=${produto.idProduto}"
+									class="btn btn-sm" style="background-color: #cacaff; font-size: 14; color: black; border-color: black">
+		
+									<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+									Salvar
+		
+								</a>
+							
+							</div>
 						
 						</div>
-						
-						<a
-							href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
-							class="btn btn-sm"
-							style="background-color: #ffb0b0; font-size: 14; color: black; margin-top: 20px; border-color: black">
-
-							<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-							Editar
-
-						</a> <a
-							href="/easports/ControleProduto?acao=detalhesProduto&id=${produto.idProduto}"
-							class="btn btn-sm"
-							style="background-color: #cacaff; font-size: 14; color: black; margin-top: 20px; margin-left: -215px; border-color: black">
-
-							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-							Salvar
-
-						</a>
 						
 					</div>
 					
 				</div>
 			</div>
-			
+			</form>
 	</div>
 
 </body>

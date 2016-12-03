@@ -760,6 +760,23 @@ public class ControleProduto extends HttpServlet {
 					
 					VendaDAO vendaDAO = new VendaDAO();					
 					List<Venda> lista = vendaDAO.vendaPorPeriodo(idVendedor, dataInicio, dataFinal);
+					
+					ArrayList<Pedido> listaPedidos;
+					
+					for(Venda v : lista){
+						
+						PedidoDAO pedidoDao = new PedidoDAO();
+						
+						listaPedidos = new ArrayList<Pedido>();
+						
+						listaPedidos = pedidoDao.findByIdVenda(v.getIdVenda());
+						
+						v.setLista(listaPedidos);
+						
+					}
+					
+					
+					
 					request.setAttribute("lista", lista);
 
 				} catch (Exception e) {
