@@ -2,6 +2,9 @@
 function iniciar(){
 	var btnEditar =  document.querySelector("#editar");
 	btnEditar.addEventListener("click",editar);
+	
+	var btnEditarProduto =  document.querySelector("#editarProduto");
+	btnEditarProduto.addEventListener("click",editar);
 }
 
 function editar(){

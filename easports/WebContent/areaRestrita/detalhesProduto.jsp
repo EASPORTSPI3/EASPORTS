@@ -17,7 +17,7 @@
 
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
-
+	
 </head>
 <body class="container">
 
@@ -42,7 +42,7 @@
 		</h3>
 		<hr/>
 		
-		<form name="alteraProduto" method="post" action="/easports/ControleProduto?acao=alteraProduto">
+		<form name="alteraProduto" method="post" action="/easports/ControleProduto?acao=alteraProduto&idProduto=${produto.idProduto}">
 			<div class="col-md-3" style="width: 1000; margin-left: 85px">
 				<div class="panel panel-success">
 					<div class="panel-heading">
@@ -59,31 +59,25 @@
 						
 						<div class="panel-body" style="margin-top: -10px">
 							 
-							<h4><strong style="color: black; margin-left: 15px">Código: <input type="text" name="codigo" style="color: gray" value="${produto.codigo}"></input></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Fornecedor: <input type="text" name="fornecedor" style="color: gray" value="${produto.fornecedor.nome}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Razão Social: <input type="text" name="razaoSocial" style="color: gray" value="${produto.fornecedor.razaoSocial}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Categoria: <input type="text" name="categoria" style="color: gray" value="${produto.categoria.nome}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: <input type="text" name="precoCusto" style="color: gray" value="${produto.valorCustoFormatado}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: <input type="text" name="precoVenda" style="color: gray" value="${produto.valorVendaFormatado}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Código: <input type="text" disabled name="codigo" style="color: gray" value="${produto.codigo}"></input></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Fornecedor: <input type="text" disabled name="fornecedor" style="color: gray" value="${produto.fornecedor.nome}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Razão Social: <input type="text" disabled name="razaoSocial" style="color: gray" value="${produto.fornecedor.razaoSocial}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Categoria: <input type="text" disabled name="categoria" style="color: gray" value="${produto.categoria.nome}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: <input type="text" name="precoCusto" style="color: gray" value="${produto.valorCusto}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: <input type="text" name="precoVenda" style="color: gray" value="${produto.valorVenda}"></strong></h4>
 							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: <input type="text" name="quantidadeEstoque" style="color: gray" value="${produto.quantidade}"></strong></h4>							
 						
 							<div style="padding-left: 50%; padding-top: 3%">
 							
-								<a
-									href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
-									class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14; color: black; border-color: black">
-		
-									<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-									Editar
-		
-								</a> <a
-									href="/easports/ControleProduto?acao=detalhesProduto&id=${produto.idProduto}"
-									class="btn btn-sm" style="background-color: #cacaff; font-size: 14; color: black; border-color: black">
-		
-									<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-									Salvar
-		
-								</a>
+								<input type="button" class="btn btn-sm" value=Editar id="editar" style="background-color: #beeab5; 
+							   width: 95; font-size: 14; font: bold; text-align: right; border-color: black" />
+							<span class="glyphicon glyphicon-check" style="margin-left: -90"></span>
+								
+								<input type="submit" class="btn btn-sm" value="Salvar" id="enviar" style="background-color: #cacaff;
+							   margin-left:18%; width: 85; font-size: 14; font: bold; text-align: right; border-color: black" />
+							<span class="glyphicon glyphicon-erase" style="margin-left: -80"></span><br/><br/>
+							<h4 style="color:green">${mensagem}</h4>
+ 							</div>
 							
 							</div>
 						
@@ -92,9 +86,9 @@
 					</div>
 					
 				</div>
+				</form>
+				
 			</div>
-			</form>
-	</div>
-
+			
 </body>
 </html>

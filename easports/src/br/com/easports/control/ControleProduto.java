@@ -668,6 +668,45 @@ public class ControleProduto extends HttpServlet {
 
 				}
 			}
+			
+			else if (acao.equalsIgnoreCase("alteraProduto")) {
+
+				try {
+
+					Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
+					
+					Double precoCusto = Double.parseDouble(request.getParameter("precoCusto"));
+					Double precoVenda = Double.parseDouble(request.getParameter("precoVenda"));
+					Integer quantidadeEstoque = Integer.parseInt(request.getParameter("quantidadeEstoque"));
+					
+					ProdutoDAO produtoDao = new ProdutoDAO();
+					
+					Produto produto = produtoDao.findById(idProduto);
+					
+					produto.setValorCusto(precoCusto);
+					produto.setValorVenda(precoVenda);
+					produto.setQuantidade(quantidadeEstoque);
+					produtoDao = new ProdutoDAO();
+					produtoDao.update(produto);
+					
+					request.setAttribute("mensagem", "Produto " + produto.getNome() + " alterado com sucesso.");
+					
+					request.setAttribute("produto", produto);
+					
+				} catch (Exception e) {
+
+					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					System.out.println(e);
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					// Redirecionando novamente para a mesma página de cadastro de clientes
+
+					request.getRequestDispatcher("/areaRestrita/detalhesProduto.jsp").forward(request, response);
+
+				}
+			}
 
 			else if (acao.equalsIgnoreCase("finalizarPedidos")) {
 

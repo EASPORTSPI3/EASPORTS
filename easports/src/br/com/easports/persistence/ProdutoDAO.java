@@ -38,22 +38,18 @@ public class ProdutoDAO extends DAO {
 
 	public void update(Produto produto) throws Exception {
 
-		String query = "update produto set nome = ?, imagem = ?, codigo = ?, "
-				+ "valor_venda = ?, valor_custo = ?, id_fornecedor = ?, id_categoria = ?, quantidade = ? where id_produto = ?";
+		String query = "update produto set valor_venda = ?, valor_custo = ?, quantidade = ? where id_produto = ?";
 
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
 
-		stmt.setString(1, produto.getNome());
-		stmt.setString(2, produto.getImagem());
-		stmt.setString(3, produto.getCodigo());
-		stmt.setDouble(4, produto.getValorVenda());
-		stmt.setDouble(5, produto.getValorCusto());
-		stmt.setInt(6, produto.getFornecedor().getIdFornecedor());
-		stmt.setInt(7, produto.getCategoria().getIdCategoria());
-		stmt.setInt(8, produto.getQuantidade());
-		stmt.setInt(9, produto.getIdProduto());
+		int contador = 1;
+		
+		stmt.setDouble(contador++, produto.getValorVenda());
+		stmt.setDouble(contador++, produto.getValorCusto());
+		stmt.setInt(contador++, produto.getQuantidade());
+		stmt.setInt(contador++, produto.getIdProduto());
 
 		stmt.execute();
 
