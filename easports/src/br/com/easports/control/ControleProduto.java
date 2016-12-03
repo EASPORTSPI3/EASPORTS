@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +33,7 @@ import br.com.easports.persistence.ProdutoDAO;
 import br.com.easports.persistence.VendaDAO;
 import br.com.easports.util.ConverteData;
 import br.com.easports.util.FormataValor;
+import sun.text.resources.cldr.ar.FormatData_ar_MA;
 
 // Servlet responsável por coletar as informações da página web e consultar no 
 // banco de dados, via request - response
@@ -751,6 +753,27 @@ public class ControleProduto extends HttpServlet {
 			}
 
 			else if (acao.equalsIgnoreCase("filtrarPedidos")) {
+
+				try {
+
+					Integer idVendedor = Integer.parseInt(request.getParameter("idVendedor"));
+					Date dataInicio = ConverteData.stringToDate(request.getParameter("dataInicial"));
+					Date dataFinal = ConverteData.stringToDate(request.getParameter("dataFinal"));
+					
+					
+
+				} catch (Exception e) {
+					
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					request.getRequestDispatcher("/areaRestrita/relatorioPedidosFiltro.jsp").forward(request, response);
+
+				}
+			}
+			
+			else if (acao.equalsIgnoreCase("filtrarVendas")) {
 
 				try {
 

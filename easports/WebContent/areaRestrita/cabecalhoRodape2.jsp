@@ -68,6 +68,7 @@
                         <ul class="dropdown-menu">
                             <li id="relatorioCliente"><a href="/easports/areaRestrita/relatorioClientes.jsp">Clientes Cadastrados</a></li>
                             <li id="relatorioPedido"><a href="/easports/areaRestrita/relatorioPedidos.jsp">Pedidos Realizados</a></li>
+                            <li id="relatorioVenda"><a href="/easports/areaRestrita/relatorioVendas.jsp">Vendas</a></li>
                         	<li id="relatorioEstoque"><a href="/easports/areaRestrita/relatorioEstoque.jsp">Estoque da Loja</a></li>
                         </ul>
                     </li>

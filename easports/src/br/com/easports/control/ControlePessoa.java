@@ -690,7 +690,7 @@ public class ControlePessoa extends HttpServlet {
 				} catch (final Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a mensagem de erro
-
+					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {

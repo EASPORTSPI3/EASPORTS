@@ -74,7 +74,7 @@
 								class="form-control" value="${cliente.telefone}" />
 							</label> <label>CPF: <input required="required"
 								style="width: 250px" type="text" disabled name="cpf"
-								class="form-control" value="${cliente.cpf}" />
+								class="form-control" value="${cliente.cpf}" id="cpf" />
 							</label> <label>Data Nasc.: <input required="required"
 								style="width: 200px" type="text" disabled name="datanasc"
 								class="form-control"

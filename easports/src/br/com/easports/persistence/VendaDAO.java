@@ -81,5 +81,6 @@ public class VendaDAO extends DAO {
 		
 		return venda;
 	}
-
+	
+	public List<Venda> vendaPorPeriodo
 }

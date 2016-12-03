@@ -33,7 +33,9 @@ function editar(){
 			}
 		}
 	var id = document.querySelector(".form-control");
+	var cpf = document.querySelector("#cpf");
 	id.disabled = true;
+	cpf.disabled = true;
 	}
 
 
