@@ -68,7 +68,7 @@
 		<table class="table table houver">
 			<thead>
 				<tr>
-					<th>ID Pedido:</th>
+					<th>ID Venda:</th>
 					<th>ID Vendedor:</th>
 					<th>Vendedor:</th>
 					<th>ID Cliente:</th>
@@ -82,14 +82,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${mb.listagemPedidos}" var="pedido">
+				<c:forEach items="${lista}" var="venda">
 					<tr>
 						
-						<td>${pedido.idPedido}</td>
+						<td>${venda.idVenda}</td>
 						
-						<td>${pedido.venda.funcionario.idFuncionario}</td>
+						<td>${venda.funcionario.idFuncionario}</td>
 						
-						<td>${pedido.venda.funcionario.nome}</td>
+						<td>${venda.funcionario.nome}</td>
 						
 						<td>${pedido.cliente.idCliente}</td>
 						

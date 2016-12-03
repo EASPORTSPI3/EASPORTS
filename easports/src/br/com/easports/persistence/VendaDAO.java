@@ -1,6 +1,9 @@
 package br.com.easports.persistence;
 
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import br.com.easports.entities.Funcionario;
 import br.com.easports.entities.Venda;
@@ -82,5 +85,37 @@ public class VendaDAO extends DAO {
 		return venda;
 	}
 	
-	public List<Venda> vendaPorPeriodo
+	public List<Venda> vendaPorPeriodo(Integer idFuncionario, Date dataInicio, Date dataFinal) throws Exception{
+		
+		List<Venda> list = new ArrayList<Venda>();
+		String query = "select * from vendas where data_venda between ? and ? and id_funcionario = ?";
+		abreConexao();
+
+		stmt = con.prepareStatement(query);
+
+		stmt.setString(1,ConverteData.dateToString(dataInicio));
+		stmt.setString(2,ConverteData.dateToString(dataFinal));
+		stmt.setInt(3, idFuncionario);
+		
+		rs = stmt.executeQuery();
+		Venda venda = null;
+		
+		while(rs.next()){
+			
+			FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+			
+			venda = new Venda();
+			
+			venda.setIdVenda(rs.getInt("id_vendas"));
+			venda.setFuncionario(funcionarioDao.findById(rs.getInt("id_funcionario")));
+			venda.setDataVenda(ConverteData.stringToDate(rs.getString("data_venda")));
+			list.add(venda);
+		}
+
+		stmt.close();
+		
+		fechaConexao();
+		
+		return list;
+	}
 }

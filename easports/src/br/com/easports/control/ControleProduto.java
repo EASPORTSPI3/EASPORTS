@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import javax.swing.plaf.synth.SynthSliderUI;
 
 import br.com.easports.entities.Categoria;
 import br.com.easports.entities.ClientePF;
@@ -33,7 +32,6 @@ import br.com.easports.persistence.ProdutoDAO;
 import br.com.easports.persistence.VendaDAO;
 import br.com.easports.util.ConverteData;
 import br.com.easports.util.FormataValor;
-import sun.text.resources.cldr.ar.FormatData_ar_MA;
 
 // Servlet responsável por coletar as informações da página web e consultar no 
 // banco de dados, via request - response
@@ -752,7 +750,7 @@ public class ControleProduto extends HttpServlet {
 				}
 			}
 
-			else if (acao.equalsIgnoreCase("filtrarPedidos")) {
+			else if (acao.equalsIgnoreCase("filtrarVendas")) {
 
 				try {
 
@@ -760,20 +758,22 @@ public class ControleProduto extends HttpServlet {
 					Date dataInicio = ConverteData.stringToDate(request.getParameter("dataInicial"));
 					Date dataFinal = ConverteData.stringToDate(request.getParameter("dataFinal"));
 					
-					
+					VendaDAO vendaDAO = new VendaDAO();					
+					List<Venda> lista = vendaDAO.vendaPorPeriodo(idVendedor, dataInicio, dataFinal);
+					request.setAttribute("lista", lista);
 
 				} catch (Exception e) {
-					
+					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					request.getRequestDispatcher("/areaRestrita/relatorioPedidosFiltro.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/relatorioVendas.jsp").forward(request, response);
 
 				}
 			}
 			
-			else if (acao.equalsIgnoreCase("filtrarVendas")) {
+			else if (acao.equalsIgnoreCase("filtrarPedidos")) {
 
 				try {
 
@@ -899,7 +899,7 @@ public class ControleProduto extends HttpServlet {
 
 				} finally {
 
-					request.getRequestDispatcher("/areaRestrita/relatorioPedidosFiltro.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/relatorioVendas.jsp").forward(request, response);
 
 				}
 			}
