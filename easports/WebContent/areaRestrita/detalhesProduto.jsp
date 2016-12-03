@@ -58,7 +58,9 @@
 						
 						<div class="panel-body" style="margin-top: -10px">
 							 
-							<h4><strong style="color: black; margin-left: 15px">Código: </strong>${produto.codigo}</h4>
+							<h4 style="color: black; margin-left: 15px;">Código: </h4><input required="required"
+								style="width: 100px" type="text" disabled name="idCliente"
+								class="form-control" value="${produto.codigo}" /></input>
 							<h4><strong style="color: black; margin-left: 15px">Fornecedor: </strong>${produto.fornecedor.nome}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Razão Social: </strong>${produto.fornecedor.razaoSocial}</h4>
 							<h4><strong style="color: black; margin-left: 15px">Categoria: </strong>${produto.categoria.nome}</h4>
@@ -67,6 +69,24 @@
 							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: </strong>${produto.quantidade}</h4>							
 						
 						</div>
+						
+						<a
+							href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
+							class="btn btn-sm"
+							style="background-color: #ffb0b0; font-size: 14; color: black; margin-top: 20px; border-color: black">
+
+							<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+							Editar
+
+						</a> <a
+							href="/easports/ControleProduto?acao=detalhesProduto&id=${produto.idProduto}"
+							class="btn btn-sm"
+							style="background-color: #cacaff; font-size: 14; color: black; margin-top: 20px; margin-left: -215px; border-color: black">
+
+							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							Salvar
+
+						</a>
 						
 					</div>
 					

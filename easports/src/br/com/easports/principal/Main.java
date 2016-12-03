@@ -13,6 +13,10 @@ public class Main {
 		ConverteData converteData = new ConverteData();
 		
 		System.out.println(converteData.getDataAtual());
+		
+		String status = "'true'";
+		
+		System.out.println(status);
 
 	}
 

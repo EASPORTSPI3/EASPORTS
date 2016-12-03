@@ -69,8 +69,6 @@ public class VendaDAO extends DAO {
 			
 			venda = new Venda();
 			
-			Funcionario funcionario = new Funcionario();
-			
 			venda.setIdVenda(rs.getInt("id_venda"));
 			venda.setFuncionario(funcionarioDao.findById(rs.getInt("id_funcionario")));
 			venda.setDataVenda(ConverteData.stringToDate(rs.getString("data_venda")));

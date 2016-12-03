@@ -12,6 +12,7 @@ public class Pedido {
 	private Double valorTotal;
 	private String valorTotalFormatado;
 	private String status;
+	private Venda venda;
 	
 	public Pedido() {
 		
@@ -112,6 +113,14 @@ public class Pedido {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Venda getVenda() {
+		return venda;
+	}
+
+	public void setVenda(Venda venda) {
+		this.venda = venda;
 	}
 	
 }

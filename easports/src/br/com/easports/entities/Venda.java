@@ -34,5 +34,4 @@ public class Venda {
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
-	
 }

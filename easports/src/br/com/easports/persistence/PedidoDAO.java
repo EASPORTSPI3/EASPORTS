@@ -97,16 +97,16 @@ public class PedidoDAO extends DAO {
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
-			
-			if(rs.getBoolean("finalizado")){
-			
+
+			if (rs.getBoolean("finalizado")) {
+
 				pedido.setIdVenda(rs.getInt("id_vendas"));
 				pedido.setStatus("Finalizado");
-				
-			}else{
-				
+
+			} else {
+
 				pedido.setStatus("Pendente");
-				
+
 			}
 
 		}
@@ -118,7 +118,7 @@ public class PedidoDAO extends DAO {
 		return pedido;
 
 	}
-	
+
 	public ArrayList<Pedido> pedidosPorCliente(Integer idCliente) throws Exception {
 
 		String query = "select * from pedido where id_cliente = ?";
@@ -128,7 +128,7 @@ public class PedidoDAO extends DAO {
 		stmt = con.prepareStatement(query);
 
 		stmt.setInt(1, idCliente);
-		
+
 		rs = stmt.executeQuery();
 
 		ArrayList<Pedido> lista = new ArrayList<Pedido>();
@@ -151,17 +151,17 @@ public class PedidoDAO extends DAO {
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
-			
+
 			Integer idVendas = rs.getInt("id_vendas");
-			
-			if(idVendas > 0){
-				
+
+			if (idVendas > 0) {
+
 				pedido.setStatus("Finalizado");
-				
-			}else{
-				
+
+			} else {
+
 				pedido.setStatus("Pendente");
-				
+
 			}
 
 			lista.add(pedido);
@@ -175,7 +175,7 @@ public class PedidoDAO extends DAO {
 		return lista;
 
 	}
-	
+
 	public ArrayList<Pedido> pedidosFinalizados() throws Exception {
 
 		String query = "select * from pedido where id_vendas is not null";
@@ -206,7 +206,7 @@ public class PedidoDAO extends DAO {
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
-			
+
 			pedido.setStatus("Finalizado");
 
 			lista.add(pedido);
@@ -220,7 +220,7 @@ public class PedidoDAO extends DAO {
 		return lista;
 
 	}
-	
+
 	public ArrayList<Pedido> pedidosNaoFinalizados() throws Exception {
 
 		String query = "select * from pedido where id_vendas is null";
@@ -251,7 +251,7 @@ public class PedidoDAO extends DAO {
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
-			
+
 			pedido.setStatus("Pendente");
 
 			lista.add(pedido);
@@ -299,7 +299,7 @@ public class PedidoDAO extends DAO {
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
-			
+
 			pedido.setStatus("Pendente");
 
 			lista.add(pedido);
@@ -362,27 +362,123 @@ public class PedidoDAO extends DAO {
 		return lista;
 
 	}
-	
-	public ArrayList<Pedido> pedidosFiltro(Integer idCliente, Boolean finalizado) throws Exception {
+
+	public ArrayList<Pedido> pedidosFiltroCompleto(Integer idCliente, Integer idFuncionario, Boolean finalizado)
+			throws Exception {
 
 		String query;
 
-		if(finalizado){
-			
+		ArrayList<Pedido> lista = new ArrayList<Pedido>();
+
+		if (finalizado) {
+
 			query = "select * from pedido where id_cliente = ? and id_vendas is not null";
-			
-		}else{
-			
+
+			abreConexao();
+
+			stmt = con.prepareStatement(query);
+
+			stmt.setInt(1, idCliente);
+
+			rs = stmt.executeQuery();
+
+			FormataValor format = new FormataValor();
+
+			while (rs.next()) {
+
+				ClientePFDAO clientePfDao = new ClientePFDAO();
+				ProdutoDAO produtoDao = new ProdutoDAO();
+				VendaDAO vendaDao = new VendaDAO();
+
+				Pedido pedido = new Pedido();
+
+				pedido.setIdPedido(rs.getInt("id_pedido"));
+				pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
+
+				pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
+				pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
+				pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
+				pedido.setQuantidade(rs.getInt("quantidade"));
+				pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
+				pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
+				pedido.setStatus("Finalizado");
+				pedido.setVenda(vendaDao.findById(rs.getInt("id_vendas")));
+
+				if (pedido.getVenda().getFuncionario().getIdFuncionario() == idFuncionario) {
+
+					lista.add(pedido);
+
+				}
+			}
+
+		} else {
+
 			query = "select * from pedido where id_cliente = ? and id_vendas is null";
-			
+
+			abreConexao();
+
+			stmt = con.prepareStatement(query);
+
+			stmt.setInt(1, idCliente);
+
+			rs = stmt.executeQuery();
+
+			FormataValor format = new FormataValor();
+
+			while (rs.next()) {
+
+				ClientePFDAO clientePfDao = new ClientePFDAO();
+				ProdutoDAO produtoDao = new ProdutoDAO();
+
+				Pedido pedido = new Pedido();
+
+				pedido.setIdPedido(rs.getInt("id_pedido"));
+				pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
+
+				pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
+				pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
+				pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
+				pedido.setQuantidade(rs.getInt("quantidade"));
+				pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
+				pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
+				pedido.setStatus("Pendente");
+
+				lista.add(pedido);
+
+			}
+
 		}
-		
+
+		stmt.close();
+
+		fechaConexao();
+
+		return lista;
+
+	}
+
+	public ArrayList<Pedido> pedidosPorStatus(Integer status) throws Exception {
+
+		String query = "select * from pedido where finalizado = ?";
+
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
 
-		stmt.setInt(1, idCliente);
-		
+		String statusString;
+
+		if (status == 1) {
+
+			statusString = "'true'";
+
+		} else {
+
+			statusString = "'false'";
+
+		}
+
+		stmt.setString(1, statusString);
+
 		rs = stmt.executeQuery();
 
 		ArrayList<Pedido> lista = new ArrayList<Pedido>();
@@ -393,27 +489,29 @@ public class PedidoDAO extends DAO {
 
 			ClientePFDAO clientePfDao = new ClientePFDAO();
 			ProdutoDAO produtoDao = new ProdutoDAO();
+			VendaDAO vendaDao = new VendaDAO();
 
 			Pedido pedido = new Pedido();
 
 			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
-
 			pedido.setProduto(produtoDao.findById(rs.getInt("id_produto")));
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
-			
-			if(finalizado){
-				
+
+			if (status == 1) {
+
+				pedido.setVenda(vendaDao.findById(rs.getInt("id_vendas")));
+
 				pedido.setStatus("Finalizado");
-				
-			}else{
-				
+
+			} else {
+
 				pedido.setStatus("Pendente");
-				
+
 			}
 
 			lista.add(pedido);
@@ -435,7 +533,7 @@ public class PedidoDAO extends DAO {
 		abreConexao();
 
 		stmt = con.prepareStatement(query);
-		
+
 		stmt.setInt(1, idVenda);
 		stmt.setInt(2, idCliente);
 
@@ -476,23 +574,23 @@ public class PedidoDAO extends DAO {
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
-			
+
 			Integer idVendas = rs.getInt("id_vendas");
-			
-			if(idVendas > 0){
-				
+
+			if (idVendas > 0) {
+
 				pedido.setIdVenda(rs.getInt("id_vendas"));
-				
+
 				pedido.setStatus("Finalizado");
-				
-			}else{
-				
+
+			} else {
+
 				pedido.setStatus("Pendente");
-				
+
 			}
 
 			lista.add(pedido);
-			
+
 		}
 
 		stmt.close();

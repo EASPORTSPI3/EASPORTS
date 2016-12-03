@@ -44,6 +44,11 @@
 				<input style="width: 80px" type="text" name="idCliente" 
 					   class="form-control" placeholder="Informe"/>
 			</label>
+			
+			<label style="color: black">ID Vendedor:
+				<input style="width: 80px" type="text" name="idVendedor" 
+					   class="form-control" placeholder="Informe"/>
+			</label>
 		
 			<label style="color: black">Status:
 				<select name="status" class="form-control">
@@ -68,6 +73,8 @@
 			<thead>
 				<tr>
 					<th>ID Pedido:</th>
+					<th>ID Vendedor:</th>
+					<th>Vendedor:</th>
 					<th>ID Cliente:</th>
 					<th>CPF:</th>
 					<th>Produto:</th>
@@ -83,6 +90,10 @@
 					<tr>
 						
 						<td>${pedido.idPedido}</td>
+						
+						<td>${pedido.venda.funcionario.idFuncionario}</td>
+						
+						<td>${pedido.venda.funcionario.nome}</td>
 						
 						<td>${pedido.cliente.idCliente}</td>
 						
@@ -100,19 +111,19 @@
 						
 						<td>
 						
-						<a href="ControlePessoa?acao=consultarpf&cpf=${pedido.cliente.cpf}"
-								class="btn btn-sm" style="background-color: #cacaff; font-size: 14 ; 
-								color: black; border-color: black">
+<%-- 						<a href="ControlePessoa?acao=consultarpf&cpf=${pedido.cliente.cpf}" --%>
+<!-- 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14 ;  -->
+<!-- 								color: black; border-color: black"> -->
 								
-								<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Visualizar
+<!-- 								<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Visualizar -->
 								
-						</a>						
-						<a href="ControlePessoa?acao=excluirpf&idCliente=${pedido.cliente.idCliente}"
-								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14; 
-								color: black; border-color: black; margin-left: 10px">
+<!-- 						</a>						 -->
+<%-- 						<a href="ControlePessoa?acao=excluirpf&idCliente=${pedido.cliente.idCliente}" --%>
+<!-- 								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14;  -->
+<!-- 								color: black; border-color: black; margin-left: 10px"> -->
 								
-								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px"></span> Excluir
-						</a>
+<!-- 								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px"></span> Excluir -->
+<!-- 						</a> -->
 						</td>	
 					</tr>
 				</c:forEach>				

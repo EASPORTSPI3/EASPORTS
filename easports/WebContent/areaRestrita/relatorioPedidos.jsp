@@ -46,6 +46,11 @@
 				<input style="width: 80px" type="text" name="idCliente" 
 					   class="form-control" placeholder="Informe"/>
 			</label>
+			
+			<label style="color: black">ID Vendedor:
+				<input style="width: 80px" type="text" name="idVendedor" 
+					   class="form-control" placeholder="Informe"/>
+			</label>
 		
 			<label style="color: black">Status:
 				<select name="status" class="form-control">
@@ -70,6 +75,8 @@
 			<thead>
 				<tr>
 					<th>ID Pedido:</th>
+					<th>ID Vendedor:</th>
+					<th>Vendedor:</th>
 					<th>ID Cliente:</th>
 					<th>CPF:</th>
 					<th>Produto:</th>
@@ -85,6 +92,10 @@
 					<tr>
 						
 						<td>${pedido.idPedido}</td>
+						
+						<td>${pedido.venda.funcionario.idFuncionario}</td>
+						
+						<td>${pedido.venda.funcionario.nome}</td>
 						
 						<td>${pedido.cliente.idCliente}</td>
 						
