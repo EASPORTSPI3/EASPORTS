@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.lowagie.text.pdf.Pfm2afm;
+
 import br.com.easports.entities.Categoria;
 import br.com.easports.entities.ClientePF;
 import br.com.easports.entities.Fornecedor;
@@ -295,17 +297,16 @@ public class ControleProduto extends HttpServlet {
 
 					Integer quantidadePedida = Integer.parseInt(request.getParameter("quantidade"));
 
-					if(quantidadePedida <= 0){
-						
+					if (quantidadePedida <= 0) {
+
 						request.setAttribute("mensagem2", "Valor inválido.");
-						
+
 						request.getRequestDispatcher("/areaRestrita/realizarPedido.jsp").forward(request, response);
-						
+
 						throw new Exception();
-						
-					}
-					else{
-						
+
+					} else {
+
 						Integer idCliente = Integer.parseInt(request.getParameter("idCliente"));
 
 						Produto produto = new Produto();
@@ -351,9 +352,9 @@ public class ControleProduto extends HttpServlet {
 							request.setAttribute("pedido", pedido);
 
 						}
-						
+
 					}
-					
+
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a
@@ -513,20 +514,19 @@ public class ControleProduto extends HttpServlet {
 							pedidoDao.update(pedido);
 
 							produtoDao.update(produto);
-							
-							
+
 							Integer idCliente = pedido.getCliente().getIdCliente();
-							
+
 							pedidoDao = new PedidoDAO();
-							
+
 							ArrayList<Pedido> lista = new ArrayList<Pedido>();
-							
+
 							lista = pedidoDao.pedidosNaoFinalizadosPorCliente(idCliente);
-							
+
 							Double valorTotalCompra = 0.0;
-							
+
 							FormataValor format = new FormataValor();
-							
+
 							for (Pedido pedido2 : lista) {
 
 								produto = new Produto();
@@ -541,12 +541,12 @@ public class ControleProduto extends HttpServlet {
 							}
 
 							String valorTotalFormatado = format.valorFormatado(valorTotalCompra);
-							
+
 							request.setAttribute("lista", lista);
 							request.setAttribute("valorTotal", valorTotalFormatado);
-							
+
 							request.getRequestDispatcher("/areaRestrita/consultaPedido.jsp").forward(request, response);
-							
+
 							throw new Exception();
 
 						} else {
@@ -579,7 +579,7 @@ public class ControleProduto extends HttpServlet {
 
 						request.setAttribute("mensagem",
 								"Pedido nº " + pedido.getIdPedido() + " atualizado com sucesso.");
-						
+
 						request.getRequestDispatcher("/areaRestrita/edicaoPedido.jsp").forward(request, response);
 
 					}
@@ -668,40 +668,42 @@ public class ControleProduto extends HttpServlet {
 
 				}
 			}
-			
+
 			else if (acao.equalsIgnoreCase("alteraProduto")) {
 
 				try {
 
 					Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
-					
+
 					Double precoCusto = Double.parseDouble(request.getParameter("precoCusto"));
 					Double precoVenda = Double.parseDouble(request.getParameter("precoVenda"));
 					Integer quantidadeEstoque = Integer.parseInt(request.getParameter("quantidadeEstoque"));
-					
+
 					ProdutoDAO produtoDao = new ProdutoDAO();
-					
+
 					Produto produto = produtoDao.findById(idProduto);
-					
+
 					produto.setValorCusto(precoCusto);
 					produto.setValorVenda(precoVenda);
 					produto.setQuantidade(quantidadeEstoque);
 					produtoDao = new ProdutoDAO();
 					produtoDao.update(produto);
-					
+
 					request.setAttribute("mensagem", "Produto " + produto.getNome() + " alterado com sucesso.");
-					
+
 					request.setAttribute("produto", produto);
-					
+
 				} catch (Exception e) {
 
-					// Caso o método caia no catch, retorne para a página a mensagem de erro
+					// Caso o método caia no catch, retorne para a página a
+					// mensagem de erro
 					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					// Redirecionando novamente para a mesma página de cadastro de clientes
+					// Redirecionando novamente para a mesma página de cadastro
+					// de clientes
 
 					request.getRequestDispatcher("/areaRestrita/detalhesProduto.jsp").forward(request, response);
 
@@ -796,26 +798,31 @@ public class ControleProduto extends HttpServlet {
 					Integer idVendedor = Integer.parseInt(request.getParameter("idVendedor"));
 					Date dataInicio = ConverteData.stringToDate(request.getParameter("dataInicial"));
 					Date dataFinal = ConverteData.stringToDate(request.getParameter("dataFinal"));
-					
-					VendaDAO vendaDAO = new VendaDAO();					
+
+					VendaDAO vendaDAO = new VendaDAO();
 					List<Venda> lista = vendaDAO.vendaPorPeriodo(idVendedor, dataInicio, dataFinal);
-					
+
 					ArrayList<Pedido> listaPedidos;
-					
-					for(Venda v : lista){
-						
+					double valorTotalVenda = 0;
+					for (Venda v : lista) {
+
 						PedidoDAO pedidoDao = new PedidoDAO();
+						ClientePF clientePF = new ClientePF();
+						FormataValor format = new FormataValor();
 						
 						listaPedidos = new ArrayList<Pedido>();
-						
+
 						listaPedidos = pedidoDao.findByIdVenda(v.getIdVenda());
+						for (Pedido p : listaPedidos) {
+							valorTotalVenda += p.getValorTotal();
+						}
 						
+						v.setValorTotalVendaFormatado(format.valorFormatado(valorTotalVenda));
+						v.setCliente(listaPedidos.get(0).getCliente());
 						v.setLista(listaPedidos);
-						
+
 					}
-					
-					
-					
+
 					request.setAttribute("lista", lista);
 
 				} catch (Exception e) {
@@ -828,7 +835,7 @@ public class ControleProduto extends HttpServlet {
 
 				}
 			}
-			
+
 			else if (acao.equalsIgnoreCase("filtrarPedidos")) {
 
 				try {
@@ -837,7 +844,7 @@ public class ControleProduto extends HttpServlet {
 					String idClienteString = request.getParameter("idCliente");
 
 					if (!idClienteString.equals("") && status != 0) {
-						
+
 						Integer idCliente = Integer.parseInt(idClienteString);
 
 						if (status == 1) {
@@ -856,8 +863,7 @@ public class ControleProduto extends HttpServlet {
 
 							}
 
-						}
-						else {
+						} else {
 
 							PedidoDAO pedidoDao = new PedidoDAO();
 
@@ -875,15 +881,14 @@ public class ControleProduto extends HttpServlet {
 
 						}
 
-					} 
-					else if (idClienteString.equals("") && status != 0) {
-						
+					} else if (idClienteString.equals("") && status != 0) {
+
 						if (status == 1) {
-							
+
 							PedidoDAO pedidoDao = new PedidoDAO();
-							
+
 							List<Pedido> lista = pedidoDao.pedidosFinalizados();
-							
+
 							if (lista.size() > 0) {
 
 								request.setAttribute("lista", lista);
@@ -895,11 +900,11 @@ public class ControleProduto extends HttpServlet {
 							}
 
 						} else {
-							
+
 							PedidoDAO pedidoDao = new PedidoDAO();
 
 							List<Pedido> lista = pedidoDao.pedidosNaoFinalizados();
-							
+
 							if (lista.size() > 0) {
 
 								request.setAttribute("lista", lista);
@@ -912,15 +917,14 @@ public class ControleProduto extends HttpServlet {
 
 						}
 
-					}
-					else if(!idClienteString.equals("") && status == 0){
-						
+					} else if (!idClienteString.equals("") && status == 0) {
+
 						Integer idCliente = Integer.parseInt(idClienteString);
-						
+
 						PedidoDAO pedidoDao = new PedidoDAO();
 
 						List<Pedido> lista = pedidoDao.pedidosPorCliente(idCliente);
-						
+
 						if (lista.size() > 0) {
 
 							request.setAttribute("lista", lista);
@@ -930,13 +934,13 @@ public class ControleProduto extends HttpServlet {
 							request.setAttribute("mensagem", "Nenhum pedido encontrado.");
 
 						}
-						
-					}else{
-						
+
+					} else {
+
 						PedidoDAO pedidoDao = new PedidoDAO();
 
 						List<Pedido> lista = pedidoDao.listAll();
-						
+
 						if (lista.size() > 0) {
 
 							request.setAttribute("lista", lista);
@@ -946,7 +950,7 @@ public class ControleProduto extends HttpServlet {
 							request.setAttribute("mensagem", "Nenhum pedido encontrado.");
 
 						}
-						
+
 					}
 
 				} catch (Exception e) {

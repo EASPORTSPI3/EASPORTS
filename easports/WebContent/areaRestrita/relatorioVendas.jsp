@@ -72,42 +72,18 @@
 					<th>ID Vendedor:</th>
 					<th>Vendedor:</th>
 					<th>ID Cliente:</th>
-					<th>CPF:</th>
-					<th>Produto:</th>
-					<th>Quantidade:</th>
-					<th>Valor Unitário:</th>
 					<th>Valor Total:</th>
-					<th>Status:</th>
 					
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${lista}" var="venda">
 					<tr>
-						
 						<td>${venda.idVenda}</td>
-						
 						<td>${venda.funcionario.idFuncionario}</td>
-						
 						<td>${venda.funcionario.nome}</td>
-						
-						<td>${pedido.cliente.idCliente}</td>
-						
-						<td>${pedido.cliente.cpf}</td>
-						
-						<td>${pedido.produto.nome}</td>
-						
-						<td>${pedido.quantidade}</td>
-						
-						<td>${pedido.produto.valorCustoFormatado}</td>
-						
-						<td>${pedido.valorTotalFormatado}</td>
-						
-						<td>${pedido.status}</td>
-						
-						<td>
-
-						</td>	
+						<td>${venda.cliente.nome}</td>
+						<td>${venda.valorTotalVendaFormatado}</td>
 					</tr>
 				</c:forEach>				
 			</tbody>
