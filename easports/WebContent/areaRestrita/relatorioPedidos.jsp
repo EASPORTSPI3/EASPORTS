@@ -101,20 +101,7 @@
 						<td>${pedido.status}</td>
 						
 						<td>
-						
-						<a href="ControlePessoa?acao=consultarpf&cpf=${pedido.cliente.cpf}"
-								class="btn btn-sm" style="background-color: #cacaff; font-size: 14 ; 
-								color: black; border-color: black">
-								
-								<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Visualizar
-								
-						</a>						
-						<a href="ControlePessoa?acao=excluirpf&idCliente=${pedido.cliente.idCliente}"
-								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14; 
-								color: black; border-color: black; margin-left: 10px">
-								
-								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px"></span> Excluir
-						</a>
+
 						</td>	
 					</tr>
 				</c:forEach>				

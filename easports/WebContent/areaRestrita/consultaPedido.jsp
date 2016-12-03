@@ -93,7 +93,7 @@
 						</a>						
 						<a href="ControleProduto?acao=excluirPedido&idPedido=${pedido.idPedido}&idCliente=${pedido.cliente.idCliente}"
 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
-								color: black; border-color: black; margin-left: 10px">
+								color: black; border-color: black; margin-left: 10px" onclick="return confirm('Deseja excluir este pedido?')">
 								
 								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px"></span> Excluir
 						</a>

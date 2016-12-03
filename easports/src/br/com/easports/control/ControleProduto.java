@@ -299,7 +299,7 @@ public class ControleProduto extends HttpServlet {
 						
 						request.setAttribute("mensagem2", "Valor inválido.");
 						
-						request.getRequestDispatcher(arg0)
+						request.getRequestDispatcher("/areaRestrita/realizarPedido.jsp").forward(request, response);
 						
 						throw new Exception();
 						

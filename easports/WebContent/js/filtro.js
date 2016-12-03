@@ -25,11 +25,15 @@ function iniciar(){
 	
 	// Botões de acesso rápido
 	
-	var consultarCliente = document.querySelector("#consultarCliente");
-	var consultarFornecedor = document.querySelector("#consultarFornecedor");
-	var consultarFuncionario = document.querySelector("#consultarFuncionario");
-	var consultarProduto = document.querySelector("#consultarProduto");
-	var consultarPedido = document.querySelector("#consultarPedido");
+	var cadastroCli = document.querySelector("#cadastroCli");
+	var consultaCli = document.querySelector("#consultaCli");
+	var consultaProd = document.querySelector("#consultaProd");
+	var consultaPedi = document.querySelector("#consultaPedi");
+	var sobre = document.querySelector("#sobre");
+	
+	//outro botoes
+	
+	var btnConsultaCli = document.querySelector("#btnConsultaCli")
 
 	filtrar(perfil);
 }
@@ -41,19 +45,17 @@ function filtrar(perfil){
 		cadastrarFornecedor.style.display = "none";
 		cadastrarProduto.style.display = "none";
 		cadastrarFuncionario.style.display = "none";
-		
+		consultarFornecedor.style.display = "none";
 		consultarFuncionario.style.display = "none";
-		
+		btnConsultaCli.style.display = "none";
 		menuRelatorio.style.display = "none";
 		
 	}else if(perfil == "Gerente de Produtos"){
 		
 		cadastrarCliente.style.display = "none";
 		cadastrarFuncionario.style.display = "none";
-		
 		consultarCliente.style.display = "none";
 		consultarFuncionario.style.display = "none";
-		
 		relatorioCliente.style.display = "none";
 		
 	}else{
