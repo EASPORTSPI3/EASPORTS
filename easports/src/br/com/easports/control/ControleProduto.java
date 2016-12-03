@@ -299,7 +299,7 @@ public class ControleProduto extends HttpServlet {
 						
 						request.setAttribute("mensagem2", "Valor inválido.");
 						
-						request.
+						request.getRequestDispatcher(arg0)
 						
 						throw new Exception();
 						
@@ -354,8 +354,6 @@ public class ControleProduto extends HttpServlet {
 						
 					}
 					
-					
-
 				} catch (Exception e) {
 
 					// Caso o método caia no catch, retorne para a página a

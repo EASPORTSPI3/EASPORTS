@@ -2,9 +2,6 @@ package br.com.easports.entities;
 
 import java.util.Date;
 
-
-
-
 public class Funcionario extends PessoaFisica{
 
 	private Cargo cargo;

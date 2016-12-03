@@ -570,8 +570,11 @@ public class ControlePessoa extends HttpServlet {
 
 					} else {
 
-						throw new Exception("Acesso negado, tente novamente.");
+						request.setAttribute("mensagem", "Acesso negado, tente novamente.");
+						//throw new Exception("Acesso negado, tente novamente.");
 
+						request.getRequestDispatcher(destino).forward(request, response);
+						
 					}
 
 				} catch (final Exception e) {

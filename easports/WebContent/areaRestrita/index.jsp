@@ -23,23 +23,23 @@
 	
 	<div id="botoes" style="padding-top: 20px">
 
-			<label id="cadastro" style="padding-left: 25%"><a href="/easports/areaRestrita/cadastroCliente.jsp" title="Cadastro de Clientes"> 
+			<label id="imgCadastro" style="padding-left: 25%"><a href="/easports/areaRestrita/cadastroCliente.jsp" title="Cadastro de Clientes"> 
 				<img src="/easports/img/btn_cadastrar.png" /></a>
 			</label>
 				
-			<label id="consulta" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaCliente.jsp" title="Consultar Clientes"> 
+			<label id="imgConsulta" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaCliente.jsp" title="Consultar Clientes"> 
 				<img src="/easports/img/btn_consultar.png" /></a>
 			</label>
 			
-			<label id="relatorio2" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioClientes.jsp" title="Relatório de Clientes"> 
+			<label id="imgRelatorio" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioClientes.jsp" title="Relatório de Clientes"> 
 				<img src="/easports/img/btn_relatorio.png" /></a>
 			</label>
 			
-			<label id="vendas" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioPedidos.jsp" title="Relatório de Clientes">  
+			<label id="imgVendas" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioPedidos.jsp" title="Relatório de Clientes">  
 				<img src="/easports/img/btn_vendas.png" /></a>
 			</label>
 			
-			<label id="sobre" style="padding-left: 3%"><a href="/easports/areaRestrita/sobre.jsp" title="Sobre"> 
+			<label id="imgSobre" style="padding-left: 3%"><a href="/easports/areaRestrita/sobre.jsp" title="Sobre"> 
 				<img src="/easports/img/btn_ajuda.png" /></a>
 			</label>
 			
@@ -50,5 +50,8 @@
 	</center>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
+	
+	<script type="text/javascript" src="/easports/js/filtro.js"></script>
+	
 </body>
 </html>
