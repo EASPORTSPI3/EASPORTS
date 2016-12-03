@@ -1,6 +1,6 @@
 package br.com.easports.principal;
 
-import br.com.easports.util.ConverteData;
+import br.com.easports.util.Criptografia;
 
 public class Main {
 
@@ -10,14 +10,9 @@ public class Main {
 //		
 //		System.out.println(pasta);
 		
-		ConverteData converteData = new ConverteData();
-		
-		System.out.println(converteData.getDataAtual());
-		
-		String status = "'true'";
-		
-		System.out.println(status);
-
+		 String senha = "123456";
+	     System.out.println(Criptografia.criptografar(senha));
+	     
 	}
 
 }

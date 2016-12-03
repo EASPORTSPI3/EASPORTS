@@ -18,6 +18,7 @@ import br.com.easports.persistence.EnderecoDAO;
 import br.com.easports.persistence.FornecedorDAO;
 import br.com.easports.persistence.FuncionarioDAO;
 import br.com.easports.util.ConverteData;
+import br.com.easports.util.Criptografia;
 import br.com.easports.util.FormataValor;
 import br.com.easports.util.WebServiceCep;
 
@@ -521,11 +522,13 @@ public class ControlePessoa extends HttpServlet {
 
 						funcionario = new Funcionario();
 
+						String senha = request.getParameter("senha");
+						
 						funcionario.setNome(request.getParameter("nome"));
 						funcionario.setTelefone(request.getParameter("telefone"));
 						funcionario.setCpf(request.getParameter("cpf"));
 						funcionario.setDataNasc(ConverteData.stringToDate(request.getParameter("datanasc")));
-						funcionario.setSenha(request.getParameter("senha"));
+						funcionario.setSenha(Criptografia.criptografar(senha));
 						funcionario.setEndereco(endereco);
 
 						final FuncionarioDAO funcionarioDAO2 = new FuncionarioDAO();
@@ -553,11 +556,13 @@ public class ControlePessoa extends HttpServlet {
 
 					final String cpf = request.getParameter("cpf");
 					final String senha = request.getParameter("senha");
+					
+					String senhaCriptografada = Criptografia.criptografar(senha);
 
 					final FuncionarioDAO funcionarioDao = new FuncionarioDAO();
 
-					final Funcionario funcionario = funcionarioDao.findByLoginSenha(cpf, senha);
-
+					final Funcionario funcionario = funcionarioDao.findByLoginSenha(cpf, senhaCriptografada);
+					
 					if (funcionario != null) {
 
 						session = request.getSession();
