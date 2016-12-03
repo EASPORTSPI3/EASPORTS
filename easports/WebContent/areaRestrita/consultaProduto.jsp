@@ -64,7 +64,9 @@
 						<hr>
 
 						<strong>Categoria: </strong>${produto.categoria.nome} <br /> <strong>Preço:
-						</strong>${produto.valorVendaFormatado} <br /> <a
+						</strong>${produto.valorVendaFormatado} <br /> 
+				<c:if test="${usuarioLogado.cargo.cargo=='Gerente' || usuarioLogado.cargo.cargo=='Vendedor' }">	
+						<a
 							href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
 							class="btn btn-sm"
 							style="background-color: #ffb0b0; font-size: 14; color: black; margin-top: 20px; border-color: black">
@@ -81,6 +83,30 @@
 							Visualizar
 
 						</a>
+						</c:if>
+						
+					<c:if test="${usuarioLogado.cargo.cargo=='Gerente de Produtos'}">	
+						<a
+							href="/easports/ControleProduto?acao=adicionarProduto&id=${produto.idProduto}"
+							class="btn btn-sm"
+							style="background-color: #ffb0b0; font-size: 14; color: black; margin-top: 20px; border-color: black">
+
+							<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+							Adicionar
+
+						</a> <a
+							href="/easports/ControleProduto?acao=detalhesProduto&id=${produto.idProduto}"
+							class="btn btn-sm"
+							style="background-color: #cacaff; font-size: 14; color: black; margin-top: 20px; margin-left: -215px; border-color: black">
+
+							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							Visualizar
+
+						</a>
+					</c:if>
+						
+						
+						
 					</div>
 				</div>
 			</div>

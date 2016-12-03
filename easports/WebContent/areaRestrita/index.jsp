@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -19,9 +21,10 @@
 
 <jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
-	<div id="botoes" style="padding-top: 20px">
-
-			<label id="cadastroCli" style="padding-left: 25%"><a href="/easports/areaRestrita/cadastroCliente.jsp" title="Cadastro de Clientes"> 
+	<div id="botoes" style="padding-top: 20px; text-align: center">
+			
+		<c:if test="${usuarioLogado.cargo.cargo=='Gerente' || usuarioLogado.cargo.cargo=='Vendedor' }">			
+			<label id="cadastroCli"><a href="/easports/areaRestrita/cadastroCliente.jsp" title="Cadastro de Clientes"> 
 				<img src="/easports/img/btn_cadastrar.png" /></a>
 			</label>
 				
@@ -29,17 +32,36 @@
 				<img src="/easports/img/btn_consultar.png" /></a>
 			</label>
 			
-			<label id="consultaProd" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaProdutos.jsp" title="Relatório de Clientes"> 
+			<label id="consultaProd" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaProduto.jsp" title="Consultar Produtos"> 
 				<img src="/easports/img/btn_relatorio.png" /></a>
 			</label>
 			
-			<label id="consultaPedi" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaPedidos.jsp" title="Relatório de Clientes">  
+			<label id="consultaPedi" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaPedido.jsp" title="Consultar Pedidos">  
 				<img src="/easports/img/btn_vendas.png" /></a>
 			</label>
 			
 			<label id="sobre" style="padding-left: 3%"><a href="/easports/areaRestrita/sobre.jsp" title="Sobre"> 
 				<img src="/easports/img/btn_ajuda.png" /></a>
 			</label>
+		</c:if>	
+		
+		<c:if test="${usuarioLogado.cargo.cargo=='Gerente de Produtos'}">			
+			<label id="cadastroCli"><a href="/easports/areaRestrita/cadastroProduto.jsp" title="Cadastro de Produtos"> 
+				<img src="/easports/img/btn_cadastrar.png" /></a>
+			</label>
+				
+			<label id="consultaCli" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaProduto.jsp" title="Consultar Produtos"> 
+				<img src="/easports/img/btn_consultar.png" /></a>
+			</label>
+			
+			<label id="consultaProd" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioEstoque.jsp" title="Relatório de Estoque"> 
+				<img src="/easports/img/btn_relatorio.png" /></a>
+			</label>
+			
+			<label id="sobre" style="padding-left: 3%"><a href="/easports/areaRestrita/sobre.jsp" title="Sobre"> 
+				<img src="/easports/img/btn_ajuda.png" /></a>
+			</label>
+		</c:if>	
 			
 	</div>
 	
