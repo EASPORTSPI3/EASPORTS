@@ -194,6 +194,7 @@ public class PedidoDAO extends DAO {
 
 			ClientePFDAO clientePfDao = new ClientePFDAO();
 			ProdutoDAO produtoDao = new ProdutoDAO();
+			VendaDAO vendaDao = new VendaDAO();
 
 			Pedido pedido = new Pedido();
 
@@ -206,6 +207,7 @@ public class PedidoDAO extends DAO {
 			pedido.setQuantidade(rs.getInt("quantidade"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
+			pedido.setVenda(vendaDao.findById(rs.getInt("id_vendas")));
 
 			pedido.setStatus("Finalizado");
 
@@ -338,7 +340,7 @@ public class PedidoDAO extends DAO {
 
 			Pedido pedido = new Pedido();
 			Venda venda = new Venda();
-			venda = vendaDao.findById(rs.getInt("id_venda"));
+			venda = vendaDao.findById(rs.getInt("id_vendas"));
 
 			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
@@ -346,7 +348,7 @@ public class PedidoDAO extends DAO {
 			pedido.getProduto().setValorCustoFormatado(format.valorFormatado(pedido.getProduto().getValorCusto()));
 			pedido.getProduto().setValorVendaFormatado(format.valorFormatado(pedido.getProduto().getValorVenda()));
 			pedido.setQuantidade(rs.getInt("quantidade"));
-			pedido.setIdVenda(rs.getInt("id_venda"));
+			pedido.setIdVenda(rs.getInt("id_vendas"));
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
 			pedido.setStatus("Finalizado");
@@ -363,7 +365,7 @@ public class PedidoDAO extends DAO {
 
 	}
 
-	public ArrayList<Pedido> pedidosFiltroCompleto(Integer idCliente, Integer idFuncionario, Boolean finalizado)
+	public ArrayList<Pedido> pedidosFiltro(Integer idCliente, Boolean finalizado)
 			throws Exception {
 
 		String query;
@@ -404,11 +406,6 @@ public class PedidoDAO extends DAO {
 				pedido.setStatus("Finalizado");
 				pedido.setVenda(vendaDao.findById(rs.getInt("id_vendas")));
 
-				if (pedido.getVenda().getFuncionario().getIdFuncionario() == idFuncionario) {
-
-					lista.add(pedido);
-
-				}
 			}
 
 		} else {

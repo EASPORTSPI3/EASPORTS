@@ -756,22 +756,16 @@ public class ControleProduto extends HttpServlet {
 
 					Integer status = Integer.parseInt(request.getParameter("status"));
 					String idClienteString = request.getParameter("idCliente");
-					String idFuncionarioString = request.getParameter("idVendedor");
 
-					Boolean isFinalizado;
-
-					if (!idClienteString.equals("") && !idFuncionarioString.equals("") && status != 0) {
+					if (!idClienteString.equals("") && status != 0) {
 						
 						Integer idCliente = Integer.parseInt(idClienteString);
-						Integer idFuncionario = Integer.parseInt(idFuncionarioString);
 
 						if (status == 1) {
 
-							isFinalizado = true;
-
 							PedidoDAO pedidoDao = new PedidoDAO();
 
-							List<Pedido> lista = pedidoDao.pedidosFiltroCompleto(idCliente, idFuncionario, isFinalizado);
+							List<Pedido> lista = pedidoDao.pedidosFinalizadosPorCliente(idCliente);
 
 							if (lista.size() > 0) {
 
@@ -786,11 +780,9 @@ public class ControleProduto extends HttpServlet {
 						}
 						else {
 
-							isFinalizado = false;
-
 							PedidoDAO pedidoDao = new PedidoDAO();
 
-							List<Pedido> lista = pedidoDao.pedidosFiltroCompleto(idCliente, idFuncionario, isFinalizado);
+							List<Pedido> lista = pedidoDao.pedidosNaoFinalizadosPorCliente(idCliente);
 
 							if (lista.size() > 0) {
 
@@ -805,11 +797,9 @@ public class ControleProduto extends HttpServlet {
 						}
 
 					} 
-					else if (idClienteString.equals("") && idFuncionarioString.equals("") && status != 0) {
+					else if (idClienteString.equals("") && status != 0) {
 						
 						if (status == 1) {
-							
-							isFinalizado = true;
 							
 							PedidoDAO pedidoDao = new PedidoDAO();
 							
@@ -827,8 +817,6 @@ public class ControleProduto extends HttpServlet {
 
 						} else {
 							
-							isFinalizado = false;
-
 							PedidoDAO pedidoDao = new PedidoDAO();
 
 							List<Pedido> lista = pedidoDao.pedidosNaoFinalizados();
