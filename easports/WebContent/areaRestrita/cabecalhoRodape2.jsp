@@ -94,7 +94,7 @@
     
     <div class="well text-center" style="margin-top: 40px;width: 100%;height: 65px">
         
-		<div style="padding-left: 50%">
+		<div style="padding-left: 50%; text-align: left;">
 		
 			<strong>Logado como: </strong>
 			
@@ -102,8 +102,7 @@
 			<label>
 				<a href="/easports/ControlePessoa?acao=logout" class="btn btn-sm" 
 				   style="background-color: #fbfecf; font-size: 14; color: black;border-color: black">									
-				   <span class="glyphicon glyphicon-off" aria-hidden="true" style="padding-right: 5%"></span> Logout
-									
+				   <span class="glyphicon glyphicon-off" aria-hidden="true" style="padding-right: 5%"></span> Logout				
 				</a>		
 						
 			</label>	    

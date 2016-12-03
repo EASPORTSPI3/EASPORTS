@@ -756,7 +756,7 @@ public class ControleProduto extends HttpServlet {
 
 					Integer status = Integer.parseInt(request.getParameter("status"));
 					String idClienteString = request.getParameter("idCliente");
-					String idFuncionarioString = request.getParameter("idFuncionario");
+					String idFuncionarioString = request.getParameter("idVendedor");
 
 					Boolean isFinalizado;
 
@@ -883,7 +883,7 @@ public class ControleProduto extends HttpServlet {
 					}
 
 				} catch (Exception e) {
-
+					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {

@@ -51,7 +51,7 @@ public class VendaDAO extends DAO {
 	
 	public Venda findById(Integer idVenda) throws Exception {
 		
-		String query = "select * from vendas where id_venda = ?";
+		String query = "select * from vendas where id_vendas = ?";
 		
 		abreConexao();
 
@@ -59,7 +59,7 @@ public class VendaDAO extends DAO {
 
 		stmt.setInt(1, idVenda);
 
-		stmt.execute();
+		rs = stmt.executeQuery();
 		
 		Venda venda = null;
 		
@@ -69,7 +69,7 @@ public class VendaDAO extends DAO {
 			
 			venda = new Venda();
 			
-			venda.setIdVenda(rs.getInt("id_venda"));
+			venda.setIdVenda(rs.getInt("id_vendas"));
 			venda.setFuncionario(funcionarioDao.findById(rs.getInt("id_funcionario")));
 			venda.setDataVenda(ConverteData.stringToDate(rs.getString("data_venda")));
 			
