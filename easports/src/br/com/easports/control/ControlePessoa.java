@@ -547,7 +547,7 @@ public class ControlePessoa extends HttpServlet {
 
 			else if (acao.equalsIgnoreCase("autenticar")) {
 
-				String destino = "/easports/login.jsp";
+				String destino = "/login.jsp";
 
 				try {
 
@@ -573,7 +573,7 @@ public class ControlePessoa extends HttpServlet {
 						request.setAttribute("mensagem", "Acesso negado, tente novamente.");
 						//throw new Exception("Acesso negado, tente novamente.");
 
-						request.getRequestDispatcher(destino).forward(request, response);
+						request.getRequestDispatcher(destino);
 						
 					}
 
