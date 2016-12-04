@@ -42,7 +42,7 @@
 						<h3 class="text-center"><strong>${produto.nome}</strong>
 							
 							<a href="/easports/areaRestrita/consultaProduto.jsp" class="btn btn-sm" style="background-color: #fbfecf; 
-							   font-size: 14; color: black; margin-left: -480px; margin-right: 290px; border-color: black">
+							   font-size: 14; color: black; margin-left: -450px; margin-right: 40%; border-color: black">
 								
 							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true" style="margin-right: 7px"></span> Retornar
 								

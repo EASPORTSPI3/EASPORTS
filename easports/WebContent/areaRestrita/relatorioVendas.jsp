@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<jsp:useBean class="br.com.easports.managedbeans.ManagedBeanVenda" id="mb"></jsp:useBean>
+
 <!-- TagLibraries (JSTL) -->
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -41,16 +43,16 @@
 		<form name="formulario" method="post" action="/easports/ControleProduto?acao=filtrarVendas">
 		
 			<label style="color: black">ID Vendedor:
-				<input style="width: 90px" type="text" name="idVendedor" 
+				<input required="required" style="width: 90px" type="text" name="idVendedor" 
 					   class="form-control" placeholder="Informe"/>
 			</label>
 			
-			<label style="color: black">Data Início:
+			<label required="required" style="color: black">Data Início:
 				<input style="width: 160px" type="date" name="dataInicial" 
 					   class="form-control" placeholder="dd/mm/aaaa"/>
 			</label>
 			
-			<label style="color: black">Data Fim:
+			<label required="required" style="color: black">Data Fim:
 				<input style="width: 160px" type="date" name="dataFinal" 
 					   class="form-control" placeholder="dd/mm/aaaa"/>
 			</label>
@@ -71,7 +73,9 @@
 					<th>ID Venda:</th>
 					<th>ID Vendedor:</th>
 					<th>Vendedor:</th>
+					<th>Data Venda:</th>
 					<th>ID Cliente:</th>
+					<th>Cliente:</th>
 					<th>Valor Total:</th>
 					
 				</tr>
@@ -82,14 +86,26 @@
 						<td>${venda.idVenda}</td>
 						<td>${venda.funcionario.idFuncionario}</td>
 						<td>${venda.funcionario.nome}</td>
+						<td>${venda.dataVendaFormatado}</td>
+						<td>${venda.cliente.idCliente}</td>
 						<td>${venda.cliente.nome}</td>
 						<td>${venda.valorTotalVendaFormatado}</td>
+						<td>
+						
+						<a href="/easports/ControleProduto?acao=detalhesVenda&idVenda=${venda.idVenda}"
+								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14 ; 
+								color: black;border-color: black">
+								
+								<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> Detalhes
+								
+						</a>
+						</td>
 					</tr>
 				</c:forEach>				
 			</tbody>
 		</table>
 				<hr style="border-width: 3px">
-				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(mb.listagemPedidos)}</b></label>
+				<label style="margin-left: 0%; font-size: 15px; color: black"><b>Quantidade de Registros : ${fnc:length(lista)}</b></label>
 				<br/>
 
 				</div>	

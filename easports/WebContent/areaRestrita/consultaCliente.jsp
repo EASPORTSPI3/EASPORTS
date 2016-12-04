@@ -113,11 +113,11 @@
 						<div id="btnConsultaCli">
 						<input type="button" class="btn btn-sm" value=Editar id="editar" style="background-color: #beeab5; 
 							   width: 95; font-size: 14; font: bold; text-align: right; border-color: black" />
-							<span class="glyphicon glyphicon-check" style="margin-left: -90"></span>
+							<span class="glyphicon glyphicon-pencil" style="margin-left: -90"></span>
 								
 						<input type="submit" class="btn btn-sm" value="Salvar" disabled id="enviar" style="background-color: #cacaff;
 							   margin-left:14%; width: 85; font-size: 14; font: bold; text-align: right; border-color: black" />
-							<span class="glyphicon glyphicon-erase" style="margin-left: -80"></span>
+							<span class="glyphicon glyphicon-check" style="margin-left: -80"></span>
  						</div>
 					</div>
 				</div>

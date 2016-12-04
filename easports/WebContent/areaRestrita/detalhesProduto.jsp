@@ -71,11 +71,11 @@
 							
 								<input type="button" class="btn btn-sm" value=Editar id="editar" style="background-color: #beeab5; 
 							   width: 95; font-size: 14; font: bold; text-align: right; border-color: black" />
-							<span class="glyphicon glyphicon-check" style="margin-left: -90"></span>
+							<span class="glyphicon glyphicon-pencil" style="margin-left: -90"></span>
 								
 								<input type="submit" class="btn btn-sm" value="Salvar" id="enviar" style="background-color: #cacaff;
 							   margin-left:18%; width: 85; font-size: 14; font: bold; text-align: right; border-color: black" />
-							<span class="glyphicon glyphicon-erase" style="margin-left: -80"></span><br/><br/>
+							<span class="glyphicon glyphicon-check" style="margin-left: -80"></span><br/><br/>
 							<h4 style="color:green">${mensagem}</h4>
  							</div>
 							

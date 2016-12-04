@@ -35,7 +35,7 @@
 	<div class="col-md-12">
 		
 		<form id="pesquisa" name="pesquisa" method="post" 
-			  action="../ControleProduto?acao=consultarPedidos" style="margin-left: 20px">
+			  action="/easports/ControleProduto?acao=consultarPedidos" style="margin-left: 20px">
 				  
 			<input type="submit" class="btn btn-sm" value="Consultar" style="background-color: #cacaff; 
 				   width: 105; font-size: 14; font: bold;text-align: right;border-color: black"/>
@@ -109,7 +109,7 @@
 				<br/><br/>
 
 				<a href="ControleProduto?acao=finalizarPedidos&cpf=${cpf}"
-						class="btn btn-sm" style="background-color: #fbfecf; font-size: 14 ; 
+						class="btn btn-sm" onclick="return confirm('Deseja finalizar os pedidos ?')" style="background-color: #fbfecf; font-size: 14 ; 
 						color: black; border-color: black" aria-label="Left Align">								
 						<span class="glyphicon glyphicon-ok" style="margin-right: 5px" aria-hidden="true"></span> Finalizar Pedidos
 								

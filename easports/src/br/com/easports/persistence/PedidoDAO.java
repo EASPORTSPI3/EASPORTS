@@ -133,13 +133,13 @@ public class PedidoDAO extends DAO {
 
 		ArrayList<Pedido> lista = new ArrayList<Pedido>();
 		
-		Pedido pedido = new Pedido();
-
 		while (rs.next()) {
 
 			ClientePFDAO clientePfDao = new ClientePFDAO();
 			ProdutoDAO produtoDao = new ProdutoDAO();
 			FormataValor format = new FormataValor();
+			
+			Pedido pedido = new Pedido();
 
 			pedido.setIdPedido(rs.getInt("id_pedido"));
 			pedido.setCliente(clientePfDao.findById(rs.getInt("id_cliente")));
@@ -150,16 +150,8 @@ public class PedidoDAO extends DAO {
 			pedido.setValorTotal(pedido.getQuantidade() * pedido.getProduto().getValorVenda());
 			pedido.setValorTotalFormatado(format.valorFormatado(pedido.getValorTotal()));
 
-			if (rs.getBoolean("finalizado")) {
-
-				pedido.setIdVenda(rs.getInt("id_vendas"));
-				pedido.setStatus("Finalizado");
-
-			} else {
-
-				pedido.setStatus("Pendente");
-
-			}
+			pedido.setIdVenda(rs.getInt("id_vendas"));
+			pedido.setStatus("Finalizado");
 			
 			lista.add(pedido);
 
@@ -598,7 +590,7 @@ public class PedidoDAO extends DAO {
 
 	public List<Pedido> listAll() throws Exception {
 
-		String query = "select * from pedido";
+		String query = "select * from pedido order by id_cliente asc";
 
 		abreConexao();
 

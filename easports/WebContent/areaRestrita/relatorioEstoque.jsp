@@ -45,7 +45,7 @@
 		<form name="formulario" method="post" action="/easports/ControleProduto?acao=filtrarEstoque">
 		
 			<label style="color: black">Categoria:
-				<select name="categoria" class="form-control">
+				<select required="required" name="categoria" class="form-control">
 					<option value="">- Selecione -</option>
 							
 					<c:forEach items="${mbCategoria.listagemCategorias}" var="c">
@@ -56,7 +56,7 @@
 			</label>
 			
 			<label style="color: black">Fornecedor:
-				<select name="fornecedor" class="form-control">
+				<select required="required" name="fornecedor" class="form-control">
 					<option value="">- Selecione -</option>
 							
 					<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
@@ -119,8 +119,8 @@
 								<span class="glyphicon glyphicon-search" aria-hidden="true" style="margin-right: 5px"></span> Visualizar
 								
 						</a>						
-						<a href="/easports/ControleProduto?acao=excluirProduto&id=${produto.idProduto}"
-								class="btn btn-sm" style="background-color: #ffb0b0; font-size: 14; 
+						<a href="/easports/ControleProduto?acao=excluirProduto&idProduto=${produto.idProduto}"
+								class="btn btn-sm" onclick="return confirm('Deseja excluir este Produto ?')" style="background-color: #ffb0b0; font-size: 14; 
 								color: black; border-color: black; margin-left: 10px">
 								
 								<span class="glyphicon glyphicon-trash" aria-hidden="true" style="margin-right: 5px"></span> Excluir

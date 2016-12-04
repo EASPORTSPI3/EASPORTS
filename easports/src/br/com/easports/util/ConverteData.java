@@ -32,7 +32,7 @@ public class ConverteData {
  			return null;
          String dataString = null;
          try {
-        	 Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        	 Format formatter = new SimpleDateFormat("dd-MM-yyyy");
         	 dataString = formatter.format(data);
          } catch (Exception e) {            
         	 e.printStackTrace();

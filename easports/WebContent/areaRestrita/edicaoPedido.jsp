@@ -58,13 +58,18 @@
 							</label>
 							<hr>
 							
-							<input type="submit" value="Confirmar" id="enviar" class="btn btn-sm" style="background-color: #ffb0b0; 
-								   margin-left: 13%; font-size: 14; color: black; width: 100px"/>
+							<input type="submit" class="btn btn-sm" value="Confirmar" id="enviar" style="background-color: #beeab5;
+							   width: 100; margin-left: 80px;font-size: 14; font: bold; text-align: right; border-color: black" />
+							<span class="glyphicon glyphicon-check" style="margin-left: -95"></span>
+						
 						
 							<a href="/easports/ControleProduto?acao=consultarPedidos&cpf=${pedido.cliente.cpf}"
 								class="btn btn-sm" style="background-color: #cacaff; font-size: 14; 
-								color: black; margin-left: 1%">Cancelar
+								color: black; border-color: black; margin-left: 80px">
+								
+								<span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-right: 5px"></span> Cancelar
 							</a>
+						
 							<hr>
 						
 							<h4 style="color: green; text-align: center;">${mensagem}</h4>

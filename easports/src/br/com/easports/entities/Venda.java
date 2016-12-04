@@ -8,6 +8,7 @@ import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 public class Venda {
 	private Integer idVenda;
 	private Date dataVenda;
+	private String dataVendaFormatado;
 	private Funcionario funcionario;
 	private ArrayList<Pedido> lista;
 	private Double valorTotalVenda;
@@ -70,6 +71,12 @@ public class Venda {
 	
 	public void addPedido(Pedido pedido){
 		this.lista.add(pedido);
+	}
+	public String getDataVendaFormatado() {
+		return dataVendaFormatado;
+	}
+	public void setDataVendaFormatado(String dataVendaFormatado) {
+		this.dataVendaFormatado = dataVendaFormatado;
 	}
 	
 }

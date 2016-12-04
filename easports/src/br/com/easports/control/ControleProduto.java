@@ -799,11 +799,15 @@ public class ControleProduto extends HttpServlet {
 					Date dataInicio = ConverteData.stringToDate(request.getParameter("dataInicial"));
 					Date dataFinal = ConverteData.stringToDate(request.getParameter("dataFinal"));
 
+					System.out.println(dataInicio);
+					
 					VendaDAO vendaDAO = new VendaDAO();
 					List<Venda> lista = vendaDAO.vendaPorPeriodo(idVendedor, dataInicio, dataFinal);
 
 					ArrayList<Pedido> listaPedidos;
+					
 					double valorTotalVenda = 0;
+					
 					for (Venda v : lista) {
 
 						PedidoDAO pedidoDao = new PedidoDAO();
@@ -813,6 +817,7 @@ public class ControleProduto extends HttpServlet {
 						listaPedidos = new ArrayList<Pedido>();
 
 						listaPedidos = pedidoDao.findByIdVenda(v.getIdVenda());
+						
 						for (Pedido p : listaPedidos) {
 							valorTotalVenda += p.getValorTotal();
 						}
@@ -822,11 +827,16 @@ public class ControleProduto extends HttpServlet {
 						v.setLista(listaPedidos);
 
 					}
-
+					
+					if(lista.size() == 0){
+						
+						request.setAttribute("mensagem", "Nenhum registro encontrado.");
+						
+					}
+					
 					request.setAttribute("lista", lista);
 
 				} catch (Exception e) {
-					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
@@ -954,12 +964,71 @@ public class ControleProduto extends HttpServlet {
 					}
 
 				} catch (Exception e) {
-					System.out.println(e);
 					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 
-					request.getRequestDispatcher("/areaRestrita/relatorioVendas.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/relatorioPedidosFiltro.jsp").forward(request, response);
+
+				}
+			}
+			
+			else if (acao.equalsIgnoreCase("detalhesVenda")) {
+
+				try {
+
+					Integer idVenda = Integer.parseInt(request.getParameter("idVenda"));
+
+					PedidoDAO pedidoDao = new PedidoDAO();
+					
+					ArrayList<Pedido> listaPedidos;
+					
+					listaPedidos = pedidoDao.findByIdVenda(idVenda);
+					
+					Double valorTotal = 0.0;
+					String valorTotalFormatado;
+					
+					for(Pedido p : listaPedidos){
+						
+						valorTotal += p.getValorTotal();
+						
+					}
+					
+					FormataValor format = new FormataValor();
+					
+					valorTotalFormatado = format.valorFormatado(valorTotal);
+					
+					request.setAttribute("lista", listaPedidos);
+					request.setAttribute("valorTotal", valorTotalFormatado);
+
+				} catch (Exception e) {
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					request.getRequestDispatcher("/areaRestrita/detalhesVenda.jsp").forward(request, response);
+
+				}
+			}
+			
+			else if (acao.equalsIgnoreCase("excluirProduto")) {
+
+				try {
+
+					Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
+
+					ProdutoDAO produtoDao = new ProdutoDAO();
+					
+					produtoDao.delete(idProduto);
+					
+					request.setAttribute("mensagem", "Produto excluído com sucesso.");
+
+				} catch (Exception e) {
+					request.setAttribute("mensagem", e.getMessage());
+
+				} finally {
+
+					request.getRequestDispatcher("/areaRestrita/relatorioEstoque.jsp").forward(request, response);
 
 				}
 			}
