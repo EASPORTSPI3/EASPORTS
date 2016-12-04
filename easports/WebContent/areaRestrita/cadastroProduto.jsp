@@ -50,15 +50,15 @@
 							<hr>
 			
 							<label>Nome do Produto:
-								<input style="width: 100%" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
+								<input required="required" style="width: 100%" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
 							</label>
 						
 							<label>Código:
-								<input style="width: 100%" type="text" name="codigo" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 100%" type="text" name="codigo" class="form-control" placeholder="Digite aqui"/>
 							</label>
 											
 							<label>Fornecedor:
-								<select name="fornecedor" class="form-control">
+								<select required="required" name="fornecedor" class="form-control">
 									<option value="">- Selecione uma Opção -</option>
 					
 								<c:forEach items="${mbFornecedor.listagemFornecedores}" var="f">
@@ -70,7 +70,7 @@
 
 							
 							<label>Categoria:
-								<select name="categoria" class="form-control">
+								<select required="required" name="categoria" class="form-control">
 									<option value="">- Selecione uma Opção -</option>
 					
 								<c:forEach items="${mbCategoria.listagemCategorias}" var="c">
@@ -81,21 +81,21 @@
 							</label>
 
 							<label>Imagem do Produto:
-								<input type="file" name="imagem" class="form-control"/>
+								<input required="required" type="file" name="imagem" class="form-control"/>
 							</label>
 							<br/>
 							
 							<label>Valor de Venda:
-								<input type="text" name="valorVenda" class="form-control" placeholder="Digite aqui" style="width: 120px"/>
+								<input required="required" type="text" name="valorVenda" class="form-control" placeholder="Digite aqui" style="width: 120px"/>
 							</label>
 							
 							<label>Valor de Custo:
-								<input type="text" name="valorCusto" class="form-control" placeholder="Digite aqui" style="width: 120px"/>
+								<input required="required" type="text" name="valorCusto" class="form-control" placeholder="Digite aqui" style="width: 120px"/>
 							</label>
 
 				
 							<label>Quantidade:
-								<input type="text" name="quantidade" class="form-control" placeholder="Digite aqui" style="width: 110px"/>
+								<input required="required" type="text" name="quantidade" class="form-control" placeholder="Digite aqui" style="width: 110px"/>
 							</label>
 							<br/><hr>
 		

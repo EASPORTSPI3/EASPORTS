@@ -157,7 +157,7 @@ public class ControleProduto extends HttpServlet {
 					// Redirecionando novamente para a mesma página de cadastro
 					// de clientes
 
-					request.getRequestDispatcher("cadastroProduto.jsp").forward(request, response);
+					request.getRequestDispatcher("/areaRestrita/cadastroProduto.jsp").forward(request, response);
 
 				}
 
