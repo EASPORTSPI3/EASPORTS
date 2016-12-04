@@ -119,7 +119,7 @@
 							</label>
 							
 							<label>Cargo:
-								<select name="cargo" class="form-control" style="width: 135px">
+								<select name="cargo" class="form-control" required="required" style="width: 135px">
 									<option value="">- Selecione -</option>
 					
 								<c:forEach items="${mbCargo.listagemCargos}" var="c">
