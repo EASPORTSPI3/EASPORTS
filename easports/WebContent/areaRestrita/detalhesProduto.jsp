@@ -63,9 +63,9 @@
 							<h4><strong style="color: black; margin-left: 15px">Fornecedor: <input type="text" disabled name="fornecedor" style="color: gray" value="${produto.fornecedor.nome}"></strong></h4>
 							<h4><strong style="color: black; margin-left: 15px">Razão Social: <input type="text" disabled name="razaoSocial" style="color: gray" value="${produto.fornecedor.razaoSocial}"></strong></h4>
 							<h4><strong style="color: black; margin-left: 15px">Categoria: <input type="text" disabled name="categoria" style="color: gray" value="${produto.categoria.nome}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: <input type="text" name="precoCusto" style="color: gray" value="${produto.valorCusto}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: <input type="text" name="precoVenda" style="color: gray" value="${produto.valorVenda}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: <input type="text" name="quantidadeEstoque" style="color: gray" value="${produto.quantidade}"></strong></h4>							
+							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: <input type="text" name="precoCusto" required="required" style="color: gray" value="${produto.valorCusto}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: <input type="text" name="precoVenda" required="required" style="color: gray" value="${produto.valorVenda}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: <input type="text" name="quantidadeEstoque" required="required" style="color: gray" value="${produto.quantidade}"></strong></h4>							
 						
 							<div style="padding-left: 50%; padding-top: 3%">
 							
