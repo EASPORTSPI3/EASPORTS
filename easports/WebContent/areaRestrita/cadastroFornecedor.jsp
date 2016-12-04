@@ -99,22 +99,22 @@
 							<hr>	
 			
 							<label>Nome do Fornecedor:
-								<input style="width: 250px" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
+								<input required="required" style="width: 250px" type="text" name="nome" class="form-control" placeholder="Digite aqui" />
 							</label>
 
 						
 							<label>Razão Social:
-								<input style="width: 350px" type="text" name="razaoSocial" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 350px" type="text" name="razaoSocial" class="form-control" placeholder="Digite aqui"/>
 							</label>
 
 				
 							<label>Telefone:
-								<input style="width: 140px" type="text" name="telefone" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 140px" type="text" name="telefone" class="form-control" placeholder="Digite aqui"/>
 							</label>
 
 							
 							<label>CNPJ:
-								<input style="width: 200px" type="text" name="cnpj" class="form-control" placeholder="Digite aqui"/>
+								<input required="required" style="width: 200px" type="text" name="cnpj" class="form-control" placeholder="Digite aqui"/>
 							</label>
 							<br/>
 						
