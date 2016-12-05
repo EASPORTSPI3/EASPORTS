@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/easports/js/limpar.js"></script>
 	
 	<title>EA Sports</title>
 </head>
@@ -124,7 +125,7 @@
 								   width: 105; font-size: 14; font: bold; text-align: right; border-color: black" />
 								<span class="glyphicon glyphicon-check" style="margin-left: -100"></span>
 								
-							<input type="reset" class="btn btn-sm" value="Limpar" style="background-color: #cacaff;margin-left:14%; 
+							<input type="button" class="btn btn-sm" value="Limpar" id="btnLimpar" style="background-color: #cacaff;margin-left:14%; 
 								   width: 90; font-size: 14; font: bold; text-align: right; border-color: black" />
 								<span class="glyphicon glyphicon-erase" style="margin-left: -86"></span>
 										

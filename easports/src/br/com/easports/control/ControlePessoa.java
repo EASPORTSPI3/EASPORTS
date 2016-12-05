@@ -586,7 +586,7 @@ public class ControlePessoa extends HttpServlet {
 
 				} catch (final Exception e) {
 
-					request.setAttribute("mensagem", URLteste);
+					request.setAttribute("mensagem", e.getMessage());
 
 				} finally {
 

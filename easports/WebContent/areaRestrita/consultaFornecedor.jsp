@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="/easports/js/js.js"></script>
 	
+	
 	<title>EA Sports</title>
 	
 </head>

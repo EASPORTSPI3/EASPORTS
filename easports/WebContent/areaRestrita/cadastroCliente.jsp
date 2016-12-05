@@ -124,7 +124,7 @@
 								   width: 105; font-size: 14; font: bold; text-align: right; border-color: black" />
 								<span class="glyphicon glyphicon-check" style="margin-left: -100"></span>
 								
-							<input type="reset" class="btn btn-sm" value="Limpar" style="background-color: #cacaff;margin-left:14%; 
+							<input type="button" class="btn btn-sm" value="Limpar" style="background-color: #cacaff;margin-left:14%; 
 								   width: 90; font-size: 14; font: bold; text-align: right; border-color: black" id="btnLimpar"/>
 								<span class="glyphicon glyphicon-erase" style="margin-left: -86"></span>
 							

@@ -77,6 +77,12 @@ public class ControleProduto extends HttpServlet {
 					// Instanciando um novo Estoque para receber os parâmetros
 					// passados pelo usuário
 					// através da JSP
+					int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+					
+					if(quantidade < 1){
+						
+						throw new Exception("Quantidade inválida");
+					}
 
 					Produto produto = new Produto();
 
@@ -112,8 +118,8 @@ public class ControleProduto extends HttpServlet {
 					// String pasta = System.getProperty("user.home") +
 					// "\\Desktop\\PI\\easports\\EASPORTS\\easports\\WebContent\\img";
 
-					//String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
-					String pasta = System.getProperty("user.dir") + "\\tomcat\\webapps\\easports\\img";
+					String pasta = System.getProperty("user.home") + "\\workspace\\EASPORTS\\easports\\WebContent\\img";
+					//String pasta = System.getProperty("user.dir") + "\\tomcat\\webapps\\easports\\img";
 
 					FileOutputStream stream = new FileOutputStream(pasta + "/" + produto.getImagem());
 

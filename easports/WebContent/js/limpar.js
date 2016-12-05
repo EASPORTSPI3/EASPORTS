@@ -16,4 +16,11 @@ function limparCampos(){
 	var cep = document.querySelector("#cep").value = "";
 }
 
+function limparCampos(){
+	var all = document.querySelectorAll(".form-control");
+
+	for(var i = 0; i < all.length; i++){
+				all[i].value = "";
+				}
+}
 window.addEventListener("load",iniciar);
