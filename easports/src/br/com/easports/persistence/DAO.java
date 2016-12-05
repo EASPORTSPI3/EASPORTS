@@ -7,14 +7,15 @@ public class DAO {
 	//private static final String DIRETORIO = "\\WebContent\\WEB-INF\\lib\\easports.db";
 	private static final String DRIVER = "org.sqlite.JDBC";
 	private static final String DATABASE = "jdbc:sqlite:";
-	private static final String URL = System.getProperty("user.dir");;
+	private static final String URL = System.getProperty("user.dir") + "\\tomcat\\webapps\\easports";
+	//private static final String URL = System.getProperty("user.dir");
 	private static final String BANCO = "\\easports.db";
 
 	protected Connection con;
 	protected PreparedStatement stmt;
 	protected ResultSet rs;
 
-	protected void abreConexao() throws Exception {
+	public void abreConexao() throws Exception {
 
 		Class.forName(DRIVER);
 

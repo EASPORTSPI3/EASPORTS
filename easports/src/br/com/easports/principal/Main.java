@@ -1,8 +1,9 @@
 package br.com.easports.principal;
 
+import br.com.easports.persistence.DAO;
 import br.com.easports.util.Criptografia;
 
-public class Main {
+public class Main extends DAO {
 
 	public static void main(String[] args) throws Exception {
 
@@ -10,9 +11,13 @@ public class Main {
 //		
 //		System.out.println(pasta);
 		
-		 String senha = "1907";
+/*		 String senha = "1907";
 	     System.out.println(Criptografia.criptografar(senha));
-	     
+	     */
+		DAO dao = new DAO();
+		
+		dao.abreConexao();
+		
 	}
 
 }

@@ -551,6 +551,7 @@ public class ControlePessoa extends HttpServlet {
 			else if (acao.equalsIgnoreCase("autenticar")) {
 
 				String destino = "/login.jsp";
+				String URLteste = System.getProperty("user.dir");
 
 				try {
 
@@ -560,6 +561,7 @@ public class ControlePessoa extends HttpServlet {
 					String senhaCriptografada = Criptografia.criptografar(senha);
 
 					final FuncionarioDAO funcionarioDao = new FuncionarioDAO();
+
 
 					final Funcionario funcionario = funcionarioDao.findByLoginSenha(cpf, senhaCriptografada);
 					
@@ -584,7 +586,7 @@ public class ControlePessoa extends HttpServlet {
 
 				} catch (final Exception e) {
 
-					request.setAttribute("mensagem", e.getMessage());
+					request.setAttribute("mensagem", URLteste);
 
 				} finally {
 
