@@ -12,8 +12,6 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<link rel="stylesheet" type="text/css" href="css/menuRodape.css" />
-<link rel="stylesheet" type="text/css" href="css/cadastroCliente.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/easports/css/bootstrap-theme.min.css" />
 <script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
@@ -64,7 +62,7 @@
 							<h4>Dados Gerais:</h4>
 							<hr>
 							<label>ID do Cliente: &nbsp <input required="required"
-								style="width: 100px" type="text" disabled name="idCliente"
+								style="width: 100px" type="text" disabled name="idCliente" id="id"
 								class="form-control" value="${cliente.idCliente}" />
 							</label> <label>Nome do Cliente: <input required="required"
 								style="width: 250px" type="text" disabled name="nome"
@@ -74,7 +72,7 @@
 								class="form-control" value="${cliente.telefone}" />
 							</label> <label>CPF: <input required="required"
 								style="width: 250px" type="text" disabled name="cpf"
-								class="form-control" value="${cliente.cpf}" id="cpf" />
+								class="form-control" value="${cliente.cpf}" id="restrito" />
 							</label> <label>Data Nasc.: <input required="required"
 								style="width: 200px" type="text" disabled name="datanasc"
 								class="form-control"

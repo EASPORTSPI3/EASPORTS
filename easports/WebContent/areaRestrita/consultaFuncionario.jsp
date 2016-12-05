@@ -69,7 +69,7 @@
 							<h4>Dados Gerais:</h4>
 							<hr>	
 							<label>ID:
-								<input required="required" style="width: 60px" type="text" disabled name="idFuncionario" class="form-control" value="${funcionario.idFuncionario}"/> 
+								<input required="required" id="id" style="width: 60px" type="text" disabled name="idFuncionario" class="form-control" value="${funcionario.idFuncionario}"/> 
 							</label>
 
 							<label>Nome do Funcionário:
@@ -82,7 +82,7 @@
 
 				
 							<label>CPF:
-								<input required="required" style="width: 220px" type="text" disabled name="cpf" class="form-control" value="${funcionario.cpf}"/>
+								<input required="required" id="restrito" style="width: 220px" type="text" disabled name="cpf" class="form-control" value="${funcionario.cpf}"/>
 							</label>
 							
 							<label>Data Nasc.: <input required="required"

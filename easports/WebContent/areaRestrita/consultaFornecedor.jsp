@@ -70,7 +70,7 @@
 						<h4>Dados Gerais:</h4>
 						<hr>							
 						<label>ID do Fonecedor: &nbsp
-							<input required="required" style="width: 100px" type="text" disabled name="idFornecedor" class="form-control" value="${fornecedor.idFornecedor}"/> 
+							<input required="required" id="id" style="width: 100px" type="text" disabled name="idFornecedor" class="form-control" value="${fornecedor.idFornecedor}"/> 
 						</label>					
 			
 						<label>Nome Fantasia:
@@ -86,7 +86,7 @@
 						</label>
 										
 						<label>CNPJ:
-						<input required="required" style="width: 250px" type="text" disabled name="cnpj" class="form-control" value="${fornecedor.cnpj}"/>
+						<input required="required" id="restrito" style="width: 250px" type="text" disabled name="cnpj" class="form-control" value="${fornecedor.cnpj}"/>
 						</label>						
 						
 						<hr style="border-width: 3px; border-color: gray;">

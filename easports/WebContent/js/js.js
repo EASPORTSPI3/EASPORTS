@@ -1,10 +1,8 @@
-
+var btnEditar;
 function iniciar(){
-	var btnEditar =  document.querySelector("#editar");
+	btnEditar =  document.querySelector("#editar");
 	btnEditar.addEventListener("click",editar);
-	
-	var btnEditarProduto =  document.querySelector("#editarProduto");
-	btnEditarProduto.addEventListener("click",editar);
+	habilitarEditar	();
 }
 
 function editar(){
@@ -36,10 +34,21 @@ function editar(){
 			}
 		}
 	var id = document.querySelector(".form-control");
-	var cpf = document.querySelector("#cpf");
+	var restrito = document.querySelector("#restrito");
 	id.disabled = true;
-	cpf.disabled = true;
+	restrito.disabled = true;
 	}
+
+function habilitarEditar(){
+	var idCliente = document.querySelector("#id");
+	
+	if(idCliente.value == ""){
+		btnEditar.disabled = true;
+		
+	}else{
+		btnEditar.disabled = false;
+	}
+}
 
 
 window.addEventListener("load",iniciar);

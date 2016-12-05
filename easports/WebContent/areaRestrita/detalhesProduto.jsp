@@ -17,6 +17,7 @@
 
 	<script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/easports/js/editarProduto.js"></script>
 	
 </head>
 <body class="container">
@@ -63,17 +64,17 @@
 							<h4><strong style="color: black; margin-left: 15px">Fornecedor: <input type="text" disabled name="fornecedor" style="color: gray" value="${produto.fornecedor.nome}"></strong></h4>
 							<h4><strong style="color: black; margin-left: 15px">Razão Social: <input type="text" disabled name="razaoSocial" style="color: gray" value="${produto.fornecedor.razaoSocial}"></strong></h4>
 							<h4><strong style="color: black; margin-left: 15px">Categoria: <input type="text" disabled name="categoria" style="color: gray" value="${produto.categoria.nome}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: <input type="text" name="precoCusto" required="required" style="color: gray" value="${produto.valorCusto}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: <input type="text" name="precoVenda" required="required" style="color: gray" value="${produto.valorVenda}"></strong></h4>
-							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: <input type="text" name="quantidadeEstoque" required="required" style="color: gray" value="${produto.quantidade}"></strong></h4>							
+							<h4><strong style="color: black; margin-left: 15px">Preço de Custo: <input type="text" id="precoCusto" disabled name="precoCusto" required="required" style="color: gray" value="${produto.valorCusto}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Preço de Venda: <input type="text" id="precoVenda" disabled name="precoVenda" required="required" style="color: gray" value="${produto.valorVenda}"></strong></h4>
+							<h4><strong style="color: black; margin-left: 15px">Quantidade em Estoque: <input type="text" id="estoque" disabled name="quantidadeEstoque" required="required" style="color: gray" value="${produto.quantidade}"></strong></h4>							
 						
 							<div style="padding-left: 50%; padding-top: 3%">
 							
-								<input type="button" class="btn btn-sm" value=Editar id="editar" style="background-color: #beeab5; 
+								<input type="button" class="btn btn-sm" value="Editar" id="editar" style="background-color: #beeab5; 
 							   width: 95; font-size: 14; font: bold; text-align: right; border-color: black" />
 							<span class="glyphicon glyphicon-pencil" style="margin-left: -90"></span>
 								
-								<input type="submit" class="btn btn-sm" value="Salvar" id="enviar" style="background-color: #cacaff;
+								<input type="submit" class="btn btn-sm" value="Salvar" disabled id="salvar" style="background-color: #cacaff;
 							   margin-left:18%; width: 85; font-size: 14; font: bold; text-align: right; border-color: black" />
 							<span class="glyphicon glyphicon-check" style="margin-left: -80"></span><br/><br/>
 							<h4 style="color:green">${mensagem}</h4>
