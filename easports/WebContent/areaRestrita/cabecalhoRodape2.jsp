@@ -30,6 +30,7 @@
                             <li id="cadastrarCliente"> <a href="/easports/areaRestrita/cadastroCliente.jsp">Cliente</a></li>
                         </c:if>
                         <c:if test="${usuarioLogado.cargo.cargo=='Gerente de Produtos'}">
+                            <li id="cadastrarFornecedor"><a href="/easports/areaRestrita/cadastroFornecedor.jsp">Fornecedor</a></li>
                             <li id="cadastrarProduto"><a href="/easports/areaRestrita/cadastroProduto.jsp">Produto</a></li>
                         </c:if>                                                
                         
