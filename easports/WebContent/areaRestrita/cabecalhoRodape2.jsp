@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fnc"%>
 
   <html>
-  <body>
+  <body style="min-width: 1024px;">
     <!-- MENU DO SISTEMA -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid"style="background-color: #7f7f7f">
@@ -93,9 +93,9 @@
     
     <!-- TOPO DO SISTEMA -->
     
-    <div class="well text-center" style="margin-top: 40px;width: 100%;height: 65px">
+    <div class="well text-center" style="margin-top: 40px;width: 100%;height: 65px;">
         
-		<div style="padding-left: 50%; text-align: left;">
+		<div style="padding-left: 0%;">
 		
 			<strong>Logado como: </strong>
 			

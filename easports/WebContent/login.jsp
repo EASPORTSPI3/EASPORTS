@@ -30,7 +30,7 @@
 </head>
 
 <body class="container" style=" overflow-x:hidden; 
-	  background-repeat:center" background="/easports/img/login_Background.jpg">
+	  background-repeat:center" background="/easports/img_projeto/login_Background.jpg">
 
     <div class="container" style="margin-top:9%">
 		<div class="row">
@@ -45,7 +45,7 @@
 							<fieldset>
 								<div class="row">
 									<div class="center-block" style="padding-right: 32%">
-										<img class="profile-img" src="img/Logo_EA.gif">
+										<img class="profile-img" src="img_projeto/Logo_EA.gif">
 										<hr>
 									</div>
 								</div>

@@ -16,11 +16,13 @@
 	
 	<title>EA Sports</title>
 </head>
-<body>
+<body style="min-width: 1024px;">
 
 <jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
-
+			<label id="cadastroCli">
+				<img src="/easports/img_projeto/imgHelp.JPG" /></a>
+			</label>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

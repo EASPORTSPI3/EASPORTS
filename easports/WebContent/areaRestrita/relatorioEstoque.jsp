@@ -26,7 +26,7 @@
 	
 	<title>EA Sports</title>
 </head>
-<body>
+<body style="min-width: 1024px;">
 
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	

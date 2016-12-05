@@ -17,7 +17,7 @@
 	
 	<title>EA Sports</title>
 </head>
-<body>
+<body style="min-width: 1024px;">
 
 <jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
@@ -25,48 +25,48 @@
 			
 		<c:if test="${usuarioLogado.cargo.cargo=='Gerente' || usuarioLogado.cargo.cargo=='Vendedor' }">			
 			<label id="cadastroCli"><a href="/easports/areaRestrita/cadastroCliente.jsp" title="Cadastro de Clientes"> 
-				<img src="/easports/img/btn_cadastrar.png" /></a>
+				<img src="/easports/img_projeto/btn_cadastrar.png" /></a>
 			</label>
 				
 			<label id="consultaCli" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaCliente.jsp" title="Consultar Clientes"> 
-				<img src="/easports/img/btn_consultar.png" /></a>
+				<img src="/easports/img_projeto/btn_consultar.png" /></a>
 			</label>
 			
 			<label id="consultaProd" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaProduto.jsp" title="Consultar Produtos"> 
-				<img src="/easports/img/btn_relatorio.png" /></a>
+				<img src="/easports/img_projeto/btn_relatorio.png" /></a>
 			</label>
 			
 			<label id="consultaPedi" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaPedido.jsp" title="Consultar Pedidos">  
-				<img src="/easports/img/btn_vendas.png" /></a>
+				<img src="/easports/img_projeto/btn_vendas.png" /></a>
 			</label>
 			
 			<label id="sobre" style="padding-left: 3%"><a href="/easports/areaRestrita/sobre.jsp" title="Sobre"> 
-				<img src="/easports/img/btn_ajuda.png" /></a>
+				<img src="/easports/img_projeto/btn_ajuda.png" /></a>
 			</label>
 		</c:if>	
 		
 		<c:if test="${usuarioLogado.cargo.cargo=='Gerente de Produtos'}">			
 			<label id="cadastroCli"><a href="/easports/areaRestrita/cadastroProduto.jsp" title="Cadastro de Produtos"> 
-				<img src="/easports/img/btn_cadastrar.png" /></a>
+				<img src="/easports/img_projeto/btn_cadastrar.png" /></a>
 			</label>
 				
 			<label id="consultaCli" style="padding-left: 3%"><a href="/easports/areaRestrita/consultaProduto.jsp" title="Consultar Produtos"> 
-				<img src="/easports/img/btn_consultar.png" /></a>
+				<img src="/easports/img_projeto/btn_consultar.png" /></a>
 			</label>
 			
 			<label id="consultaProd" style="padding-left: 3%"><a href="/easports/areaRestrita/relatorioEstoque.jsp" title="Relatório de Estoque"> 
-				<img src="/easports/img/btn_relatorio.png" /></a>
+				<img src="/easports/img_projeto/btn_relatorio.png" /></a>
 			</label>
 			
 			<label id="sobre" style="padding-left: 3%"><a href="/easports/areaRestrita/sobre.jsp" title="Sobre"> 
-				<img src="/easports/img/btn_ajuda.png" /></a>
+				<img src="/easports/img_projeto/btn_ajuda.png" /></a>
 			</label>
 		</c:if>	
 			
 	</div>
 	
 	<center>
-		<img src="/easports/img/Logo_EA.gif" width="350" style="padding-top: 2%"/>
+		<img src="/easports/img_projeto/Logo_EA.gif" width="350" style="padding-top: 2%"/>
 	</center>
 	
 	<jsp:include page="footer.jsp"></jsp:include>

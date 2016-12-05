@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="/easports/js/editarProduto.js"></script>
 	
 </head>
-<body class="container">
+<body class="container" style="min-width: 1024px;">
 
 	<jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
