@@ -20,6 +20,7 @@
 <script type="text/javascript" src="/easports/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/easports/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/easports/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/easports/js/limpar.js"></script>
 
 <title>EA Sports</title>
 </head>
@@ -48,17 +49,17 @@
 			
 							<label>Logradouro:
 								<input required="required" style="width: 260px" type="text" name="logradouro" 
-									   class="form-control" placeholder="Digite aqui" value="${endereco.logradouro}"/>
+									   class="form-control" placeholder="Digite aqui" value="${endereco.logradouro}" id="logradouro"/>
 							</label>
 						
 							<label>Número:
 								<input required="required" style="width: 100px" type="text" name="numero" 
-									   class="form-control" placeholder="Digite aqui"/>
+									   class="form-control" placeholder="Digite aqui" id="numero"/>
 							</label>
 				
 							<label>CEP:
 								<input required="required" style="width: 110px" type="text" name="cep" id="cep" 
-									   class="form-control" placeholder="Digite aqui" value="${endereco.cep}"/>
+									   class="form-control" placeholder="Digite aqui" value="${endereco.cep}" id="cep"/>
 							</label>
 							
 							<!-- 	pesquisa do cep -->
@@ -72,24 +73,24 @@
 							
 							<label>Bairro:
 								<input required="required" style="width: 260px" type="text" name="bairro" 
-									   class="form-control" placeholder="Digite aqui" value="${endereco.bairro}"/>
+									   class="form-control" placeholder="Digite aqui" value="${endereco.bairro}" id="bairro"/>
 							</label>
 
 							
 							<label>Cidade:
 								<input required="required" style="width: 180px" type="text" name="cidade" 
-									   class="form-control" placeholder="Digite aqui" value="${endereco.cidade}"/>
+									   class="form-control" placeholder="Digite aqui" value="${endereco.cidade}" id="cidade"/>
 							</label>
 
 							
 							<label>Estado:
 								<input required="required" style="width: 180px" type="text" name="estado" 
-									   class="form-control" placeholder="Digite aqui" value="${endereco.estado}"/>
+									   class="form-control" placeholder="Digite aqui" value="${endereco.estado}" id="estado"/>
 							</label>
 													
 							<label>País:
 								<input required="required" style="width: 250px" type="text" name="pais" 
-									   class="form-control" placeholder="Digite aqui"/>
+									   class="form-control" placeholder="Digite aqui" id="pais"/>
 							</label>
 							
 							<hr style="border-width: 3px; border-color: gray;">
@@ -124,7 +125,7 @@
 								<span class="glyphicon glyphicon-check" style="margin-left: -100"></span>
 								
 							<input type="reset" class="btn btn-sm" value="Limpar" style="background-color: #cacaff;margin-left:14%; 
-								   width: 90; font-size: 14; font: bold; text-align: right; border-color: black" />
+								   width: 90; font-size: 14; font: bold; text-align: right; border-color: black" id="btnLimpar"/>
 								<span class="glyphicon glyphicon-erase" style="margin-left: -86"></span>
 							
 						</fieldset>													

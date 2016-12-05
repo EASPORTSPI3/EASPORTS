@@ -1,8 +1,11 @@
-var btnEditar;
+var btnEditar, btnLimpar;
 function iniciar(){
 	btnEditar =  document.querySelector("#editar");
 	btnEditar.addEventListener("click",editar);
 	habilitarEditar	();
+	
+	btnLimpar =  document.querySelector("#btnLimpar");
+	btnLimpar.addEventListener("click",limparCampos);
 }
 
 function editar(){
@@ -50,5 +53,17 @@ function habilitarEditar(){
 	}
 }
 
+
+function limparCampos(){
+	
+	var logradouro = document.querySelector("#logradouro").value = "";
+	var numero = document.querySelector("#numero").value = "";
+	var cep = document.querySelector("#cep".value = "");
+	var bairro = document.querySelector("#bairro").value = "";
+	var cidade = document.querySelector("#cidade").value = "";
+	var estado = document.querySelector("#estado").value = "";
+	var pais = document.querySelector("#pais").value = "";
+	
+}
 
 window.addEventListener("load",iniciar);

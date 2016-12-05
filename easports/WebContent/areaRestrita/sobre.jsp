@@ -20,9 +20,9 @@
 
 <jsp:include page="cabecalhoRodape2.jsp"></jsp:include>
 	
-			<label id="cadastroCli">
-				<img src="/easports/img_projeto/imgHelp.JPG" /></a>
-			</label>
+			<div style="margin: auto; text-align: center;">
+				<img src="/easports/img_projeto/logoSobre.jpg" />	
+			</div>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
